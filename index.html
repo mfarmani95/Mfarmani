@@ -4,19 +4,94 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mohammad Farmani</title>
+    <style>
+        /* Style for background */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: url('WT_BG.mp4') no-repeat center center fixed; /* Change to background.gif if using GIF */
+            background-size: cover;
+            color: white; /* Ensures text is readable */
+        }
+
+        /* Overlay effect to make text readable */
+        .overlay {
+            background: rgba(0, 0, 0, 0.6);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .content {
+            max-width: 800px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.7); /* Adds transparency */
+            border-radius: 10px;
+        }
+
+        h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        nav {
+            margin-top: 20px;
+        }
+
+        nav a {
+            color: #f8c471;
+            text-decoration: none;
+            font-size: 20px;
+            margin: 0 15px;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <h1>Welcome to My Website</h1>
+
+<div class="overlay">
+    <div class="content">
+        <h1>Mohammad Farmani</h1>
+        <p>
+            I am a Ph.D. student in Hydrology and Atmospheric Sciences with a minor in Data Science. 
+            My research focuses on improving hydrological modeling using machine learning and physical-based models.
+            I work extensively with the Noah-MP land surface model to analyze water movement, baseflow generation, 
+            and climate change impacts on hydrological extremes.
+        </p>
+        <p>
+            I have a strong background in programming, data analysis, and hydrological modeling. 
+            I use Python, Fortran, and SQL in my daily research and have experience working with high-performance computing (HPC) 
+            for large-scale hydrological simulations. My passion lies in integrating physics-based modeling with machine learning 
+            to improve predictions and enhance our understanding of water systems.
+        </p>
+        <p>
+            I have collaborated on multiple research projects, including improving precipitation estimation using satellite data, 
+            analyzing groundwater recharge in arid regions, and applying deep learning to hydrological processes. I am also interested 
+            in the NextGen framework to integrate new developments of Noah-MP for better hydrological forecasts.
+        </p>
+        
         <nav>
             <a href="index.html">Home</a> |
             <a href="publications.html">Publications</a> |
             <a href="work.html">My Work</a>
         </nav>
-    </header>
-    <section>
-        <h2>About Me</h2>
-        <p>Hello, I am Mohammad Farmani, a Ph.D. student in Hydrology and Atmospheric Sciences with a minor in Data Science.</p>
-    </section>
+    </div>
+</div>
+
 </body>
 </html>
