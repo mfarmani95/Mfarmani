@@ -4,8 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mohammad Farmani</title>
+
+    <!-- Font Awesome for Icons -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
     <style>
-        /* Video background container */
+        /* Video Background */
         .video-container {
             position: fixed;
             top: 0;
@@ -16,7 +20,6 @@
             z-index: -1;
         }
 
-        /* Video settings */
         .video-container video {
             position: absolute;
             top: 50%;
@@ -27,7 +30,32 @@
             object-fit: cover;
         }
 
-        /* Content overlay */
+        /* Navigation Bar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 15px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .navbar a {
+            color: white;
+            font-size: 24px;
+            margin: 0 20px;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .navbar a:hover {
+            color: #f8c471;
+        }
+
+        /* Content Overlay */
         .overlay {
             position: relative;
             width: 100%;
@@ -36,8 +64,9 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            background: rgba(0, 0, 0, 0.5); /* Dark overlay to improve text readability */
+            background: rgba(0, 0, 0, 0.5);
             color: white;
+            padding-top: 60px; /* Avoids overlap with navbar */
         }
 
         .content {
@@ -57,28 +86,21 @@
             line-height: 1.6;
         }
 
-        nav {
-            margin-top: 20px;
-        }
-
-        nav a {
-            color: #f8c471;
-            text-decoration: none;
-            font-size: 20px;
-            margin: 0 15px;
-        }
-
-        nav a:hover {
-            text-decoration: underline;
-        }
     </style>
 </head>
 <body>
 
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <a href="index.html"><i class="fas fa-home"></i></a>
+        <a href="publications.html"><i class="fas fa-book"></i></a>
+        <a href="work.html"><i class="fas fa-briefcase"></i></a>
+    </div>
+
     <!-- Video Background -->
     <div class="video-container">
         <video autoplay muted loop playsinline>
-            <source src="https://github.com/mfarmani95/Mfarmani/WT_BG.mp4" type="video/mp4">
+            <source src="WT_BG.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
     </div>
@@ -99,11 +121,6 @@
                 for large-scale hydrological simulations. My passion lies in integrating physics-based modeling with machine learning 
                 to improve predictions and enhance our understanding of water systems.
             </p>
-            <nav>
-                <a href="index.html">Home</a> |
-                <a href="publications.html">Publications</a> |
-                <a href="work.html">My Work</a>
-            </nav>
         </div>
     </div>
 
