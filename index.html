@@ -25,6 +25,7 @@
             text-align: center;
             padding: 50px 10%;
             scroll-snap-align: start;
+            position: relative;
         }
         .block.dark {
             background: rgba(0, 0, 0, 0.7);
@@ -49,7 +50,9 @@
         .video-container {
             position: absolute;
             width: 100%;
-            height: 100vh;
+            height: 100%;
+            top: 0;
+            left: 0;
             overflow: hidden;
             z-index: -1;
         }
