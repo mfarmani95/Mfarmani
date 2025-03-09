@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CV - Mohammad Ali Farmani</title>
+    <title>Mohammad Ali Farmani - Home</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         body {
@@ -11,13 +11,59 @@
             margin: 0;
             padding: 0;
             color: white;
+            scroll-snap-type: y mandatory;
+            overflow-x: hidden;
+            overflow-y: scroll;
+            height: 100vh;
+            font-size: 22px; /* Increased font size */
+        }
+        .block, .expertise {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 5%;
+            scroll-snap-align: start;
+            position: relative;
+        }
+        .block.dark, .expertise {
+            background: rgba(0, 0, 0, 0.7);
+        }
+        .block p, .expertise .text p {
+            font-size: 22px;
+            line-height: 1.8;
+            text-align: justify;
+            max-width: 900px;
+            padding: 20px;
+        }
+        .expertise .text {
+            max-width: 900px;
+            width: 100%;
+        }
+        .expertise .text ul {
+            list-style-position: inside;
+            padding-left: 0;
+            text-align: left;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .expertise .text ul li {
+            font-size: 22px;
+            font-weight: normal;
+            margin-bottom: 10px;
+        }
+        .expertise .text ul li b {
+            font-weight: bold;
         }
         .video-container {
-            position: fixed;
+            position: absolute;
+            width: 100vw;
+            height: 100vh;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
             overflow: hidden;
             z-index: -1;
         }
@@ -26,45 +72,31 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 100vw;
-            height: 100vh;
+            min-width: 100vw;
+            min-height: 100vh;
+            width: auto;
+            height: auto;
             object-fit: cover;
         }
         .navbar {
-            display: flex;
-            justify-content: center;
+            position: fixed;
+            top: 0;
+            width: 100%;
             background: rgba(0, 0, 0, 0.8);
             padding: 15px;
-            position: fixed;
-            width: 100%;
-            top: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             z-index: 1000;
+            font-size: 22px;
         }
         .navbar a {
             color: white;
             margin: 0 20px;
             text-decoration: none;
-            font-size: 20px;
+            font-size: 22px;
         }
         .navbar a:hover {
-            color: #f8c471;
-        }
-        .container {
-            max-width: 900px;
-            margin: 120px auto;
-            padding: 20px;
-            background: rgba(0, 0, 0, 0.7);
-            border-radius: 10px;
-        }
-        h1, h2 {
-            text-align: center;
-        }
-        .section {
-            margin-bottom: 20px;
-            padding: 10px;
-        }
-        .icon {
-            margin-right: 10px;
             color: #f8c471;
         }
         .footer {
@@ -72,20 +104,13 @@
             padding: 20px;
             background: rgba(0, 0, 0, 0.8);
             color: white;
-            font-size: 16px;
+            font-size: 20px;
             position: relative;
             width: 100%;
         }
     </style>
 </head>
 <body>
-    
-    <div class="video-container">
-        <video autoplay muted loop playsinline>
-            <source src="CV_BG.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-    </div>
     
     <div class="navbar">
         <a href="index.html"><i class="fas fa-home icon"></i> Home</a>
@@ -94,45 +119,40 @@
         <a href="work.html"><i class="fas fa-briefcase icon"></i> Work</a>
     </div>
     
-    <div class="container">
-        <h1><i class="fas fa-id-card"></i> Curriculum Vitae</h1>
-        <div class="section" id="contact">
-            <h2><i class="fas fa-envelope"></i> Contact Information</h2>
-            <p><i class="fas fa-user"></i> Name: Mohammad Ali Farmani</p>
-            <p><i class="fas fa-globe"></i> Website: <a href="https://mfarmani95.github.io/Mfarmani/index.html" target="_blank">My Personal Webpage</a></p>
-            <p><i class="fas fa-envelope"></i> Email: <a href="mailto:farmani@arizona.edu">farmani@arizona.edu</a></p>
+    <div class="block dark">
+        <div class="video-container">
+            <video autoplay muted loop playsinline>
+                <source src="WT_BG.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
         </div>
-        
-        <div class="section" id="education">
-            <h2><i class="fas fa-graduation-cap"></i> Education</h2>
-            <p><b>Ph.D. in Hydrology</b>, University of Arizona (2022 - Present)</p>
-            <p><b>Master's in Water Resources Management</b>, Tarbiat Modares University (2018 - 2022)</p>
-            <p><b>Bachelor's in Civil Engineering</b>, Iran University of Science and Technology (2013 - 2018)</p>
-        </div>
-
-        <div class="section" id="skills">
-            <h2><i class="fas fa-laptop-code"></i> Skills</h2>
-            <ul>
-                <li><i class="fab fa-python"></i> Python, R, Fortran, HTML</li>
-                <li><i class="fas fa-database"></i> SQL & Data Management</li>
-                <li><i class="fas fa-map-marked-alt"></i> GIS & Hydrological Modeling</li>
-                <li><i class="fas fa-chart-line"></i> Machine Learning in Hydrology</li>
-            </ul>
-        </div>
-        
-        <div class="section" id="awards">
-            <h2><i class="fas fa-trophy"></i> Awards & Honors</h2>
-            <ul>
-                <li>🏅 CIROH HydroLearn Fellowship (2025)</li>
-                <li>🥈 Second place in the Groundwater Student Contest, AGU24 (2024)</li>
-                <li>🎖️ John W. and Margaret Harshbarger Fellowship (2024)</li>
-                <li>🎖️ Roots for Resilience Research Fellowship, Data Science Institute, University of Arizona (Fall 2023)</li>
-                <li>🎖️ Best Oral Presentation, El Dia Conference, University of Arizona (March 2023)</li>
-                <li>🎖️ Hydrologist Scholarship, U.S. Army Corps of Engineers - ERDC CHL (May 2023 – Present)</li>
-            </ul>
+        <div>
+            <h1>Hi! I’m Mohammad Ali Farmani</h1>
+            <p>I am a third-year Ph.D. candidate in Hydrology and Atmospheric Sciences with a minor in Data Science at the University of Arizona. My research focuses on solving complex environmental challenges by integrating physical hydrology with machine learning.</p>
+            <p>I thrive on solving real-world challenges in water and earth sciences by bridging the gap between theory and practice. Whether it’s developing machine learning-driven tools for streamflow prediction, assessing urban flood resilience, or designing databases for large-scale environmental systems, I bring a data-driven and systems-oriented approach to my work.</p>
         </div>
     </div>
 
+    <div class="expertise">
+        <div class="video-container">
+            <video autoplay muted loop playsinline>
+                <source src="Coding.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        <div class="text">
+            <h2>Key Areas of Expertise</h2>
+            <ul>
+                <li><b>Hydrological Modeling:</b> Enhancing models like Noah-MP and RAPID for improved infiltration, runoff, and soil moisture dynamics.</li>
+                <li><b>Flood Management:</b> Using SWMM to assess climate change impacts on urban drainage systems and improve flood resilience.</li>
+                <li><b>Database Design:</b> Developing MySQL databases for smart water distribution and optimization systems.</li>
+                <li><b>Differentiable Hydrology:</b> Implementing PyTorch-based hydrological processes for GPU acceleration and integration with ML models.</li>
+            </ul>
+            <p>With proficiency in Python, R, SQL, high-performance computing, and hydrological modeling tools like SWMM, I am well-equipped to tackle interdisciplinary challenges at the nexus of water resources, climate science, and data analytics. My long-term goal is to contribute to sustainable water management and climate resilience by advancing the integration of physical and data-driven modeling approaches.</p>
+            <p>I am also passionate about collaboration and leadership, demonstrated by my roles as a committee member and website coordinator for the <a href="https://www.hwr.arizona.edu/el-dia" target="_blank" style="color: #f8c471;">El Dia Student Symposium</a>. I enjoy mentoring peers, sharing knowledge, and contributing to a culture of innovation in academia.</p>
+        </div>
+    </div>
+    
     <div class="footer">
         <p>Created by Mohammad Ali Farmani | Contact: <a href="mailto:your.email@example.com" style="color: #f8c471;">your.email@example.com</a></p>
         <a href="https://hits.seeyoufarm.com" target="_blank">
@@ -141,4 +161,3 @@
     </div>
 </body>
 </html>
-
