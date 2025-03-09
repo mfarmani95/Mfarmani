@@ -38,17 +38,23 @@
             max-width: 900px;
         }
         .expertise {
+            position: relative;
             display: flex;
             align-items: center;
             justify-content: space-between;
             padding: 50px 5%;
-            background: white;
-            color: black;
+            color: white;
             height: 100vh;
             scroll-snap-align: start;
+            overflow: hidden;
         }
         .expertise .text {
             width: 55%;
+            position: relative;
+            z-index: 1;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
         }
         .expertise .text ul li {
             font-size: 22px;
@@ -58,10 +64,6 @@
             font-size: 20px;
             line-height: 1.8;
             text-align: justify;
-        }
-        .expertise img {
-            width: 40%;
-            border-radius: 10px;
         }
         .video-container {
             position: absolute;
@@ -129,6 +131,12 @@
     </div>
 
     <div class="expertise">
+        <div class="video-container">
+            <video autoplay muted loop playsinline>
+                <source src="Coding.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
         <div class="text">
             <h2>Key Areas of Expertise</h2>
             <ul>
@@ -140,7 +148,6 @@
             <p>With proficiency in Python, R, SQL, high-performance computing, and hydrological modeling tools like SWMM, I am well-equipped to tackle interdisciplinary challenges at the nexus of water resources, climate science, and data analytics. My long-term goal is to contribute to sustainable water management and climate resilience by advancing the integration of physical and data-driven modeling approaches.</p>
             <p>I am also passionate about collaboration and leadership, demonstrated by my roles as a committee member and website coordinator for the El Dia Student Symposium. I enjoy mentoring peers, sharing knowledge, and contributing to a culture of innovation in academia.</p>
         </div>
-        <img src="expert.jpg" alt="Expertise Image">
     </div>
     
 </body>
