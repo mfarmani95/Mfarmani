@@ -49,45 +49,28 @@
         .navbar a:hover {
             color: #f8c471;
         }
-        .overlay {
-            position: relative;
+        .block {
             width: 100%;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            padding: 50px 10%;
             text-align: center;
-            background: rgba(0, 0, 0, 0.5);
-            color: white;
-            padding-top: 60px;
         }
-        .content {
-            max-width: 800px;
-            padding: 20px;
+        .block.dark {
             background: rgba(0, 0, 0, 0.7);
-            border-radius: 10px;
         }
-        h1 {
-            font-size: 36px;
-        }
-        .page-links {
+        .expertise {
             display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-top: 20px;
-        }
-        .page-links a {
-            text-decoration: none;
-            font-size: 24px;
-            color: white;
-            padding: 15px 20px;
-            background: rgba(0, 0, 0, 0.8);
-            border-radius: 10px;
-            transition: 0.3s;
-        }
-        .page-links a:hover {
-            background: #f8c471;
+            align-items: center;
+            justify-content: space-between;
+            padding: 50px 10%;
+            background: white;
             color: black;
+        }
+        .expertise .text {
+            width: 60%;
+        }
+        .expertise img {
+            width: 35%;
+            border-radius: 10px;
         }
     </style>
 </head>
@@ -107,26 +90,26 @@
         <a href="work.html"><i class="fas fa-briefcase icon"></i> Work</a>
     </div>
     
-    <div class="overlay">
-        <div class="content">
-            <h1><i class="fas fa-user-circle"></i> Welcome to My Website</h1>
-            <p>Hi! I’m <b>Mohammad Ali Farmani</b>, a third-year Ph.D. candidate in Hydrology and Atmospheric Sciences with a minor in Data Science at the University of Arizona. My research focuses on solving complex environmental challenges by integrating physical hydrology with machine learning.</p>
-            <p><b>Key areas of expertise include:</b></p>
+    <div class="block dark">
+        <h1>Hi! I’m Mohammad Ali Farmani</h1>
+        <p>I am a third-year Ph.D. candidate in Hydrology and Atmospheric Sciences with a minor in Data Science at the University of Arizona. My research focuses on solving complex environmental challenges by integrating physical hydrology with machine learning.</p>
+        <p>I thrive on solving real-world challenges in water and earth sciences by bridging the gap between theory and practice. Whether it’s developing machine learning-driven tools for streamflow prediction, assessing urban flood resilience, or designing databases for large-scale environmental systems, I bring a data-driven and systems-oriented approach to my work.</p>
+    </div>
+
+    <div class="expertise">
+        <div class="text">
+            <h2>Key Areas of Expertise</h2>
             <ul>
                 <li><b>Hydrological Modeling:</b> Enhancing models like Noah-MP and RAPID for improved infiltration, runoff, and soil moisture dynamics.</li>
                 <li><b>Flood Management:</b> Using SWMM to assess climate change impacts on urban drainage systems and improve flood resilience.</li>
                 <li><b>Database Design:</b> Developing MySQL databases for smart water distribution and optimization systems.</li>
                 <li><b>Differentiable Hydrology:</b> Implementing PyTorch-based hydrological processes for GPU acceleration and integration with ML models.</li>
             </ul>
-            <p>I thrive on solving real-world challenges in water and earth sciences by bridging the gap between theory and practice. Whether it’s developing machine learning-driven tools for streamflow prediction, assessing urban flood resilience, or designing databases for large-scale environmental systems, I bring a data-driven and systems-oriented approach to my work.</p>
-            <p>I am also passionate about collaboration and leadership, demonstrated by my roles as a committee member and website coordinator for the El Dia Student Symposium. I enjoy mentoring peers, sharing knowledge, and contributing to a culture of innovation in academia.</p>
             <p>With proficiency in Python, R, SQL, high-performance computing, and hydrological modeling tools like SWMM, I am well-equipped to tackle interdisciplinary challenges at the nexus of water resources, climate science, and data analytics. My long-term goal is to contribute to sustainable water management and climate resilience by advancing the integration of physical and data-driven modeling approaches.</p>
-            <div class="page-links">
-                <a href="cv.html"><i class="fas fa-id-card"></i> My CV</a>
-                <a href="publications.html"><i class="fas fa-book"></i> Publications</a>
-                <a href="work.html"><i class="fas fa-briefcase"></i> My Work</a>
-            </div>
+            <p>I am also passionate about collaboration and leadership, demonstrated by my roles as a committee member and website coordinator for the El Dia Student Symposium. I enjoy mentoring peers, sharing knowledge, and contributing to a culture of innovation in academia.</p>
         </div>
+        <img src="expert.jpg" alt="Expertise Image">
     </div>
     
 </body>
+</html>
