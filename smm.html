@@ -135,13 +135,13 @@
         <a href="#findings">Key Findings</a>
         <a href="#implications">Implications for Climate Science</a>
         <a href="#conclusion">Conclusion & Future Directions</a>
+        <a href="#reference">Reference</a>
     </div>
 
     <div class="content">
         <h1 id="introduction">Soil Moisture Memory (SMM) and Its Importance in Land Surface Modeling</h1>
         <p>Soil Moisture Memory (SMM) refers to the duration over which soil retains the effects of a moisture perturbation, such as rainfall, before returning to its equilibrium state. This concept is essential for understanding land–atmosphere interactions, as it encapsulates the temporal variations of soil moisture and reflects the exchange of fluxes between land and the atmosphere.
-           SMM serves as a crucial metric for evaluating Land Surface Models (LSMs), which are designed to simulate surface flux exchanges and provide boundary conditions for atmospheric models. By facilitating comparisons between observed and modeled soil moisture dynamics, SMM offers insights into the mechanisms within LSMs and their hydrometeorological responses.</p>
-           </p>Furthermore, analyzing SMM can provide valuable information about the configurations and hydrological parameterizations of specific LSMs. This helps improve our understanding of how different model configurations impact performance, particularly in representing soil moisture dynamics.</p>
+           SMM serves as a crucial metric for evaluating Land Surface Models (LSMs), which are designed to simulate surface flux exchanges and provide boundary conditions for atmospheric models. By facilitating comparisons between observed and modeled soil moisture dynamics, SMM offers insights into the mechanisms within LSMs and their hydrometeorological responses. Furthermore, analyzing SMM can provide valuable information about the configurations and hydrological parameterizations of specific LSMs. This helps improve our understanding of how different model configurations impact performance, particularly in representing soil moisture dynamics.</p>
         <img src="SMM_MODEL.png" alt="Soil Moisture Memory Concept">
 
         <h2 id="importance">Importance of Accurate Land Models</h2>
@@ -154,8 +154,7 @@
         <p>The Brooks-Corey/Clapp-Hornberger (BC/CH) model, characterized by stronger soil suction, enhances moisture transfer from deeper layers to the surface, increasing surface moisture and extending long-term SMM (τL). However, this can reduce moisture in the root zone, leading to a shorter τL in that region. The van Genuchten (VG) model, with weaker suction, results in a drier surface and a moister root zone, leading to a shorter surface τL but longer root zone τL.</p>
 
         <p><b>2. Role of Soil Macropores</b></p>
-        <p>Macropores facilitate rapid infiltration into deeper soil layers, reducing surface moisture retention and leading to a decrease in surface τL.<p>
-        <p>While macropores increase moisture in the root zone, the current Noah-MP configuration (DPM_VGM) drains water too quickly to deeper layers, leading to drying of the root zone and a reduction in its τL. Accurate calibration of macropore representations in LSMs is crucial for improving soil hydraulic dynamics and SMM predictions.</p>
+        <p>Macropores facilitate rapid infiltration into deeper soil layers, reducing surface moisture retention and leading to a decrease in surface τL. While macropores increase moisture in the root zone, the current Noah-MP configuration (DPM_VGM) drains water too quickly to deeper layers, leading to drying of the root zone and a reduction in its τL. Accurate calibration of macropore representations in LSMs is crucial for improving soil hydraulic dynamics and SMM predictions.</p>
 
         <p><b>3. Impact of Surface Water Ponding</b></p>
         <p>A higher ponding threshold allows water to remain on the surface before turning into runoff, providing more time for infiltration. This increases soil moisture retention, extending long-term SMM (τL) and shortening short-term SMM (τS).<p>
@@ -173,13 +172,17 @@
         <p>Predicting soil moisture availability supports crop irrigation planning, reducing water waste and improving agricultural efficiency. Improved groundwater recharge simulations help ensure sustainable water management, particularly in arid and semi-arid regions.</p>
 
         <p><b>4. Advancements in Hydrological Modeling</b></p>
-        <p>This study highlights missing processes in LSMs that influence SMM, including preferential flow, macropore infiltration, and variable surface ponding.</p> 
-        </p>Future LSM improvements based on these findings will enhance their applicability in hydrological studies, benefiting water resource planning and land-use management.</p>
+        <p>This study highlights missing processes in LSMs that influence SMM, including preferential flow, macropore infiltration, and variable surface ponding. Future LSM improvements based on these findings will enhance their applicability in hydrological studies, benefiting water resource planning and land-use management.</p>
         
         <h2 id="conclusion">Conclusion & Future Directions</h2>
         <p>This study explored the role of soil hydraulic schemes and hydrological processes in shaping Soil Moisture Memory (SMM) using the Noah-MP LSM with advanced hydrology. By addressing common biases in SMM representation, our research aimed to identify key missing processes and improve the accuracy of soil hydrology modeling in LSMs.</p>
         <p>Through five experimental scenarios, we examined soil hydraulic parameterizations, preferential flow dynamics, and surface ponding thresholds. The results indicate that: The soil water retention curve is a dominant factor in controlling SMM, with the Van Genuchten (VG) parameterization significantly improving simulations by reducing the overestimation issues observed in Brooks–Corey/Clapp–Hornberger (BC/CH) models. Surface ponding representation enhances soil infiltration capacity, extending soil moisture retention and improving SMM accuracy. Macropores, while enhancing infiltration, reduce both short-term and long-term SMM due to increased drainage, highlighting the need for accurate macropore calibration in LSMs.<p>
         <p>Future Directions Refining hydraulic parameterizations to further reduce biases in SMM. Investigating the strength and legacy of SMM to enhance climate prediction accuracy. Exploring additional missing hydrological processes, such as surface and subsurface lateral flow, to improve LSM performance in climate and hydrological applications. By implementing these advancements, LSMs will be better equipped to provide reliable climate forecasts, hydrological predictions, and water management strategies, ultimately improving our understanding of hydrological extremes such as droughts and floods.</p>
+
+        <h2 id="reference">Reference</h2>
+        <p>Farmani, M. A., Behrangi, A., Gupta, A., Tavakoly, A., Geheran, M., and Niu, G.-Y.: Do land models miss key soil hydrological processes controlling soil moisture memory?, Hydrol. Earth Syst. Sci., 29, 547–566, https://doi.org/10.5194/hess-29-547-2025, 2025.<p>
+        <p>McColl, K. A., He, Q., Lu, H., and Entekhabi, D.: Short-Term and Long-Term Surface Soil Moisture Memory Time Scales Are Spatially Anticorrelated at Global Scales, J. Hydrometeorol., 20, 1165–1182, https://doi.org/10.1175/JHM-D-18-0141.1, 2019.</p>
+    
     </div>
     
 <div class="footer">
