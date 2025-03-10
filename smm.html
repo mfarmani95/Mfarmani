@@ -154,21 +154,28 @@
         <p>The Brooks-Corey/Clapp-Hornberger (BC/CH) model, characterized by stronger soil suction, enhances moisture transfer from deeper layers to the surface, increasing surface moisture and extending long-term SMM (τL). However, this can reduce moisture in the root zone, leading to a shorter τL in that region. The van Genuchten (VG) model, with weaker suction, results in a drier surface and a moister root zone, leading to a shorter surface τL but longer root zone τL.</p>
 
         <p><b>2. Role of Soil Macropores</b></p>
-        <p>Macropores facilitate rapid infiltration into deeper soil layers, reducing surface moisture retention...</p>
+        <p>Macropores facilitate rapid infiltration into deeper soil layers, reducing surface moisture retention and leading to a decrease in surface τL.<p>
+        <p>While macropores increase moisture in the root zone, the current Noah-MP configuration (DPM_VGM) drains water too quickly to deeper layers, leading to drying of the root zone and a reduction in its τL. Accurate calibration of macropore representations in LSMs is crucial for improving soil hydraulic dynamics and SMM predictions.</p>
 
         <p><b>3. Impact of Surface Water Ponding</b></p>
-        <p>Ponding thresholds affect soil moisture infiltration and retention...</p>
+        <p>A higher ponding threshold allows water to remain on the surface before turning into runoff, providing more time for infiltration. This increases soil moisture retention, extending long-term SMM (τL) and shortening short-term SMM (τS).<p>
+
+        <p>These findings highlight the necessity for LSMs to incorporate advanced soil hydrological processes, such as macropore effects, improved soil hydraulic parameterizations, and dynamic surface ponding thresholds. By doing so, we can improve the accuracy of soil moisture simulations and their interactions with the atmosphere.</p>
 
         <h2 id="implications">Implications for Climate Science and Water Management</h2>
         <p><b>1. Climate Predictions and Seasonal Forecasting</b></p>
-        <p>A better understanding of Soil Moisture Memory (SMM) enhances climate models...</p>
+        <p>A better understanding of Soil Moisture Memory (SMM) enhances climate models by improving soil moisture initialization, a key factor in seasonal-to-subseasonal (S2S) climate predictions. Incorporating realistic soil hydraulic schemes and hydrological processes reduces biases in long-term and short-term SMM, leading to more accurate land–atmosphere interaction simulations.</p>
 
         <p><b>2. Drought and Flood Risk Management</b></p>
-        <p>Improved soil moisture simulations provide better drought severity assessments...</p>
+        <p>Improved soil moisture simulations provide better drought severity assessments, helping policymakers prepare for prolonged dry conditions. More accurate runoff and infiltration predictions enhance flood forecasting, allowing for better disaster preparedness.</p>
 
         <p><b>3. Agricultural and Water Resource Management</b></p>
-        <p>Predicting soil moisture availability supports crop irrigation planning...</p>
+        <p>Predicting soil moisture availability supports crop irrigation planning, reducing water waste and improving agricultural efficiency. Improved groundwater recharge simulations help ensure sustainable water management, particularly in arid and semi-arid regions.</p>
 
+        <p><b>4. Advancements in Hydrological Modeling</b></p>
+        <p>This study highlights missing processes in LSMs that influence SMM, including preferential flow, macropore infiltration, and variable surface ponding.</p> 
+        </p>Future LSM improvements based on these findings will enhance their applicability in hydrological studies, benefiting water resource planning and land-use management.</p>
+        
         <h2 id="conclusion">Conclusion & Future Directions</h2>
         <p>This study explored the role of soil hydraulic schemes and hydrological processes in shaping Soil Moisture Memory (SMM)...</p>
     </div>
