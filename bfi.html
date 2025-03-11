@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BFI - Mohammad Ali Farmani</title>
+    <title>BFI - BaseFlow Index</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         body {
@@ -11,71 +11,10 @@
             margin: 0;
             padding: 0;
             color: white;
-            scroll-snap-type: y mandatory;
-            overflow-x: hidden;
-            overflow-y: scroll;
-            height: 100vh;
-        }
-        .block, .expertise {
-            width: 100%;
-            height: 100vh;
+            background: rgba(0, 0, 0, 0.9);
             display: flex;
             flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 0 5%;
-            scroll-snap-align: start;
-            position: relative;
-        }
-        .block.dark, .expertise {
-            background: rgba(0, 0, 0, 0.7);
-        }
-        .block p, .expertise .text p {
-            font-size: 20px;
-            line-height: 1.8;
-            text-align: justify;
-            max-width: 900px;
-            padding: 20px;
-        }
-        .expertise .text {
-            max-width: 900px;
-            width: 100%;
-        }
-        .expertise .text ul {
-            list-style-position: inside;
-            padding-left: 0;
-            text-align: left;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-        .expertise .text ul li {
-            font-size: 20px;
-            font-weight: normal;
-            margin-bottom: 10px;
-        }
-        .expertise .text ul li b {
-            font-weight: bold;
-        }
-        .video-container {
-            position: absolute;
-            width: 100vw;
-            height: 100vh;
-            top: 0;
-            left: 0;
-            overflow: hidden;
-            z-index: -1;
-        }
-        .video-container video {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            min-width: 100vw;
             min-height: 100vh;
-            width: auto;
-            height: auto;
-            object-fit: cover;
         }
         .navbar {
             position: fixed;
@@ -87,6 +26,55 @@
             justify-content: center;
             align-items: center;
             z-index: 1000;
+        }
+        .navbar a {
+            color: white;
+            margin: 0 20px;
+            text-decoration: none;
+            font-size: 20px;
+        }
+        .navbar a:hover {
+            color: #f8c471;
+        }
+        .sidebar {
+            width: 250px;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            position: fixed;
+            height: 100%;
+            overflow-y: auto;
+            left: 0;
+            top: 60px;
+        }
+        .sidebar a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 10px 0;
+        }
+        .sidebar a:hover {
+            color: #f8c471;
+        }
+        .content {
+            margin: 0 auto; /* Centers horizontally */
+            padding: 20px;
+            max-width: 900px;
+        }
+
+        h1, h2 {
+            color: #f8c471;
+            margin-top: 80px;
+            text-align: center;
+        }
+        p {
+            text-align: justify;
+            line-height: 1.6;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 10px auto;
         }
         .navbar a, .dropdown {
             color: white;
@@ -125,9 +113,10 @@
             background: rgba(0, 0, 0, 0.8);
             color: white;
             font-size: 16px;
-            position: relative;
             width: 100%;
-        }
+            position: relative;
+            bottom: 0;
+        }        
     </style>
 </head>
 <body>
@@ -143,14 +132,55 @@
             </div>
         </div>
     </div>
+
+    <div class="sidebar">
+        <h2>Navigation</h2>
+        <a href="#introduction">Introduction</a>
+        <a href="#importance">Baseflow Generation</a>
+        <a href="#findings">Key Findings</a>
+        <a href="#implications">Implications for Water Management</a>
+        <a href="#conclusion">Conclusion & Future Directions</a>
+        <a href="#reference">Reference</a>
+    </div>
+
+    <div class="content">
+        <h1 id="introduction">Introduction to Baseflow and Streamflow Prediction</h1>
+        <p>Streamflow prediction is a critical aspect of water resource management, flood forecasting, and drought assessment, particularly in arid and semi-arid regions where baseflow (the sustained portion of streamflow fed by groundwater discharge) plays a dominant role. However, land surface models (LSMs), including the National Water Model (NWM), often struggle to accurately represent baseflow generation mechanisms, leading to significant biases in hydrological simulations. This study investigates key hydrological processes influencing baseflow generation and evaluates their impact on streamflow predictions using an enhanced version of Noah-MP, a widely used LSM. By incorporating advanced soil physics, preferential flow pathways, and refined precipitation inputs, we aim to improve the representation of baseflow dynamics and enhance the accuracy of streamflow forecasts in dry regions of the southwestern U.S.</p>
+        <img src="BFI_MOdel.png" alt="Soil Moisture Memory Concept">
+        <figcaption>BFI model.</figcaption>
+
+
+        <h2 id="importance">Importance of Understanding Baseflow Generation</h2>
+        <p>Baseflow plays a significant role in sustaining streamflow during dry periods, yet traditional Land Surface Models (LSMs) struggle to accurately represent groundwater recharge, soil moisture retention, and infiltration processes. Overestimation of the Baseflow Index (BFI) results in unrealistic low-flow simulations, highlighting the need for improved hydrological modeling approaches.<p>
+        <p>In dry regions where precipitation is intermittent and highly variable, baseflow sustains river flows during dry periods. However, traditional LSMs frequently overestimate baseflow, leading to inaccurate predictions of low-flow conditions and groundwater recharge rates. This study hypothesizes that improving the physical representation of baseflow processes in LSMs will lead to better streamflow predictions. By refining soil water retention schemes, macropore flow mechanisms, and surface ponding processes, we aim to enhance the ability of LSMs to capture baseflow dynamics accurately.</p>
+        <img src="BFI_RESULTS.jpg" alt="Soil Moisture and Climate Interaction">
+        <figcaption>Figure 2 BFI Results.</figcaption>
+        
+        <h2 id="findings">Key Findings</h2>
+        <p><b>1. Soil Water Retention Curves Impact Baseflow Representation</b> - The Van Genuchten (VG) model provides more accurate soil moisture retention and baseflow estimates compared to the Brooks-Corey (CH) model.</p>
+        <p><b>2. Role of Soil Macropores and Surface Ponding</b> - Macropores enhance rapid infiltration and groundwater recharge but require regional calibration.</p>
+        <p><b>3. Hydraulic Parameterization Influences Streamflow Predictions</b> - ML-derived soil parameters improve prediction accuracy by 20%.</p>
+        <p><b>4. Precipitation Data Selection Matters</b> - The IMERG dataset significantly enhances baseflow predictions in regions where traditional datasets fail.</p>
+
+        <h2 id="implications">Implications for Climate Science and Water Management</h2>
+        <p>These findings improve streamflow forecasting, hydrological modeling, and climate resilience strategies, particularly in arid regions.</p>
+        
+        <h2 id="conclusion">Conclusion & Future Directions</h2>
+        <p>This study explored the role of soil hydraulic schemes and hydrological processes in shaping Soil Moisture Memory (SMM) using the Noah-MP LSM with advanced hydrology. By addressing common biases in SMM representation, our research aimed to identify key missing processes and improve the accuracy of soil hydrology modeling in LSMs.</p>
+        <p>Through five experimental scenarios, we examined soil hydraulic parameterizations, preferential flow dynamics, and surface ponding thresholds. The results indicate that: The soil water retention curve is a dominant factor in controlling SMM, with the Van Genuchten (VG) parameterization significantly improving simulations by reducing the overestimation issues observed in Brooks–Corey/Clapp–Hornberger (BC/CH) models. Surface ponding representation enhances soil infiltration capacity, extending soil moisture retention and improving SMM accuracy. Macropores, while enhancing infiltration, reduce both short-term and long-term SMM due to increased drainage, highlighting the need for accurate macropore calibration in LSMs.<p>
+        <p>Future Directions Refining hydraulic parameterizations to further reduce biases in SMM. Investigating the strength and legacy of SMM to enhance climate prediction accuracy. Exploring additional missing hydrological processes, such as surface and subsurface lateral flow, to improve LSM performance in climate and hydrological applications. By implementing these advancements, LSMs will be better equipped to provide reliable climate forecasts, hydrological predictions, and water management strategies, ultimately improving our understanding of hydrological extremes such as droughts and floods.</p>
+
+        <h2 id="reference">Reference</h2>
+        <p>Farmani, M. A., Behrangi, A., Gupta, A., Tavakoly, A., Geheran, M., and Niu, G.-Y.: Do land models miss key soil hydrological processes controlling soil moisture memory?, Hydrol. Earth Syst. Sci., 29, 547–566, https://doi.org/10.5194/hess-29-547-2025, 2025.<p>
+        <p>McColl, K. A., He, Q., Lu, H., and Entekhabi, D.: Short-Term and Long-Term Surface Soil Moisture Memory Time Scales Are Spatially Anticorrelated at Global Scales, J. Hydrometeorol., 20, 1165–1182, https://doi.org/10.1175/JHM-D-18-0141.1, 2019.</p>
     
-    <div class="container">
-        <h1>BFI (Baseflow Index)</h1>
-        <p>Details about BFI research, methods, and findings go here.</p>
     </div>
     
     <div class="footer">
         <p>Created by Mohammad Ali Farmani | Contact: <a href="mailto:farmani@arizona.edu" style="color: #f8c471;">farmani@arizona.edu</a></p>
+        <a href="https://hits.seeyoufarm.com" target="_blank">
+            <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fyourgithubpage.com&count_bg=%2379C83D&title_bg=%23555555&icon=github.svg&icon_color=%23E7E7E7&title=Visitors&edge_flat=false" alt="Visitor count">
+        </a>
     </div>
 </body>
 </html>
