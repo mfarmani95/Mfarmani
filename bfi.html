@@ -146,15 +146,15 @@
     <div class="content">
         <h1 id="introduction">Introduction to Baseflow and Streamflow Prediction</h1>
         <p>Streamflow prediction is a critical aspect of water resource management, flood forecasting, and drought assessment, particularly in arid and semi-arid regions where baseflow (the sustained portion of streamflow fed by groundwater discharge) plays a dominant role. However, land surface models (LSMs), including the National Water Model (NWM), often struggle to accurately represent baseflow generation mechanisms, leading to significant biases in hydrological simulations. This study investigates key hydrological processes influencing baseflow generation and evaluates their impact on streamflow predictions using an enhanced version of Noah-MP, a widely used LSM. By incorporating advanced soil physics, preferential flow pathways, and refined precipitation inputs, we aim to improve the representation of baseflow dynamics and enhance the accuracy of streamflow forecasts in dry regions of the southwestern U.S.</p>
-        <img src="BFI_MOdel.png" alt="Soil Moisture Memory Concept">
-        <figcaption>BFI model.</figcaption>
+        <img src="BFI_MOdel.png" alt="Baseflow Example ">
+        <figcaption>Figure 1. Baseflow computed using the method suggested by Van Dijk (2010) for GRDC 6731165 station data to compare with Beck et al (2013).</figcaption>
 
 
         <h2 id="importance">Importance of Understanding Baseflow Generation</h2>
         <p>Baseflow plays a significant role in sustaining streamflow during dry periods, yet traditional Land Surface Models (LSMs) struggle to accurately represent groundwater recharge, soil moisture retention, and infiltration processes. Overestimation of the Baseflow Index (BFI) results in unrealistic low-flow simulations, highlighting the need for improved hydrological modeling approaches.<p>
         <p>In dry regions where precipitation is intermittent and highly variable, baseflow sustains river flows during dry periods. However, traditional LSMs frequently overestimate baseflow, leading to inaccurate predictions of low-flow conditions and groundwater recharge rates. This study hypothesizes that improving the physical representation of baseflow processes in LSMs will lead to better streamflow predictions. By refining soil water retention schemes, macropore flow mechanisms, and surface ponding processes, we aim to enhance the ability of LSMs to capture baseflow dynamics accurately.</p>
-        <img src="BFI_RESULTS.jpg" alt="Soil Moisture and Climate Interaction">
-        <figcaption>Figure 2 BFI Results.</figcaption>
+        <img src="BFI_RESULTS.png" alt="BFI Results">
+        <figcaption>Figure 2. BFI at 390 gauges across the southwestern region (a) derived from the USGS streamflow as well as those from the model experiments (b) NWM; (c) CH; (d) VGM; (e) DPM; and (f) VGM0..</figcaption>
         
         <h2 id="findings">Key Findings</h2>
         <p><b>1. Soil Water Retention Curves Impact Baseflow Representation</b> - The Van Genuchten (VG) model provides more accurate soil moisture retention and baseflow estimates compared to the Brooks-Corey (CH) model.</p>
@@ -162,6 +162,9 @@
         <p><b>3. Hydraulic Parameterization Influences Streamflow Predictions</b> - ML-derived soil parameters improve prediction accuracy by 20%.</p>
         <p><b>4. Precipitation Data Selection Matters</b> - The IMERG dataset significantly enhances baseflow predictions in regions where traditional datasets fail.</p>
 
+        <img src="KGE_RESULTS.png" alt="KGE Improvement">
+        <figcaption>Figure 3 KGE Improvement of ML against NWM. ML was chosen since it outperformed other hydrological process and hydraulic parameter scenarios. </figcaption>
+        
         <h2 id="implications">Implications for Climate Science and Water Management</h2>
         <p>These findings improve streamflow forecasting, hydrological modeling, and climate resilience strategies, particularly in arid regions.</p>
         
