@@ -55,12 +55,15 @@
         .sidebar a:hover {
             color: #f8c471;
         }
+    @media screen and (min-width: 1024px) {
+    
         .content {
-            margin-left: 270px;
-            padding: 20px;
-            max-width: 900px;
-            flex-grow: 1;
-        }
+        margin-left: 270px; /* Keeps space for the sidebar */
+        margin-right: auto;
+        padding: 20px;
+        max-width: 900px;
+        }}
+
         h1, h2 {
             color: #f8c471;
             margin-top: 80px;
