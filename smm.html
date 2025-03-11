@@ -13,6 +13,28 @@
             color: white;
             background: rgba(0, 0, 0, 0.9);
             display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .navbar a {
+            color: white;
+            margin: 0 20px;
+            text-decoration: none;
+            font-size: 20px;
+        }
+        .navbar a:hover {
+            color: #f8c471;
         }
         .sidebar {
             width: 250px;
@@ -37,40 +59,22 @@
             margin-left: 270px;
             padding: 20px;
             max-width: 900px;
+            flex-grow: 1;
         }
         h1, h2 {
             color: #f8c471;
-        }
-        .footer {
+            margin-top: 80px;
             text-align: center;
-            padding: 20px;
-            background: rgba(0, 0, 0, 0.8);
-            color: white;
-            font-size: 16px;
-            margin-top: 20px;
+        }
+        p {
+            text-align: justify;
+            line-height: 1.6;
         }
         img {
             max-width: 100%;
             height: auto;
             display: block;
             margin: 10px auto;
-        }
-        .navbar {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            padding: 15px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-        }
-        .navbar a {
-            color: white;
-            margin: 0 20px;
-            text-decoration: none;
-            font-size: 20px;
         }
         .navbar a, .dropdown {
             color: white;
@@ -109,8 +113,9 @@
             background: rgba(0, 0, 0, 0.8);
             color: white;
             font-size: 16px;
-            position: relative;
             width: 100%;
+            position: relative;
+            bottom: 0;
         }        
     </style>
 </head>
@@ -189,10 +194,10 @@
     </div>
     
     <div class="footer">
-        <p>Created by Mohammad Ali Farmani | Contact: <a href="farmani@arizona.edu" style="color: #f8c471;">farmani@arizona.edu</a></p>
-        <a href="https://hits.seeyoufarm.com" target="_blank">
-            <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fyourgithubpage.com&count_bg=%2379C83D&title_bg=%23555555&icon=github.svg&icon_color=%23E7E7E7&title=Visitors&edge_flat=false" alt="Visitor count">
-        </a>
-    </div>
+        <p>Created by Mohammad Ali Farmani | Contact: <a href="mailto:farmani@arizona.edu" style="color: #f8c471;">farmani@arizona.edu</a></p>
+        <a href="https://hits.seeyoufarm.com" target="_blank">
+            <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fyourgithubpage.com&count_bg=%2379C83D&title_bg=%23555555&icon=github.svg&icon_color=%23E7E7E7&title=Visitors&edge_flat=false" alt="Visitor count">
+        </a>
+    </div>
 </body>
 </html>
