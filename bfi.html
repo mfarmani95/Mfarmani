@@ -37,7 +37,7 @@
             color: #f8c471;
         }
         .sidebar {
-            width: 250px;
+            width: 220px;
             background: rgba(0, 0, 0, 0.8);
             padding: 20px;
             position: fixed;
@@ -55,12 +55,19 @@
         .sidebar a:hover {
             color: #f8c471;
         }
-        .content {
-            margin: 0 auto; /* Centers horizontally */
-            padding: 20px;
-            max-width: 900px;
+        .main-container {
+            display: flex;
+            flex-direction: row;
+            width: 100%;
         }
-
+        .content {
+            margin-left: 260px;
+            padding: 20px;
+            flex-grow: 1;
+            max-width: calc(100% - 260px);
+            box-sizing: border-box;
+            overflow-x: hidden;
+        }
         h1, h2 {
             color: #f8c471;
             margin-top: 80px;
@@ -75,6 +82,43 @@
             height: auto;
             display: block;
             margin: 10px auto;
+        }
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            font-size: 16px;
+            width: 100%;
+            position: relative;
+            bottom: 0;
+        }
+        @media screen and (max-width: 1024px) {
+            .sidebar {
+                position: absolute;
+                width: 250px;
+                height: auto;
+                overflow-y: auto;
+            }
+            .content {
+                margin-left: 260px;
+                max-width: calc(100% - 260px);
+            }
+        }
+        @media screen and (max-width: 768px) {
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+                top: 0;
+            }
+            .main-container {
+                flex-direction: column;
+            }
+            .content {
+                margin-left: 0;
+                max-width: 100%;
+            }
         }
         .navbar a, .dropdown {
             color: white;
@@ -106,17 +150,7 @@
         }
         .dropdown:hover .dropdown-content {
             display: block;
-        }
-        .footer {
-            text-align: center;
-            padding: 20px;
-            background: rgba(0, 0, 0, 0.8);
-            color: white;
-            font-size: 16px;
-            width: 100%;
-            position: relative;
-            bottom: 0;
-        }        
+        }      
     </style>
 </head>
 <body>
