@@ -11,11 +11,20 @@
             margin: 0;
             padding: 0;
             color: white;
+            display: flex;
             scroll-snap-type: y mandatory;
+            flex-direction: column;
+            min-height: 100vh;
             overflow-x: hidden;
             overflow-y: scroll;
             height: 100vh;
         }
+        .main-container {
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+        }
+        
         .block, .expertise {
             width: 100%;
             height: 100vh;
@@ -96,6 +105,15 @@
             position: relative;
         }
         .navbar a:hover, .dropdown:hover .dropbtn {
+            color: #f8c471;
+        }
+        .navbar a {
+            color: white;
+            margin: 0 20px;
+            text-decoration: none;
+            font-size: 20px;
+        }
+        .navbar a:hover {
             color: #f8c471;
         }
         .dropdown-content {
