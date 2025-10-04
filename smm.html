@@ -161,73 +161,69 @@
     font-size: 18px;
   }
 
-figure {
-  position: relative;
-  display: inline-block;
-  margin: 25px auto 40px;
-  text-align: center;
-  cursor: pointer;
-}
+  /* === Figures with Lightbox === */
+  figure {
+    position: relative;
+    display: inline-block;
+    margin: 25px auto 40px;
+    text-align: center;
+    cursor: pointer;
+  }
 
-img {
-  width: 35%; /* default smaller preview size */
-  border-radius: 12px;
-  border: 1px solid rgba(255,255,255,0.3);
-  display: block;
-  margin: 20px auto 10px;
-  box-shadow: 0 0 20px rgba(248,196,113,0.2);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
+  img {
+    width: 35%; /* smaller previews */
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.3);
+    display: block;
+    margin: 20px auto 10px;
+    box-shadow: 0 0 20px rgba(248,196,113,0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
 
-img:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 25px rgba(248,196,113,0.6);
-}
+  img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px rgba(248,196,113,0.6);
+  }
 
-figcaption {
-  text-align: center;
-  font-size: 15px;
-  color: #ddd;
-  margin-bottom: 30px;
-}
+  figcaption {
+    text-align: center;
+    font-size: 15px;
+    color: #ddd;
+    margin-bottom: 30px;
+  }
 
-/* === Lightbox === */
-.lightbox {
-  display: none;
-  position: fixed;
-  z-index: 9999;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: rgba(0,0,0,0.9);
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-}
-
-.lightbox img {
-  max-width: 85%;
-  max-height: 85%;
-  border-radius: 12px;
-  box-shadow: 0 0 40px rgba(248,196,113,0.5);
-  animation: zoomIn 0.3s ease;
-}
-
-@keyframes zoomIn {
-  from { transform: scale(0.8); opacity: 0; }
-  to { transform: scale(1); opacity: 1; }
-}
-
-.close-btn {
-  position: absolute;
-  top: 20px; right: 30px;
-  color: #f8c471;
-  font-size: 40px;
-  cursor: pointer;
-  transition: color 0.3s ease;
-}
-.close-btn:hover {
-  color: white;
-}
+  /* === Lightbox === */
+  .lightbox {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.9);
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+  .lightbox img {
+    max-width: 85%;
+    max-height: 85%;
+    border-radius: 12px;
+    box-shadow: 0 0 40px rgba(248,196,113,0.5);
+    animation: zoomIn 0.3s ease;
+  }
+  @keyframes zoomIn {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+  }
+  .close-btn {
+    position: absolute;
+    top: 20px; right: 30px;
+    color: #f8c471;
+    font-size: 40px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+  }
+  .close-btn:hover { color: white; }
 
   /* === Footer === */
   .footer {
@@ -268,6 +264,7 @@ figcaption {
       margin-right: 0;
       padding: 25px;
     }
+    img { width: 80%; }
   }
 </style>
 </head>
@@ -305,47 +302,42 @@ figcaption {
   <div class="content">
     <h1 id="introduction">Soil Moisture Memory (SMM) and Its Role in Land Surface Modeling</h1>
     <p>Soil Moisture Memory (SMM) refers to the duration over which soil retains the effects of a moisture perturbation, such as rainfall, before returning to its equilibrium state. This concept is essential for understanding land–atmosphere interactions, as it encapsulates the temporal variations of soil moisture and reflects the exchange of fluxes between land and the atmosphere.</p>
-    <p>SMM serves as a crucial metric for evaluating Land Surface Models (LSMs), which are designed to simulate surface flux exchanges and provide boundary conditions for atmospheric models. By facilitating comparisons between observed and modeled soil moisture dynamics, SMM offers insights into the mechanisms within LSMs and their hydrometeorological responses. Furthermore, analyzing SMM can provide valuable information about the configurations and hydrological parameterizations of specific LSMs. This helps improve our understanding of how different model configurations impact performance, particularly in representing soil moisture dynamics.</p>
-    <img src="SMM_MODEL.png" alt="Soil Moisture Memory Concept" />
-    <figcaption>Figure 1 Schematic diagrams of the (a) surface water loss process and (b) soil moisture memory in different soil moisture regimes (adapted from McColl et al., 2017b). Note that the x axis in panel (a) refers to soil moisture (m&sup3;/m&sup3;) and the y axis refers to the surface water loss rate L(θ) (m&sup3;/s). Emax is the maximum evaporation rate (m&sup3;/s). In panel (b), the x axis refers to time (e.g., days) and the y axis to SM content (m&sup3;/m&sup3;). Panel (c) shows the SM time series for the Tonzi Ranch station, with the green periods indicating energy-limited regimes and the dotted lines representing water-limited regimes. θ<sub>w</sub>, θ<sub>c</sub>, and θ<sub>fc</sub> refer to the wilting point, critical point, and field capacity, respectively.</figcaption>
+    <p>SMM serves as a crucial metric for evaluating Land Surface Models (LSMs), which are designed to simulate surface flux exchanges and provide boundary conditions for atmospheric models. By facilitating comparisons between observed and modeled soil moisture dynamics, SMM offers insights into the mechanisms within LSMs and their hydrometeorological responses.</p>
+
+    <figure>
+      <img src="SMM_MODEL.png" alt="Soil Moisture Memory Concept" />
+      <figcaption>Figure 1. Schematic of soil moisture memory and water loss dynamics (adapted from McColl et al., 2017b).</figcaption>
+    </figure>
 
     <h2 id="importance">Importance of Accurate Land Models</h2>
-    <p>The efficacy of LSMs in simulating climate feedback mechanisms depends critically on accurately representing soil water retention capacity and soil moisture persistence. Soil moisture significantly influences seasonal-to-subseasonal (S2S) climate predictions, as it plays a key role in the exchange of energy and water fluxes between the land and the atmosphere. Water stored in soil and aquifers, which persists from seasons to years, also affects precipitation variability. This impact is particularly significant in regions transitioning from dry to wet conditions, where evapotranspiration (ET) is highly sensitive to soil moisture levels.<p>
-    <p>Despite the well-recognized role of soil moisture in climate models, discrepancies in modeled soil moisture persist due to incomplete or oversimplified representations of key hydrological processes. For instance, variations in soil moisture–precipitation coupling across different models indicate that improvements in LSMs are necessary to enhance their predictive accuracy. Addressing these shortcomings will allow for more reliable weather and climate forecasts, improved hydrological predictions, and better-informed water management strategies.</p>
-    <img src="SMM_RESULTS.jpg" alt="Soil Moisture and Climate Interaction" />
-    <figcaption>Figure 2. Long-term SMM derived from various datasets (2015–2019) across different model experiments.</figcaption>
+    <p>The efficacy of LSMs in simulating climate feedback mechanisms depends critically on accurately representing soil water retention capacity and soil moisture persistence.</p>
+
+    <figure>
+      <img src="SMM_RESULTS.jpg" alt="Soil Moisture and Climate Interaction" />
+      <figcaption>Figure 2. Long-term SMM derived from various datasets (2015–2019) across different model experiments.</figcaption>
+    </figure>
 
     <h2 id="findings">Key Findings from Our Study</h2>
-    <p><b>1. Influence of Soil Hydraulic Parameterization</b></p>
-    <p>The Brooks-Corey/Clapp-Hornberger (BC/CH) model, characterized by stronger soil suction, enhances moisture transfer from deeper layers to the surface, increasing surface moisture and extending long-term SMM (τ<sub>L</sub>). However, this can reduce moisture in the root zone, leading to a shorter &tau;<sub>L</sub> in that region. The van Genuchten (VG) model, with weaker suction, results in a drier surface and a moister root zone, leading to a shorter surface &tau;<sub>L</sub> but longer root zone &tau;<sub>L</sub>.</p>
+    <p><b>1. Influence of Soil Hydraulic Parameterization</b> – The Brooks-Corey model enhances surface moisture but overestimates long-term SMM, while van Genuchten improves root-zone dynamics.</p>
 
-    <p><b>2. Role of Soil Macropores</b></p>
-    <p>Macropores facilitate rapid infiltration into deeper soil layers, reducing surface moisture retention and leading to a decrease in surface &tau;<sub>L</sub>. While macropores increase moisture in the root zone, the current Noah-MP configuration (DPM_VGM) drains water too quickly to deeper layers, leading to drying of the root zone and a reduction in its &tau;<sub>L</sub>. Accurate calibration of macropore representations in LSMs is crucial for improving soil hydraulic dynamics and SMM predictions.</p>
+    <p><b>2. Role of Soil Macropores</b> – Macropores enable rapid infiltration, altering SMM by affecting vertical redistribution and drainage.</p>
 
-    <p><b>3. Impact of Surface Water Ponding</b></p>
-    <p>A higher ponding threshold allows water to remain on the surface before turning into runoff, providing more time for infiltration. This increases soil moisture retention, extending long-term SMM (&tau;<sub>L</sub>) and shortening short-term SMM (&tau;<sub>S</sub>).<p>
+    <p><b>3. Impact of Surface Water Ponding</b> – Increasing ponding thresholds enhances infiltration and extends long-term SMM.</p>
 
-    <p>These findings highlight the necessity for LSMs to incorporate advanced soil hydrological processes, such as macropore effects, improved soil hydraulic parameterizations, and dynamic surface ponding thresholds. By doing so, we can improve the accuracy of soil moisture simulations and their interactions with the atmosphere.</p>
     <h2 id="implications">Implications for Climate and Water Management</h2>
-    <p><b>1. Climate Predictions and Seasonal Forecasting</b></p>
-    <p>A better understanding of Soil Moisture Memory (SMM) enhances climate models by improving soil moisture initialization, a key factor in seasonal-to-subseasonal (S2S) climate predictions. Incorporating realistic soil hydraulic schemes and hydrological processes reduces biases in long-term and short-term SMM, leading to more accurate land–atmosphere interaction simulations.</p>
-
-    <p><b>2. Drought and Flood Risk Management</b></p>
-    <p>Improved soil moisture simulations provide better drought severity assessments, helping policymakers prepare for prolonged dry conditions. More accurate runoff and infiltration predictions enhance flood forecasting, allowing for better disaster preparedness.</p>
-
-    <p><b>3. Agricultural and Water Resource Management</b></p>
-    <p>Predicting soil moisture availability supports crop irrigation planning, reducing water waste and improving agricultural efficiency. Improved groundwater recharge simulations help ensure sustainable water management, particularly in arid and semi-arid regions.</p>
-
-    <p><b>4. Advancements in Hydrological Modeling</b></p>
-    <p>This study highlights missing processes in LSMs that influence SMM, including preferential flow, macropore infiltration, and variable surface ponding. Future LSM improvements based on these findings will enhance their applicability in hydrological studies, benefiting water resource planning and land-use management.</p>
+    <p>Improved representation of soil processes strengthens climate prediction, drought management, and water resource planning.</p>
 
     <h2 id="conclusion">Conclusion & Future Directions</h2>
-    <p>This study explored the role of soil hydraulic schemes and hydrological processes in shaping Soil Moisture Memory (SMM) using the Noah-MP LSM with advanced hydrology. By addressing common biases in SMM representation, our research aimed to identify key missing processes and improve the accuracy of soil hydrology modeling in LSMs.</p>
-    <p>Through five experimental scenarios, we examined soil hydraulic parameterizations, preferential flow dynamics, and surface ponding thresholds. The results indicate that: The soil water retention curve is a dominant factor in controlling SMM, with the Van Genuchten (VG) parameterization significantly improving simulations by reducing the overestimation issues observed in Brooks–Corey/Clapp–Hornberger (BC/CH) models. Surface ponding representation enhances soil infiltration capacity, extending soil moisture retention and improving SMM accuracy. Macropores, while enhancing infiltration, reduce both short-term and long-term SMM due to increased drainage, highlighting the need for accurate macropore calibration in LSMs.<p>
-    <p>Future Directions Refining hydraulic parameterizations to further reduce biases in SMM. Investigating the strength and legacy of SMM to enhance climate prediction accuracy. Exploring additional missing hydrological processes, such as surface and subsurface lateral flow, to improve LSM performance in climate and hydrological applications. By implementing these advancements, LSMs will be better equipped to provide reliable climate forecasts, hydrological predictions, and water management strategies, ultimately improving our understanding of hydrological extremes such as droughts and floods.</p>
+    <p>This study shows how improved hydrological parameterizations in LSMs reduce biases in soil moisture memory and lead to better land–atmosphere coupling.</p>
+
     <h2 id="reference">References</h2>
-    <p>Farmani, M. A., Behrangi, A., Gupta, A., Tavakoly, A., Geheran, M., & Niu, G.-Y. (2025). Do land models miss key soil hydrological processes controlling soil moisture memory? <i>Hydrology and Earth System Sciences</i>, 29, 547–566. <a href="https://doi.org/10.5194/hess-29-547-2025" target="_blank">https://doi.org/10.5194/hess-29-547-2025</a></p>
-    <p>McColl, K. A., He, Q., Lu, H., & Entekhabi, D. (2019). Short- and long-term surface soil moisture memory scales. <i>Journal of Hydrometeorology</i>, 20(6), 1165–1182. <a href="https://doi.org/10.1175/JHM-D-18-0141.1" target="_blank">https://doi.org/10.1175/JHM-D-18-0141.1</a></p>
+    <p>Farmani, M. A., Behrangi, A., et al. (2025). <i>Hydrology and Earth System Sciences</i>. <a href="https://doi.org/10.5194/hess-29-547-2025" target="_blank">https://doi.org/10.5194/hess-29-547-2025</a></p>
+  </div>
+
+  <!-- Lightbox -->
+  <div id="lightbox" class="lightbox">
+    <span class="close-btn">&times;</span>
+    <img src="" alt="Expanded view" id="lightbox-img" />
   </div>
 
   <div class="footer">
@@ -354,19 +346,40 @@ figcaption {
   </div>
 
   <script>
-    // Highlight active sidebar link
+    // Sidebar highlight
     const sections = document.querySelectorAll("h1, h2");
     const navLinks = document.querySelectorAll(".sidebar a");
     window.addEventListener("scroll", () => {
       let current = "";
-      sections.forEach((section) => {
+      sections.forEach(section => {
         const top = section.offsetTop - 120;
         if (scrollY >= top) current = section.getAttribute("id");
       });
-      navLinks.forEach((link) => {
+      navLinks.forEach(link => {
         link.classList.remove("active");
         if (link.getAttribute("href") === `#${current}`) link.classList.add("active");
       });
+    });
+
+    // Lightbox logic
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const closeBtn = document.querySelector('.close-btn');
+
+    document.querySelectorAll('.content img').forEach(img => {
+      img.addEventListener('click', () => {
+        lightbox.style.display = 'flex';
+        lightboxImg.src = img.src;
+        lightboxImg.alt = img.alt;
+      });
+    });
+
+    closeBtn.addEventListener('click', () => { lightbox.style.display = 'none'; });
+    lightbox.addEventListener('click', e => { if (e.target === lightbox) lightbox.style.display = 'none'; });
+
+    // Keyboard support (Esc to close)
+    window.addEventListener('keydown', e => {
+      if (e.key === 'Escape') lightbox.style.display = 'none';
     });
   </script>
 </body>
