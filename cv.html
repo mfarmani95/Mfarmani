@@ -26,23 +26,36 @@
       overflow-x:hidden;
     }
 
-    /* ==== Background Video with subtle parallax ==== */
+    /* ==== Background Video (robust + fallback) ==== */
     .video-container{
       position:fixed; inset:0; z-index:-1;
       overflow:hidden;
     }
+    /* soft vignette/gradient */
     .video-container::before{
       content:"";
       position:absolute; inset:0;
-      background:linear-gradient(120deg, rgba(0,0,0,0.85), rgba(0,0,0,0.65));
+      background:linear-gradient(120deg, rgba(0,0,0,0.9), rgba(0,0,0,0.65));
       pointer-events:none;
     }
     .video-container video{
       position:absolute; top:50%; left:50%;
       transform:translate(-50%,-50%) scale(1);
-      width:100%; height:100%; object-fit:cover;
-      transition:transform .15s ease-out;
-      will-change:transform;
+      width:100vw; height:100vh; /* fill the viewport */
+      object-fit:cover; object-position:center center;
+      display:block;
+      -webkit-transform:translate(-50%,-50%) scale(1);
+      /* ensure autoplay stability */
+      background:black;
+    }
+    /* Fallback when video is blocked / errors */
+    .no-video .video-container{ display:none; }
+    .no-video body, .no-video .fallback-bg,
+    .no-video::before{
+      background:
+        radial-gradient(60% 60% at 50% 40%, rgba(79,209,197,0.12), transparent 60%),
+        linear-gradient(120deg, rgba(0,0,0,0.9), rgba(0,0,0,0.75)),
+        #000;
     }
 
     /* ==== Top Navbar ==== */
@@ -124,6 +137,7 @@
       background: linear-gradient(90deg, var(--gold), var(--cyan));
       -webkit-background-clip:text; -webkit-text-fill-color:transparent;
       letter-spacing:.2px;
+      text-align:left;
     }
     h1{ font-size: clamp(26px, 2.3vw, 34px); }
     h2{ font-size: clamp(20px, 1.8vw, 26px); }
@@ -137,6 +151,7 @@
       border-radius:12px;
       transition: transform .25s ease, box-shadow .25s ease, background .25s ease;
       opacity:0; transform: translateY(14px);
+      text-align:left;
     }
     .section.visible{
       opacity:1; transform: translateY(0);
@@ -155,16 +170,14 @@
       border-radius:4px; opacity:.6;
     }
 
-    /* Links */
+    /* Links and text */
     a{ color: var(--gold); text-decoration:none; }
     a:hover{ color:#fff; text-shadow: 0 0 8px var(--gold); }
-
-    /* Content text */
-    p{ margin:8px 0 10px; line-height:1.7; color:#fff; text-align:left; }
+    p{ margin:8px 0 10px; line-height:1.7; color:#fff; }
     .muted{ color: var(--muted); }
 
     /* Skills */
-    .skill{ margin:12px 0; text-align:left; }
+    .skill{ margin:12px 0; }
     .progress-bar-line{
       height:10px; background:#3c3c3c; border-radius:6px; overflow:hidden; margin-top:6px;
       border:1px solid var(--glass-stroke);
@@ -175,9 +188,9 @@
       box-shadow: inset 0 0 8px rgba(0,0,0,0.25);
     }
 
-    /* Awards Timeline (thin & subtle) */
+    /* Awards Timeline */
     .timeline{
-      position:relative; margin:12px 0; padding-left:28px; text-align:left;
+      position:relative; margin:12px 0; padding-left:28px;
     }
     .timeline::before{
       content:""; position:absolute; left:12px; top:0; bottom:0; width:2px;
@@ -209,8 +222,6 @@
       from{ opacity:0; transform: translateY(18px); }
       to{ opacity:1; transform: translateY(0); }
     }
-
-    /* Reduced motion */
     @media (prefers-reduced-motion: reduce){
       *{ animation:none !important; transition:none !important; }
     }
@@ -222,12 +233,21 @@
     }
   </style>
 </head>
-<body>
+<body class="fallback-bg">
 
-  <!-- Subtle parallax video -->
+  <!-- Background video (with poster fallback) -->
   <div class="video-container" aria-hidden="true">
-    <video autoplay muted loop playsinline>
+    <video id="bgVideo"
+           autoplay
+           muted
+           playsinline
+           webkit-playsinline
+           loop
+           preload="auto"
+           poster="CV_BG_Fallback.jpg">
+      <!-- Provide multiple sources if you have them -->
       <source src="CV_BG.mp4" type="video/mp4"/>
+      <!-- <source src="CV_BG.webm" type="video/webm"/> -->
     </video>
   </div>
 
@@ -326,12 +346,41 @@
     window.addEventListener('resize', updateProgress);
     updateProgress();
 
-    // ===== Subtle parallax on background video =====
-    const bgVideo = document.querySelector('.video-container video');
+    // ===== Background video: ensure autoplay + fallback =====
+    const root = document.documentElement;
+    const bgVideo = document.getElementById('bgVideo');
+
+    function enableVideo(){
+      if (!bgVideo) return;
+      bgVideo.muted = true;
+      const tryPlay = () => bgVideo.play().catch(() => {
+        // If autoplay blocked, fall back
+        document.body.classList.add('no-video');
+      });
+      if (document.visibilityState === 'visible') {
+        tryPlay();
+      }
+      document.addEventListener('visibilitychange', () => {
+        if (document.visibilityState === 'visible' && bgVideo.paused) tryPlay();
+      });
+    }
+
+    // If video loads, remove no-video; on error, add no-video
+    if (bgVideo){
+      bgVideo.addEventListener('loadeddata', () => {
+        document.body.classList.remove('no-video');
+      });
+      bgVideo.addEventListener('error', () => {
+        document.body.classList.add('no-video');
+      });
+      enableVideo();
+    }
+
+    // ===== Subtle parallax on video (very soft) =====
     function parallax(){
+      if (!bgVideo || document.body.classList.contains('no-video')) return;
       const y = window.scrollY;
-      // Tiny scale + translate for very soft effect
-      const translate = Math.min(y * 0.04, 40); // px
+      const translate = Math.min(y * 0.04, 40); // px max ~40
       const scale = 1 + Math.min(y / 5000, 0.04); // up to ~1.04
       bgVideo.style.transform = `translate(-50%, calc(-50% + ${translate}px)) scale(${scale})`;
     }
