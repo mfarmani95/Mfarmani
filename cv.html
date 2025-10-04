@@ -9,253 +9,246 @@
   <style>
     :root{
       --gold:#f8c471;
-      --cyan:#4fd1c5;
-      --glass-bg: rgba(0,0,0,0.55);
-      --glass-stroke: rgba(255,255,255,0.14);
+      --teal:#4fd1c5;
       --text:#ffffff;
-      --muted:#dddddd;
-      --glow: 0 0 24px rgba(79,209,197,0.45);
+      --glass-bg: rgba(0,0,0,0.40);
+      --card-bg: rgba(255,255,255,0.06);
+      --card-stroke: rgba(255,255,255,0.18);
+      --shadow-glow: 0 0 24px rgba(79,209,197,0.35);
     }
 
-    html,body{
+    html{ scroll-behavior:smooth; }
+    body{
+      font-family: "Segoe UI", Arial, sans-serif;
       margin:0; padding:0;
       color:var(--text);
-      font-family: "Segoe UI", Arial, sans-serif;
-      background:black;
-      scroll-behavior:smooth;
       overflow-x:hidden;
+      background:#000;
     }
 
-    /* ==== Background Video (robust + fallback) ==== */
+    /* === Background video (brighter & readable) === */
     .video-container{
-      position:fixed; inset:0; z-index:-1;
+      position:fixed; inset:0; z-index:-2;
       overflow:hidden;
     }
-    /* soft vignette/gradient */
+    .video-container video{
+      width:100%; height:100%; object-fit:cover;
+      filter: brightness(0.98) contrast(1.06) saturate(1.08);
+    }
     .video-container::before{
       content:"";
-      position:absolute; inset:0;
-      background:linear-gradient(120deg, rgba(0,0,0,0.9), rgba(0,0,0,0.65));
-      pointer-events:none;
-    }
-    .video-container video{
-      position:absolute; top:50%; left:50%;
-      transform:translate(-50%,-50%) scale(1);
-      width:100vw; height:100vh; /* fill the viewport */
-      object-fit:cover; object-position:center center;
-      display:block;
-      -webkit-transform:translate(-50%,-50%) scale(1);
-      /* ensure autoplay stability */
-      background:black;
-    }
-    /* Fallback when video is blocked / errors */
-    .no-video .video-container{ display:none; }
-    .no-video body, .no-video .fallback-bg,
-    .no-video::before{
+      position:absolute; inset:0; z-index:1;
+      /* softer overlay + faint radial highlight */
       background:
-        radial-gradient(60% 60% at 50% 40%, rgba(79,209,197,0.12), transparent 60%),
-        linear-gradient(120deg, rgba(0,0,0,0.9), rgba(0,0,0,0.75)),
-        #000;
+        radial-gradient(55% 50% at 50% 35%, rgba(255,255,255,0.12), transparent 62%),
+        linear-gradient(120deg, rgba(0,0,0,0.34), rgba(0,0,0,0.22));
     }
 
-    /* ==== Top Navbar ==== */
+    /* === Scroll progress bar === */
+    .scroll-progress{
+      position:fixed; top:0; left:0; height:3px; width:0%;
+      background:linear-gradient(90deg, var(--gold), var(--teal));
+      border-radius:0 2px 2px 0;
+      box-shadow:0 0 12px rgba(79,209,197,0.55);
+      z-index:2000;
+      pointer-events:none;
+      transition:width 0.08s linear;
+      mix-blend-mode:screen;
+    }
+
+    /* === Navbar (glass) === */
     .navbar{
       position:fixed; top:0; left:0; right:0;
-      padding:14px 18px;
-      display:flex; justify-content:center; align-items:center; gap:36px; flex-wrap:wrap;
-      background:rgba(0,0,0,0.55);
+      background: rgba(0,0,0,0.38);
       backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      z-index:1001;
-      border-bottom:1px solid var(--glass-stroke);
-      box-shadow: 0 2px 20px rgba(0,0,0,0.45);
+      padding:14px 18px;
+      display:flex; justify-content:center; align-items:center; gap:36px;
+      z-index:1200;
+      box-shadow:0 2px 20px rgba(0,0,0,0.6);
     }
     .navbar a, .navbar .dropbtn{
-      color:#fff; text-decoration:none; font-size:17px;
-      position:relative; display:inline-flex; align-items:center; gap:8px;
-      transition: color .25s ease;
+      color:#fff; font-size:18px; text-decoration:none;
+      display:inline-flex; align-items:center; gap:8px;
+      position:relative; transition:all .25s ease;
     }
     .navbar a:hover, .navbar .dropbtn:hover{
-      background:linear-gradient(90deg, var(--gold), var(--cyan));
+      background:linear-gradient(90deg, var(--gold), var(--teal));
       -webkit-background-clip:text; -webkit-text-fill-color:transparent;
     }
     .navbar a::after, .navbar .dropbtn::after{
       content:""; position:absolute; left:0; bottom:-6px; height:2px; width:0;
-      background:linear-gradient(90deg, var(--gold), var(--cyan));
-      transition: width .25s ease;
+      background:linear-gradient(90deg, var(--gold), var(--teal));
+      transition:width .25s ease;
     }
     .navbar a:hover::after, .navbar .dropbtn:hover::after{ width:100%; }
 
+    /* Dropdown */
     .dropdown{ position:relative; }
     .dropdown-content{
-      position:absolute; top:120%; left:0;
-      display:none; min-width:170px;
-      background:rgba(0,0,0,0.92);
-      border:1px solid var(--glass-stroke);
+      display:none; position:absolute; top:120%; left:0;
+      min-width:170px; padding:8px;
+      background: rgba(0,0,0,0.92);
+      border:1px solid var(--card-stroke);
       border-radius:10px;
-      box-shadow: 0 8px 26px rgba(0,0,0,0.5);
-      overflow:hidden; z-index:1002;
+      box-shadow:0 10px 28px rgba(0,0,0,0.45);
+      backdrop-filter: blur(8px);
+      animation:fadeIn .2s ease;
     }
-    .dropdown:hover .dropdown-content{ display:block; }
     .dropdown-content a{
-      display:block; padding:10px 14px; color:#fff; text-decoration:none; font-size:15px;
-      transition: background .2s ease;
+      display:block; padding:10px 12px; border-radius:8px;
+      color:#fff; text-decoration:none; transition:.2s ease;
     }
     .dropdown-content a:hover{
-      background:linear-gradient(90deg, rgba(248,196,113,0.15), rgba(79,209,197,0.15));
+      background: linear-gradient(90deg, rgba(248,196,113,0.15), rgba(79,209,197,0.15));
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.05);
     }
+    .dropdown:hover .dropdown-content{ display:block; }
 
-    /* ==== Scroll Progress Bar (gradient blend + soft glow) ==== */
-    .progress-wrap{
-      position:fixed; top:0; left:0; width:100%; height:4px; z-index:1100;
-      pointer-events:none;
-    }
-    .progress-bar{
-      width:0%; height:100%;
-      background: linear-gradient(90deg, var(--gold), var(--cyan));
-      box-shadow: var(--glow);
-      transition: width .15s ease-out;
-    }
-
-    /* ==== Page Container (glass) ==== */
+    /* === Container (glass card) === */
     .container{
-      max-width: 980px;
-      margin: 110px auto 60px;
-      padding: 28px 26px;
-      background: var(--glass-bg);
-      border:1px solid var(--glass-stroke);
+      max-width:1000px;
+      margin:120px auto 60px;
+      padding:28px 26px;
+      background:var(--glass-bg);
       border-radius:16px;
-      box-shadow: 0 0 28px rgba(248,196,113,0.25);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      animation: fadeIn .9s ease both;
+      border:1px solid var(--card-stroke);
+      box-shadow: var(--shadow-glow);
+      backdrop-filter: blur(10px);
+      animation:fadeIn .9s ease both;
     }
 
-    /* Gradient headers */
-    h1,h2{
-      margin: 8px 0 14px;
-      background: linear-gradient(90deg, var(--gold), var(--cyan));
+    /* Gradient headings */
+    h1, h2{
+      margin:12px 0 18px;
+      background:linear-gradient(90deg, var(--gold), var(--teal));
       -webkit-background-clip:text; -webkit-text-fill-color:transparent;
-      letter-spacing:.2px;
-      text-align:left;
     }
-    h1{ font-size: clamp(26px, 2.3vw, 34px); }
-    h2{ font-size: clamp(20px, 1.8vw, 26px); }
+    h1{ font-size:32px; }
+    h2{ font-size:24px; }
 
-    /* Section Card */
+    /* Section cards */
     .section{
       margin:28px 0;
-      padding:20px 18px;
-      background: rgba(255,255,255,0.05);
-      border:1px solid var(--glass-stroke);
-      border-radius:12px;
-      transition: transform .25s ease, box-shadow .25s ease, background .25s ease;
-      opacity:0; transform: translateY(14px);
-      text-align:left;
+      padding:22px 18px;
+      background:var(--card-bg);
+      border:1px solid var(--card-stroke);
+      border-radius:14px;
+      transition:transform .25s ease, box-shadow .25s ease;
+      opacity:0; transform: translateY(18px);
+    }
+    .section:hover{
+      transform: translateY(-3px);
+      box-shadow:0 10px 26px rgba(0,0,0,0.35), 0 0 22px rgba(248,196,113,0.25);
     }
     .section.visible{
       opacity:1; transform: translateY(0);
       transition: opacity .6s ease, transform .6s ease;
     }
-    .section:hover{
-      transform: translateY(-3px);
-      box-shadow: 0 8px 26px rgba(0,0,0,0.35), 0 0 18px rgba(79,209,197,0.25);
-      background: rgba(255,255,255,0.06);
-    }
+
+    /* Paragraphs & links */
+    p{ margin:10px 0; line-height:1.7; text-align:justify; }
+    a{ color:var(--gold); text-decoration:none; }
+    a:hover{ color:#fff; text-shadow:0 0 8px var(--gold); }
 
     /* Gradient divider */
     hr{
-      border:none; height:2px; margin:24px 0;
-      background: linear-gradient(90deg, var(--gold), var(--cyan));
-      border-radius:4px; opacity:.6;
+      border:none; height:2px; margin:26px 0 6px;
+      background:linear-gradient(90deg, var(--gold), var(--teal));
+      border-radius:3px; opacity:.65;
     }
-
-    /* Links and text */
-    a{ color: var(--gold); text-decoration:none; }
-    a:hover{ color:#fff; text-shadow: 0 0 8px var(--gold); }
-    p{ margin:8px 0 10px; line-height:1.7; color:#fff; }
-    .muted{ color: var(--muted); }
 
     /* Skills */
-    .skill{ margin:12px 0; }
-    .progress-bar-line{
-      height:10px; background:#3c3c3c; border-radius:6px; overflow:hidden; margin-top:6px;
-      border:1px solid var(--glass-stroke);
+    .skill{ margin:14px 0; text-align:left; }
+    .progress-bar{
+      height:10px; background:rgba(255,255,255,0.08);
+      border:1px solid var(--card-stroke);
+      border-radius:8px; overflow:hidden; margin-top:6px;
     }
-    .progress-bar-line span{
-      display:block; height:100%;
-      background: linear-gradient(90deg, var(--gold), var(--cyan));
-      box-shadow: inset 0 0 8px rgba(0,0,0,0.25);
+    .progress-bar span{
+      display:block; height:100%; width:0%;
+      background: linear-gradient(90deg, var(--gold), var(--teal));
+      box-shadow: inset 0 0 10px rgba(79,209,197,0.5);
+      transition: width 1.2s ease;
     }
 
-    /* Awards Timeline */
-    .timeline{
-      position:relative; margin:12px 0; padding-left:28px;
-    }
+    /* Awards timeline */
+    .timeline{ position:relative; margin:10px 0 0; padding-left:26px; text-align:left; }
     .timeline::before{
       content:""; position:absolute; left:12px; top:0; bottom:0; width:2px;
-      background: linear-gradient(180deg, var(--gold), var(--cyan));
-      opacity:.8; border-radius:2px;
+      background:linear-gradient(180deg, var(--gold), var(--teal));
+      border-radius:2px; opacity:.75;
     }
     .timeline-item{
-      position:relative; margin:12px 0; padding-left:6px; color:#fff;
+      position:relative; margin:14px 0; padding-left:8px;
     }
     .timeline-item::before{
-      content:""; position:absolute; left:-2px; top:.45em;
-      width:9px; height:9px; border-radius:50%;
-      background: linear-gradient(180deg, var(--gold), var(--cyan));
-      box-shadow: 0 0 8px rgba(79,209,197,0.6);
+      content:""; position:absolute; left:-2px; top:3px; width:14px; height:14px;
+      border-radius:50%;
+      background: radial-gradient(circle at 35% 35%, #fff, var(--gold) 45%, var(--teal));
+      box-shadow:0 0 10px rgba(79,209,197,0.6);
+      border:1px solid rgba(255,255,255,0.6);
     }
+
+    /* Back to top */
+    #backToTop{
+      position:fixed; right:24px; bottom:26px; width:48px; height:48px;
+      border:none; border-radius:50%;
+      background:linear-gradient(135deg, var(--gold), var(--teal));
+      color:#0b0b0b; font-size:20px; cursor:pointer;
+      box-shadow:0 8px 22px rgba(0,0,0,0.35), 0 0 18px rgba(79,209,197,0.45);
+      display:grid; place-items:center;
+      opacity:0; visibility:hidden; transform: translateY(8px);
+      transition: all .25s ease;
+      z-index:1201;
+    }
+    #backToTop.show{
+      opacity:1; visibility:visible; transform: translateY(0);
+    }
+    #backToTop:hover{ transform: translateY(-2px) scale(1.04); }
 
     /* Footer */
     .footer{
-      text-align:center; padding:24px 14px; margin-bottom:18px;
-      color:#fff; font-size:16px;
+      text-align:center; padding:22px;
+      background: rgba(0,0,0,0.55);
+      border-top:1px solid var(--card-stroke);
+      box-shadow:0 -2px 18px rgba(0,0,0,0.35);
     }
-    .footer a:hover{
-      color:#fff;
-      text-shadow: 0 0 10px var(--gold), 0 0 20px var(--gold);
-    }
+    .footer a{ color:var(--teal); }
+    .footer a:hover{ color:var(--gold); text-shadow:0 0 10px var(--gold), 0 0 16px var(--teal); }
 
     /* Animations */
     @keyframes fadeIn{
-      from{ opacity:0; transform: translateY(18px); }
-      to{ opacity:1; transform: translateY(0); }
-    }
-    @media (prefers-reduced-motion: reduce){
-      *{ animation:none !important; transition:none !important; }
+      from{ opacity:0; transform:translateY(20px); }
+      to{ opacity:1; transform:translateY(0); }
     }
 
     /* Responsive */
-    @media (max-width: 860px){
-      .container{ margin: 100px 16px 42px; padding: 20px 16px; }
-      .navbar{ gap:18px; padding:12px; }
+    @media (max-width: 900px){
+      .navbar{ gap:18px; padding:12px 14px; }
+      .container{ margin:110px 14px 50px; padding:20px 16px; }
+    }
+    @media (max-width: 560px){
+      h1{ font-size:26px; } h2{ font-size:20px; }
+      .timeline{ padding-left:22px; }
+      .timeline::before{ left:10px; }
+      .timeline-item::before{ left:-4px; }
     }
   </style>
 </head>
-<body class="fallback-bg">
+<body>
 
-  <!-- Background video (with poster fallback) -->
-  <div class="video-container" aria-hidden="true">
-    <video id="bgVideo"
-           autoplay
-           muted
-           playsinline
-           webkit-playsinline
-           loop
-           preload="auto"
-           poster="CV_BG_Fallback.jpg">
-      <!-- Provide multiple sources if you have them -->
+  <!-- Background Video -->
+  <div class="video-container">
+    <video autoplay muted loop playsinline>
       <source src="CV_BG.mp4" type="video/mp4"/>
-      <!-- <source src="CV_BG.webm" type="video/webm"/> -->
     </video>
   </div>
 
-  <!-- Gradient scroll progress -->
-  <div class="progress-wrap"><div class="progress-bar" id="progressBar"></div></div>
+  <!-- Scroll Progress -->
+  <div class="scroll-progress" id="scrollProgress"></div>
 
   <!-- Navbar -->
-  <div class="navbar" role="navigation" aria-label="Main">
+  <div class="navbar">
     <a href="index.html"><i class="fas fa-home"></i> Home</a>
     <a href="cv.html"><i class="fas fa-id-card"></i> CV</a>
     <a href="publications.html"><i class="fas fa-book"></i> Publications</a>
@@ -277,43 +270,35 @@
       <p><i class="fas fa-user"></i> Mohammad Ali Farmani</p>
       <p><i class="fas fa-globe"></i> <a href="https://mfarmani95.github.io/Mfarmani/index.html" target="_blank">Personal Website</a></p>
       <p><i class="fas fa-envelope"></i> <a href="mailto:farmani@arizona.edu">farmani@arizona.edu</a></p>
-      <p class="muted">
-        <a href="https://www.linkedin.com/in/mohammad-farmani-841b2b180/" target="_blank" title="LinkedIn" style="margin-right:14px;"><i class="fab fa-linkedin fa-lg"></i></a>
-        <a href="https://scholar.google.com/citations?user=CmjfHnIAAAAJ&hl=en" target="_blank" title="Google Scholar" style="margin-right:14px;"><i class="fas fa-graduation-cap fa-lg"></i></a>
-        <a href="https://www.researchgate.net/profile/Mohammad-Farmani-6/research" target="_blank" title="ResearchGate"><i class="fab fa-researchgate fa-lg"></i></a>
+      <p style="text-align:center">
+        <a href="https://www.linkedin.com/in/mohammad-farmani-841b2b180/" target="_blank" title="LinkedIn" style="margin-right:14px"><i class="fab fa-linkedin fa-2x"></i></a>
+        <a href="https://scholar.google.com/citations?user=CmjfHnIAAAAJ&hl=en" target="_blank" title="Google Scholar" style="margin-right:14px"><i class="fas fa-graduation-cap fa-2x"></i></a>
+        <a href="https://www.researchgate.net/profile/Mohammad-Farmani-6/research" target="_blank" title="ResearchGate"><i class="fab fa-researchgate fa-2x"></i></a>
       </p>
     </div>
 
-    <hr/>
-
     <div class="section" id="skills">
       <h2><i class="fas fa-laptop-code"></i> Skills</h2>
-
       <div class="skill">
         <p><i class="fab fa-python"></i> Python</p>
-        <div class="progress-bar-line"><span style="width:90%"></span></div>
+        <div class="progress-bar"><span data-target="90"></span></div>
       </div>
-
       <div class="skill">
-        <p><i class="fas fa-database"></i> SQL &amp; Data Management</p>
-        <div class="progress-bar-line"><span style="width:80%"></span></div>
+        <p><i class="fas fa-database"></i> SQL & Data Management</p>
+        <div class="progress-bar"><span data-target="80"></span></div>
       </div>
-
       <div class="skill">
-        <p><i class="fas fa-map-marked-alt"></i> GIS &amp; Hydrological Modeling</p>
-        <div class="progress-bar-line"><span style="width:85%"></span></div>
+        <p><i class="fas fa-map-marked-alt"></i> GIS & Hydrological Modeling</p>
+        <div class="progress-bar"><span data-target="85"></span></div>
       </div>
-
       <div class="skill">
         <p><i class="fas fa-chart-line"></i> Machine Learning in Hydrology</p>
-        <div class="progress-bar-line"><span style="width:75%"></span></div>
+        <div class="progress-bar"><span data-target="75"></span></div>
       </div>
     </div>
 
-    <hr/>
-
     <div class="section" id="awards">
-      <h2><i class="fas fa-trophy"></i> Awards &amp; Honors</h2>
+      <h2><i class="fas fa-trophy"></i> Awards & Honors</h2>
       <div class="timeline">
         <div class="timeline-item">2025 – Arizona Hydrological Society (AHS) Academic Scholarship</div>
         <div class="timeline-item">2025 – 2nd Place, CAP Award for Water Research</div>
@@ -327,73 +312,65 @@
         <div class="timeline-item">2023–25 – Hydrologist Scholarship, US Army Corps of Engineers – ERDC CHL</div>
       </div>
     </div>
+
+    <hr/>
+
+    <div class="section" id="closing">
+      <h2><i class="fas fa-handshake"></i> Thank You</h2>
+      <p>I’m passionate about advancing hydrology, climate resilience, and data-driven decision making. Feel free to reach out for research collaborations, data projects, or community outreach on groundwater and water policy.</p>
+    </div>
   </div>
 
+  <!-- Back to top -->
+  <button id="backToTop" title="Back to top"><i class="fas fa-arrow-up"></i></button>
+
+  <!-- Footer -->
   <div class="footer">
-    <p>Created by Mohammad Ali Farmani • <a href="mailto:farmani@arizona.edu">Contact Me</a></p>
+    <p>Created by Mohammad Ali Farmani | <a href="mailto:farmani@arizona.edu">Contact Me</a></p>
   </div>
 
   <script>
-    // ===== Scroll progress bar =====
-    const progressBar = document.getElementById('progressBar');
-    function updateProgress(){
-      const scrollTop = window.scrollY || document.documentElement.scrollTop;
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-      progressBar.style.width = progress + '%';
-    }
-    document.addEventListener('scroll', updateProgress, {passive:true});
-    window.addEventListener('resize', updateProgress);
-    updateProgress();
+    // Scroll progress bar
+    const progressBar = document.getElementById('scrollProgress');
+    const updateProgress = () => {
+      const doc = document.documentElement;
+      const scrolled = doc.scrollTop || document.body.scrollTop;
+      const height = doc.scrollHeight - doc.clientHeight;
+      const pct = height ? (scrolled / height) * 100 : 0;
+      progressBar.style.width = pct + '%';
+    };
+    window.addEventListener('scroll', updateProgress);
+    window.addEventListener('load', updateProgress);
 
-    // ===== Background video: ensure autoplay + fallback =====
-    const root = document.documentElement;
-    const bgVideo = document.getElementById('bgVideo');
-
-    function enableVideo(){
-      if (!bgVideo) return;
-      bgVideo.muted = true;
-      const tryPlay = () => bgVideo.play().catch(() => {
-        // If autoplay blocked, fall back
-        document.body.classList.add('no-video');
-      });
-      if (document.visibilityState === 'visible') {
-        tryPlay();
-      }
-      document.addEventListener('visibilitychange', () => {
-        if (document.visibilityState === 'visible' && bgVideo.paused) tryPlay();
-      });
-    }
-
-    // If video loads, remove no-video; on error, add no-video
-    if (bgVideo){
-      bgVideo.addEventListener('loadeddata', () => {
-        document.body.classList.remove('no-video');
-      });
-      bgVideo.addEventListener('error', () => {
-        document.body.classList.add('no-video');
-      });
-      enableVideo();
-    }
-
-    // ===== Subtle parallax on video (very soft) =====
-    function parallax(){
-      if (!bgVideo || document.body.classList.contains('no-video')) return;
-      const y = window.scrollY;
-      const translate = Math.min(y * 0.04, 40); // px max ~40
-      const scale = 1 + Math.min(y / 5000, 0.04); // up to ~1.04
-      bgVideo.style.transform = `translate(-50%, calc(-50% + ${translate}px)) scale(${scale})`;
-    }
-    document.addEventListener('scroll', parallax, {passive:true});
-    parallax();
-
-    // ===== Fade-in sections on view =====
-    const observer = new IntersectionObserver((entries)=>{
+    // IntersectionObserver for section fade-in + skill bars
+    const io = new IntersectionObserver((entries)=>{
       entries.forEach(entry=>{
-        if(entry.isIntersecting){ entry.target.classList.add('visible'); }
+        if(entry.isIntersecting){
+          entry.target.classList.add('visible');
+          // Animate skill bars inside this section
+          entry.target.querySelectorAll('.progress-bar span').forEach(bar=>{
+            const target = bar.getAttribute('data-target');
+            if(target && !bar.dataset.done){
+              bar.style.width = target + '%';
+              bar.dataset.done = '1';
+            }
+          });
+        }
       });
-    }, {threshold: 0.12});
-    document.querySelectorAll('.section').forEach(sec => observer.observe(sec));
+    }, {threshold: 0.15});
+
+    document.querySelectorAll('.section').forEach(sec=> io.observe(sec));
+
+    // Back to top button
+    const backToTop = document.getElementById('backToTop');
+    window.addEventListener('scroll', ()=>{
+      if(window.scrollY > 400){
+        backToTop.classList.add('show');
+      }else{
+        backToTop.classList.remove('show');
+      }
+    });
+    backToTop.addEventListener('click', ()=> window.scrollTo({top:0, behavior:'smooth'}));
   </script>
 </body>
 </html>
