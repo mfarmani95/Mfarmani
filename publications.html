@@ -33,7 +33,7 @@
       content: "";
       position: absolute;
       top: 0; left: 0; right: 0; bottom: 0;
-      background: linear-gradient(135deg, rgba(0,0,0,0.85), rgba(0,0,0,0.65));
+      background: linear-gradient(135deg, rgba(0,0,0,0.85), rgba(0,0,0,0.6));
     }
 
     /* === Navbar === */
@@ -111,7 +111,7 @@
     .container {
       max-width: 1000px;
       margin: 130px auto;
-      padding: 30px;
+      padding: 40px;
       background: rgba(0, 0, 0, 0.7);
       border-radius: 15px;
       box-shadow: 0 0 25px rgba(248, 196, 113, 0.4);
@@ -129,8 +129,9 @@
       background: rgba(255, 255, 255, 0.05);
       border: 1px solid rgba(255, 255, 255, 0.2);
       border-radius: 12px;
-      padding: 20px;
-      margin: 20px 0;
+      padding: 20px 30px;
+      margin: 25px auto;
+      max-width: 850px;
       text-align: left;
       opacity: 0;
       transform: translateY(30px);
@@ -150,24 +151,31 @@
       font-weight: bold;
       color: #f8c471;
       margin-bottom: 10px;
+      text-align: justify;
     }
     .publication-authors {
       font-size: 18px;
       margin-bottom: 8px;
+      text-align: justify;
     }
     .publication-journal {
       font-style: italic;
       color: #ddd;
       margin-bottom: 10px;
+      text-align: justify;
+    }
+    .publication-actions {
+      text-align: right;
+      margin-top: 8px;
     }
     .publication-actions a {
       display: inline-block;
-      margin-right: 10px;
+      margin-left: 8px;
       padding: 6px 12px;
       border-radius: 6px;
       background: #f8c471;
       color: black;
-      font-size: 16px;
+      font-size: 15px;
       font-weight: bold;
       text-decoration: none;
       transition: all 0.3s ease;
@@ -256,7 +264,7 @@
       text-shadow: 0 0 10px #f8c471, 0 0 20px #f8c471;
     }
 
-    /* === Animation === */
+    /* Animation */
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
@@ -264,11 +272,9 @@
 
     /* Responsive */
     @media (max-width: 768px) {
+      .publication-card { max-width: 95%; }
       .timeline::before { left: 8px; }
-      .timeline-item {
-        width: 100%;
-        padding-left: 40px;
-      }
+      .timeline-item { width: 100%; padding-left: 40px; }
       .timeline-item.right { left: 0; }
       .timeline-item.left { text-align: left; }
       .timeline-item::before { left: 10px; right: auto; }
@@ -297,28 +303,16 @@
 
   <div class="container">
     <h1><i class="fas fa-book"></i> Publications</h1>
-    <p>
-      <a href="https://www.linkedin.com/in/mohammad-a-farmani-841b2b180/" target="_blank"><i class="fab fa-linkedin fa-2x"></i></a>
-      <a href="https://scholar.google.com/citations?user=CmjfHnIAAAAJ&hl=en" target="_blank" style="margin: 0 15px;"><i class="fas fa-graduation-cap fa-2x"></i></a>
-      <a href="https://www.researchgate.net/profile/Mohammad-Farmani-6/research" target="_blank"><i class="fab fa-researchgate fa-2x"></i></a>
-    </p>
-    <div class="section" id="papers">
-            <h2>Journal Papers</h2>
 
-            <div class="publication-card">
-                <div class="publication-title">
-                    Improving streamflow predictions in the arid Southwestern United States through understanding of baseflow generation mechanisms
-                </div>
-                <div class="publication-authors">
-                    <b style="color:#f8c471;">M. A. Farmani</b>, A. Tavakoly, A. Behrangi, Y. Qiu, A. Gupta, M. Jawad, H. Yousefi Sohi, X. Zhang, M. Geheran, & G.-Y. Niu
-                </div>
-                <div class="publication-journal">
-                    <i>Water Resources Research</i>, 2025 (Advance online publication)
-                </div>
-                <div class="publication-actions">
-                    <a href="https://doi.org/10.1029/2024WR039479" target="_blank"> DOI</a>
-                </div>
-            </div>
+    <!-- Example publication -->
+    <div class="publication-card">
+      <div class="publication-title">Improving streamflow predictions in the arid Southwestern United States...</div>
+      <div class="publication-authors"><b style="color:#f8c471;">M. A. Farmani</b>, A. Tavakoly, A. Behrangi, et al.</div>
+      <div class="publication-journal"><i>Water Resources Research</i>, 2025 (Advance online publication)</div>
+      <div class="publication-actions">
+        <a href="https://doi.org/10.1029/2024WR039479" target="_blank">📄 DOI</a>
+      </div>
+    </div>
 
             <div class="publication-card">
                 <div class="publication-title">
