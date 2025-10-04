@@ -19,8 +19,7 @@
   .video-container {
     position: fixed;
     top: 0; left: 0;
-    width: 100%;
-    height: 100%;
+    width: 100%; height: 100%;
     z-index: -1;
   }
   .video-container video {
@@ -32,7 +31,7 @@
     content: "";
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
-    background: linear-gradient(135deg, rgba(0,0,0,0.9), rgba(0,0,0,0.7));
+    background: linear-gradient(120deg, rgba(0,0,0,0.92), rgba(0,0,0,0.75));
   }
 
   /* === Navbar === */
@@ -40,7 +39,7 @@
     position: fixed;
     top: 0;
     width: 100%;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0,0,0,0.55);
     backdrop-filter: blur(10px);
     padding: 15px 0;
     display: flex;
@@ -61,12 +60,14 @@
     transition: all 0.3s ease;
   }
   .navbar a:hover, .navbar .dropbtn:hover {
-    color: #f8c471;
+    background: linear-gradient(90deg, #f8c471, #4fd1c5);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
   .navbar a::after, .navbar .dropbtn::after {
     content: "";
     height: 2px;
-    background: #f8c471;
+    background: linear-gradient(90deg, #f8c471, #4fd1c5);
     width: 0;
     position: absolute;
     bottom: -5px;
@@ -78,9 +79,7 @@
   }
 
   /* Dropdown */
-  .dropdown {
-    position: relative;
-  }
+  .dropdown { position: relative; }
   .dropdown-content {
     display: none;
     position: absolute;
@@ -97,7 +96,7 @@
     display: block;
   }
   .dropdown-content a:hover {
-    background: #575757;
+    background: linear-gradient(90deg, rgba(248,196,113,0.25), rgba(79,209,197,0.25));
   }
   .dropdown:hover .dropdown-content {
     display: block;
@@ -110,18 +109,37 @@
     left: 0;
     width: 230px;
     height: calc(100% - 80px);
-    background: rgba(0,0,0,0.6);
-    backdrop-filter: blur(6px);
-    border-right: 1px solid rgba(255,255,255,0.15);
+    background: rgba(0,0,0,0.55);
+    backdrop-filter: blur(10px);
+    border-right: 2px solid transparent;
+    border-image: linear-gradient(to bottom, #f8c471, #4fd1c5);
+    border-image-slice: 1;
     padding: 25px 15px;
     overflow-y: auto;
     box-shadow: 2px 0 10px rgba(0,0,0,0.4);
+    animation: slideIn 1.2s ease;
   }
+
   .sidebar h2 {
-    color: #f8c471;
+    background: linear-gradient(90deg, #f8c471, #4fd1c5);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
     text-align: center;
     margin-bottom: 15px;
+    position: relative;
   }
+  .sidebar h2::after {
+    content: "";
+    display: block;
+    width: 60%;
+    height: 2px;
+    margin: 6px auto 0;
+    background: linear-gradient(90deg, #f8c471, #4fd1c5);
+    border-radius: 2px;
+    opacity: 0.8;
+    animation: glowLine 3s ease-in-out infinite alternate;
+  }
+
   .sidebar a {
     display: block;
     color: white;
@@ -131,13 +149,23 @@
     transition: all 0.3s ease;
   }
   .sidebar a:hover {
-    background: rgba(248,196,113,0.2);
+    background: linear-gradient(90deg, rgba(248,196,113,0.15), rgba(79,209,197,0.15));
     box-shadow: 0 0 8px rgba(248,196,113,0.4);
   }
   .sidebar a.active {
-    color: #f8c471;
     font-weight: bold;
-    text-shadow: 0 0 10px rgba(248,196,113,0.6);
+    background: linear-gradient(90deg, #f8c471, #4fd1c5);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  @keyframes slideIn {
+    from { transform: translateX(-50px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+  }
+  @keyframes glowLine {
+    from { box-shadow: 0 0 6px #f8c471; }
+    to { box-shadow: 0 0 12px #4fd1c5; }
   }
 
   /* === Content === */
@@ -151,95 +179,60 @@
     box-shadow: 0 0 25px rgba(248,196,113,0.3);
     animation: fadeIn 1.2s ease;
   }
+
   h1, h2 {
-    color: #f8c471;
-    text-shadow: 0 0 10px rgba(248,196,113,0.5);
+    background: linear-gradient(90deg, #f8c471, #4fd1c5);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
     text-align: center;
   }
+
   p {
     text-align: justify;
     line-height: 1.7;
     font-size: 18px;
   }
 
-  /* === Figures with Lightbox + Hover Zoom === */
+  /* === Figures === */
   figure {
-    position: relative;
-    display: inline-block;
-    margin: 25px auto 40px;
+    display: block;
+    margin: 30px auto 50px;
     text-align: center;
-    cursor: pointer;
   }
-
   img {
     width: 40%;
     border-radius: 12px;
     border: 1px solid rgba(255,255,255,0.3);
     box-shadow: 0 0 20px rgba(248,196,113,0.2);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: all 0.4s ease-in-out;
+    cursor: zoom-in;
   }
   img:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 30px rgba(248,196,113,0.7);
+    transform: scale(1.8);
+    z-index: 10;
+    box-shadow: 0 0 40px rgba(79,209,197,0.7);
+    border-color: #4fd1c5;
   }
   figcaption {
-    text-align: center;
     font-size: 15px;
     color: #ddd;
-    margin-bottom: 30px;
+    margin-top: 10px;
   }
 
-  /* === Lightbox === */
-  .lightbox {
-    display: none;
-    position: fixed;
-    z-index: 9999;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: rgba(0,0,0,0.9);
-    justify-content: center;
-    align-items: center;
+  hr {
+    border: none;
+    height: 2px;
+    background: linear-gradient(90deg, #f8c471, #4fd1c5);
+    margin: 40px 0;
+    border-radius: 4px;
   }
-  .lightbox img {
-    max-width: 85%;
-    max-height: 85%;
-    border-radius: 12px;
-    box-shadow: 0 0 40px rgba(248,196,113,0.5);
-    animation: zoomIn 0.3s ease;
-  }
-  @keyframes zoomIn {
-    from { transform: scale(0.8); opacity: 0; }
-    to { transform: scale(1); opacity: 1; }
-  }
-  .close-btn {
-    position: absolute;
-    top: 20px; right: 30px;
-    color: #f8c471;
-    font-size: 40px;
-    cursor: pointer;
-    transition: color 0.3s ease;
-  }
-  .close-btn:hover { color: white; }
-  .nav-arrow {
-    position: absolute;
-    top: 50%;
-    font-size: 50px;
-    color: #f8c471;
-    cursor: pointer;
-    user-select: none;
-    transform: translateY(-50%);
-    transition: color 0.3s ease;
-  }
-  .nav-arrow:hover { color: white; }
-  .arrow-left { left: 40px; }
-  .arrow-right { right: 40px; }
 
-  /* === Back to Top Button === */
+  /* === Back to Top === */
   #backToTop {
     position: fixed;
-    bottom: 40px;
-    right: 40px;
-    background: #f8c471;
+    bottom: 25px;
+    right: 25px;
+    background: linear-gradient(135deg, #f8c471, #4fd1c5);
     color: black;
     border: none;
     border-radius: 50%;
@@ -247,19 +240,15 @@
     height: 50px;
     font-size: 22px;
     cursor: pointer;
-    box-shadow: 0 0 20px rgba(248,196,113,0.6);
+    box-shadow: 0 0 20px rgba(79,209,197,0.5);
+    transition: all 0.3s ease;
     opacity: 0;
-    transition: all 0.4s ease;
-    z-index: 999;
-  }
-  #backToTop.show {
-    opacity: 1;
-    transform: scale(1);
+    visibility: hidden;
+    z-index: 1000;
   }
   #backToTop:hover {
-    background: white;
-    color: #f8c471;
-    box-shadow: 0 0 25px rgba(255,255,255,0.8);
+    transform: scale(1.1);
+    box-shadow: 0 0 25px rgba(248,196,113,0.8);
   }
 
   /* === Footer === */
@@ -272,19 +261,21 @@
     box-shadow: 0 -2px 20px rgba(0,0,0,0.5);
   }
   .footer a {
-    color: #f8c471;
+    color: #4fd1c5;
     text-decoration: none;
   }
   .footer a:hover {
-    color: #fff;
-    text-shadow: 0 0 10px #f8c471, 0 0 20px #f8c471;
+    color: #f8c471;
+    text-shadow: 0 0 10px #f8c471, 0 0 20px #4fd1c5;
   }
 
+  /* === Animations === */
   @keyframes fadeIn {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
   }
 
+  /* === Responsive === */
   @media (max-width: 900px) {
     .sidebar {
       position: relative;
@@ -299,145 +290,130 @@
       margin-right: 0;
       padding: 25px;
     }
-    img { width: 80%; }
+    img {
+      width: 80%;
+      transform: none;
+    }
+    img:hover {
+      transform: none;
+    }
   }
 </style>
 </head>
 
 <body>
-  <div class="video-container">
-    <video autoplay muted loop playsinline>
-      <source src="PUB_BG.mp4" type="video/mp4" />
-    </video>
-  </div>
 
-  <div class="navbar">
-    <a href="index.html"><i class="fas fa-home"></i> Home</a>
-    <a href="cv.html"><i class="fas fa-id-card"></i> CV</a>
-    <a href="publications.html"><i class="fas fa-book"></i> Publications</a>
-    <div class="dropdown">
-      <a href="#" class="dropbtn"><i class="fas fa-briefcase"></i> Projects ▾</a>
-      <div class="dropdown-content">
-        <a href="smm.html">SMM</a>
-        <a href="bfi.html">BFI</a>
-      </div>
+<div class="video-container">
+  <video autoplay muted loop playsinline>
+    <source src="PUB_BG.mp4" type="video/mp4" />
+  </video>
+</div>
+
+<div class="navbar">
+  <a href="index.html"><i class="fas fa-home"></i> Home</a>
+  <a href="cv.html"><i class="fas fa-id-card"></i> CV</a>
+  <a href="publications.html"><i class="fas fa-book"></i> Publications</a>
+  <div class="dropdown">
+    <a href="#" class="dropbtn"><i class="fas fa-briefcase"></i> Projects ▾</a>
+    <div class="dropdown-content">
+      <a href="smm.html">SMM</a>
+      <a href="bfi.html">BFI</a>
     </div>
   </div>
+</div>
 
-  <div class="sidebar">
-    <h2>Navigation</h2>
-    <a href="#introduction">Introduction</a>
-    <a href="#importance">Baseflow Generation</a>
-    <a href="#findings">Key Findings</a>
-    <a href="#implications">Implications</a>
-    <a href="#conclusion">Conclusion</a>
-    <a href="#reference">Reference</a>
-  </div>
+<div class="sidebar">
+  <h2>Navigation</h2>
+  <a href="#introduction">Introduction</a>
+  <a href="#importance">Baseflow Generation</a>
+  <a href="#findings">Key Findings</a>
+  <a href="#implications">Implications</a>
+  <a href="#conclusion">Conclusion</a>
+  <a href="#reference">Reference</a>
+</div>
 
-  <div class="content">
-    <h1 id="introduction">Baseflow and Streamflow Prediction</h1>
-    <p>The accuracy of hydrological models in predicting streamflow, particularly in arid regions, depends on how well they represent surface and subsurface runoff and groundwater recharge. Baseflow sustains rivers during dry periods, making its accurate simulation essential.</p>
+<div class="content">
+  <h1 id="introduction">Introduction to Baseflow and Streamflow Prediction</h1>
+  <p>The accuracy of hydrological models in predicting streamflow, particularly in arid regions, depends on their ability to represent surface and subsurface runoff and groundwater recharge...</p>
+  <figure>
+    <img src="BFI_MOdel.png" alt="Baseflow Example" />
+    <figcaption>Figure 1. Baseflow computed using Van Dijk (2010) method for GRDC 6731165 station data.</figcaption>
+  </figure>
 
-    <figure>
-      <img src="BFI_MOdel.png" alt="Baseflow Example" />
-      <figcaption>Figure 1. Baseflow computed using Van Dijk (2010) method.</figcaption>
-    </figure>
+  <hr />
 
-    <h2 id="importance">Importance of Understanding Baseflow Generation</h2>
-    <p>Baseflow sustains streamflow during dry periods, yet traditional LSMs often overestimate it due to simplified soil processes. Improved physical representation enhances drought resilience and streamflow forecasting.</p>
+  <h2 id="importance">Importance of Understanding Baseflow Generation</h2>
+  <p>Baseflow sustains streamflow during dry conditions...</p>
+  <figure>
+    <img src="BFI_RESULTS.png" alt="BFI Results" />
+    <figcaption>Figure 2. Observed and modeled BFI at 390 gauges across the southwestern U.S.</figcaption>
+  </figure>
 
-    <figure>
-      <img src="BFI_RESULTS.png" alt="BFI Results" />
-      <figcaption>Figure 2. Modeled vs observed BFI at 390 gauges across the Southwest U.S.</figcaption>
-    </figure>
+  <hr />
 
-    <h2 id="findings">Key Findings</h2>
-    <p><b>1.</b> CH model overestimates baseflow; VG captures low-BFI regions better.</p>
-    <p><b>2.</b> Macropores and ponding thresholds improve recharge realism.</p>
-    <p><b>3.</b> ML-calibrated parameters improved streamflow KGE by 20%.</p>
-    <p><b>4.</b> IMERG forcing corrected overestimated BFI from NLDAS-2/AORC.</p>
+  <h2 id="findings">Key Findings</h2>
+  <p><b>1.</b> CH model overestimates baseflow; VG captures low-BFI regions better.<br>
+     <b>2.</b> Macropores and ponding thresholds improve recharge realism.<br>
+     <b>3.</b> ML-calibrated parameters improved streamflow KGE by 20%.<br>
+     <b>4.</b> IMERG forcing corrected overestimated BFI from NLDAS-2/AORC.</p>
 
-    <figure>
-      <img src="KGE_RESULTS.png" alt="KGE Improvement" />
-      <figcaption>Figure 3. ML-derived parameters improved KGE vs lookup tables.</figcaption>
-    </figure>
+  <figure>
+    <img src="KGE_RESULTS.png" alt="KGE Improvement" />
+    <figcaption>Figure 3. ML-derived parameters improved KGE vs. traditional lookup tables.</figcaption>
+  </figure>
 
-    <h2 id="implications">Implications for Water Management</h2>
-    <p>Enhanced baseflow modeling improves drought prediction, water allocation, and climate modeling accuracy, especially across arid basins.</p>
+  <hr />
 
-    <h2 id="conclusion">Conclusion</h2>
-    <p>The combination of improved hydraulic schemes and IMERG forcing produced the most physically realistic baseflow representation, advancing prediction skill in the arid Southwest.</p>
+  <h2 id="implications">Implications for Climate Science and Water Management</h2>
+  <p>Enhanced baseflow modeling improves drought resilience, climate forecasts, and water allocation, especially across arid basins.</p>
 
-    <h2 id="reference">Reference</h2>
-    <p><b>Farmani, M. A.</b> et al. (2025). Improving streamflow predictions in the arid Southwestern U.S. <i>Water Resources Research</i>. 
-    <a href="https://doi.org/10.1029/2024WR039479" target="_blank">https://doi.org/10.1029/2024WR039479</a></p>
-  </div>
+  <hr />
 
-  <!-- Lightbox -->
-  <div id="lightbox" class="lightbox">
-    <span class="close-btn">&times;</span>
-    <span class="nav-arrow arrow-left">&#10094;</span>
-    <img src="" alt="Expanded view" id="lightbox-img" />
-    <span class="nav-arrow arrow-right">&#10095;</span>
-  </div>
+  <h2 id="conclusion">Conclusion & Future Directions</h2>
+  <p>Integrating improved hydraulic schemes and IMERG forcing enhanced BFI realism...</p>
 
-  <!-- Back to Top Button -->
-  <button id="backToTop" title="Back to Top"><i class="fas fa-arrow-up"></i></button>
+  <hr />
 
-  <div class="footer">
-    <p>Created by Mohammad Ali Farmani | <a href="mailto:farmani@arizona.edu">farmani@arizona.edu</a></p>
-  </div>
+  <h2 id="reference">Reference</h2>
+  <p><b>Farmani, M. A.</b>, Tavakoly, A., Behrangi, A., Qiu, Y., Gupta, A., Jawad, M., Yousefi Sohi, H., Zhang, X., Geheran, M., & Niu, G.-Y. (2025). Improving streamflow predictions in the arid Southwestern United States through understanding of baseflow generation mechanisms. <i>Water Resources Research</i>. <a href="https://doi.org/10.1029/2024WR039479" target="_blank">https://doi.org/10.1029/2024WR039479</a></p>
+</div>
 
-  <script>
-    // Sidebar highlight
-    const sections = document.querySelectorAll("h1, h2");
-    const navLinks = document.querySelectorAll(".sidebar a");
-    window.addEventListener("scroll", () => {
-      let current = "";
-      sections.forEach(sec => {
-        const top = sec.offsetTop - 120;
-        if (scrollY >= top) current = sec.getAttribute("id");
-      });
-      navLinks.forEach(link => {
-        link.classList.remove("active");
-        if (link.getAttribute("href") === `#${current}`) link.classList.add("active");
-      });
+<button id="backToTop" title="Go to top"><i class="fas fa-arrow-up"></i></button>
+
+<div class="footer">
+  <p>Created by Mohammad Ali Farmani | Contact: <a href="mailto:farmani@arizona.edu">farmani@arizona.edu</a></p>
+</div>
+
+<script>
+  // Sidebar highlight
+  const sections = document.querySelectorAll("h1, h2");
+  const navLinks = document.querySelectorAll(".sidebar a");
+  window.addEventListener("scroll", () => {
+    let current = "";
+    sections.forEach((section) => {
+      const top = section.offsetTop - 120;
+      if (scrollY >= top) current = section.getAttribute("id");
     });
+    navLinks.forEach((link) => {
+      link.classList.remove("active");
+      if (link.getAttribute("href") === `#${current}`) link.classList.add("active");
+    });
+  });
 
-    // Lightbox functionality
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImg = document.getElementById('lightbox-img');
-    const closeBtn = document.querySelector('.close-btn');
-    const leftArrow = document.querySelector('.arrow-left');
-    const rightArrow = document.querySelector('.arrow-right');
-    const images = Array.from(document.querySelectorAll('.content img'));
-    let currentIndex = 0;
-    function showImage(index) {
-      currentIndex = (index + images.length) % images.length;
-      lightboxImg.src = images[currentIndex].src;
-      lightboxImg.alt = images[currentIndex].alt;
+  // Back to top button
+  const backToTop = document.getElementById("backToTop");
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 300) {
+      backToTop.style.opacity = "1";
+      backToTop.style.visibility = "visible";
+    } else {
+      backToTop.style.opacity = "0";
+      backToTop.style.visibility = "hidden";
     }
-    images.forEach((img, i) => img.addEventListener('click', () => {
-      lightbox.style.display = 'flex';
-      showImage(i);
-    }));
-    closeBtn.addEventListener('click', () => lightbox.style.display = 'none');
-    leftArrow.addEventListener('click', () => showImage(currentIndex - 1));
-    rightArrow.addEventListener('click', () => showImage(currentIndex + 1));
-    lightbox.addEventListener('click', e => { if (e.target === lightbox) lightbox.style.display = 'none'; });
-    window.addEventListener('keydown', e => {
-      if (e.key === 'Escape') lightbox.style.display = 'none';
-      else if (e.key === 'ArrowLeft') showImage(currentIndex - 1);
-      else if (e.key === 'ArrowRight') showImage(currentIndex + 1);
-    });
-
-    // Back to Top
-    const backToTop = document.getElementById("backToTop");
-    window.addEventListener("scroll", () => {
-      if (window.scrollY > 400) backToTop.classList.add("show");
-      else backToTop.classList.remove("show");
-    });
-    backToTop.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
-  </script>
+  });
+  backToTop.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+</script>
 </body>
 </html>
