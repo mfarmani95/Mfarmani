@@ -145,6 +145,73 @@
             background: #e67e22;
             color: white;
         }
+        /* ===== Timeline Styles ===== */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 0;
+            list-style-type: none;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: #f8c471;
+            transform: translateX(-50%);
+        }
+        .timeline-item {
+            position: relative;
+            width: 50%;
+            padding: 20px 30px;
+            box-sizing: border-box;
+        }
+        .timeline-item.left {
+            left: 0;
+            text-align: right;
+        }
+        .timeline-item.right {
+            left: 50%;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            top: 25px;
+            width: 20px;
+            height: 20px;
+            background: #f8c471;
+            border-radius: 50%;
+            border: 3px solid #fff;
+            z-index: 1;
+        }
+        .timeline-item.left::before {
+            right: -12px;
+        }
+        .timeline-item.right::before {
+            left: -12px;
+        }
+        .timeline-item .content {
+            background: rgba(255,255,255,0.05);
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: background 0.3s ease;
+        }
+        .timeline-item .content:hover {
+            background: rgba(0,0,0,0.6);
+        }
+        .timeline-item h3 {
+            color: #f8c471;
+            margin: 0 0 10px;
+            font-size: 20px;
+        }
+        .timeline-item p {
+            font-size: 18px;
+            margin: 0;
+        }        
     </style>
 </head>
 <body>
@@ -287,16 +354,53 @@
 
         <div class="section" id="conferences">
             <h2>Conference Presentations</h2>
-            <p class="publication"><b>Mohammad A. Farmani</b>, Ahmad A. Tavakoly, Ali Behrangi, et al. Improving Streamflow Predictions in the Dry Southwestern United States Through Understanding of Baseflow Generation Mechanisms. <b>AGU24</b>.</p>
-            <p class="publication">Hossein Yousefi Sohi, <b>Mohammad A. Farmani</b>, Ali Behrangi. How do IMERG V07, IMERG V06, and ERA5 Precipitation Products Perform Over Snow-ice-free and Snow-ice-covered Surfaces? <b>AGU24</b>.</p>
-            <p class="publication">Qiu, Y., Niu, G. Y., Behrangi, A., Famiglietti, J. S., <b>Farmani</b>, M., Gupta, A., et al. The Significant Impact of Precipitation Intensity on Natural Groundwater Recharge and Terrestrial Water Storage Change in Arid Regions. <b>AGU24</b>.</p>
-            <p class="publication">Gupta, A., Behrangi, A., <b>Farmani, M. A.</b>, Niu, G.-Y. Implementing the machine learning based Van-Genuchten parametrization in the NextGen Framework for improved streamflow prediction. <b>AGU24</b>.</p>
-            <p class="publication"><b>Farmani, M. A.</b>, Behrangi, A., Gupta, A., Tavakoly, A., Geheran, M., and Niu, G.-Y. What Are the Key Soil Hydrological Processes to Control Soil Moisture Memory? <b>CMWR 2024</b>.</p>
-            <p class="publication">Niu, G.-Y., Fang, Y., Alves Meira Neto, A., Guo, B., <b>Farmani, M.</b>, and Behrangi, A. Representing Preferential Flow through Variably Saturated Soils with Surface Ponding in Noah-MP. <b>AGU 2023, H11G-1343</b>.</p>
-            <p class="publication">Gupta, A., Behrangi, A., Farmani, M., and Niu, G.-Y., “Impact of Vegetation Dynamics on Hydrological Fluxes using Noah-MP Coupled to NextGen Modeling Framework: A Case Study of High-resolution Hydrological Simulations over California. <b>AGU 2023, H31V-1798</b>.</p>
+            <ul class="timeline">
+                <li class="timeline-item left">
+                    <div class="content">
+                        <h3>AGU 2024</h3>
+                        <p><b>Mohammad A. Farmani</b>, Ahmad A. Tavakoly, Ali Behrangi, et al. Improving Streamflow Predictions in the Dry Southwestern United States Through Understanding of Baseflow Generation Mechanisms.</p>
+                    </div>
+                </li>
+                <li class="timeline-item right">
+                    <div class="content">
+                        <h3>AGU 2024</h3>
+                        <p>Hossein Yousefi Sohi, <b>Mohammad A. Farmani</b>, Ali Behrangi. How do IMERG V07, IMERG V06, and ERA5 Precipitation Products Perform Over Snow-ice-free and Snow-ice-covered Surfaces?</p>
+                    </div>
+                </li>
+                <li class="timeline-item left">
+                    <div class="content">
+                        <h3>AGU 2024</h3>
+                        <p>Y. Qiu, G.-Y. Niu, A. Behrangi, J. Famiglietti, <b>M. A. Farmani</b>, A. Gupta, et al. The Significant Impact of Precipitation Intensity on Natural Groundwater Recharge and Terrestrial Water Storage Change in Arid Regions.</p>
+                    </div>
+                </li>
+                <li class="timeline-item right">
+                    <div class="content">
+                        <h3>AGU 2024</h3>
+                        <p>A. Gupta, A. Behrangi, <b>M. A. Farmani</b>, G.-Y. Niu. Implementing the Machine Learning Based Van-Genuchten Parametrization in the NextGen Framework for Improved Streamflow Prediction.</p>
+                    </div>
+                </li>
+                <li class="timeline-item left">
+                    <div class="content">
+                        <h3>CMWR 2024</h3>
+                        <p><b>M. A. Farmani</b>, A. Behrangi, A. Gupta, A. Tavakoly, M. Geheran, & G.-Y. Niu. What Are the Key Soil Hydrological Processes to Control Soil Moisture Memory?</p>
+                    </div>
+                </li>
+                <li class="timeline-item right">
+                    <div class="content">
+                        <h3>AGU 2023</h3>
+                        <p>G.-Y. Niu, Y. Fang, A. Alves Meira Neto, B. Guo, <b>M. A. Farmani</b>, & A. Behrangi. Representing Preferential Flow through Variably Saturated Soils with Surface Ponding in Noah-MP.</p>
+                    </div>
+                </li>
+                <li class="timeline-item left">
+                    <div class="content">
+                        <h3>AGU 2023</h3>
+                        <p>A. Gupta, A. Behrangi, <b>M. A. Farmani</b>, & G.-Y. Niu. Impact of Vegetation Dynamics on Hydrological Fluxes using Noah-MP Coupled to NextGen Modeling Framework: A Case Study of High-resolution Hydrological Simulations over California.</p>
+                    </div>
+                </li>
+            </ul>
         </div>
     </div>
-
+    
     <div class="footer">
         <p>Created by Mohammad Ali Farmani | Contact: <a href="mailto:farmani@arizona.edu" style="color: #f8c471;">farmani@arizona.edu</a></p>
     </div>
