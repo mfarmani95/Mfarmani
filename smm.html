@@ -219,6 +219,30 @@
     text-shadow: 0 0 10px #f8c471, 0 0 20px #4fd1c5;
   }
 
+  /* === Floating Back to Top Button === */
+  #backToTop {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    background: linear-gradient(135deg, #f8c471, #4fd1c5);
+    color: black;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 22px;
+    cursor: pointer;
+    box-shadow: 0 0 20px rgba(79,209,197,0.5);
+    transition: all 0.3s ease;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 1000;
+  }
+  #backToTop:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 25px rgba(248,196,113,0.8);
+  }
+
   /* === Animation === */
   @keyframes fadeIn {
     from { opacity: 0; transform: translateY(20px); }
@@ -282,7 +306,7 @@
 </div>
 
 <div class="content">
-  <!-- Your text and figures go here unchanged -->
+  <!-- your SMM text and figures here -->
   <h1 id="introduction">Soil Moisture Memory (SMM) and Its Role in Land Surface Modeling</h1>
   <p>Soil Moisture Memory (SMM) refers to the duration...</p>
   <figure>
@@ -296,15 +320,17 @@
     <img src="SMM_RESULTS.jpg" alt="Soil Moisture and Climate Interaction" />
     <figcaption>Figure 2. Long-term SMM derived from models...</figcaption>
   </figure>
-  <!-- (keep rest of your content same) -->
 </div>
+
+<!-- Floating Back to Top Button -->
+<button id="backToTop" title="Go to top"><i class="fas fa-arrow-up"></i></button>
 
 <div class="footer">
   <p>Created by Mohammad Ali Farmani | Contact: <a href="mailto:farmani@arizona.edu">farmani@arizona.edu</a></p>
 </div>
 
 <script>
-  // Sidebar highlight on scroll
+  // Sidebar highlight
   const sections = document.querySelectorAll("h1, h2");
   const navLinks = document.querySelectorAll(".sidebar a");
   window.addEventListener("scroll", () => {
@@ -317,6 +343,21 @@
       link.classList.remove("active");
       if (link.getAttribute("href") === `#${current}`) link.classList.add("active");
     });
+  });
+
+  // Back to top button
+  const backToTop = document.getElementById("backToTop");
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 300) {
+      backToTop.style.opacity = "1";
+      backToTop.style.visibility = "visible";
+    } else {
+      backToTop.style.opacity = "0";
+      backToTop.style.visibility = "hidden";
+    }
+  });
+  backToTop.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
   });
 </script>
 </body>
