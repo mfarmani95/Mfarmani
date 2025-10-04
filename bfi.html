@@ -162,7 +162,7 @@
     font-size: 18px;
   }
 
-  /* === Figures with Lightbox === */
+  /* === Figures with Lightbox + Hover Zoom === */
   figure {
     position: relative;
     display: inline-block;
@@ -178,12 +178,10 @@
     box-shadow: 0 0 20px rgba(248,196,113,0.2);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
-
   img:hover {
     transform: scale(1.05);
-    box-shadow: 0 0 25px rgba(248,196,113,0.6);
+    box-shadow: 0 0 30px rgba(248,196,113,0.7);
   }
-
   figcaption {
     text-align: center;
     font-size: 15px;
@@ -222,8 +220,6 @@
     transition: color 0.3s ease;
   }
   .close-btn:hover { color: white; }
-
-  /* Arrows */
   .nav-arrow {
     position: absolute;
     top: 50%;
@@ -237,6 +233,34 @@
   .nav-arrow:hover { color: white; }
   .arrow-left { left: 40px; }
   .arrow-right { right: 40px; }
+
+  /* === Back to Top Button === */
+  #backToTop {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    background: #f8c471;
+    color: black;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 22px;
+    cursor: pointer;
+    box-shadow: 0 0 20px rgba(248,196,113,0.6);
+    opacity: 0;
+    transition: all 0.4s ease;
+    z-index: 999;
+  }
+  #backToTop.show {
+    opacity: 1;
+    transform: scale(1);
+  }
+  #backToTop:hover {
+    background: white;
+    color: #f8c471;
+    box-shadow: 0 0 25px rgba(255,255,255,0.8);
+  }
 
   /* === Footer === */
   .footer {
@@ -256,13 +280,11 @@
     text-shadow: 0 0 10px #f8c471, 0 0 20px #f8c471;
   }
 
-  /* === Animation === */
   @keyframes fadeIn {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
   }
 
-  /* === Responsive === */
   @media (max-width: 900px) {
     .sidebar {
       position: relative;
@@ -313,19 +335,20 @@
   </div>
 
   <div class="content">
-    <h1 id="introduction">Introduction to Baseflow and Streamflow Prediction</h1>
-    <p>The accuracy of hydrological models in predicting streamflow, particularly in arid regions, depends on their ability to represent surface and subsurface runoff and groundwater recharge. Baseflow sustains rivers during dry periods, making its representation vital for reliable water predictions.</p>
+    <h1 id="introduction">Baseflow and Streamflow Prediction</h1>
+    <p>The accuracy of hydrological models in predicting streamflow, particularly in arid regions, depends on how well they represent surface and subsurface runoff and groundwater recharge. Baseflow sustains rivers during dry periods, making its accurate simulation essential.</p>
+
     <figure>
       <img src="BFI_MOdel.png" alt="Baseflow Example" />
-      <figcaption>Figure 1. Baseflow computed using Van Dijk (2010) method for GRDC 6731165 station data.</figcaption>
+      <figcaption>Figure 1. Baseflow computed using Van Dijk (2010) method.</figcaption>
     </figure>
 
     <h2 id="importance">Importance of Understanding Baseflow Generation</h2>
-    <p>Baseflow sustains streamflow during dry conditions. However, traditional LSMs often overestimate BFI due to simplified recharge and infiltration representations. Improving these processes enhances drought forecasts and water resource management.</p>
+    <p>Baseflow sustains streamflow during dry periods, yet traditional LSMs often overestimate it due to simplified soil processes. Improved physical representation enhances drought resilience and streamflow forecasting.</p>
 
     <figure>
       <img src="BFI_RESULTS.png" alt="BFI Results" />
-      <figcaption>Figure 2. Observed and modeled BFI at 390 gauges across the southwestern U.S.</figcaption>
+      <figcaption>Figure 2. Modeled vs observed BFI at 390 gauges across the Southwest U.S.</figcaption>
     </figure>
 
     <h2 id="findings">Key Findings</h2>
@@ -336,17 +359,18 @@
 
     <figure>
       <img src="KGE_RESULTS.png" alt="KGE Improvement" />
-      <figcaption>Figure 3. ML-derived parameters improved KGE vs. traditional lookup tables.</figcaption>
+      <figcaption>Figure 3. ML-derived parameters improved KGE vs lookup tables.</figcaption>
     </figure>
 
-    <h2 id="implications">Implications for Climate Science and Water Management</h2>
-    <p>Enhanced baseflow modeling improves drought resilience, climate forecasts, and water allocation, especially across arid basins.</p>
+    <h2 id="implications">Implications for Water Management</h2>
+    <p>Enhanced baseflow modeling improves drought prediction, water allocation, and climate modeling accuracy, especially across arid basins.</p>
 
-    <h2 id="conclusion">Conclusion & Future Directions</h2>
-    <p>Integrating improved hydraulic schemes and IMERG forcing enhanced BFI realism. The VGM + macropore configuration produced the most physically consistent outcomes for the southwestern U.S.</p>
+    <h2 id="conclusion">Conclusion</h2>
+    <p>The combination of improved hydraulic schemes and IMERG forcing produced the most physically realistic baseflow representation, advancing prediction skill in the arid Southwest.</p>
 
     <h2 id="reference">Reference</h2>
-    <p><b>Farmani, M. A.</b>, Tavakoly, A., Behrangi, A., Qiu, Y., Gupta, A., Jawad, M., Yousefi Sohi, H., Zhang, X., Geheran, M., & Niu, G.-Y. (2025). Improving streamflow predictions in the arid Southwestern United States through understanding of baseflow generation mechanisms. <i>Water Resources Research</i>. <a href="https://doi.org/10.1029/2024WR039479" target="_blank">https://doi.org/10.1029/2024WR039479</a></p>
+    <p><b>Farmani, M. A.</b> et al. (2025). Improving streamflow predictions in the arid Southwestern U.S. <i>Water Resources Research</i>. 
+    <a href="https://doi.org/10.1029/2024WR039479" target="_blank">https://doi.org/10.1029/2024WR039479</a></p>
   </div>
 
   <!-- Lightbox -->
@@ -357,20 +381,22 @@
     <span class="nav-arrow arrow-right">&#10095;</span>
   </div>
 
+  <!-- Back to Top Button -->
+  <button id="backToTop" title="Back to Top"><i class="fas fa-arrow-up"></i></button>
+
   <div class="footer">
-    <p>Created by Mohammad Ali Farmani | Contact: <a href="mailto:farmani@arizona.edu">farmani@arizona.edu</a></p>
-    <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https://yourgithubpage.com&count_bg=%2379C83D&title_bg=%23555555&icon=github.svg&icon_color=%23E7E7E7&title=Visitors&edge_flat=false" alt="Visitor count" />
+    <p>Created by Mohammad Ali Farmani | <a href="mailto:farmani@arizona.edu">farmani@arizona.edu</a></p>
   </div>
 
   <script>
-    // Highlight current section in sidebar
+    // Sidebar highlight
     const sections = document.querySelectorAll("h1, h2");
     const navLinks = document.querySelectorAll(".sidebar a");
     window.addEventListener("scroll", () => {
       let current = "";
-      sections.forEach(section => {
-        const top = section.offsetTop - 120;
-        if (scrollY >= top) current = section.getAttribute("id");
+      sections.forEach(sec => {
+        const top = sec.offsetTop - 120;
+        if (scrollY >= top) current = sec.getAttribute("id");
       });
       navLinks.forEach(link => {
         link.classList.remove("active");
@@ -378,7 +404,7 @@
       });
     });
 
-    // === Lightbox logic ===
+    // Lightbox functionality
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightbox-img');
     const closeBtn = document.querySelector('.close-btn');
@@ -386,20 +412,15 @@
     const rightArrow = document.querySelector('.arrow-right');
     const images = Array.from(document.querySelectorAll('.content img'));
     let currentIndex = 0;
-
     function showImage(index) {
       currentIndex = (index + images.length) % images.length;
       lightboxImg.src = images[currentIndex].src;
       lightboxImg.alt = images[currentIndex].alt;
     }
-
-    images.forEach((img, i) => {
-      img.addEventListener('click', () => {
-        lightbox.style.display = 'flex';
-        showImage(i);
-      });
-    });
-
+    images.forEach((img, i) => img.addEventListener('click', () => {
+      lightbox.style.display = 'flex';
+      showImage(i);
+    }));
     closeBtn.addEventListener('click', () => lightbox.style.display = 'none');
     leftArrow.addEventListener('click', () => showImage(currentIndex - 1));
     rightArrow.addEventListener('click', () => showImage(currentIndex + 1));
@@ -409,6 +430,14 @@
       else if (e.key === 'ArrowLeft') showImage(currentIndex - 1);
       else if (e.key === 'ArrowRight') showImage(currentIndex + 1);
     });
+
+    // Back to Top
+    const backToTop = document.getElementById("backToTop");
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 400) backToTop.classList.add("show");
+      else backToTop.classList.remove("show");
+    });
+    backToTop.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
   </script>
 </body>
 </html>
