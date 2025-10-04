@@ -1,167 +1,108 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Publications</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            color: white;
-            text-align: center;
-            font-size: 22px;
-            position: relative;
-            overflow-y: auto;
-        }
-        .video-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-        }
-        .video-container video {
-            width: 100vw;
-            height: 100vh;
-            object-fit: cover;
-        }
-        .container {
-            max-width: 900px;
-            margin: 120px auto;
-            padding: 20px;
-            background: rgba(0, 0, 0, 0.7);
-            border-radius: 10px;
-            position: relative;
-            z-index: 1;
-        }
-        h1, h2 {
-            color: #f8c471;
-            text-align: center;
-        }
-        .navbar {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            padding: 15px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-        }
-        .navbar a {
-            color: white;
-            margin: 0 20px;
-            text-decoration: none;
-            font-size: 20px;
-        }
-        .navbar a:hover {
-            color: #f8c471;
-        }
-        .dropdown {
-            position: relative;
-            display: inline-block;
-        }
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background: rgba(0, 0, 0, 0.9);
-            min-width: 160px;
-            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-            z-index: 1000;
-        }
-        .dropdown-content a {
-            color: white;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-            text-align: left;
-        }
-        .dropdown-content a:hover {
-            background-color: #575757;
-        }
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }        
-        .footer {
-            text-align: center;
-            padding: 20px;
-            background: rgba(0, 0, 0, 0.8);
-            color: white;
-            font-size: 16px;
-            position: relative;
-            width: 100%;
-            margin-top: 20px;
-            z-index: 1;
-        }
-    </style>
-</head>
-<body>
-    <div class="video-container">
-        <video autoplay muted loop playsinline>
-            <source src="PUB_BG.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-    </div>    
-    
-    <div class="navbar">
-        <a href="index.html"><i class="fas fa-home icon"></i> Home</a>
-        <a href="cv.html"><i class="fas fa-id-card icon"></i> CV</a>
-        <a href="publications.html"><i class="fas fa-book icon"></i> Publications</a>
-        <div class="dropdown">
-            <a href="#" class="dropbtn"><i class="fas fa-briefcase icon"></i> Projects</a>
-            <div class="dropdown-content">
-                <a href="smm.html">SMM</a>
-                <a href="bfi.html">BFI</a>
-            </div>
+<div class="section" id="papers">
+    <h2>Journal Papers</h2>
+
+    <div class="publication-card">
+        <div class="publication-title">
+            Improving streamflow predictions in the arid Southwestern United States through understanding of baseflow generation mechanisms
+        </div>
+        <div class="publication-authors">
+            <b style="color:#f8c471;">M. A. Farmani</b>, A. Tavakoly, A. Behrangi, Y. Qiu, A. Gupta, M. Jawad, H. Yousefi Sohi, X. Zhang, M. Geheran, & G.-Y. Niu
+        </div>
+        <div class="publication-journal">
+            Water Resources Research, 2025 (Advance online publication)
+        </div>
+        <div class="publication-actions">
+            <a href="https://doi.org/10.1029/2024WR039479" target="_blank">📄 DOI</a>
         </div>
     </div>
-    
-    <div class="container">
-        <h1>Publications</h1>
-         <p>
-         <a href="https://www.linkedin.com/in/mohammad-a-farmani-841b2b180/" target="_blank"><i class="fab fa-linkedin fa-2x"></i></a>
-         <a href="https://scholar.google.com/citations?user=CmjfHnIAAAAJ&hl=en" target="_blank" style="margin: 0 15px;"><i class="fas fa-graduation-cap fa-2x"></i></a>
-         <a href="https://www.researchgate.net/profile/Mohammad-Farmani-6/research" target="_blank"><i class="fab fa-researchgate fa-2x"></i></a>
-        </p>
 
-        <div class="section" id="papers">
-            <h2>Journal Papers</h2>
-
-            <p class="publication"><b>Farmani, M. A.</b>, Tavakoly, A., Behrangi, A., Qiu, Y., Gupta, A., Jawad, M., Yousefi Sohi, H., Zhang, X., Geheran, M., & Niu, G.-Y. (2025). Improving streamflow predictions in the arid Southwestern United States through understanding of baseflow generation mechanisms. <i>Water Resources Research</i>. Advance online publication. <a href="https://doi.org/10.1029/2024WR039479" target="_blank">https://doi.org/10.1029/2024WR039479</a></p>
-
-            <p class="publication"><b>Farmani, M. A.</b>, Behrangi, A., Gupta, A., Tavakoly, A., Geheran, M., & Niu, G.-Y. (2025). Do land models miss key soil hydrological processes controlling soil moisture memory? <i>Hydrology and Earth System Sciences</i>, 29, 547–566. <a href="https://doi.org/10.5194/hess-29-547-2025" target="_blank">https://doi.org/10.5194/hess-29-547-2025</a></p>
-
-            <p class="publication">Qiu, Y., Famiglietti, J. S., Behrangi, A., <b>Farmani, M. A.</b>, Yousefi Sohi, H., Gupta, A., Hung, F., Abdelmohsen, K., & Niu, G.-Y. (2025). The strong impact of precipitation intensity on groundwater recharge and terrestrial water storage change in Arizona, a typical dryland. <i>Geophysical Research Letters</i>, 52(14), e2025GL114747. <a href="https://doi.org/10.1029/2025GL114747" target="_blank">https://doi.org/10.1029/2025GL114747</a></p>
-
-            <p class="publication">Yousefi Sohi, H., <b>Farmani, M. A.</b>, & Behrangi, A. (2025). How do IMERG V07, IMERG V06, and ERA5 precipitation products perform over snow–ice-free and snow–ice-covered surfaces at a range of near-surface temperatures? <i>Journal of Hydrometeorology</i>, 26(7), 837–855. <a href="https://doi.org/10.1175/JHM-D-24-0110.1" target="_blank">https://doi.org/10.1175/JHM-D-24-0110.1</a></p>
-
-            <p class="publication">Jawad, M., Behrangi, A., <b>Farmani, M. A.</b>, Qiu, Y., Yousefi Sohi, H., Gupta, A., & Niu, G.-Y. (2025). Improved evapotranspiration estimation using the Penman-Monteith equation with a deep learning (DNN) model over the dry southwestern US: Comparison with ECOSTRESS, MODIS, and OpenET. <i>Journal of Hydrology</i>, 133460. <a href="https://doi.org/10.1016/j.jhydrol.2025.133460" target="_blank">https://doi.org/10.1016/j.jhydrol.2025.133460</a></p>
-
-            <p class="publication">Niu, G.-Y., Fang, Y., Alves Meira Neto, A., et al. (2024). Representing Preferential Flow through Variably-Saturated Soils with Surface Ponding in a Large-Scale Land Surface Model over the Conterminous US. <i>ESS Open Archive</i>. <a href="https://doi.org/10.22541/essoar.172286649.90332939/v1" target="_blank">https://doi.org/10.22541/essoar.172286649.90332939/v1</a></p>
-
-            <p class="publication">Agnihotri, J., Behrangi, A., Tavakoly, A., Geheran, M., <b>Farmani, M. A.</b>, & Niu, G.-Y. (2023). Higher frozen soil permeability represented in a hydrological model improves spring streamflow prediction from river basin to continental scales. <i>Water Resources Research</i>, 59(4), e2022WR033075. <a href="https://doi.org/10.1029/2022WR033075" target="_blank">https://doi.org/10.1029/2022WR033075</a></p>
-
+    <div class="publication-card">
+        <div class="publication-title">
+            Do land models miss key soil hydrological processes controlling soil moisture memory?
         </div>
-        
-        <div class="section" id="conferences">
-            <h2>Conference Presentations</h2>
-            <p class="publication"><b>Mohammad A. Farmani</b>, Ahmad A. Tavakoly, Ali Behrangi, et al. Improving Streamflow Predictions in the Dry Southwestern United States Through Understanding of Baseflow Generation Mechanisms. <b>AGU24</b>.</p>
-            <p class="publication">Hossein Yousefi Sohi, <b>Mohammad A. Farmani</b>, Ali Behrangi. How do IMERG V07, IMERG V06, and ERA5 Precipitation Products Perform Over Snow-ice-free and Snow-ice-covered Surfaces? <b>AGU24</b>.</p>
-            <p class="publication">Qiu, Y., Niu, G. Y., Behrangi, A., Famiglietti, J. S., <b>Farmani</b>, M., Gupta, A., et al. The Significant Impact of Precipitation Intensity on Natural Groundwater Recharge and Terrestrial Water Storage Change in Arid Regions. <b>AGU24</b>.</p>
-            <p class="publication">Gupta, A., Behrangi, A., <b>Farmani, M. A.</b>, Niu, G.-Y. Implementing the machine learning based Van-Genuchten parametrization in the NextGen Framework for improved streamflow prediction. <b>AGU24</b>.</p>
-            <p class="publication"><b>Farmani, M. A.</b>, Behrangi, A., Gupta, A., Tavakoly, A., Geheran, M., and Niu, G.-Y. What Are the Key Soil Hydrological Processes to Control Soil Moisture Memory? <b>CMWR 2024</b>.</p>
-            <p class="publication">Niu, G.-Y., Fang, Y., Alves Meira Neto, A., Guo, B., <b>Farmani, M.</b>, and Behrangi, A. Representing Preferential Flow through Variably Saturated Soils with Surface Ponding in Noah-MP. <b>AGU 2023, H11G-1343</b>.</p>
-            <p class="publication">Gupta, A., Behrangi, A., Farmani, M., and Niu, G.-Y., “Impact of Vegetation Dynamics on Hydrological Fluxes using Noah-MP Coupled to NextGen Modeling Framework: A Case Study of High-resolution Hydrological Simulations over California. <b>AGU 2023, H31V-1798</b>.</p>
+        <div class="publication-authors">
+            <b style="color:#f8c471;">M. A. Farmani</b>, A. Behrangi, A. Gupta, A. Tavakoly, M. Geheran, & G.-Y. Niu
+        </div>
+        <div class="publication-journal">
+            Hydrology and Earth System Sciences, 29, 547–566, 2025
+        </div>
+        <div class="publication-actions">
+            <a href="https://doi.org/10.5194/hess-29-547-2025" target="_blank">📄 DOI</a>
         </div>
     </div>
-    
-    <div class="footer">
-        <p>Created by Mohammad Ali Farmani | Contact: <a href="mailto:farmani@arizona.edu" style="color: #f8c471;">farmani@arizona.edu</a></p>
+
+    <div class="publication-card">
+        <div class="publication-title">
+            The strong impact of precipitation intensity on groundwater recharge and terrestrial water storage change in Arizona, a typical dryland
+        </div>
+        <div class="publication-authors">
+            Y. Qiu, J. S. Famiglietti, A. Behrangi, <b style="color:#f8c471;">M. A. Farmani</b>, H. Yousefi Sohi, A. Gupta, F. Hung, K. Abdelmohsen, & G.-Y. Niu
+        </div>
+        <div class="publication-journal">
+            Geophysical Research Letters, 52(14), e2025GL114747, 2025
+        </div>
+        <div class="publication-actions">
+            <a href="https://doi.org/10.1029/2025GL114747" target="_blank">📄 DOI</a>
+        </div>
     </div>
-</body>
-</html>
+
+    <div class="publication-card">
+        <div class="publication-title">
+            How do IMERG V07, IMERG V06, and ERA5 precipitation products perform over snow–ice-free and snow–ice-covered surfaces at a range of near-surface temperatures?
+        </div>
+        <div class="publication-authors">
+            H. Yousefi Sohi, <b style="color:#f8c471;">M. A. Farmani</b>, & A. Behrangi
+        </div>
+        <div class="publication-journal">
+            Journal of Hydrometeorology, 26(7), 837–855, 2025
+        </div>
+        <div class="publication-actions">
+            <a href="https://doi.org/10.1175/JHM-D-24-0110.1" target="_blank">📄 DOI</a>
+        </div>
+    </div>
+
+    <div class="publication-card">
+        <div class="publication-title">
+            Improved evapotranspiration estimation using the Penman-Monteith equation with a deep learning (DNN) model over the dry southwestern US: Comparison with ECOSTRESS, MODIS, and OpenET
+        </div>
+        <div class="publication-authors">
+            M. Jawad, A. Behrangi, <b style="color:#f8c471;">M. A. Farmani</b>, Y. Qiu, H. Yousefi Sohi, A. Gupta, & G.-Y. Niu
+        </div>
+        <div class="publication-journal">
+            Journal of Hydrology, 133460, 2025
+        </div>
+        <div class="publication-actions">
+            <a href="https://doi.org/10.1016/j.jhydrol.2025.133460" target="_blank">📄 DOI</a>
+        </div>
+    </div>
+
+    <div class="publication-card">
+        <div class="publication-title">
+            Representing Preferential Flow through Variably-Saturated Soils with Surface Ponding in a Large-Scale Land Surface Model over the Conterminous US
+        </div>
+        <div class="publication-authors">
+            G.-Y. Niu, Y. Fang, A. Alves Meira Neto, et al., including <b style="color:#f8c471;">M. A. Farmani</b>
+        </div>
+        <div class="publication-journal">
+            ESS Open Archive, 2024
+        </div>
+        <div class="publication-actions">
+            <a href="https://doi.org/10.22541/essoar.172286649.90332939/v1" target="_blank">📄 DOI</a>
+        </div>
+    </div>
+
+    <div class="publication-card">
+        <div class="publication-title">
+            Higher frozen soil permeability represented in a hydrological model improves spring streamflow prediction from river basin to continental scales
+        </div>
+        <div class="publication-authors">
+            J. Agnihotri, A. Behrangi, A. Tavakoly, M. Geheran, <b style="color:#f8c471;">M. A. Farmani</b>, & G.-Y. Niu
+        </div>
+        <div class="publication-journal">
+            Water Resources Research, 59(4), e2022WR033075, 2023
+        </div>
+        <div class="publication-actions">
+            <a href="https://doi.org/10.1029/2022WR033075" target="_blank">📄 DOI</a>
+        </div>
+    </div>
+</div>
