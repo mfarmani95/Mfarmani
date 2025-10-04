@@ -1,229 +1,312 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BFI - BaseFlow Index</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            color: white;
-            background: rgba(0, 0, 0, 0.9);
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-        .navbar {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            padding: 15px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-        }
-        .navbar a {
-            color: white;
-            margin: 0 20px;
-            text-decoration: none;
-            font-size: 20px;
-        }
-        .navbar a:hover {
-            color: #f8c471;
-        }
-        .sidebar {
-            width: 200px;
-            background: rgba(0, 0, 0, 0.8);
-            padding: 20px;
-            position: fixed;
-            height: 100%;
-            overflow-y: auto;
-            left: 0;
-            top: 60px;
-        }
-        .sidebar a {
-            display: block;
-            color: white;
-            text-decoration: none;
-            padding: 10px 0;
-        }
-        .sidebar a:hover {
-            color: #f8c471;
-        }
-        .main-container {
-            display: flex;
-            flex-direction: row;
-            width: 100%;
-        }
-        .content {
-            margin-left: 260px;
-            padding: 20px;
-            flex-grow: 1;
-            max-width: calc(100% - 260px);
-            box-sizing: border-box;
-            overflow-x: hidden;
-        }
-        h1, h2 {
-            color: #f8c471;
-            margin-top: 80px;
-            text-align: center;
-        }
-        p {
-            text-align: justify;
-            line-height: 1.6;
-        }
-        img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-            margin: 10px auto;
-        }
-        .footer {
-            text-align: center;
-            padding: 20px;
-            background: rgba(0, 0, 0, 0.8);
-            color: white;
-            font-size: 16px;
-            width: 100%;
-            position: relative;
-            bottom: 0;
-        }
-        @media screen and (max-width: 1024px) {
-            .sidebar {
-                position: absolute;
-                width: 250px;
-                height: auto;
-                overflow-y: auto;
-            }
-            .content {
-                margin-left: 260px;
-                max-width: calc(100% - 260px);
-            }
-        }
-        @media screen and (max-width: 768px) {
-            .sidebar {
-                width: 100%;
-                height: auto;
-                position: relative;
-                top: 0;
-            }
-            .main-container {
-                flex-direction: column;
-            }
-            .content {
-                margin-left: 0;
-                max-width: 100%;
-            }
-        }
-        .navbar a, .dropdown {
-            color: white;
-            margin: 0 20px;
-            text-decoration: none;
-            font-size: 20px;
-            position: relative;
-        }
-        .navbar a:hover, .dropdown:hover .dropbtn {
-            color: #f8c471;
-        }
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background: rgba(0, 0, 0, 0.9);
-            min-width: 160px;
-            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-            z-index: 1000;
-        }
-        .dropdown-content a {
-            color: white;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-            text-align: left;
-        }
-        .dropdown-content a:hover {
-            background-color: #575757;
-        }
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }      
-    </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>BFI – BaseFlow Index | Mohammad Ali Farmani</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+<style>
+  body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: white;
+    overflow-x: hidden;
+    background: black;
+  }
+
+  /* === Background === */
+  .video-container {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+  }
+  .video-container video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .video-container::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(135deg, rgba(0,0,0,0.9), rgba(0,0,0,0.7));
+  }
+
+  /* === Navbar === */
+  .navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    padding: 15px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    z-index: 1000;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.6);
+  }
+  .navbar a, .navbar .dropbtn {
+    color: white;
+    font-size: 18px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    position: relative;
+    transition: all 0.3s ease;
+  }
+  .navbar a:hover, .navbar .dropbtn:hover {
+    color: #f8c471;
+  }
+  .navbar a::after, .navbar .dropbtn::after {
+    content: "";
+    height: 2px;
+    background: #f8c471;
+    width: 0;
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    transition: width 0.3s ease;
+  }
+  .navbar a:hover::after, .navbar .dropbtn:hover::after {
+    width: 100%;
+  }
+
+  /* Dropdown */
+  .dropdown {
+    position: relative;
+  }
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background: rgba(0,0,0,0.95);
+    border-radius: 8px;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.4);
+    z-index: 1000;
+  }
+  .dropdown-content a {
+    color: white;
+    padding: 10px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  .dropdown-content a:hover {
+    background: #575757;
+  }
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+
+  /* === Sidebar === */
+  .sidebar {
+    position: fixed;
+    top: 80px;
+    left: 0;
+    width: 230px;
+    height: calc(100% - 80px);
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(6px);
+    border-right: 1px solid rgba(255,255,255,0.15);
+    padding: 25px 15px;
+    overflow-y: auto;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.4);
+  }
+  .sidebar h2 {
+    color: #f8c471;
+    text-align: center;
+    margin-bottom: 15px;
+  }
+  .sidebar a {
+    display: block;
+    color: white;
+    padding: 10px;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+  }
+  .sidebar a:hover {
+    background: rgba(248,196,113,0.2);
+    box-shadow: 0 0 8px rgba(248,196,113,0.4);
+  }
+
+  /* === Content === */
+  .content {
+    margin-left: 260px;
+    padding: 30px 60px;
+    background: rgba(0,0,0,0.65);
+    border-radius: 15px;
+    margin-top: 100px;
+    margin-right: 40px;
+    box-shadow: 0 0 25px rgba(248,196,113,0.3);
+    animation: fadeIn 1.2s ease;
+  }
+  h1, h2 {
+    color: #f8c471;
+    text-shadow: 0 0 10px rgba(248,196,113,0.5);
+    text-align: center;
+  }
+  p {
+    text-align: justify;
+    line-height: 1.7;
+    font-size: 18px;
+  }
+
+  /* === Figures === */
+  img {
+    max-width: 95%;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.3);
+    display: block;
+    margin: 20px auto 10px;
+    box-shadow: 0 0 20px rgba(248,196,113,0.2);
+    transition: transform 0.3s ease;
+  }
+  img:hover {
+    transform: scale(1.03);
+  }
+  figcaption {
+    text-align: center;
+    font-size: 15px;
+    color: #ddd;
+    margin-bottom: 30px;
+  }
+
+  /* === Footer === */
+  .footer {
+    text-align: center;
+    padding: 25px;
+    background: rgba(0,0,0,0.7);
+    font-size: 16px;
+    border-top: 1px solid rgba(255,255,255,0.2);
+    box-shadow: 0 -2px 20px rgba(0,0,0,0.5);
+  }
+  .footer a {
+    color: #f8c471;
+    text-decoration: none;
+  }
+  .footer a:hover {
+    color: #fff;
+    text-shadow: 0 0 10px #f8c471, 0 0 20px #f8c471;
+  }
+
+  /* === Animation === */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* === Scroll Highlight === */
+  .sidebar a.active {
+    color: #f8c471;
+    font-weight: bold;
+    text-shadow: 0 0 10px rgba(248,196,113,0.6);
+  }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    .sidebar {
+      position: relative;
+      width: 100%;
+      height: auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .content {
+      margin-left: 0;
+      margin-right: 0;
+      padding: 25px;
+    }
+  }
+</style>
 </head>
+
 <body>
-    <div class="navbar">
-        <a href="index.html"><i class="fas fa-home icon"></i> Home</a>
-        <a href="cv.html"><i class="fas fa-id-card icon"></i> CV</a>
-        <a href="publications.html"><i class="fas fa-book icon"></i> Publications</a>
-        <div class="dropdown">
-            <a href="#" class="dropbtn"><i class="fas fa-briefcase icon"></i> Projects</a>
-            <div class="dropdown-content">
-                <a href="smm.html">SMM</a>
-                <a href="bfi.html">BFI</a>
-            </div>
-        </div>
+  <div class="video-container">
+    <video autoplay muted loop playsinline>
+      <source src="PUB_BG.mp4" type="video/mp4" />
+    </video>
+  </div>
+
+  <div class="navbar">
+    <a href="index.html"><i class="fas fa-home"></i> Home</a>
+    <a href="cv.html"><i class="fas fa-id-card"></i> CV</a>
+    <a href="publications.html"><i class="fas fa-book"></i> Publications</a>
+    <div class="dropdown">
+      <a href="#" class="dropbtn"><i class="fas fa-briefcase"></i> Projects ▾</a>
+      <div class="dropdown-content">
+        <a href="smm.html">SMM</a>
+        <a href="bfi.html">BFI</a>
+      </div>
     </div>
+  </div>
 
-    <div class="sidebar">
-        <h2>Navigation</h2>
-        <a href="#introduction">Introduction</a>
-        <a href="#importance">Baseflow Generation</a>
-        <a href="#findings">Key Findings</a>
-        <a href="#implications">Implications for Water Management</a>
-        <a href="#conclusion">Conclusion & Future Directions</a>
-        <a href="#reference">Reference</a>
-    </div>
+  <div class="sidebar">
+    <h2>Navigation</h2>
+    <a href="#introduction">Introduction</a>
+    <a href="#importance">Baseflow Generation</a>
+    <a href="#findings">Key Findings</a>
+    <a href="#implications">Implications</a>
+    <a href="#conclusion">Conclusion</a>
+    <a href="#reference">Reference</a>
+  </div>
 
-    <div class="content">
-        <h1 id="introduction">Introduction to Baseflow and Streamflow Prediction</h1>
-        <p>The accuracy of continental-scale hydrological models in predicting streamflow, particularly in dry regions, hinges on their ability to simulate various water balance components, including surface and subsurface runoff, soil moisture retention, as well as groundwater recharge and discharge. Runoff, which includes both surface and subsurface components, plays a critical role in the distribution of water between immediate streamflow and groundwater recharge, impacting baseflow generation. In dry regions, where precipitation is sparse, subsurface runoff becomes especially relevant, as it often contributes to baseflow—a key element in sustaining streamflow during dry periods. Therefore, examining both surface and subsurface runoff provides insight into how different physical process representations in models affect baseflow estimates.</p>
-        <img src="BFI_MOdel.png" alt="Baseflow Example ">
-        <figcaption>Figure 1. Baseflow computed using the method suggested by Van Dijk (2010) for GRDC 6731165 station data to compare with Beck et al (2013).</figcaption>
+  <div class="content">
+    <h1 id="introduction">Introduction to Baseflow and Streamflow Prediction</h1>
+    <p>The accuracy of continental-scale hydrological models in predicting streamflow ...</p>
+    <img src="BFI_MOdel.png" alt="Baseflow Example" />
+    <figcaption>Figure 1. Baseflow computed using the method suggested by Van Dijk (2010) for GRDC 6731165 station data.</figcaption>
 
+    <h2 id="importance">Importance of Understanding Baseflow Generation</h2>
+    <p>Baseflow plays a significant role in sustaining streamflow during dry periods...</p>
+    <img src="BFI_RESULTS.png" alt="BFI Results" />
+    <figcaption>Figure 2. BFI at 390 gauges across the southwestern region derived from observations and models.</figcaption>
 
-        <h2 id="importance">Importance of Understanding Baseflow Generation</h2>
-        <p>Baseflow plays a significant role in sustaining streamflow during dry periods, yet traditional Land Surface Models (LSMs) struggle to accurately represent groundwater recharge, soil moisture retention, and infiltration processes. Overestimation of the Baseflow Index (BFI) results in unrealistic low-flow simulations, highlighting the need for improved hydrological modeling approaches.<p>
-        <p>In dry regions where precipitation is intermittent and highly variable, baseflow sustains river flows during dry periods. However, traditional LSMs frequently overestimate baseflow, leading to inaccurate predictions of low-flow conditions and groundwater recharge rates. This study hypothesizes that improving the physical representation of baseflow processes in LSMs will lead to better streamflow predictions. By refining soil water retention schemes, macropore flow mechanisms, and surface ponding processes, we aim to enhance the ability of LSMs to capture baseflow dynamics accurately.</p>
-        <img src="BFI_RESULTS.png" alt="BFI Results">
-        <figcaption>Figure 2. BFI at 390 gauges across the southwestern region (a) derived from the USGS streamflow as well as those from the model experiments (b) NWM; (c) CH; (d) VGM; (e) DPM; and (f) VGM0..</figcaption>
-        
-        <h2 id="findings">Key Findings</h2>
-        <p><b>1. Soil Water Retention Curves Impact Baseflow Representation</b> - Comparing the recharge and subsurface runoff for CH and VG models revealed that the CH model exhibits higher recharge and greater subsurface runoff than the VG model. Since subsurface runoff is a primary source of baseflow, the higher values in the CH model led to an overestimation of baseflow. Moreover, the VG model showed higher surface runoff than the CH model, meaning less water contributes to baseflow. Therefore, the CH model's tendency to overestimate baseflow and the Baseflow Index (BFI) can be attributed to its higher simulated recharge and subsurface runoff.</p>
-        <p>In low BFI regions, the higher surface runoff produced by VG results in less water infiltrating into the deep soil and recharging the groundwater. Hence, VG could generate lower baseflow and BFI in these regions. In contrast, CH shows more recharge into groundwater and consequently higher BFI.</p>
-        <p><b>2. Role of Soil Macropores and Surface Ponding</b> - The presence of soil macropores in DPM experiment facilitated rapid infiltration and preferential flow through the unsaturated zone, groundwater recharge, and thus baseflow (Mohammed, Cey et al. 2021). In our study, DPM tends to overestimate BFI in low-BFI regions whereas better captured high BFI values. The presence of macropores increased drainage from the surface to the root zone, potentially reducing surface layer moisture retention and increasing groundwater recharge and discharge. This enhances predictions in wet, high-BFI regions but may produce unrealistic results in low-BFI areas. Hence calibration of the soil macropore volume fraction, which is parameterized as a linear function of soil organic matter, is critical to achieve more realistic results. Also, the relationship between soil macropore volume fraction and soil organic matter and other coarse materials (gravels, stones) are worth further investigation.</p>
-        <p>Including a ponding threshold, as seen in the VGM scenario with a 50 mm maximum ponding depth, is crucial for improving baseflow generation, especially in high-BFI regions. This configuration allows more water to remain on the surface longer for infiltration before running off, which enhances infiltration and groundwater recharge and positively impacts baseflow generation.</p>
-        <p><b>3. Hydraulic Parameterization Influences Streamflow Predictions</b> - Saturated hydraulic conductivity and the soil water retention curve parameters affect infiltration rate at the soil surface, soil moisture movement, recharge into groundwater, and streamflow generation, especially in timing and peak of the streamflow (ML’s KGE). However, we could not observe significant effect of hydraulic parameter on generated BFI. Accurate estimation of these parameters can greatly improve streamflow predictions but is very challenging due to the complex soil texture, structure, and presence of coarse materials (See (Gupta, Papritz et al. 2022)) . ML-derived parameters showed a 20% improvement KGE, better matching observed streamflow patterns than traditional lookup tables used by the NWM. However, the limited geographic and climatic distribution of the training dataset contributing in generating ML parameters, may affect its generalization, potentially leading to biases in the predicted streamflow.</p>
-        <p><b>4. Precipitation Data Selection Matters</b> - The choice of precipitation datasets also significantly impacts the accuracy of baseflow predictions. Our results indicated that using the IMERG dataset improves the accuracy of BFI predictions in regions where NLDAS-2 tends to overestimate BFI. The IMERG experiments successfully captured lower BFI values in regions where the VGM configuration with AORC and NLDAS-2 precipitation overestimate them, particularly in the coastal regions of the California River Basin.</p>
+    <h2 id="findings">Key Findings</h2>
+    <p><b>1. Soil Water Retention Curves Impact Baseflow Representation</b> – Comparing recharge and subsurface runoff...</p>
+    <p><b>2. Role of Soil Macropores and Surface Ponding</b> – The presence of soil macropores facilitates infiltration...</p>
+    <p><b>3. Hydraulic Parameterization Influences Streamflow Predictions</b> – Saturated hydraulic conductivity affects infiltration rate...</p>
+    <p><b>4. Precipitation Data Selection Matters</b> – The choice of precipitation datasets significantly impacts the accuracy of BFI predictions.</p>
+    <img src="KGE_RESULTS.png" alt="KGE Improvement" />
+    <figcaption>Figure 3. KGE improvement of ML against NWM. ML configuration achieved the highest performance.</figcaption>
 
-        <img src="KGE_RESULTS.png" alt="KGE Improvement">
-        <figcaption>Figure 3 KGE Improvement of ML against NWM. ML was chosen since it outperformed other hydrological process and hydraulic parameter scenarios. </figcaption>
-        
-        <h2 id="implications">Implications for Climate Science and Water Management</h2>
-        <p>These findings improve streamflow forecasting, hydrological modeling, and climate resilience strategies, particularly in arid regions.</p>
-        <p><b>1. More Accurate Streamflow Forecasts for Water Management</b>Improved baseflow modeling enables better drought predictions and water allocation strategies, particularly in water-scarce regions.</p>
-        <p><b>2. Enhanced Climate Models and Hydrological Forecasting</b> Refining baseflow and soil moisture dynamics enhances climate models, improving seasonal water availability forecasts.</p>
-        <p><b>3. Flood and Drought Preparedness</b> Better representation of surface infiltration, macropore flow, and groundwater recharge leads to more reliable flood risk assessments and drought response planning.</p>
-        <p><b>4. Optimized Hydrological Model Development</b> Implementing machine learning-driven soil parameters and refined precipitation datasets could significantly enhance streamflow predictions in operational hydrological models.</p>
-        
-        <h2 id="conclusion">Conclusion & Future Directions</h2>
-        <p>This study emphasizes the critical role of baseflow generation processes in streamflow prediction accuracy, especially in arid regions of the southwestern US. Our modeling results suggest that the streamflow prediction skill are sensitive to how baseflow generation is represented in terms of model physics, associated hydraulic parameters, and precipitation forcing data. Using a Noah-MP with enhanced hydrology, we show that the choice of hydrological processes, hydraulic parameters, and precipitation datasets significantly affects streamflow prediction accuracy over dry southwestern US.</p>
-        <p>The Van-Genuchten hydraulic scheme is more effective than the Brooks-Corey in modeling baseflow and BFI, particularly in dry regions where the soil is naturally dry, and the BFI is low. This scheme reduced the BFI overestimation produced by the Brooks-Corey with the CH hydraulic parameters (by the Noah-MP look-up table) and NWM with calibrated hydraulic parameters by better capturing groundwater recharge and discharge processes. Additionally, with the machine learning-derived soil water retention curve parameters, VGM significantly improves the streamflow predictions, offering a better match with the observed streamflow compared to the look-up table and pedotransfer functions. In general, our finding implies improving the baseflow in large-scale models like Noah-MP leads to better prediction of streamflow as observed in VGM configuration.</p>
-        <p>The study also highlights the importance of incorporating soil macropores, DPM experiment, and ponding depth thresholds, VGM and VGM0 experiments, in modeling, as these factors greatly influence infiltration, percolation, recharge and baseflow generation. A ponding depth greater than zero increases BFI by allowing more water to infiltrate, especially in wet regions. Additionally, the presence of macropores enhances drainage from the surface to the root zone, increasing baseflow and BFI. However, the benefits of these features vary by region. While uncalibrated macropore fraction improve predictions in high-BFI areas, they may lead to overestimations of baseflow in low-BFI regions.</p>
-        <p>Furthermore, the choice of precipitation dataset was shown to be crucial, with the IMERG dataset offering more accurate baseflow predictions in regions where traditional datasets like NLDAS-2 tended to overestimate BFI. Indeed, heavy precipitation facilitates the infiltration into deeper soil and groundwater recharge. This finding suggests that high-resolution precipitation data is essential for improving the accuracy of streamflow predictions in areas with complex hydrological conditions.</p>
-        <p>Overall, the study demonstrates that careful selection of hydrological processes (soil hydraulic schemes), hydraulic parameters, and precipitation datasets can significantly enhance the performance of hydrologic models in predicting streamflow, particularly in arid regions. These findings provide valuable insights for future research and model development, emphasizing the need to optimize model configurations before calibration to achieve more reliable streamflow predictions.</p>
-        <h2 id="reference">Reference</h2>
-        <p><b>Farmani, M. A.</b>, Tavakoly, A., Behrangi, A., Qiu, Y., Gupta, A., Jawad, M., Yousefi Sohi, H., Zhang, X., Geheran, M., & Niu, G.-Y. (2025). Improving streamflow predictions in the arid Southwestern United States through understanding of baseflow generation mechanisms. <i>Water Resources Research</i>. Advance online publication. <a href="https://doi.org/10.1029/2024WR039479" target="_blank">https://doi.org/10.1029/2024WR039479</a></p>
-    
-    </div>
-    
-    <div class="footer">
-        <p>Created by Mohammad Ali Farmani | Contact: <a href="mailto:farmani@arizona.edu" style="color: #f8c471;">farmani@arizona.edu</a></p>
-        <a href="https://hits.seeyoufarm.com" target="_blank">
-            <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fyourgithubpage.com&count_bg=%2379C83D&title_bg=%23555555&icon=github.svg&icon_color=%23E7E7E7&title=Visitors&edge_flat=false" alt="Visitor count">
-        </a>
-    </div>
+    <h2 id="implications">Implications for Climate Science and Water Management</h2>
+    <p>These findings improve streamflow forecasting, hydrological modeling, and climate resilience strategies...</p>
+
+    <h2 id="conclusion">Conclusion & Future Directions</h2>
+    <p>This study emphasizes the critical role of baseflow generation processes in streamflow prediction accuracy...</p>
+
+    <h2 id="reference">Reference</h2>
+    <p><b>Farmani, M. A.</b>, Tavakoly, A., Behrangi, A., Qiu, Y., Gupta, A., Jawad, M., Yousefi Sohi, H., Zhang, X., Geheran, M., & Niu, G.-Y. (2025). Improving streamflow predictions in the arid Southwestern United States through understanding of baseflow generation mechanisms. <i>Water Resources Research</i>. <a href="https://doi.org/10.1029/2024WR039479" target="_blank">https://doi.org/10.1029/2024WR039479</a></p>
+  </div>
+
+  <div class="footer">
+    <p>Created by Mohammad Ali Farmani | Contact: <a href="mailto:farmani@arizona.edu">farmani@arizona.edu</a></p>
+    <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https://yourgithubpage.com&count_bg=%2379C83D&title_bg=%23555555&icon=github.svg&icon_color=%23E7E7E7&title=Visitors&edge_flat=false" alt="Visitor count" />
+  </div>
+
+  <script>
+    // Highlight current section in sidebar
+    const sections = document.querySelectorAll("h1, h2");
+    const navLinks = document.querySelectorAll(".sidebar a");
+
+    window.addEventListener("scroll", () => {
+      let current = "";
+      sections.forEach((section) => {
+        const top = section.offsetTop - 120;
+        if (scrollY >= top) current = section.getAttribute("id");
+      });
+      navLinks.forEach((link) => {
+        link.classList.remove("active");
+        if (link.getAttribute("href") === `#${current}`) link.classList.add("active");
+      });
+    });
+  </script>
 </body>
 </html>
