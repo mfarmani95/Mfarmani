@@ -157,19 +157,44 @@
     font-size: 18px;
   }
 
-  /* === Figures === */
-  img {
-    max-width: 95%;
-    border-radius: 12px;
-    border: 1px solid rgba(255,255,255,0.3);
-    display: block;
-    margin: 20px auto 10px;
-    box-shadow: 0 0 20px rgba(248,196,113,0.2);
-    transition: transform 0.3s ease;
-  }
-  img:hover {
-    transform: scale(1.03);
-  }
+/* === Figures === */
+figure {
+  position: relative;
+  display: inline-block;
+  margin: 25px auto 40px;
+  text-align: center;
+}
+
+img {
+  width: 40%; /* smaller default size */
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.3);
+  display: block;
+  margin: 20px auto 10px;
+  box-shadow: 0 0 20px rgba(248,196,113,0.2);
+  transition: all 0.4s ease-in-out;
+  cursor: zoom-in;
+  transform-origin: center center;
+  z-index: 1;
+}
+
+/* Hover enlargement + glow */
+img:hover {
+  transform: scale(1.8);
+  z-index: 10;
+  box-shadow: 0 0 40px rgba(248,196,113,0.6);
+  border-color: #f8c471;
+}
+
+/* optional dark fade around zoomed image */
+img:hover::after {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(0,0,0,0.6);
+  z-index: 5;
+}
+
   figcaption {
     text-align: center;
     font-size: 15px;
