@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>BFI – BaseFlow Index | Mohammad Ali Farmani</title>
+<title>BFI – Baseflow Index | Mohammad Ali Farmani</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 <style>
   body {
@@ -134,6 +134,11 @@
     background: rgba(248,196,113,0.2);
     box-shadow: 0 0 8px rgba(248,196,113,0.4);
   }
+  .sidebar a.active {
+    color: #f8c471;
+    font-weight: bold;
+    text-shadow: 0 0 10px rgba(248,196,113,0.6);
+  }
 
   /* === Content === */
   .content {
@@ -157,73 +162,66 @@
     font-size: 18px;
   }
 
-figure {
-  position: relative;
-  display: inline-block;
-  margin: 25px auto 40px;
-  text-align: center;
-  cursor: pointer;
-}
+  /* === Figures with Lightbox === */
+  figure {
+    position: relative;
+    display: inline-block;
+    margin: 25px auto 40px;
+    text-align: center;
+    cursor: pointer;
+  }
 
-img {
-  width: 35%; /* default smaller preview size */
-  border-radius: 12px;
-  border: 1px solid rgba(255,255,255,0.3);
-  display: block;
-  margin: 20px auto 10px;
-  box-shadow: 0 0 20px rgba(248,196,113,0.2);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
+  img {
+    width: 40%;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.3);
+    box-shadow: 0 0 20px rgba(248,196,113,0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
 
-img:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 25px rgba(248,196,113,0.6);
-}
+  img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px rgba(248,196,113,0.6);
+  }
 
-figcaption {
-  text-align: center;
-  font-size: 15px;
-  color: #ddd;
-  margin-bottom: 30px;
-}
+  figcaption {
+    text-align: center;
+    font-size: 15px;
+    color: #ddd;
+    margin-bottom: 30px;
+  }
 
-/* === Lightbox === */
-.lightbox {
-  display: none;
-  position: fixed;
-  z-index: 9999;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: rgba(0,0,0,0.9);
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-}
-
-.lightbox img {
-  max-width: 85%;
-  max-height: 85%;
-  border-radius: 12px;
-  box-shadow: 0 0 40px rgba(248,196,113,0.5);
-  animation: zoomIn 0.3s ease;
-}
-
-@keyframes zoomIn {
-  from { transform: scale(0.8); opacity: 0; }
-  to { transform: scale(1); opacity: 1; }
-}
-
-.close-btn {
-  position: absolute;
-  top: 20px; right: 30px;
-  color: #f8c471;
-  font-size: 40px;
-  cursor: pointer;
-  transition: color 0.3s ease;
-}
-.close-btn:hover {
-  color: white;
-}
+  /* === Lightbox === */
+  .lightbox {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.9);
+    justify-content: center;
+    align-items: center;
+  }
+  .lightbox img {
+    max-width: 85%;
+    max-height: 85%;
+    border-radius: 12px;
+    box-shadow: 0 0 40px rgba(248,196,113,0.5);
+    animation: zoomIn 0.3s ease;
+  }
+  @keyframes zoomIn {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+  }
+  .close-btn {
+    position: absolute;
+    top: 20px; right: 30px;
+    color: #f8c471;
+    font-size: 40px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+  }
+  .close-btn:hover { color: white; }
 
   /* === Footer === */
   .footer {
@@ -249,14 +247,7 @@ figcaption {
     to { opacity: 1; transform: translateY(0); }
   }
 
-  /* === Scroll Highlight === */
-  .sidebar a.active {
-    color: #f8c471;
-    font-weight: bold;
-    text-shadow: 0 0 10px rgba(248,196,113,0.6);
-  }
-
-  /* Responsive */
+  /* === Responsive === */
   @media (max-width: 900px) {
     .sidebar {
       position: relative;
@@ -271,8 +262,11 @@ figcaption {
       margin-right: 0;
       padding: 25px;
     }
+    img { width: 80%; }
   }
 </style>
+</head>
+
 <body>
   <div class="video-container">
     <video autoplay muted loop playsinline>
@@ -305,40 +299,47 @@ figcaption {
 
   <div class="content">
     <h1 id="introduction">Introduction to Baseflow and Streamflow Prediction</h1>
-    <p>The accuracy of continental-scale hydrological models in predicting streamflow, particularly in dry regions, hinges on their ability to simulate various water balance components, including surface and subsurface runoff, soil moisture retention, as well as groundwater recharge and discharge. Runoff, which includes both surface and subsurface components, plays a critical role in the distribution of water between immediate streamflow and groundwater recharge, impacting baseflow generation. In dry regions, where precipitation is sparse, subsurface runoff becomes especially relevant, as it often contributes to baseflow—a key element in sustaining streamflow during dry periods. Therefore, examining both surface and subsurface runoff provides insight into how different physical process representations in models affect baseflow estimates.</p>
-    <img src="BFI_MOdel.png" alt="Baseflow Example" />
-    <figcaption>Figure 1. Baseflow computed using the method suggested by Van Dijk (2010) for GRDC 6731165 station data.</figcaption>
+    <p>The accuracy of hydrological models in predicting streamflow, particularly in arid regions, depends on their ability to represent surface and subsurface runoff and groundwater recharge. Baseflow sustains rivers during dry periods, making its representation vital for reliable water predictions.</p>
+    <figure>
+      <img src="BFI_MOdel.png" alt="Baseflow Example" />
+      <figcaption>Figure 1. Baseflow computed using Van Dijk (2010) method for GRDC 6731165 station data.</figcaption>
+    </figure>
 
     <h2 id="importance">Importance of Understanding Baseflow Generation</h2>
-    <p>Baseflow plays a significant role in sustaining streamflow during dry periods, yet traditional Land Surface Models (LSMs) struggle to accurately represent groundwater recharge, soil moisture retention, and infiltration processes. Overestimation of the Baseflow Index (BFI) results in unrealistic low-flow simulations, highlighting the need for improved hydrological modeling approaches.</p>
-    <p>In dry regions where precipitation is intermittent and highly variable, baseflow sustains river flows during dry periods. However, traditional LSMs frequently overestimate baseflow, leading to inaccurate predictions of low-flow conditions and groundwater recharge rates. This study hypothesizes that improving the physical representation of baseflow processes in LSMs will lead to better streamflow predictions. By refining soil water retention schemes, macropore flow mechanisms, and surface ponding processes, we aim to enhance the ability of LSMs to capture baseflow dynamics accurately.</p>
-    <img src="BFI_RESULTS.png" alt="BFI Results" />
-    <figcaption>Figure 2. BFI at 390 gauges across the southwestern region derived from observations and models.</figcaption>
+    <p>Baseflow sustains streamflow during dry conditions. However, traditional LSMs often overestimate BFI due to simplified recharge and infiltration representations. Improving these processes enhances drought forecasts and water resource management.</p>
+
+    <figure>
+      <img src="BFI_RESULTS.png" alt="BFI Results" />
+      <figcaption>Figure 2. Observed and modeled BFI at 390 gauges across the southwestern U.S.</figcaption>
+    </figure>
 
     <h2 id="findings">Key Findings</h2>
-    <p><b>1. Soil Water Retention Curves Impact Baseflow Representation</b> – Comparing the recharge and subsurface runoff for CH and VG models revealed that the CH model exhibits higher recharge and greater subsurface runoff than the VG model. Since subsurface runoff is a primary source of baseflow, the higher values in the CH model led to an overestimation of baseflow. Moreover, the VG model showed higher surface runoff than the CH model, meaning less water contributes to baseflow. Therefore, the CH model's tendency to overestimate baseflow and the Baseflow Index (BFI) can be attributed to its higher simulated recharge and subsurface runoff.</p>
-    <p><b>2. Role of Soil Macropores and Surface Ponding</b> – The presence of soil macropores in DPM experiment facilitated rapid infiltration and preferential flow through the unsaturated zone, groundwater recharge, and thus baseflow (Mohammed, Cey et al. 2021). In our study, DPM tends to overestimate BFI in low-BFI regions whereas better captured high BFI values. The presence of macropores increased drainage from the surface to the root zone, potentially reducing surface layer moisture retention and increasing groundwater recharge and discharge. This enhances predictions in wet, high-BFI regions but may produce unrealistic results in low-BFI areas. Hence calibration of the soil macropore volume fraction, which is parameterized as a linear function of soil organic matter, is critical to achieve more realistic results. Also, the relationship between soil macropore volume fraction and soil organic matter and other coarse materials (gravels, stones) are worth further investigation.</p>
-    <p>Including a ponding threshold, as seen in the VGM scenario with a 50 mm maximum ponding depth, is crucial for improving baseflow generation, especially in high-BFI regions. This configuration allows more water to remain on the surface longer for infiltration before running off, which enhances infiltration and groundwater recharge and positively impacts baseflow generation.</p>
-    <p><b>3. Hydraulic Parameterization Influences Streamflow Predictions</b> – Saturated hydraulic conductivity and the soil water retention curve parameters affect infiltration rate at the soil surface, soil moisture movement, recharge into groundwater, and streamflow generation, especially in timing and peak of the streamflow (ML’s KGE). However, we could not observe significant effect of hydraulic parameter on generated BFI. Accurate estimation of these parameters can greatly improve streamflow predictions but is very challenging due to the complex soil texture, structure, and presence of coarse materials (See (Gupta, Papritz et al. 2022)) . ML-derived parameters showed a 20% improvement KGE, better matching observed streamflow patterns than traditional lookup tables used by the NWM. However, the limited geographic and climatic distribution of the training dataset contributing in generating ML parameters, may affect its generalization, potentially leading to biases in the predicted streamflow.</p>
-    <p><b>4. Precipitation Data Selection Matters</b> – The choice of precipitation datasets also significantly impacts the accuracy of baseflow predictions. Our results indicated that using the IMERG dataset improves the accuracy of BFI predictions in regions where NLDAS-2 tends to overestimate BFI. The IMERG experiments successfully captured lower BFI values in regions where the VGM configuration with AORC and NLDAS-2 precipitation overestimate them, particularly in the coastal regions of the California River Basin.</p>
-    <img src="KGE_RESULTS.png" alt="KGE Improvement" />
-    <figcaption>Figure 3. KGE improvement of ML against NWM. ML configuration achieved the highest performance.</figcaption>
+    <p><b>1. Soil Water Retention Curves</b> – The CH model overestimates baseflow due to higher recharge; VG better represents low-BFI areas.</p>
+    <p><b>2. Role of Macropores & Ponding</b> – Macropores enhance infiltration; adding ponding thresholds improves recharge and BFI accuracy.</p>
+    <p><b>3. Hydraulic Parameterization</b> – ML-calibrated parameters improved streamflow KGE by 20%, refining baseflow simulations.</p>
+    <p><b>4. Precipitation Forcing</b> – IMERG data reduced BFI overestimation from NLDAS-2 and AORC, improving predictions in coastal basins.</p>
+
+    <figure>
+      <img src="KGE_RESULTS.png" alt="KGE Improvement" />
+      <figcaption>Figure 3. ML-derived parameters significantly improved KGE over traditional lookup tables.</figcaption>
+    </figure>
 
     <h2 id="implications">Implications for Climate Science and Water Management</h2>
-        <p>These findings improve streamflow forecasting, hydrological modeling, and climate resilience strategies, particularly in arid regions.</p>
-        <p><b>1. More Accurate Streamflow Forecasts for Water Management:</b> Improved baseflow modeling enables better drought predictions and water allocation strategies, particularly in water-scarce regions.</p>
-        <p><b>2. Enhanced Climate Models and Hydrological Forecasting:</b> Refining baseflow and soil moisture dynamics enhances climate models, improving seasonal water availability forecasts.</p>
-        <p><b>3. Flood and Drought Preparedness:</b> Better representation of surface infiltration, macropore flow, and groundwater recharge leads to more reliable flood risk assessments and drought response planning.</p>
-        <p><b>4. Optimized Hydrological Model Development:</b> Implementing machine learning-driven soil parameters and refined precipitation datasets could significantly enhance streamflow predictions in operational hydrological models.</p>
+    <p><b>1.</b> Enhanced baseflow modeling improves drought resilience and water allocation in dry regions.</p>
+    <p><b>2.</b> Better soil process representation strengthens climate and hydrologic forecasts.</p>
+    <p><b>3.</b> Combining machine learning and physics-based modeling improves next-generation hydrologic simulations.</p>
 
     <h2 id="conclusion">Conclusion & Future Directions</h2>
-        <p>This study emphasizes the critical role of baseflow generation processes in streamflow prediction accuracy, especially in arid regions of the southwestern US. Our modeling results suggest that the streamflow prediction skill are sensitive to how baseflow generation is represented in terms of model physics, associated hydraulic parameters, and precipitation forcing data. Using a Noah-MP with enhanced hydrology, we show that the choice of hydrological processes, hydraulic parameters, and precipitation datasets significantly affects streamflow prediction accuracy over dry southwestern US.</p>
-        <p>The Van-Genuchten hydraulic scheme is more effective than the Brooks-Corey in modeling baseflow and BFI, particularly in dry regions where the soil is naturally dry, and the BFI is low. This scheme reduced the BFI overestimation produced by the Brooks-Corey with the CH hydraulic parameters (by the Noah-MP look-up table) and NWM with calibrated hydraulic parameters by better capturing groundwater recharge and discharge processes. Additionally, with the machine learning-derived soil water retention curve parameters, VGM significantly improves the streamflow predictions, offering a better match with the observed streamflow compared to the look-up table and pedotransfer functions. In general, our finding implies improving the baseflow in large-scale models like Noah-MP leads to better prediction of streamflow as observed in VGM configuration.</p>
-        <p>The study also highlights the importance of incorporating soil macropores, DPM experiment, and ponding depth thresholds, VGM and VGM0 experiments, in modeling, as these factors greatly influence infiltration, percolation, recharge and baseflow generation. A ponding depth greater than zero increases BFI by allowing more water to infiltrate, especially in wet regions. Additionally, the presence of macropores enhances drainage from the surface to the root zone, increasing baseflow and BFI. However, the benefits of these features vary by region. While uncalibrated macropore fraction improve predictions in high-BFI areas, they may lead to overestimations of baseflow in low-BFI regions.</p>
-        <p>Furthermore, the choice of precipitation dataset was shown to be crucial, with the IMERG dataset offering more accurate baseflow predictions in regions where traditional datasets like NLDAS-2 tended to overestimate BFI. Indeed, heavy precipitation facilitates the infiltration into deeper soil and groundwater recharge. This finding suggests that high-resolution precipitation data is essential for improving the accuracy of streamflow predictions in areas with complex hydrological conditions.</p>
-        <p>Overall, the study demonstrates that careful selection of hydrological processes (soil hydraulic schemes), hydraulic parameters, and precipitation datasets can significantly enhance the performance of hydrologic models in predicting streamflow, particularly in arid regions. These findings provide valuable insights for future research and model development, emphasizing the need to optimize model configurations before calibration to achieve more reliable streamflow predictions.</p>
+    <p>Refining hydrological processes, hydraulic parameters, and precipitation datasets significantly improves baseflow and streamflow predictions. The Van Genuchten scheme with calibrated macropores and IMERG forcing yielded the most realistic results for the southwestern U.S.</p>
+
     <h2 id="reference">Reference</h2>
     <p><b>Farmani, M. A.</b>, Tavakoly, A., Behrangi, A., Qiu, Y., Gupta, A., Jawad, M., Yousefi Sohi, H., Zhang, X., Geheran, M., & Niu, G.-Y. (2025). Improving streamflow predictions in the arid Southwestern United States through understanding of baseflow generation mechanisms. <i>Water Resources Research</i>. <a href="https://doi.org/10.1029/2024WR039479" target="_blank">https://doi.org/10.1029/2024WR039479</a></p>
+  </div>
+
+  <!-- Lightbox -->
+  <div id="lightbox" class="lightbox">
+    <span class="close-btn">&times;</span>
+    <img src="" alt="Expanded view" id="lightbox-img" />
   </div>
 
   <div class="footer">
@@ -350,18 +351,34 @@ figcaption {
     // Highlight current section in sidebar
     const sections = document.querySelectorAll("h1, h2");
     const navLinks = document.querySelectorAll(".sidebar a");
-
     window.addEventListener("scroll", () => {
       let current = "";
-      sections.forEach((section) => {
+      sections.forEach(section => {
         const top = section.offsetTop - 120;
         if (scrollY >= top) current = section.getAttribute("id");
       });
-      navLinks.forEach((link) => {
+      navLinks.forEach(link => {
         link.classList.remove("active");
         if (link.getAttribute("href") === `#${current}`) link.classList.add("active");
       });
     });
+
+    // Lightbox logic
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const closeBtn = document.querySelector('.close-btn');
+
+    document.querySelectorAll('.content img').forEach(img => {
+      img.addEventListener('click', () => {
+        lightbox.style.display = 'flex';
+        lightboxImg.src = img.src;
+        lightboxImg.alt = img.alt;
+      });
+    });
+
+    closeBtn.addEventListener('click', () => { lightbox.style.display = 'none'; });
+    lightbox.addEventListener('click', e => { if (e.target === lightbox) lightbox.style.display = 'none'; });
+    window.addEventListener('keydown', e => { if (e.key === 'Escape') lightbox.style.display = 'none'; });
   </script>
 </body>
 </html>
