@@ -1,39 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Publications - Mohammad Ali Farmani</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+  />
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: "Segoe UI", Arial, sans-serif;
       margin: 0;
       padding: 0;
       color: white;
-      text-align: center;
-      font-size: 20px;
       overflow-x: hidden;
+      background-color: black;
     }
 
     /* === Background === */
     .video-container {
       position: fixed;
-      top: 0; left: 0;
+      top: 0;
+      left: 0;
       width: 100%;
       height: 100%;
       z-index: -1;
     }
     .video-container video {
-      width: 100vw;
-      height: 100vh;
+      width: 100%;
+      height: 100%;
       object-fit: cover;
     }
     .video-container::before {
       content: "";
       position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: linear-gradient(135deg, rgba(0,0,0,0.85), rgba(0,0,0,0.6));
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.6));
     }
 
     /* === Navbar === */
@@ -42,23 +48,28 @@
       top: 0;
       width: 100%;
       background: rgba(0, 0, 0, 0.85);
-      padding: 15px;
+      padding: 15px 0;
       display: flex;
       justify-content: center;
       align-items: center;
+      gap: 40px;
       z-index: 1000;
-      backdrop-filter: blur(5px);
+      backdrop-filter: blur(6px);
       box-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
     }
-    .navbar a, .navbar .dropbtn {
+    .navbar a,
+    .navbar .dropbtn {
       color: white;
-      margin: 0 20px;
       text-decoration: none;
       font-size: 18px;
-      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
       transition: all 0.3s ease;
+      position: relative;
     }
-    .navbar a::after, .navbar .dropbtn::after {
+    .navbar a::after,
+    .navbar .dropbtn::after {
       content: "";
       display: block;
       height: 2px;
@@ -67,7 +78,8 @@
       transition: width 0.3s ease;
       margin: auto;
     }
-    .navbar a:hover::after, .navbar .dropbtn:hover::after {
+    .navbar a:hover::after,
+    .navbar .dropbtn:hover::after {
       width: 100%;
     }
 
@@ -118,10 +130,12 @@
       animation: fadeIn 1.2s ease;
     }
 
-    h1, h2 {
+    h1,
+    h2 {
       color: #f8c471;
       text-shadow: 0 0 10px rgba(248, 196, 113, 0.5);
-      margin-bottom: 15px;
+      text-align: center;
+      margin-bottom: 20px;
     }
 
     /* === Publication Cards === */
@@ -133,18 +147,19 @@
       margin: 25px auto;
       max-width: 850px;
       text-align: left;
-      opacity: 0;
-      transform: translateY(30px);
       transition: all 0.6s ease;
-    }
-    .publication-card.visible {
-      opacity: 1;
-      transform: translateY(0);
     }
     .publication-card:hover {
       transform: translateY(-5px);
-      box-shadow: 0 8px 25px rgba(248,196,113,0.4);
-      background: rgba(0,0,0,0.6);
+      box-shadow: 0 8px 25px rgba(248, 196, 113, 0.4);
+      background: rgba(0, 0, 0, 0.6);
+    }
+    .separator {
+      height: 1px;
+      background: linear-gradient(to right, transparent, #f8c471, transparent);
+      width: 70%;
+      margin: 25px auto;
+      opacity: 0.5;
     }
     .publication-title {
       font-size: 20px;
@@ -194,7 +209,7 @@
       list-style-type: none;
     }
     .timeline::before {
-      content: '';
+      content: "";
       position: absolute;
       left: 50%;
       top: 0;
@@ -209,18 +224,17 @@
       width: 50%;
       padding: 20px 30px;
       box-sizing: border-box;
-      opacity: 0;
-      transform: translateY(30px);
       transition: all 0.6s ease;
     }
-    .timeline-item.visible {
-      opacity: 1;
-      transform: translateY(0);
+    .timeline-item.left {
+      left: 0;
+      text-align: right;
     }
-    .timeline-item.left { left: 0; text-align: right; }
-    .timeline-item.right { left: 50%; }
+    .timeline-item.right {
+      left: 50%;
+    }
     .timeline-item::before {
-      content: '';
+      content: "";
       position: absolute;
       top: 25px;
       width: 18px;
@@ -230,19 +244,23 @@
       border: 3px solid #fff;
       z-index: 1;
     }
-    .timeline-item.left::before { right: -12px; }
-    .timeline-item.right::before { left: -12px; }
+    .timeline-item.left::before {
+      right: -12px;
+    }
+    .timeline-item.right::before {
+      left: -12px;
+    }
     .timeline-item .content {
-      background: rgba(255,255,255,0.05);
+      background: rgba(255, 255, 255, 0.05);
       padding: 15px;
       border-radius: 10px;
-      border: 1px solid rgba(255,255,255,0.2);
+      border: 1px solid rgba(255, 255, 255, 0.2);
       transition: background 0.3s ease, transform 0.3s ease;
     }
     .timeline-item .content:hover {
-      background: rgba(0,0,0,0.7);
+      background: rgba(0, 0, 0, 0.7);
       transform: scale(1.03);
-      box-shadow: 0 0 10px rgba(248,196,113,0.4);
+      box-shadow: 0 0 10px rgba(248, 196, 113, 0.4);
     }
     .timeline-item h3 {
       color: #f8c471;
@@ -259,32 +277,46 @@
       margin-top: 20px;
       box-shadow: 0 -2px 20px rgba(0, 0, 0, 0.5);
     }
+    .footer a {
+      color: #f8c471;
+      text-decoration: none;
+    }
     .footer a:hover {
       color: #fff;
       text-shadow: 0 0 10px #f8c471, 0 0 20px #f8c471;
     }
 
-    /* Animation */
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
-    /* Responsive */
     @media (max-width: 768px) {
-      .publication-card { max-width: 95%; }
-      .timeline::before { left: 8px; }
-      .timeline-item { width: 100%; padding-left: 40px; }
-      .timeline-item.right { left: 0; }
-      .timeline-item.left { text-align: left; }
-      .timeline-item::before { left: 10px; right: auto; }
+      .timeline::before {
+        left: 8px;
+      }
+      .timeline-item {
+        width: 100%;
+        left: 0;
+        text-align: left;
+        padding-left: 40px;
+      }
+      .timeline-item::before {
+        left: 10px;
+      }
     }
   </style>
 </head>
 <body>
   <div class="video-container">
     <video autoplay muted loop playsinline>
-      <source src="PUB_BG.mp4" type="video/mp4">
+      <source src="PUB_BG.mp4" type="video/mp4" />
     </video>
   </div>
 
@@ -304,7 +336,7 @@
   <div class="container">
     <h1><i class="fas fa-book"></i> Publications</h1>
 
-    <!-- Example publication -->
+    <!-- === Publication Cards === -->
     <div class="publication-card">
       <div class="publication-title">Improving streamflow predictions in the arid Southwestern United States...</div>
       <div class="publication-authors"><b style="color:#f8c471;">M. A. Farmani</b>, A. Tavakoly, A. Behrangi, et al.</div>
@@ -313,161 +345,108 @@
         <a href="https://doi.org/10.1029/2024WR039479" target="_blank">📄 DOI</a>
       </div>
     </div>
+    <div class="separator"></div>
 
-            <div class="publication-card">
-                <div class="publication-title">
-                    Do land models miss key soil hydrological processes controlling soil moisture memory?
-                </div>
-                <div class="publication-authors">
-                    <b style="color:#f8c471;">M. A. Farmani</b>, A. Behrangi, A. Gupta, A. Tavakoly, M. Geheran, & G.-Y. Niu
-                </div>
-                <div class="publication-journal">
-                    <i>Hydrology and Earth System Sciences</i>, 29, 547–566, 2025
-                </div>
-                <div class="publication-actions">
-                    <a href="https://doi.org/10.5194/hess-29-547-2025" target="_blank"> DOI</a>
-                </div>
-            </div>
+    <div class="publication-card">
+      <div class="publication-title">Do land models miss key soil hydrological processes controlling soil moisture memory?</div>
+      <div class="publication-authors"><b style="color:#f8c471;">M. A. Farmani</b>, A. Behrangi, A. Gupta, A. Tavakoly, M. Geheran, & G.-Y. Niu</div>
+      <div class="publication-journal"><i>Hydrology and Earth System Sciences</i>, 29, 547–566, 2025</div>
+      <div class="publication-actions"><a href="https://doi.org/10.5194/hess-29-547-2025" target="_blank">📄 DOI</a></div>
+    </div>
+    <div class="separator"></div>
 
-            <div class="publication-card">
-                <div class="publication-title">
-                    The strong impact of precipitation intensity on groundwater recharge and terrestrial water storage change in Arizona, a typical dryland
-                </div>
-                <div class="publication-authors">
-                    Y. Qiu, J. S. Famiglietti, A. Behrangi, <b style="color:#f8c471;">M. A. Farmani</b>, H. Yousefi Sohi, A. Gupta, F. Hung, K. Abdelmohsen, & G.-Y. Niu
-                </div>
-                <div class="publication-journal">
-                    <i>Geophysical Research Letters</i>, 52(14), e2025GL114747, 2025
-                </div>
-                <div class="publication-actions">
-                    <a href="https://doi.org/10.1029/2025GL114747" target="_blank"> DOI</a>
-                </div>
-            </div>
+    <div class="publication-card">
+      <div class="publication-title">The strong impact of precipitation intensity on groundwater recharge and terrestrial water storage change in Arizona, a typical dryland</div>
+      <div class="publication-authors">Y. Qiu, J. S. Famiglietti, A. Behrangi, <b style="color:#f8c471;">M. A. Farmani</b>, et al.</div>
+      <div class="publication-journal"><i>Geophysical Research Letters</i>, 52(14), e2025GL114747, 2025</div>
+      <div class="publication-actions"><a href="https://doi.org/10.1029/2025GL114747" target="_blank">📄 DOI</a></div>
+    </div>
+    <div class="separator"></div>
 
-            <div class="publication-card">
-                <div class="publication-title">
-                    How do IMERG V07, IMERG V06, and ERA5 precipitation products perform over snow–ice-free and snow–ice-covered surfaces at a range of near-surface temperatures?
-                </div>
-                <div class="publication-authors">
-                    H. Yousefi Sohi, <b style="color:#f8c471;">M. A. Farmani</b>, & A. Behrangi
-                </div>
-                <div class="publication-journal">
-                    <i>Journal of Hydrometeorology</i>, 26(7), 837–855, 2025
-                </div>
-                <div class="publication-actions">
-                    <a href="https://doi.org/10.1175/JHM-D-24-0110.1" target="_blank"> DOI</a>
-                </div>
-            </div>
+    <div class="publication-card">
+      <div class="publication-title">How do IMERG V07, IMERG V06, and ERA5 precipitation products perform over snow–ice-free and snow–ice-covered surfaces at a range of near-surface temperatures?</div>
+      <div class="publication-authors">H. Yousefi Sohi, <b style="color:#f8c471;">M. A. Farmani</b>, & A. Behrangi</div>
+      <div class="publication-journal"><i>Journal of Hydrometeorology</i>, 26(7), 837–855, 2025</div>
+      <div class="publication-actions"><a href="https://doi.org/10.1175/JHM-D-24-0110.1" target="_blank">📄 DOI</a></div>
+    </div>
+    <div class="separator"></div>
 
-            <div class="publication-card">
-                <div class="publication-title">
-                    Improved evapotranspiration estimation using the Penman-Monteith equation with a deep learning (DNN) model over the dry southwestern US: Comparison with ECOSTRESS, MODIS, and OpenET
-                </div>
-                <div class="publication-authors">
-                    M. Jawad, A. Behrangi, <b style="color:#f8c471;">M. A. Farmani</b>, Y. Qiu, H. Yousefi Sohi, A. Gupta, & G.-Y. Niu
-                </div>
-                <div class="publication-journal">
-                    <i>Journal of Hydrology</i>, 133460, 2025
-                </div>
-                <div class="publication-actions">
-                    <a href="https://doi.org/10.1016/j.jhydrol.2025.133460" target="_blank"> DOI</a>
-                </div>
-            </div>
+    <div class="publication-card">
+      <div class="publication-title">Improved evapotranspiration estimation using the Penman-Monteith equation with a deep learning (DNN) model over the dry southwestern US: Comparison with ECOSTRESS, MODIS, and OpenET</div>
+      <div class="publication-authors">M. Jawad, A. Behrangi, <b style="color:#f8c471;">M. A. Farmani</b>, Y. Qiu, H. Yousefi Sohi, A. Gupta, & G.-Y. Niu</div>
+      <div class="publication-journal"><i>Journal of Hydrology</i>, 133460, 2025</div>
+      <div class="publication-actions"><a href="https://doi.org/10.1016/j.jhydrol.2025.133460" target="_blank">📄 DOI</a></div>
+    </div>
+    <div class="separator"></div>
 
-            <div class="publication-card">
-                <div class="publication-title">
-                    Representing Preferential Flow through Variably-Saturated Soils with Surface Ponding in a Large-Scale Land Surface Model over the Conterminous US
-                </div>
-                <div class="publication-authors">
-                    G.-Y. Niu, Y. Fang, A. Alves Meira Neto, et al. (incl. <b style="color:#f8c471;">M. A. Farmani</b>)
-                </div>
-                <div class="publication-journal">
-                    <i>ESS Open Archive</i>, 2024
-                </div>
-                <div class="publication-actions">
-                    <a href="https://doi.org/10.22541/essoar.172286649.90332939/v1" target="_blank"> DOI</a>
-                </div>
-            </div>
+    <div class="publication-card">
+      <div class="publication-title">Representing Preferential Flow through Variably-Saturated Soils with Surface Ponding in a Large-Scale Land Surface Model over the Conterminous US</div>
+      <div class="publication-authors">G.-Y. Niu, Y. Fang, A. Alves Meira Neto, et al. (incl. <b style="color:#f8c471;">M. A. Farmani</b>)</div>
+      <div class="publication-journal"><i>ESS Open Archive</i>, 2024</div>
+      <div class="publication-actions"><a href="https://doi.org/10.22541/essoar.172286649.90332939/v1" target="_blank">📄 DOI</a></div>
+    </div>
+    <div class="separator"></div>
 
-            <div class="publication-card">
-                <div class="publication-title">
-                    Higher frozen soil permeability represented in a hydrological model improves spring streamflow prediction from river basin to continental scales
-                </div>
-                <div class="publication-authors">
-                    J. Agnihotri, A. Behrangi, A. Tavakoly, M. Geheran, <b style="color:#f8c471;">M. A. Farmani</b>, & G.-Y. Niu
-                </div>
-                <div class="publication-journal">
-                    <i>Water Resources Research</i>, 59(4), e2022WR033075, 2023
-                </div>
-                <div class="publication-actions">
-                    <a href="https://doi.org/10.1029/2022WR033075" target="_blank"> DOI</a>
-                </div>
-            </div>
-        </div>
+    <div class="publication-card">
+      <div class="publication-title">Higher frozen soil permeability represented in a hydrological model improves spring streamflow prediction from river basin to continental scales</div>
+      <div class="publication-authors">J. Agnihotri, A. Behrangi, A. Tavakoly, M. Geheran, <b style="color:#f8c471;">M. A. Farmani</b>, & G.-Y. Niu</div>
+      <div class="publication-journal"><i>Water Resources Research</i>, 59(4), e2022WR033075, 2023</div>
+      <div class="publication-actions"><a href="https://doi.org/10.1029/2022WR033075" target="_blank">📄 DOI</a></div>
+    </div>
 
-        <div class="section" id="conferences">
-            <h2>Conference Presentations</h2>
-            <ul class="timeline">
-                <li class="timeline-item left">
-                    <div class="content">
-                        <h3>AGU 2024</h3>
-                        <p><b>Mohammad A. Farmani</b>, Ahmad A. Tavakoly, Ali Behrangi, et al. Improving Streamflow Predictions in the Dry Southwestern United States Through Understanding of Baseflow Generation Mechanisms.</p>
-                    </div>
-                </li>
-                <li class="timeline-item right">
-                    <div class="content">
-                        <h3>AGU 2024</h3>
-                        <p>Hossein Yousefi Sohi, <b>Mohammad A. Farmani</b>, Ali Behrangi. How do IMERG V07, IMERG V06, and ERA5 Precipitation Products Perform Over Snow-ice-free and Snow-ice-covered Surfaces?</p>
-                    </div>
-                </li>
-                <li class="timeline-item left">
-                    <div class="content">
-                        <h3>AGU 2024</h3>
-                        <p>Y. Qiu, G.-Y. Niu, A. Behrangi, J. Famiglietti, <b>M. A. Farmani</b>, A. Gupta, et al. The Significant Impact of Precipitation Intensity on Natural Groundwater Recharge and Terrestrial Water Storage Change in Arid Regions.</p>
-                    </div>
-                </li>
-                <li class="timeline-item right">
-                    <div class="content">
-                        <h3>AGU 2024</h3>
-                        <p>A. Gupta, A. Behrangi, <b>M. A. Farmani</b>, G.-Y. Niu. Implementing the Machine Learning Based Van-Genuchten Parametrization in the NextGen Framework for Improved Streamflow Prediction.</p>
-                    </div>
-                </li>
-                <li class="timeline-item left">
-                    <div class="content">
-                        <h3>CMWR 2024</h3>
-                        <p><b>M. A. Farmani</b>, A. Behrangi, A. Gupta, A. Tavakoly, M. Geheran, & G.-Y. Niu. What Are the Key Soil Hydrological Processes to Control Soil Moisture Memory?</p>
-                    </div>
-                </li>
-                <li class="timeline-item right">
-                    <div class="content">
-                        <h3>AGU 2023</h3>
-                        <p>G.-Y. Niu, Y. Fang, A. Alves Meira Neto, B. Guo, <b>M. A. Farmani</b>, & A. Behrangi. Representing Preferential Flow through Variably Saturated Soils with Surface Ponding in Noah-MP.</p>
-                    </div>
-                </li>
-                <li class="timeline-item left">
-                    <div class="content">
-                        <h3>AGU 2023</h3>
-                        <p>A. Gupta, A. Behrangi, <b>M. A. Farmani</b>, & G.-Y. Niu. Impact of Vegetation Dynamics on Hydrological Fluxes using Noah-MP Coupled to NextGen Modeling Framework: A Case Study of High-resolution Hydrological Simulations over California.</p>
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </div>
-    
-    
-  <div class="footer">
-    <p>Created by Mohammad Ali Farmani | Contact: <a href="mailto:farmani@arizona.edu" style="color:#f8c471;">farmani@arizona.edu</a></p>
+    <!-- === Conference Presentations === -->
+    <h2>Conference Presentations</h2>
+    <ul class="timeline">
+      <li class="timeline-item left">
+        <div class="content">
+          <h3>AGU 2024</h3>
+          <p><b>Mohammad A. Farmani</b>, Ahmad A. Tavakoly, Ali Behrangi, et al. Improving Streamflow Predictions in the Dry Southwestern United States Through Understanding of Baseflow Generation Mechanisms.</p>
+        </div>
+      </li>
+      <li class="timeline-item right">
+        <div class="content">
+          <h3>AGU 2024</h3>
+          <p>Hossein Yousefi Sohi, <b>Mohammad A. Farmani</b>, Ali Behrangi. How do IMERG V07, IMERG V06, and ERA5 Precipitation Products Perform Over Snow-ice-free and Snow-ice-covered Surfaces?</p>
+        </div>
+      </li>
+      <li class="timeline-item left">
+        <div class="content">
+          <h3>AGU 2024</h3>
+          <p>Y. Qiu, G.-Y. Niu, A. Behrangi, J. Famiglietti, <b>M. A. Farmani</b>, A. Gupta, et al. The Significant Impact of Precipitation Intensity on Natural Groundwater Recharge and Terrestrial Water Storage Change in Arid Regions.</p>
+        </div>
+      </li>
+      <li class="timeline-item right">
+        <div class="content">
+          <h3>AGU 2024</h3>
+          <p>A. Gupta, A. Behrangi, <b>M. A. Farmani</b>, G.-Y. Niu. Implementing the Machine Learning Based Van-Genuchten Parametrization in the NextGen Framework for Improved Streamflow Prediction.</p>
+        </div>
+      </li>
+      <li class="timeline-item left">
+        <div class="content">
+          <h3>CMWR 2024</h3>
+          <p><b>M. A. Farmani</b>, A. Behrangi, A. Gupta, A. Tavakoly, M. Geheran, & G.-Y. Niu. What Are the Key Soil Hydrological Processes to Control Soil Moisture Memory?</p>
+        </div>
+      </li>
+      <li class="timeline-item right">
+        <div class="content">
+          <h3>AGU 2023</h3>
+          <p>G.-Y. Niu, Y. Fang, A. Alves Meira Neto, B. Guo, <b>M. A. Farmani</b>, & A. Behrangi. Representing Preferential Flow through Variably Saturated Soils with Surface Ponding in Noah-MP.</p>
+        </div>
+      </li>
+      <li class="timeline-item left">
+        <div class="content">
+          <h3>AGU 2023</h3>
+          <p>A. Gupta, A. Behrangi, <b>M. A. Farmani</b>, & G.-Y. Niu. Impact of Vegetation Dynamics on Hydrological Fluxes using Noah-MP Coupled to NextGen Modeling Framework: A Case Study of High-resolution Hydrological Simulations over California.</p>
+        </div>
+      </li>
+    </ul>
   </div>
 
-  <script>
-    // Fade-in effect when scrolling
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add('visible');
-      });
-    }, { threshold: 0.2 });
-
-    document.querySelectorAll('.publication-card, .timeline-item').forEach(el => observer.observe(el));
-  </script>
+  <div class="footer">
+    <p>
+      Created by Mohammad Ali Farmani | Contact:
+      <a href="mailto:farmani@arizona.edu">farmani@arizona.edu</a>
+    </p>
+  </div>
 </body>
 </html>
