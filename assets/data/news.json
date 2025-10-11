@@ -1,0 +1,21 @@
+[
+  {
+    "icon": "🆕",
+    "text": "Our team released the first public version of the SMM Toolkit.",
+    "link": "https://github.com/mfarmani95/smm-toolkit",
+    "link_text": "View on GitHub"
+  },
+  {
+    "icon": "🚀",
+    "text": "New publication accepted in Water Resources Research on baseflow generation!",
+    "link": "https://doi.org/10.1029/2024WR039479",
+    "link_text": "Read the paper"
+  },
+  {
+    "icon": "📢",
+    "text": "Mohammad will present at the AGU 2025 Fall Meeting on differentiable hydrology.",
+    "link": "https://www.agu.org",
+    "link_text": "AGU Event Page"
+  }
+]
+
