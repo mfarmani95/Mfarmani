@@ -1,0 +1,19 @@
+/* Bounce animation for scroll indicator */
+@keyframes bounce{
+  0%,20%,50%,80%,100% { transform: translateY(0); }
+  40% { transform: translateY(-8px); }
+  60% { transform: translateY(-4px); }
+}
+
+.scroll-down-indicator i {
+  font-size: 26px;
+  background: linear-gradient(90deg, var(--gold), var(--cyan));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: bounce 2s infinite;
+  opacity: 0.85;
+  display: inline-block;
+}
+
+/* Fade-in animations are already in site.css as keyframes fadeUp */
+

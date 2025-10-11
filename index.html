@@ -1,410 +1,200 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Mohammad Ali Farmani - Home</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
-
-<style>
-  :root{
-    --gold:#f8c471;
-    --cyan:#4fd1c5;
-    --text:#fff;
-    --glass: rgba(0,0,0,0.55);
-    --glass-strong: rgba(0,0,0,0.70);
-    --ring: rgba(255,255,255,0.15);
-  }
-
-  html, body{
-    height:100%;
-    scroll-behavior:smooth;
-    background:#000;
-  }
-
-  body{
-    margin:0;
-    color:var(--text);
-    font-family:"Segoe UI", Arial, sans-serif;
-    overflow-x:hidden;
-  }
-
-  /* ===== Top progress bar (thin & subtle) ===== */
-  .progress-wrap{
-    position:fixed;
-    top:0; left:0;
-    width:100%;
-    height:3px;
-    z-index:1200;
-    pointer-events:none;
-  }
-  .progress-bar{
-    height:100%;
-    width:0%;
-    background: linear-gradient(90deg, var(--gold), var(--cyan));
-    box-shadow:0 0 10px rgba(79,209,197,0.35);
-    transition:opacity .35s ease;
-  }
-
-  /* ===== Navbar (minimal, gradient accents) ===== */
-  .navbar{
-    position:fixed; top:6px; left:50%;
-    transform:translateX(-50%);
-    width:min(1100px, 92vw);
-    display:flex; justify-content:center; align-items:center; gap:28px;
-    padding:10px 18px;
-    background:var(--glass);
-    border:1px solid var(--ring);
-    border-radius:14px;
-    backdrop-filter: blur(10px);
-    z-index:1100;
-  }
-  .navbar a, .navbar .dropbtn{
-    color:#fff; text-decoration:none; font-size:16px; position:relative;
-    display:inline-flex; align-items:center; gap:8px; padding:6px 8px;
-    transition:color .25s ease, transform .2s ease;
-  }
-  .navbar a:hover, .navbar .dropbtn:hover{
-    transform:translateY(-1px);
-    background:linear-gradient(90deg, var(--gold), var(--cyan));
-    -webkit-background-clip:text; -webkit-text-fill-color:transparent;
-  }
-  .navbar a::after, .navbar .dropbtn::after{
-    content:""; position:absolute; left:8px; right:8px; bottom:-4px; height:2px;
-    background:linear-gradient(90deg, var(--gold), var(--cyan));
-    transform:scaleX(0); transform-origin:left; transition:transform .25s ease;
-  }
-  .navbar a:hover::after, .navbar .dropbtn:hover::after{ transform:scaleX(1); }
-
-  .dropdown{ position:relative; }
-  .dropdown-content{
-    display:none; position:absolute; top:120%; left:0; min-width:180px;
-    background:rgba(0,0,0,0.92); border:1px solid var(--ring); border-radius:10px;
-    box-shadow:0 8px 24px rgba(0,0,0,0.45); overflow:hidden; backdrop-filter: blur(8px);
-  }
-  .dropdown-content a{
-    display:block; padding:10px 14px; color:#fff; text-decoration:none; font-size:15px;
-    transition:background .25s ease;
-  }
-  .dropdown-content a:hover{
-    background:linear-gradient(90deg, rgba(248,196,113,0.14), rgba(79,209,197,0.14));
-  }
-  .dropdown:hover .dropdown-content{ display:block; }
-
-  /* ===== Scroll-snap sections ===== */
-  .snapper{
-    height:100vh;
-    scroll-snap-type:y mandatory;
-    overflow-y:auto;
-  }
-  section.block{
-    scroll-snap-align:start;
-    position:relative;
-    min-height:100vh;
-    display:grid;
-    place-items:center;
-    padding:8vh 6vw;
-    isolation:isolate; /* keeps z-index sane above the video */
-  }
-  section.block .inner{
-    width:min(1100px, 92vw);
-    background:var(--glass-strong);
-    border:1px solid var(--ring);
-    border-radius:18px;
-    padding:min(4vw,38px);
-    backdrop-filter:blur(10px);
-    box-shadow:0 15px 60px rgba(0,0,0,0.45);
-    animation:fadeUp .8s ease both;
-  }
-
-  /* Parallax video bg */
-  .video-container{
-    position:absolute; inset:0; z-index:-1; overflow:hidden;
-  }
-  .video-container::before{
-    content:"";
-    position:absolute; inset:0;
-    background:radial-gradient(1200px 700px at 50% 20%, rgba(255,255,255,0.06), transparent 45%),
-               linear-gradient(120deg, rgba(0,0,0,0.85), rgba(0,0,0,0.55));
-    pointer-events:none;
-  }
-  .video-container video{
-    position:absolute; top:50%; left:50%;
-    transform:translate(-50%,-50%);
-    width:120%; height:120%; object-fit:cover;
-    filter:saturate(0.9) contrast(1.05) brightness(0.8);
-    will-change: transform;
-  }
-
-  /* Headings & dividers */
-  h1, h2{
-    margin:0 0 14px 0;
-    font-weight:700;
-    line-height:1.15;
-    letter-spacing:.2px;
-    background:linear-gradient(90deg, var(--gold), var(--cyan));
-    -webkit-background-clip:text; -webkit-text-fill-color:transparent;
-    text-align:center;
-  }
-  h1{ font-size:clamp(28px, 4.2vw, 44px); }
-  h2{ font-size:clamp(22px, 3.4vw, 34px); margin-top:8px; }
-
-  .divider{
-    height:2px; width:100%; margin:26px 0 14px 0;
-    background:linear-gradient(90deg, var(--gold), var(--cyan));
-    border-radius:4px; opacity:.8;
-  }
-
-  p{
-    font-size:clamp(15px, 1.15vw, 18px);
-    line-height:1.75; text-align:justify; color:#f1f1f1;
-    opacity:0; transform:translateY(12px);
-    animation:fadeUp .8s ease .12s both;
-  }
-  .lead{ opacity:0; transform:translateY(12px); animation:fadeUp .9s ease .08s both; }
-
-  /* Expertise list */
-  ul.expertise{
-    list-style:none; padding:0; margin:0; display:grid; gap:12px;
-  }
-  ul.expertise li{
-    display:flex; align-items:flex-start; gap:10px; padding:10px 12px; border-radius:10px;
-    background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08);
-    transition:transform .2s ease, background .25s ease, box-shadow .25s ease;
-  }
-  ul.expertise li:hover{
-    transform:translateY(-2px);
-    background:linear-gradient(90deg, rgba(248,196,113,0.08), rgba(79,209,197,0.08));
-    box-shadow:0 10px 24px rgba(0,0,0,0.25);
-  }
-  ul.expertise li i{
-    color:var(--gold); margin-top:2px;
-    background:linear-gradient(90deg, var(--gold), var(--cyan));
-    -webkit-background-clip:text; -webkit-text-fill-color:transparent;
-  }
-
-  /* Back to top */
-  #backToTop{
-    position:fixed; right:18px; bottom:18px;
-    width:46px; height:46px; border:none; border-radius:50%;
-    display:grid; place-items:center;
-    background:linear-gradient(135deg, var(--gold), var(--cyan));
-    color:#000; font-size:18px; cursor:pointer;
-    box-shadow:0 8px 26px rgba(0,0,0,0.45);
-    transition:transform .2s ease, opacity .25s ease, box-shadow .25s ease;
-    opacity:0; visibility:hidden; z-index:1000;
-  }
-  #backToTop:hover{ transform:scale(1.06); box-shadow:0 10px 32px rgba(0,0,0,0.5); }
-
-  /* Footer */
-  .footer{
-    padding:26px 14px; text-align:center;
-    background:rgba(0,0,0,0.75); border-top:1px solid var(--ring);
-  }
-  .footer a{ color:var(--cyan); text-decoration:none; }
-  .footer a:hover{ color:var(--gold); text-shadow:0 0 10px var(--gold), 0 0 15px var(--cyan); }
-
-  /* Animations */
-  @keyframes fadeUp{
-    from{ opacity:0; transform:translateY(14px); }
-    to{ opacity:1; transform:translateY(0); }
-  }
-
-  /* Accessibility: reduce motion */
-  @media (prefers-reduced-motion: reduce){
-    .video-container video{ transform:none !important; }
-    .progress-bar, .navbar a::after{ transition:none !important; }
-    *{ animation:none !important; transition:none !important; }
-  }
-
-  /* Responsive tweaks */
-  @media (max-width:900px){
-    .navbar{ gap:16px; padding:8px 14px; }
-    section.block .inner{ padding:22px; }
-  }
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mohammad Ali Farmani - Home</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+  <link rel="stylesheet" href="assets/css/site.css" />
 </head>
 <body>
 
-<!-- Thin gradient progress bar -->
-<div class="progress-wrap"><div class="progress-bar" id="progressBar"></div></div>
-
-<!-- Navbar -->
-<nav class="navbar">
-  <a href="index.html"><i class="fas fa-home"></i> Home</a>
-  <a href="cv.html"><i class="fas fa-id-card"></i> CV</a>
-  <a href="publications.html"><i class="fas fa-book"></i> Publications</a>
-  <div class="dropdown">
-    <a href="#" class="dropbtn"><i class="fas fa-briefcase"></i> Projects ▾</a>
-    <div class="dropdown-content">
-      <a href="smm.html">SMM</a>
-      <a href="bfi.html">BFI</a>
-    </div>
+  <!-- Thin gradient progress bar -->
+  <div class="progress-wrap">
+    <div class="progress-bar" id="progressBar"></div>
   </div>
-</nav>
 
-<!-- Scroll-snap container -->
-<div class="snapper" id="snapper">
-  <!-- === Intro Block === -->
-  <section class="block" id="intro">
-    <div class="video-container" data-parallax data-speed="0.25">
-      <video autoplay muted loop playsinline>
-        <source src="WT_BG.mp4" type="video/mp4"/>
-      </video>
-    </div>
-    <div class="inner">
-      <h1>Hello, and thank you for visiting!</h1>
-      <div class="divider"></div>
-      <p class="lead">
-        My name is Mohammad Farmani, and I’m a Ph.D. student in Hydrology and Atmospheric Sciences with a minor in Data Science. This webpage is part of my mission to raise public awareness about water and groundwater issues—critical yet often overlooked topics that affect agriculture, ecosystems, and our daily lives.
-      </p>
-      <p>
-        Through this platform, I share accessible explanations of how water systems work, why groundwater is essential, and how informed communities can help shape sustainable water policies. Whether you're a student, farmer, policymaker, or simply curious, I hope the resources here help you better understand groundwater’s role in resilient communities—especially in the face of climate change.
-      </p>
-      <p>Let’s bridge the gap between science and society—starting with water.</p>
-      <div style="display:grid;place-items:center;margin-top:18px;opacity:.85;">
-        <i class="fas fa-chevron-down" style="font-size:26px;background:linear-gradient(90deg, var(--gold), var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent; animation:bounce 2s infinite;"></i>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <a href="index.html"><i class="fas fa-home"></i> Home</a>
+    <a href="cv.html"><i class="fas fa-id-card"></i> CV</a>
+    <a href="publications.html"><i class="fas fa-book"></i> Publications</a>
+    <div class="dropdown">
+      <a href="#" class="dropbtn"><i class="fas fa-briefcase"></i> Projects ▾</a>
+      <div class="dropdown-content">
+        <a href="smm.html">SMM</a>
+        <a href="bfi.html">BFI</a>
       </div>
     </div>
-  </section>
+  </nav>
 
-  <!-- === Expertise Block === -->
-  <section class="block" id="expertise">
-    <div class="video-container" data-parallax data-speed="0.18">
-      <video autoplay muted loop playsinline>
-        <source src="Coding.mp4" type="video/mp4"/>
-      </video>
-    </div>
-    <div class="inner">
-      <h2>Key Areas of Expertise</h2>
-      <div class="divider"></div>
-      <ul class="expertise">
-        <li><i class="fas fa-water"></i>
-          <div><b>Hydrological Modeling:</b> Enhancing Noah-MP and RAPID for improved infiltration, runoff, and soil-moisture dynamics.</div>
-        </li>
-        <li><i class="fas fa-flood"></i>
-          <div><b>Flood Management:</b> Using SWMM to assess climate impacts on urban drainage and improve flood resilience.</div>
-        </li>
-        <li><i class="fas fa-database"></i>
-          <div><b>Database Design:</b> Building MySQL backends for smart water distribution and optimization systems.</div>
-        </li>
-        <li><i class="fas fa-brain"></i>
-          <div><b>Differentiable Hydrology:</b> PyTorch-based hydrological processes for GPU acceleration and ML coupling.</div>
-        </li>
-      </ul>
-      <div class="divider"></div>
-      <p>
-        With proficiency in Python, R, SQL, HPC, and tools like SWMM, I work at the nexus of water resources, climate science, and data analytics—aiming to advance sustainable water management and climate resilience via hybrid physical + data-driven modeling.
+  <!-- Scroll-snap container -->
+  <div class="snapper" id="snapper">
+
+    <!-- === Intro Block === -->
+    <section class="block" id="intro">
+      <div class="video-container" data-parallax data-speed="0.25">
+        <video autoplay muted loop playsinline>
+          <source src="WT_BG.mp4" type="video/mp4"/>
+        </video>
+      </div>
+      <div class="inner">
+        <h1>Hello, and thank you for visiting!</h1>
+        <div class="divider"></div>
+        <p class="lead">
+          My name is Mohammad Farmani, and I’m a Ph.D. student in Hydrology and Atmospheric Sciences with a minor in Data Science. This webpage is part of my mission to raise public awareness about water and groundwater issues—critical yet often overlooked topics that affect agriculture, ecosystems, and our daily lives.
+        </p>
+        <p>
+          Through this platform, I share accessible explanations of how water systems work, why groundwater is essential, and how informed communities can help shape sustainable water policies. Whether you're a student, farmer, policymaker, or simply curious, I hope the resources here help you better understand groundwater’s role in resilient communities—especially in the face of climate change.
+        </p>
+        <p>Let’s bridge the gap between science and society—starting with water.</p>
+        <div style="display:grid;place-items:center;margin-top:18px;opacity:.85;">
+          <i class="fas fa-chevron-down" style="font-size:26px;background:linear-gradient(90deg, var(--gold), var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent; animation:bounce 2s infinite;"></i>
+        </div>
+      </div>
+    </section>
+
+    <!-- === Expertise Block === -->
+    <section class="block" id="expertise">
+      <div class="video-container" data-parallax data-speed="0.18">
+        <video autoplay muted loop playsinline>
+          <source src="Coding.mp4" type="video/mp4"/>
+        </video>
+      </div>
+      <div class="inner">
+        <h2>Key Areas of Expertise</h2>
+        <div class="divider"></div>
+        <ul class="expertise">
+          <li><i class="fas fa-water"></i>
+            <div><b>Hydrological Modeling:</b> Enhancing Noah-MP and RAPID for improved infiltration, runoff, and soil-moisture dynamics.</div>
+          </li>
+          <li><i class="fas fa-flood"></i>
+            <div><b>Flood Management:</b> Using SWMM to assess climate impacts on urban drainage and improve flood resilience.</div>
+          </li>
+          <li><i class="fas fa-database"></i>
+            <div><b>Database Design:</b> Building MySQL backends for smart water distribution and optimization systems.</div>
+          </li>
+          <li><i class="fas fa-brain"></i>
+            <div><b>Differentiable Hydrology:</b> PyTorch-based hydrological processes for GPU acceleration and ML coupling.</div>
+          </li>
+        </ul>
+        <div class="divider"></div>
+        <p>
+          With proficiency in Python, R, SQL, HPC, and tools like SWMM, I work at the nexus of water resources, climate science, and data analytics—aiming to advance sustainable water management and climate resilience via hybrid physical + data-driven modeling.
+        </p>
+        <p>
+          I also enjoy collaboration and leadership, including service with the
+          <a href="https://has.arizona.edu/people/committees/el-dia" target="_blank" style="color:var(--gold);text-decoration:none;">El Dia Student Symposium</a>.
+        </p>
+      </div>
+    </section>
+
+    <!-- === Footer === -->
+    <footer class="footer" id="footer">
+      <p>Created by Mohammad Ali Farmani | Contact:
+        <a href="mailto:farmani@arizona.edu">farmani@arizona.edu</a>
       </p>
-      <p>
-        I also enjoy collaboration and leadership, including service with the
-        <a href="https://has.arizona.edu/people/committees/el-dia" target="_blank" style="color:var(--gold);text-decoration:none;">El Dia Student Symposium</a>.
-      </p>
-    </div>
-  </section>
+      <a href="https://hits.seeyoufarm.com" target="_blank">
+        <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fyourgithubpage.com&count_bg=%2379C83D&title_bg=%23555555&icon=github.svg&icon_color=%23E7E7E7&title=Visitors&edge_flat=false" alt="Visitor count">
+      </a>
+    </footer>
+  </div>
 
-  <!-- === Footer (outside snap for natural end) === -->
-  <footer class="footer" id="footer">
-    <p>Created by Mohammad Ali Farmani | Contact:
-      <a href="mailto:farmani@arizona.edu">farmani@arizona.edu</a>
-    </p>
-    <a href="https://hits.seeyoufarm.com" target="_blank">
-      <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fyourgithubpage.com&count_bg=%2379C83D&title_bg=%23555555&icon=github.svg&icon_color=%23E7E7E7&title=Visitors&edge_flat=false" alt="Visitor count">
-    </a>
-  </footer>
-</div>
+  <!-- Back to top -->
+  <button id="backToTop" title="Back to top">
+    <i class="fas fa-arrow-up"></i>
+  </button>
 
-<!-- Back to top -->
-<button id="backToTop" title="Back to top"><i class="fas fa-arrow-up"></i></button>
+  <!-- JavaScript -->
+  <script>
+    // ===== Scroll progress =====
+    const progressBar = document.getElementById('progressBar');
+    const footer = document.getElementById('footer');
 
-<script>
-  // ===== Scroll progress (fades near footer) =====
-  const progressBar = document.getElementById('progressBar');
-  const footer = document.getElementById('footer');
-
-  function updateProgress(){
-    const scrollTop = document.scrollingElement.scrollTop || document.body.scrollTop;
-    const docHeight = document.scrollingElement.scrollHeight - window.innerHeight;
-    const pct = Math.max(0, Math.min(1, scrollTop / docHeight));
-    progressBar.style.width = (pct * 100) + '%';
-  }
-
-  // Fade out when footer is largely in view
-  const footerObserver = new IntersectionObserver((entries)=>{
-    entries.forEach(entry=>{
-      progressBar.style.opacity = entry.isIntersecting ? '0' : '1';
-    });
-  }, {root:null, threshold:0.35});
-  footerObserver.observe(footer);
-
-  // ===== Back to top visibility =====
-  const backBtn = document.getElementById('backToTop');
-  function toggleBackBtn(){
-    if(window.scrollY > 350){
-      backBtn.style.opacity = '1';
-      backBtn.style.visibility = 'visible';
-    } else {
-      backBtn.style.opacity = '0';
-      backBtn.style.visibility = 'hidden';
+    function updateProgress(){
+      const scrollTop = document.scrollingElement.scrollTop || document.body.scrollTop;
+      const docHeight = document.scrollingElement.scrollHeight - window.innerHeight;
+      const pct = Math.max(0, Math.min(1, scrollTop / docHeight));
+      progressBar.style.width = (pct * 100) + '%';
     }
-  }
-  backBtn.addEventListener('click', ()=> window.scrollTo({top:0, behavior:'smooth'}));
 
-  // ===== Soft parallax for videos =====
-  const parallaxEls = document.querySelectorAll('[data-parallax]');
-  let ticking = false;
-  function applyParallax(){
-    parallaxEls.forEach(el=>{
-      const speed = parseFloat(el.getAttribute('data-speed')) || 0.2;
-      const rect = el.parentElement.getBoundingClientRect();
-      const center = rect.top + rect.height/2 - window.innerHeight/2;
-      const translate = -center * speed;
-      const vid = el.querySelector('video');
-      if(vid) vid.style.transform = `translate(-50%, calc(-50% + ${translate}px))`;
-    });
-  }
-  function onScroll(){
+    const footerObserver = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        progressBar.style.opacity = entry.isIntersecting ? '0' : '1';
+      });
+    }, {root:null, threshold:0.35});
+    footerObserver.observe(footer);
+
+    // ===== Back to top =====
+    const backBtn = document.getElementById('backToTop');
+    function toggleBackBtn(){
+      if(window.scrollY > 350){
+        backBtn.style.opacity = '1';
+        backBtn.style.visibility = 'visible';
+      } else {
+        backBtn.style.opacity = '0';
+        backBtn.style.visibility = 'hidden';
+      }
+    }
+    backBtn.addEventListener('click', ()=> window.scrollTo({top:0, behavior:'smooth'}));
+
+    // ===== Parallax =====
+    const parallaxEls = document.querySelectorAll('[data-parallax]');
+    let ticking = false;
+    function applyParallax(){
+      parallaxEls.forEach(el=>{
+        const speed = parseFloat(el.getAttribute('data-speed')) || 0.2;
+        const rect = el.parentElement.getBoundingClientRect();
+        const center = rect.top + rect.height/2 - window.innerHeight/2;
+        const translate = -center * speed;
+        const vid = el.querySelector('video');
+        if(vid) vid.style.transform = `translate(-50%, calc(-50% + ${translate}px))`;
+      });
+    }
+    function onScroll(){
+      updateProgress();
+      toggleBackBtn();
+      if(!ticking){
+        window.requestAnimationFrame(()=>{
+          applyParallax();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }
+
+    // ===== Fade-in on scroll =====
+    const faders = document.querySelectorAll('p, .lead, ul.expertise li');
+    const io = new IntersectionObserver((entries, obs)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){
+          e.target.style.opacity = '1';
+          e.target.style.transform = 'translateY(0)';
+          obs.unobserve(e.target);
+        }
+      });
+    }, {threshold:0.15});
+    faders.forEach(el=> io.observe(el));
+
+    // Init
     updateProgress();
     toggleBackBtn();
-    if(!ticking){
-      window.requestAnimationFrame(()=>{
-        applyParallax();
-        ticking = false;
-      });
-      ticking = true;
-    }
-  }
+    applyParallax();
+    window.addEventListener('scroll', onScroll, {passive:true});
+    window.addEventListener('resize', ()=> { applyParallax(); updateProgress(); });
 
-  // ===== Fade-in on scroll for paragraphs =====
-  const faders = document.querySelectorAll('p, .lead, ul.expertise li');
-  const io = new IntersectionObserver((entries, obs)=>{
-    entries.forEach(e=>{
-      if(e.isIntersecting){
-        e.target.style.opacity = '1';
-        e.target.style.transform = 'translateY(0)';
-        obs.unobserve(e.target);
+    // bounce keyframes
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes bounce{
+        0%,20%,50%,80%,100% { transform: translateY(0); }
+        40% { transform: translateY(-8px); }
+        60% { transform: translateY(-4px); }
       }
-    });
-  }, {threshold:0.15});
-  faders.forEach(el=> io.observe(el));
+    `;
+    document.head.appendChild(style);
+  </script>
 
-  // Init
-  updateProgress();
-  toggleBackBtn();
-  applyParallax();
-  window.addEventListener('scroll', onScroll, {passive:true});
-  window.addEventListener('resize', ()=> { applyParallax(); updateProgress(); });
-
-  // A gentle bounce keyframes for chevron
-  const style = document.createElement('style');
-  style.textContent = `
-    @keyframes bounce{
-      0%,20%,50%,80%,100% { transform: translateY(0); }
-      40% { transform: translateY(-8px); }
-      60% { transform: translateY(-4px); }
-    }
-  `;
-  document.head.appendChild(style);
-</script>
 </body>
 </html>
+
