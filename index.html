@@ -9,7 +9,7 @@
 </head>
 <body>
 
-  <!-- Thin gradient progress bar -->
+  <!-- Progress bar -->
   <div class="progress-wrap">
     <div class="progress-bar" id="progressBar"></div>
   </div>
@@ -26,9 +26,14 @@
         <a href="bfi.html">BFI</a>
       </div>
     </div>
-    <a href="software.html"><i class="fa-solid fa-brain-circuit"></i> Software</a>
+    <a href="software.html"><i class="fa-solid fa-laptop-code"></i> Software</a>
   </nav>
 
+  <!-- 🔔 Announcement Banner -->
+  <div class="banner" id="banner">
+    <div class="banner-text" id="bannerText"></div>
+    <button class="banner-close" id="bannerClose" aria-label="Close banner">&times;</button>
+  </div>
 
   <!-- Scroll-snap container -->
   <div class="snapper" id="snapper">
@@ -109,6 +114,41 @@
 
   <!-- JavaScript -->
   <script>
+    // === Banner rotation with persistence ===
+    const banner = document.getElementById('banner');
+    const bannerText = document.getElementById('bannerText');
+    const bannerClose = document.getElementById('bannerClose');
+
+    const messages = [
+      "📢 New: <b>smm-toolkit</b> released on PyPI!",
+      "🧠 Upcoming: BFI-toolkit beta coming soon.",
+      "📄 Paper accepted in <b>HESS 2025</b>!",
+      "🚀 Check out our <a href='software.html'>Software</a> page for more."
+    ];
+
+    // Check if banner was previously closed
+    const bannerKey = "banner_closed_v1";
+    if (localStorage.getItem(bannerKey) === "true") {
+      banner.style.display = "none";
+    } else {
+      let idx = 0;
+      function rotateBanner() {
+        bannerText.innerHTML = messages[idx];
+        idx = (idx + 1) % messages.length;
+      }
+      rotateBanner();
+      const bannerInterval = setInterval(rotateBanner, 5000);
+
+      bannerClose.addEventListener('click', () => {
+        banner.classList.add('closing');
+        clearInterval(bannerInterval);
+        setTimeout(() => {
+          banner.style.display = 'none';
+          localStorage.setItem(bannerKey, "true");
+        }, 400);
+      });
+    }
+
     // ===== Scroll progress =====
     const progressBar = document.getElementById('progressBar');
     const footer = document.getElementById('footer');

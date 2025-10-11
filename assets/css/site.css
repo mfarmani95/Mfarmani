@@ -82,6 +82,60 @@ body{
 }
 .dropdown:hover .dropdown-content{ display:block; }
 
+/* ===== Announcement Banner ===== */
+.banner{
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(90deg, var(--gold), var(--cyan));
+  color: #000;
+  padding: 10px 20px;
+  border-radius: 0 0 14px 14px;
+  z-index: 1300;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  font-size: 16px;
+  font-weight: 600;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.4);
+  max-width: 800px;
+  width: 90%;
+}
+.banner a{
+  color:#000;
+  text-decoration: underline;
+}
+.banner-close{
+  background: none;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+  color: #000;
+  font-weight: 600;
+  line-height: 1;
+  transition: opacity 0.25s ease;
+}
+.banner-close:hover{
+  opacity: 0.65;
+}
+
+/* Smooth banner closing animation */
+.banner.closing {
+  animation: bannerClose 0.4s ease forwards;
+}
+@keyframes bannerClose {
+  from {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+  to {
+    opacity: 0;
+    transform: translate(-50%, -20px);
+  }
+}
+
 /* ===== Sections ===== */
 .snapper{
   height:100vh;
@@ -127,7 +181,7 @@ section.block .inner{
   will-change: transform;
 }
 
-/* ===== Headings, p, lists, etc. ===== */
+/* ===== Headings, p, lists ===== */
 h1, h2{
   margin:0 0 14px 0;
   font-weight:700;
@@ -173,60 +227,6 @@ ul.expertise li i{
   -webkit-background-clip:text; -webkit-text-fill-color:transparent;
 }
 
-
-/* ===== Publications list */
-ul.pub-list {
-  list-style: none;
-  padding: 0;
-  margin: 30px 0 0 0;
-  display: grid;
-  gap: 18px;
-}
-ul.pub-list li {
-  display: flex;
-  gap: 12px;
-  padding: 14px 16px;
-  border-radius: 12px;
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.08);
-  transition: background .25s ease, transform .25s ease;
-  opacity: 0;
-  transform: translateY(12px);
-}
-ul.pub-list li:hover {
-  background: linear-gradient(90deg, rgba(248,196,113,0.08), rgba(79,209,197,0.08));
-  transform: translateY(-3px);
-}
-ul.pub-list li i {
-  font-size: 22px;
-  background: linear-gradient(90deg, var(--gold), var(--cyan));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  margin-top: 4px;
-}
-ul.pub-list li div {
-  line-height: 1.6;
-  color: #f1f1f1;
-}
-ul.pub-list li b {
-  font-size: 1rem;
-  color: #fff;
-}
-ul.pub-list li span {
-  display: block;
-  font-size: 0.9rem;
-  opacity: 0.8;
-}
-ul.pub-list li a {
-  color: var(--cyan);
-  text-decoration: none;
-  font-size: 0.9rem;
-}
-ul.pub-list li a:hover {
-  color: var(--gold);
-  text-shadow: 0 0 10px var(--gold), 0 0 15px var(--cyan);
-}
-
 /* ===== Back to top ===== */
 #backToTop{
   position:fixed; right:18px; bottom:18px;
@@ -254,7 +254,7 @@ ul.pub-list li a:hover {
   to{ opacity:1; transform:translateY(0); }
 }
 
-/* ===== Accessibility & responsive ===== */
+/* ===== Responsive ===== */
 @media (prefers-reduced-motion: reduce){
   .video-container video{ transform:none !important; }
   .progress-bar, .navbar a::after{ transition:none !important; }
@@ -263,5 +263,6 @@ ul.pub-list li a:hover {
 @media (max-width:900px){
   .navbar{ gap:16px; padding:8px 14px; }
   section.block .inner{ padding:22px; }
+  .banner{ font-size: 14px; padding: 8px 14px; }
 }
 
