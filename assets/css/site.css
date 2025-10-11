@@ -173,6 +173,60 @@ ul.expertise li i{
   -webkit-background-clip:text; -webkit-text-fill-color:transparent;
 }
 
+
+/* ===== Publications list */
+ul.pub-list {
+  list-style: none;
+  padding: 0;
+  margin: 30px 0 0 0;
+  display: grid;
+  gap: 18px;
+}
+ul.pub-list li {
+  display: flex;
+  gap: 12px;
+  padding: 14px 16px;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  transition: background .25s ease, transform .25s ease;
+  opacity: 0;
+  transform: translateY(12px);
+}
+ul.pub-list li:hover {
+  background: linear-gradient(90deg, rgba(248,196,113,0.08), rgba(79,209,197,0.08));
+  transform: translateY(-3px);
+}
+ul.pub-list li i {
+  font-size: 22px;
+  background: linear-gradient(90deg, var(--gold), var(--cyan));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-top: 4px;
+}
+ul.pub-list li div {
+  line-height: 1.6;
+  color: #f1f1f1;
+}
+ul.pub-list li b {
+  font-size: 1rem;
+  color: #fff;
+}
+ul.pub-list li span {
+  display: block;
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+ul.pub-list li a {
+  color: var(--cyan);
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+ul.pub-list li a:hover {
+  color: var(--gold);
+  text-shadow: 0 0 10px var(--gold), 0 0 15px var(--cyan);
+}
+
 /* ===== Back to top ===== */
 #backToTop{
   position:fixed; right:18px; bottom:18px;
