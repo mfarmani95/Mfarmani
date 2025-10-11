@@ -119,16 +119,15 @@ body {
   opacity: 0.9;
 }
 
-/* === Card Row Layout === */
+/* === Strict Row Layout === */
 .card-row {
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
   gap: 25px;
+  flex-wrap: nowrap;
 }
 .package-card {
-  flex: 1 1 300px;
-  max-width: 340px;
+  width: 340px;
   background: var(--card-bg);
   border: 1px solid var(--card-stroke);
   border-radius: 14px;
@@ -148,19 +147,14 @@ body {
   margin-bottom: 10px;
   font-size: 24px;
 }
-.package-card p {
-  font-size: 16px;
-  line-height: 1.6;
-}
+.package-card p { font-size: 16px; line-height: 1.6; }
 .package-card ul {
   list-style: none;
   padding: 0;
   font-size: 14px;
   margin-top: 12px;
 }
-.package-card ul li {
-  margin-bottom: 6px;
-}
+.package-card ul li { margin-bottom: 6px; }
 .package-card .actions {
   display: flex;
   gap: 10px;
@@ -228,11 +222,9 @@ body {
   text-shadow: 0 0 10px var(--gold), 0 0 20px var(--teal);
 }
 
-/* === Responsive === */
-@media (max-width: 768px) {
-  .card-row {
-    flex-direction: column;
-    align-items: center;
-  }
+/* === Responsive: stack cards only on mobile === */
+@media (max-width: 1024px) {
+  .card-row { flex-wrap: wrap; }
+  .package-card { width: 90%; max-width: 400px; }
 }
 
