@@ -5,11 +5,234 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Software | Mohammad Ali Farmani</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-  <link rel="stylesheet" href="assets/css/software.css" />
+  <style>
+    :root {
+      --gold: #f8c471;
+      --teal: #4fd1c5;
+      --glass-bg: rgba(0, 0, 0, 0.55);
+      --card-bg: rgba(255, 255, 255, 0.06);
+      --card-stroke: rgba(255, 255, 255, 0.18);
+    }
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      color: white;
+      background: black;
+      overflow-x: hidden;
+    }
+
+    /* Background */
+    .video-container {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+    }
+    .video-container video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .video-container::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.75));
+    }
+
+    /* Navbar */
+    .navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.55);
+      backdrop-filter: blur(10px);
+      padding: 15px 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 40px;
+      z-index: 1000;
+      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.6);
+    }
+    .navbar a, .navbar .dropbtn {
+      color: white;
+      font-size: 18px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+    .navbar a:hover, .navbar .dropbtn:hover {
+      background: linear-gradient(90deg, var(--gold), var(--teal));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .navbar a::after, .navbar .dropbtn::after {
+      content: "";
+      height: 2px;
+      background: linear-gradient(90deg, var(--gold), var(--teal));
+      width: 0;
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      transition: width 0.3s ease;
+    }
+    .navbar a:hover::after, .navbar .dropbtn:hover::after {
+      width: 100%;
+    }
+    .dropdown { position: relative; }
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background: rgba(0,0,0,0.95);
+      border-radius: 8px;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px rgba(0,0,0,0.4);
+      z-index: 1000;
+    }
+    .dropdown-content a {
+      color: white;
+      padding: 10px 16px;
+      text-decoration: none;
+      display: block;
+    }
+    .dropdown-content a:hover {
+      background: linear-gradient(90deg, rgba(248,196,113,0.25), rgba(79,209,197,0.25));
+    }
+    .dropdown:hover .dropdown-content { display: block; }
+
+    /* Container */
+    .container {
+      max-width: 1200px;
+      margin: 140px auto 60px;
+      padding: 20px;
+      text-align: center;
+    }
+    .container h1 {
+      font-size: 32px;
+      background: linear-gradient(90deg, var(--gold), var(--teal));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 40px;
+    }
+
+    /* Cards Row Layout */
+    .card-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 25px;
+    }
+    .package-card {
+      flex: 1 1 300px;
+      max-width: 340px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-stroke);
+      border-radius: 14px;
+      padding: 20px;
+      text-align: left;
+      box-shadow: 0 0 24px rgba(79, 209, 197, 0.25);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .package-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 10px 30px rgba(79, 209, 197, 0.4);
+    }
+    .package-card h2 {
+      background: linear-gradient(90deg, var(--gold), var(--teal));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 10px;
+      font-size: 24px;
+    }
+    .package-card p { font-size: 16px; line-height: 1.6; }
+    .package-card ul {
+      list-style: none;
+      padding: 0;
+      font-size: 14px;
+      margin-top: 12px;
+    }
+    .package-card ul li {
+      margin-bottom: 6px;
+    }
+    .package-card .actions {
+      display: flex;
+      gap: 10px;
+      margin-top: 14px;
+      flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-block;
+      padding: 8px 14px;
+      background: linear-gradient(135deg, var(--gold), var(--teal));
+      color: black;
+      text-decoration: none;
+      font-weight: 600;
+      border-radius: 8px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
+    }
+    .btn.disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    /* Back to top */
+    #backToTop {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background: linear-gradient(135deg, var(--gold), var(--teal));
+      color: black;
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      font-size: 22px;
+      cursor: pointer;
+      box-shadow: 0 0 20px rgba(79,209,197,0.5);
+      transition: all 0.3s ease;
+      opacity: 0;
+      visibility: hidden;
+      z-index: 1000;
+    }
+    #backToTop:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 25px rgba(248,196,113,0.8);
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding: 25px;
+      background: rgba(0, 0, 0, 0.7);
+      font-size: 16px;
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 -2px 20px rgba(0, 0, 0, 0.5);
+    }
+    .footer a {
+      color: var(--teal);
+      text-decoration: none;
+    }
+    .footer a:hover {
+      color: var(--gold);
+      text-shadow: 0 0 10px var(--gold), 0 0 20px var(--teal);
+    }
+
+    @media (max-width: 768px) {
+      .card-row { flex-direction: column; align-items: center; }
+    }
+  </style>
 </head>
 <body>
 
-<!-- Background video -->
+<!-- Background -->
 <div class="video-container">
   <video autoplay muted loop playsinline>
     <source src="PUB_BG.mp4" type="video/mp4" />
@@ -31,45 +254,46 @@
   <a href="software.html"><i class="fa-solid fa-code"></i> Software</a>
 </div>
 
-<!-- Main Content -->
+<!-- Content -->
 <div class="container">
   <h1><i class="fa-solid fa-code"></i> Open Source Software Packages</h1>
-  <p>These tools were developed to support hydrologic research and modeling. They are actively maintained and updated with new features and packages over time.</p>
 
-  <!-- Package Card 1 -->
-  <div class="package-card">
-    <h2>smm-toolkit</h2>
-    <p><b>smm-toolkit</b> is designed to compute long-term and short-term Soil Moisture Memory (SMM) efficiently. It supports hydrologists and climate scientists working with large-scale datasets.</p>
-    <ul>
-      <li><b>Language:</b> Python</li>
-      <li><b>Initial Release:</b> 2025</li>
-      <li><b>PyPI:</b> <a href="https://test.pypi.org/project/smm-toolkit/" target="_blank">smm-toolkit</a></li>
-    </ul>
-    <div class="actions">
-      <a class="btn" href="https://test.pypi.org/project/smm-toolkit/" target="_blank"><i class="fas fa-download"></i> PyPI</a>
-      <a class="btn" href="https://github.com/mfarmani95/smm-toolkit" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+  <div class="card-row">
+    <!-- smm-toolkit -->
+    <div class="package-card">
+      <h2>smm-toolkit</h2>
+      <p>A Python package to compute long-term and short-term Soil Moisture Memory (SMM) for hydrological and climate research.</p>
+      <ul>
+        <li><b>Language:</b> Python</li>
+        <li><b>Initial Release:</b> 2025</li>
+        <li><b>PyPI:</b> <a href="https://test.pypi.org/project/smm-toolkit/" target="_blank">smm-toolkit</a></li>
+      </ul>
+      <div class="actions">
+        <a class="btn" href="https://test.pypi.org/project/smm-toolkit/" target="_blank"><i class="fas fa-download"></i> PyPI</a>
+        <a class="btn" href="https://github.com/mfarmani95/smm-toolkit" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+      </div>
     </div>
-  </div>
 
-  <!-- Package Card 2 -->
-  <div class="package-card">
-    <h2>bfi-toolkit</h2>
-    <p><b>bfi-toolkit</b> provides tools for Baseflow Index (BFI) analysis and hydrological decomposition of streamflow time series, supporting basin-scale water resource studies.</p>
-    <ul>
-      <li><b>Language:</b> Python</li>
-      <li><b>Initial Release:</b> 2025</li>
-      <li><b>PyPI:</b> Coming soon</li>
-    </ul>
-    <div class="actions">
-      <a class="btn disabled"><i class="fas fa-download"></i> Coming Soon</a>
-      <a class="btn" href="https://github.com/mfarmani95" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+    <!-- bfi-toolkit -->
+    <div class="package-card">
+      <h2>bfi-toolkit</h2>
+      <p>A toolkit for Baseflow Index (BFI) analysis and hydrological decomposition of streamflow time series.</p>
+      <ul>
+        <li><b>Language:</b> Python</li>
+        <li><b>Initial Release:</b> 2025</li>
+        <li><b>PyPI:</b> Coming soon</li>
+      </ul>
+      <div class="actions">
+        <a class="btn disabled"><i class="fas fa-download"></i> Coming Soon</a>
+        <a class="btn" href="https://github.com/mfarmani95" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+      </div>
     </div>
-  </div>
 
-  <!-- Future packages -->
-  <div class="package-card">
-    <h2>Future Tools</h2>
-    <p>New hydrological and land surface modeling software packages will be released here as they are developed — focusing on infiltration, snowmelt, and runoff processes.</p>
+    <!-- future -->
+    <div class="package-card">
+      <h2>Future Tools</h2>
+      <p>Upcoming hydrological modeling tools — focused on snowmelt, infiltration, runoff generation, and more.</p>
+    </div>
   </div>
 </div>
 
@@ -84,7 +308,7 @@
 </div>
 
 <script>
-  // Back to top button
+  // Back to top
   const backToTop = document.getElementById("backToTop");
   window.addEventListener("scroll", () => {
     if (window.scrollY > 300) {
