@@ -8,105 +8,107 @@
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
 
-  <!-- External CSS -->
-  <link rel="stylesheet" href="assets/css/index.css" />
+  <!-- External Styles -->
+  <link rel="stylesheet" href="assets/css/index.css">
 </head>
 <body>
 
-  <!-- Thin gradient progress bar -->
-  <div class="progress-wrap"><div class="progress-bar" id="progressBar"></div></div>
+<!-- Thin gradient progress bar -->
+<div class="progress-wrap"><div class="progress-bar" id="progressBar"></div></div>
 
-  <!-- Navbar -->
-  <nav class="navbar">
-    <a href="index.html"><i class="fas fa-home"></i> Home</a>
-    <a href="cv.html"><i class="fas fa-id-card"></i> CV</a>
-    <a href="publications.html"><i class="fas fa-book"></i> Publications</a>
-    <div class="dropdown">
-      <a href="#" class="dropbtn"><i class="fas fa-briefcase"></i> Projects ▾</a>
-      <div class="dropdown-content">
-        <a href="smm.html">SMM</a>
-        <a href="bfi.html">BFI</a>
+<!-- Navbar -->
+<nav class="navbar">
+  <a href="index.html"><i class="fas fa-home"></i> Home</a>
+  <a href="cv.html"><i class="fas fa-id-card"></i> CV</a>
+  <a href="publications.html"><i class="fas fa-book"></i> Publications</a>
+  <div class="dropdown">
+    <a href="#" class="dropbtn"><i class="fas fa-briefcase"></i> Projects ▾</a>
+    <div class="dropdown-content">
+      <a href="smm.html">SMM</a>
+      <a href="bfi.html">BFI</a>
+    </div>
+  </div>
+</nav>
+
+<!-- Scroll-snap container -->
+<div class="snapper" id="snapper">
+  <!-- === Intro Block === -->
+  <section class="block" id="intro">
+    <div class="video-container" data-parallax data-speed="0.25">
+      <video autoplay muted loop playsinline>
+        <source src="assets/videos/WT_BG.mp4" type="video/mp4"/>
+      </video>
+    </div>
+    <div class="inner">
+      <h1>Hello, and thank you for visiting!</h1>
+      <div class="divider"></div>
+      <p class="lead">
+        My name is Mohammad Farmani, and I’m a Ph.D. student in Hydrology and Atmospheric Sciences with a minor in Data Science. This webpage is part of my mission to raise public awareness about water and groundwater issues—critical yet often overlooked topics that affect agriculture, ecosystems, and our daily lives.
+      </p>
+      <p>
+        Through this platform, I share accessible explanations of how water systems work, why groundwater is essential, and how informed communities can help shape sustainable water policies. Whether you're a student, farmer, policymaker, or simply curious, I hope the resources here help you better understand groundwater’s role in resilient communities—especially in the face of climate change.
+      </p>
+      <p>Let’s bridge the gap between science and society—starting with water.</p>
+      <div style="display:grid;place-items:center;margin-top:18px;opacity:.85;">
+        <i class="fas fa-chevron-down"
+           style="font-size:26px;background:linear-gradient(90deg, var(--gold), var(--cyan));
+                  -webkit-background-clip:text;-webkit-text-fill-color:transparent; animation:bounce 2s infinite;">
+        </i>
       </div>
     </div>
-  </nav>
+  </section>
 
-  <!-- Scroll-snap container -->
-  <div class="snapper" id="snapper">
-
-    <!-- === Intro Block === -->
-    <section class="block" id="intro">
-      <div class="video-container" data-parallax data-speed="0.25">
-        <video autoplay muted loop playsinline>
-          <source src="assets/videos/WT_BG.mp4" type="video/mp4"/>
-        </video>
-      </div>
-      <div class="inner">
-        <h1>Hello, and thank you for visiting!</h1>
-        <div class="divider"></div>
-        <p class="lead">
-          My name is Mohammad Farmani, and I’m a Ph.D. student in Hydrology and Atmospheric Sciences with a minor in Data Science. This webpage is part of my mission to raise public awareness about water and groundwater issues—critical yet often overlooked topics that affect agriculture, ecosystems, and our daily lives.
-        </p>
-        <p>
-          Through this platform, I share accessible explanations of how water systems work, why groundwater is essential, and how informed communities can help shape sustainable water policies. Whether you're a student, farmer, policymaker, or simply curious, I hope the resources here help you better understand groundwater’s role in resilient communities—especially in the face of climate change.
-        </p>
-        <p>Let’s bridge the gap between science and society—starting with water.</p>
-        <div class="chevron-container">
-          <i class="fas fa-chevron-down chevron-bounce"></i>
-        </div>
-      </div>
-    </section>
-
-    <!-- === Expertise Block === -->
-    <section class="block" id="expertise">
-      <div class="video-container" data-parallax data-speed="0.18">
-        <video autoplay muted loop playsinline>
-          <source src="assets/videos/Coding.mp4" type="video/mp4"/>
-        </video>
-      </div>
-      <div class="inner">
-        <h2>Key Areas of Expertise</h2>
-        <div class="divider"></div>
-        <ul class="expertise">
-          <li><i class="fas fa-water"></i>
-            <div><b>Hydrological Modeling:</b> Enhancing Noah-MP and RAPID for improved infiltration, runoff, and soil-moisture dynamics.</div>
-          </li>
-          <li><i class="fas fa-flood"></i>
-            <div><b>Flood Management:</b> Using SWMM to assess climate impacts on urban drainage and improve flood resilience.</div>
-          </li>
-          <li><i class="fas fa-database"></i>
-            <div><b>Database Design:</b> Building MySQL backends for smart water distribution and optimization systems.</div>
-          </li>
-          <li><i class="fas fa-brain"></i>
-            <div><b>Differentiable Hydrology:</b> PyTorch-based hydrological processes for GPU acceleration and ML coupling.</div>
-          </li>
-        </ul>
-        <div class="divider"></div>
-        <p>
-          With proficiency in Python, R, SQL, HPC, and tools like SWMM, I work at the nexus of water resources, climate science, and data analytics—aiming to advance sustainable water management and climate resilience via hybrid physical + data-driven modeling.
-        </p>
-        <p>
-          I also enjoy collaboration and leadership, including service with the
-          <a href="https://has.arizona.edu/people/committees/el-dia" target="_blank" class="highlight-link">El Dia Student Symposium</a>.
-        </p>
-      </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer" id="footer">
-      <p>Created by Mohammad Ali Farmani | Contact:
-        <a href="mailto:farmani@arizona.edu">farmani@arizona.edu</a>
+  <!-- === Expertise Block === -->
+  <section class="block" id="expertise">
+    <div class="video-container" data-parallax data-speed="0.18">
+      <video autoplay muted loop playsinline>
+        <source src="assets/videos/Coding.mp4" type="video/mp4"/>
+      </video>
+    </div>
+    <div class="inner">
+      <h2>Key Areas of Expertise</h2>
+      <div class="divider"></div>
+      <ul class="expertise">
+        <li><i class="fas fa-water"></i>
+          <div><b>Hydrological Modeling:</b> Enhancing Noah-MP and RAPID for improved infiltration, runoff, and soil-moisture dynamics.</div>
+        </li>
+        <li><i class="fas fa-flood"></i>
+          <div><b>Flood Management:</b> Using SWMM to assess climate impacts on urban drainage and improve flood resilience.</div>
+        </li>
+        <li><i class="fas fa-database"></i>
+          <div><b>Database Design:</b> Building MySQL backends for smart water distribution and optimization systems.</div>
+        </li>
+        <li><i class="fas fa-brain"></i>
+          <div><b>Differentiable Hydrology:</b> PyTorch-based hydrological processes for GPU acceleration and ML coupling.</div>
+        </li>
+      </ul>
+      <div class="divider"></div>
+      <p>
+        With proficiency in Python, R, SQL, HPC, and tools like SWMM, I work at the nexus of water resources, climate science, and data analytics—aiming to advance sustainable water management and climate resilience via hybrid physical + data-driven modeling.
       </p>
-      <a href="https://hits.seeyoufarm.com" target="_blank">
-        <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fyourgithubpage.com&count_bg=%2379C83D&title_bg=%23555555&icon=github.svg&icon_color=%23E7E7E7&title=Visitors&edge_flat=false" alt="Visitor count">
-      </a>
-    </footer>
-  </div>
+      <p>
+        I also enjoy collaboration and leadership, including service with the
+        <a href="https://has.arizona.edu/people/committees/el-dia" target="_blank" style="color:var(--gold);text-decoration:none;">El Dia Student Symposium</a>.
+      </p>
+    </div>
+  </section>
 
-  <!-- Back to top -->
-  <button id="backToTop" title="Back to top"><i class="fas fa-arrow-up"></i></button>
+  <!-- === Footer === -->
+  <footer class="footer" id="footer">
+    <p>Created by Mohammad Ali Farmani | Contact:
+      <a href="mailto:farmani@arizona.edu">farmani@arizona.edu</a>
+    </p>
+    <a href="https://hits.seeyoufarm.com" target="_blank">
+      <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fyourgithubpage.com&count_bg=%2379C83D&title_bg=%23555555&icon=github.svg&icon_color=%23E7E7E7&title=Visitors&edge_flat=false" alt="Visitor count">
+    </a>
+  </footer>
+</div>
 
-  <!-- External JS -->
-  <script src="assets/js/index.js"></script>
+<!-- Back to top -->
+<button id="backToTop" title="Back to top"><i class="fas fa-arrow-up"></i></button>
+
+<!-- External Script -->
+<script src="assets/js/index.js"></script>
 </body>
 </html>
 
