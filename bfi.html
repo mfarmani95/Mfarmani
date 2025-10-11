@@ -46,8 +46,6 @@
   <div class="content">
     <h1 id="introduction">Introduction to Baseflow and Streamflow Prediction</h1>
 	  <p>The accuracy of continental-scale hydrological models in predicting streamflow, particularly in dry regions, hinges on their ability to simulate various water balance components, including surface and subsurface runoff, soil moisture retention, as well as groundwater recharge and discharge. Runoff, which includes both surface and subsurface components, plays a critical role in the distribution of water between immediate streamflow and groundwater recharge, impacting baseflow generation. In dry regions, where precipitation is sparse, subsurface runoff becomes especially relevant, as it often contributes to baseflow—a key element in sustaining streamflow during dry periods. Therefore, examining both surface and subsurface runoff provides insight into how different physical process representations in models affect baseflow estimates.</p>    
-<p>The accuracy of continental-scale hydrological models in predicting streamflow, particularly in dry regions, hinges on their ability to simulate various water balance components, including surface and subsurface runoff, soil moisture retention, as well as groundwater recharge and discharge...</p>
-    <figure>
       <img src="assets/images/BFI_MOdel.png" alt="Baseflow Example" />
       <figcaption>Figure 1. Baseflow computed using Van Dijk (2010) method for GRDC 6731165 station data.</figcaption>
     </figure>
@@ -55,7 +53,8 @@
     <hr />
 
     <h2 id="importance">Importance of Understanding Baseflow Generation</h2>
-    <p>Baseflow plays a significant role in sustaining streamflow during dry periods, yet traditional Land Surface Models (LSMs) struggle to accurately represent groundwater recharge...</p>
+    <p>Baseflow plays a significant role in sustaining streamflow during dry periods, yet traditional Land Surface Models (LSMs) struggle to accurately represent groundwater recharge, soil moisture retention, and infiltration processes. Overestimation of the Baseflow Index (BFI) results in unrealistic low-flow simulations, highlighting the need for improved hydrological modeling approaches.<p>
+    <p>In dry regions where precipitation is intermittent and highly variable, baseflow sustains river flows during dry periods. However, traditional LSMs frequently overestimate baseflow, leading to inaccurate predictions of low-flow conditions and groundwater recharge rates. This study hypothesizes that improving the physical representation of baseflow processes in LSMs will lead to better streamflow predictions. By refining soil water retention schemes, macropore flow mechanisms, and surface ponding processes, we aim to enhance the ability of LSMs to capture baseflow dynamics accurately.</p>
     <figure>
       <img src="assets/images/BFI_RESULTS.png" alt="BFI Results" />
       <figcaption>Figure 2. BFI at 390 gauges across the southwestern region derived from observations and model experiments.</figcaption>
@@ -75,16 +74,21 @@
 
     <hr />
 
-    <h2 id="implications">Implications for Climate Science and Water Management</h2>
-    <p><b>1. More Accurate Streamflow Forecasts for Water Management:</b> Improved baseflow modeling enables better drought predictions and water allocation strategies.</p>
-    <p><b>2. Enhanced Climate Models:</b> Refining baseflow improves seasonal water forecasts.</p>
-    <p><b>3. Flood and Drought Preparedness:</b> More reliable flood risk assessments and drought planning.</p>
-    <p><b>4. Optimized Hydrological Model Development:</b> ML-driven soil parameters improve operational hydrology.</p>
+  <h2 id="implications">Implications for Climate Science and Water Management</h2>
+  <p>These findings improve streamflow forecasting, hydrological modeling, and climate resilience strategies, particularly in arid regions.</p>
+        <p><b>1. More Accurate Streamflow Forecasts for Water Management</b>Improved baseflow modeling enables better drought predictions and water allocation strategies, particularly in water-scarce regions.</p>
+        <p><b>2. Enhanced Climate Models and Hydrological Forecasting</b> Refining baseflow and soil moisture dynamics enhances climate models, improving seasonal water availability forecasts.</p>
+        <p><b>3. Flood and Drought Preparedness</b> Better representation of surface infiltration, macropore flow, and groundwater recharge leads to more reliable flood risk assessments and drought response planning.</p>
+        <p><b>4. Optimized Hydrological Model Development</b> Implementing machine learning-driven soil parameters and refined precipitation datasets could significantly enhance streamflow predictions in operational hydrological models.</p>
 
     <hr />
 
     <h2 id="conclusion">Conclusion & Future Directions</h2>
-    <p>This study emphasizes the critical role of baseflow generation processes in streamflow prediction accuracy, especially in arid regions of the southwestern US...</p>
+  <p>This study emphasizes the critical role of baseflow generation processes in streamflow prediction accuracy, especially in arid regions of the southwestern US. Our modeling results suggest that the streamflow prediction skill are sensitive to how baseflow generation is represented in terms of model physics, associated hydraulic parameters, and precipitation forcing data. Using a Noah-MP with enhanced hydrology, we show that the choice of hydrological processes, hydraulic parameters, and precipitation datasets significantly affects streamflow prediction accuracy over dry southwestern US.</p>
+        <p>The Van-Genuchten hydraulic scheme is more effective than the Brooks-Corey in modeling baseflow and BFI, particularly in dry regions where the soil is naturally dry, and the BFI is low. This scheme reduced the BFI overestimation produced by the Brooks-Corey with the CH hydraulic parameters (by the Noah-MP look-up table) and NWM with calibrated hydraulic parameters by better capturing groundwater recharge and discharge processes. Additionally, with the machine learning-derived soil water retention curve parameters, VGM significantly improves the streamflow predictions, offering a better match with the observed streamflow compared to the look-up table and pedotransfer functions. In general, our finding implies improving the baseflow in large-scale models like Noah-MP leads to better prediction of streamflow as observed in VGM configuration.</p>
+        <p>The study also highlights the importance of incorporating soil macropores, DPM experiment, and ponding depth thresholds, VGM and VGM0 experiments, in modeling, as these factors greatly influence infiltration, percolation, recharge and baseflow generation. A ponding depth greater than zero increases BFI by allowing more water to infiltrate, especially in wet regions. Additionally, the presence of macropores enhances drainage from the surface to the root zone, increasing baseflow and BFI. However, the benefits of these features vary by region. While uncalibrated macropore fraction improve predictions in high-BFI areas, they may lead to overestimations of baseflow in low-BFI regions.</p>
+        <p>Furthermore, the choice of precipitation dataset was shown to be crucial, with the IMERG dataset offering more accurate baseflow predictions in regions where traditional datasets like NLDAS-2 tended to overestimate BFI. Indeed, heavy precipitation facilitates the infiltration into deeper soil and groundwater recharge. This finding suggests that high-resolution precipitation data is essential for improving the accuracy of streamflow predictions in areas with complex hydrological conditions.</p>
+        <p>Overall, the study demonstrates that careful selection of hydrological processes (soil hydraulic schemes), hydraulic parameters, and precipitation datasets can significantly enhance the performance of hydrologic models in predicting streamflow, particularly in arid regions. These findings provide valuable insights for future research and model development, emphasizing the need to optimize model configurations before calibration to achieve more reliable streamflow predictions.</p>
 
     <hr />
 
