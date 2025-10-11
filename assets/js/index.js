@@ -1,4 +1,4 @@
-// ===== Scroll progress bar =====
+// ===== Scroll progress (fades near footer) =====
 const progressBar = document.getElementById('progressBar');
 const footer = document.getElementById('footer');
 
@@ -9,15 +9,15 @@ function updateProgress(){
   progressBar.style.width = (pct * 100) + '%';
 }
 
-// Fade out when footer in view
+// Fade out when footer is largely in view
 const footerObserver = new IntersectionObserver((entries)=>{
   entries.forEach(entry=>{
     progressBar.style.opacity = entry.isIntersecting ? '0' : '1';
   });
-}, {threshold:0.35});
+}, {root:null, threshold:0.35});
 footerObserver.observe(footer);
 
-// ===== Back to top =====
+// ===== Back to top visibility =====
 const backBtn = document.getElementById('backToTop');
 function toggleBackBtn(){
   if(window.scrollY > 350){
@@ -30,7 +30,7 @@ function toggleBackBtn(){
 }
 backBtn.addEventListener('click', ()=> window.scrollTo({top:0, behavior:'smooth'}));
 
-// ===== Parallax video =====
+// ===== Soft parallax for videos =====
 const parallaxEls = document.querySelectorAll('[data-parallax]');
 let ticking = false;
 function applyParallax(){
@@ -55,7 +55,7 @@ function onScroll(){
   }
 }
 
-// ===== Fade-in on scroll =====
+// ===== Fade-in on scroll for paragraphs =====
 const faders = document.querySelectorAll('p, .lead, ul.expertise li');
 const io = new IntersectionObserver((entries, obs)=>{
   entries.forEach(e=>{
@@ -74,4 +74,15 @@ toggleBackBtn();
 applyParallax();
 window.addEventListener('scroll', onScroll, {passive:true});
 window.addEventListener('resize', ()=> { applyParallax(); updateProgress(); });
+
+// A gentle bounce keyframes for chevron
+const style = document.createElement('style');
+style.textContent = `
+  @keyframes bounce{
+    0%,20%,50%,80%,100% { transform: translateY(0); }
+    40% { transform: translateY(-8px); }
+    60% { transform: translateY(-4px); }
+  }
+`;
+document.head.appendChild(style);
 
