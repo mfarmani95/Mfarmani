@@ -6,35 +6,35 @@
   <title>Mohammad Ali Farmani - Home</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
   <link rel="stylesheet" href="assets/css/site.css" />
+  <link rel="stylesheet" href="assets/css/news-rail.css" />
 </head>
 <body>
 
   <!-- Thin gradient progress bar -->
-  <div class="progress-wrap">
-    <div class="progress-bar" id="progressBar"></div>
-  </div>
+  <div class="progress-wrap"><div class="progress-bar" id="progressBar"></div></div>
 
   <!-- Navbar -->
   <nav class="navbar">
-    <a href="index.html"><i class="fa-solid fa-house"></i> Home</a>
-    <a href="cv.html"><i class="fa-solid fa-id-card"></i> CV</a>
-    <a href="publications.html"><i class="fa-solid fa-book"></i> Publications</a>
+    <a href="index.html"><i class="fas fa-home"></i> Home</a>
+    <a href="cv.html"><i class="fas fa-id-card"></i> CV</a>
+    <a href="publications.html"><i class="fas fa-book"></i> Publications</a>
     <div class="dropdown">
-      <a href="#" class="dropbtn"><i class="fa-solid fa-briefcase"></i> Projects ▾</a>
+      <a href="#" class="dropbtn"><i class="fas fa-briefcase"></i> Projects ▾</a>
       <div class="dropdown-content">
         <a href="smm.html">SMM</a>
         <a href="bfi.html">BFI</a>
       </div>
     </div>
-    <a href="software.html"><i class="fa-solid fa-code"></i> Software</a>
+    <a href="software.html"><i class="fa-solid fa-laptop-code"></i> Software</a>
   </nav>
 
-  <!-- 📰 News Carousel -->
-  <div class="news-carousel" id="newsCarousel">
-    <button class="news-nav prev"><i class="fa-solid fa-chevron-left"></i></button>
-    <div class="news-slides" id="newsSlides"></div>
-    <button class="news-nav next"><i class="fa-solid fa-chevron-right"></i></button>
-    <div class="news-dots" id="newsDots"></div>
+  <!-- News rail (auto-rotating) -->
+  <div class="news-rail" aria-label="Latest updates">
+    <button class="news-nav prev" aria-label="Previous update">‹</button>
+    <div class="news-track">
+      <!-- Slides are injected by news.js -->
+    </div>
+    <button class="news-nav next" aria-label="Next update">›</button>
   </div>
 
   <!-- Scroll-snap container -->
@@ -110,11 +110,10 @@
   </div>
 
   <!-- Back to top -->
-  <button id="backToTop" title="Back to top">
-    <i class="fas fa-arrow-up"></i>
-  </button>
+  <button id="backToTop" title="Back to top"><i class="fas fa-arrow-up"></i></button>
 
-  <!-- JavaScript -->
+  <!-- JS -->
+  <script src="assets/js/news.js"></script>
   <script>
     // ===== Scroll progress =====
     const progressBar = document.getElementById('progressBar');
@@ -126,7 +125,6 @@
       const pct = Math.max(0, Math.min(1, scrollTop / docHeight));
       progressBar.style.width = (pct * 100) + '%';
     }
-
     const footerObserver = new IntersectionObserver((entries)=>{
       entries.forEach(entry=>{
         progressBar.style.opacity = entry.isIntersecting ? '0' : '1';
@@ -134,6 +132,7 @@
     }, {root:null, threshold:0.35});
     footerObserver.observe(footer);
 
+    // ===== Back to top =====
     const backBtn = document.getElementById('backToTop');
     function toggleBackBtn(){
       if(window.scrollY > 350){
@@ -146,6 +145,7 @@
     }
     backBtn.addEventListener('click', ()=> window.scrollTo({top:0, behavior:'smooth'}));
 
+    // ===== Parallax =====
     const parallaxEls = document.querySelectorAll('[data-parallax]');
     let ticking = false;
     function applyParallax(){
@@ -155,7 +155,7 @@
         const center = rect.top + rect.height/2 - window.innerHeight/2;
         const translate = -center * speed;
         const vid = el.querySelector('video');
-        if(vid) vid.style.transform = `translate(-50%, calc(-50% + ${translate}px))`;
+        if(vid) vid.style.transform = `translateY(${translate}px)`; // x stays 0 now
       });
     }
     function onScroll(){
@@ -170,7 +170,8 @@
       }
     }
 
-    const faders = document.querySelectorAll('p, .lead, ul.expertise li');
+    // Fade-ins
+    const faders = document.querySelectorAll('p, .lead, ul.expertise li, .news-rail');
     const io = new IntersectionObserver((entries, obs)=>{
       entries.forEach(e=>{
         if(e.isIntersecting){
@@ -182,94 +183,23 @@
     }, {threshold:0.15});
     faders.forEach(el=> io.observe(el));
 
+    // Init
     updateProgress();
     toggleBackBtn();
     applyParallax();
     window.addEventListener('scroll', onScroll, {passive:true});
     window.addEventListener('resize', ()=> { applyParallax(); updateProgress(); });
 
-    // ===== News Carousel =====
-    const slidesContainer = document.getElementById('newsSlides');
-    const dotsContainer = document.getElementById('newsDots');
-    let slides = [];
-    let dots = [];
-    let currentSlide = 0;
-    let autoSlide;
-
-    async function loadNews() {
-      const response = await fetch('assets/data/news.json');
-      const newsItems = await response.json();
-
-      newsItems.forEach((item, i) => {
-        const slide = document.createElement('div');
-        slide.className = 'news-slide';
-        slide.innerHTML = `
-          <p>${item.icon || ''} ${item.text}
-            ${item.link ? `<a href="${item.link}" target="_blank">${item.link_text || 'Read more'}</a>` : ''}
-          </p>`;
-        slidesContainer.appendChild(slide);
-
-        const dot = document.createElement('button');
-        dot.addEventListener('click', () => showSlide(i));
-        dotsContainer.appendChild(dot);
-      });
-
-      slides = slidesContainer.querySelectorAll('.news-slide');
-      dots = dotsContainer.querySelectorAll('button');
-
-      showSlide(0);
-
-      const carousel = document.getElementById('newsCarousel');
-      carousel.style.height = slides[0].offsetHeight + 'px';
-      carousel.classList.add('loaded');
-
-      startAutoSlide();
-    }
-
-    function showSlide(index) {
-      if (!slides.length) return;
-
-      slides[currentSlide].classList.remove('active');
-      dots[currentSlide].classList.remove('active');
-
-      currentSlide = (index + slides.length) % slides.length;
-
-      slides[currentSlide].classList.add('active');
-      dots[currentSlide].classList.add('active');
-
-      const offset = -currentSlide * 100;
-      slidesContainer.style.transform = `translateX(${offset}%)`;
-
-      const activeHeight = slides[currentSlide].offsetHeight;
-      document.getElementById('newsCarousel').style.height = activeHeight + 'px';
-    }
-
-    function nextSlide() { showSlide(currentSlide + 1); }
-    function prevSlide() { showSlide(currentSlide - 1); }
-
-    document.querySelector('.news-nav.next').addEventListener('click', nextSlide);
-    document.querySelector('.news-nav.prev').addEventListener('click', prevSlide);
-
-    function startAutoSlide() { autoSlide = setInterval(nextSlide, 5000); }
-    function stopAutoSlide() { clearInterval(autoSlide); }
-
-    document.getElementById('newsCarousel').addEventListener('mouseenter', stopAutoSlide);
-    document.getElementById('newsCarousel').addEventListener('mouseleave', startAutoSlide);
-
-    // Swipe Support
-    let startX = 0;
-    let endX = 0;
-    slidesContainer.addEventListener('touchstart', (e) => { startX = e.touches[0].clientX; });
-    slidesContainer.addEventListener('touchmove', (e) => { endX = e.touches[0].clientX; });
-    slidesContainer.addEventListener('touchend', () => {
-      const diff = endX - startX;
-      if (Math.abs(diff) > 50) {
-        if (diff > 0) prevSlide();
-        else nextSlide();
+    // bounce keyframes
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes bounce{
+        0%,20%,50%,80%,100% { transform: translateY(0); }
+        40% { transform: translateY(-8px); }
+        60% { transform: translateY(-4px); }
       }
-    });
-
-    loadNews();
+    `;
+    document.head.appendChild(style);
   </script>
 </body>
 </html>
