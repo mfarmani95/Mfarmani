@@ -1,428 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>BFI – Baseflow Index | Mohammad Ali Farmani</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-<style>
-  body {
-    font-family: "Segoe UI", Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    color: white;
-    overflow-x: hidden;
-    background: black;
-  }
-
-  /* === Background === */
-  .video-container {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    z-index: -1;
-  }
-  .video-container video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  .video-container::before {
-    content: "";
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: linear-gradient(120deg, rgba(0,0,0,0.92), rgba(0,0,0,0.75));
-  }
-
-  /* === Navbar === */
-  .navbar {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    background: rgba(0,0,0,0.55);
-    backdrop-filter: blur(10px);
-    padding: 15px 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 40px;
-    z-index: 1000;
-    box-shadow: 0 2px 20px rgba(0,0,0,0.6);
-  }
-  .navbar a, .navbar .dropbtn {
-    color: white;
-    font-size: 18px;
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    position: relative;
-    transition: all 0.3s ease;
-  }
-  .navbar a:hover, .navbar .dropbtn:hover {
-    background: linear-gradient(90deg, #f8c471, #4fd1c5);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-  .navbar a::after, .navbar .dropbtn::after {
-    content: "";
-    height: 2px;
-    background: linear-gradient(90deg, #f8c471, #4fd1c5);
-    width: 0;
-    position: absolute;
-    bottom: -5px;
-    left: 0;
-    transition: width 0.3s ease;
-  }
-  .navbar a:hover::after, .navbar .dropbtn:hover::after {
-    width: 100%;
-  }
-
-  /* Dropdown */
-  .dropdown { position: relative; }
-  .dropdown-content {
-    display: none;
-    position: absolute;
-    background: rgba(0,0,0,0.95);
-    border-radius: 8px;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px rgba(0,0,0,0.4);
-    z-index: 1000;
-  }
-  .dropdown-content a {
-    color: white;
-    padding: 10px 16px;
-    text-decoration: none;
-    display: block;
-  }
-  .dropdown-content a:hover {
-    background: linear-gradient(90deg, rgba(248,196,113,0.25), rgba(79,209,197,0.25));
-  }
-  .dropdown:hover .dropdown-content {
-    display: block;
-  }
-
-  /* === Sidebar === */
-  .sidebar {
-    position: fixed;
-    top: 80px;
-    left: 0;
-    width: 230px;
-    height: calc(100% - 80px);
-    background: rgba(0,0,0,0.55);
-    backdrop-filter: blur(10px);
-    border-right: 2px solid transparent;
-    border-image: linear-gradient(to bottom, #f8c471, #4fd1c5);
-    border-image-slice: 1;
-    padding: 25px 15px;
-    overflow-y: auto;
-    box-shadow: 2px 0 10px rgba(0,0,0,0.4);
-    animation: slideIn 1.2s ease;
-  }
-
-  .sidebar h2 {
-    background: linear-gradient(90deg, #f8c471, #4fd1c5);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-align: center;
-    margin-bottom: 15px;
-    position: relative;
-  }
-  .sidebar h2::after {
-    content: "";
-    display: block;
-    width: 60%;
-    height: 2px;
-    margin: 6px auto 0;
-    background: linear-gradient(90deg, #f8c471, #4fd1c5);
-    border-radius: 2px;
-    opacity: 0.8;
-    animation: glowLine 3s ease-in-out infinite alternate;
-  }
-
-  .sidebar a {
-    display: block;
-    color: white;
-    padding: 10px;
-    text-decoration: none;
-    border-radius: 6px;
-    transition: all 0.3s ease;
-  }
-  .sidebar a:hover {
-    background: linear-gradient(90deg, rgba(248,196,113,0.15), rgba(79,209,197,0.15));
-    box-shadow: 0 0 8px rgba(248,196,113,0.4);
-  }
-  .sidebar a.active {
-    font-weight: bold;
-    background: linear-gradient(90deg, #f8c471, #4fd1c5);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-
-  @keyframes slideIn {
-    from { transform: translateX(-50px); opacity: 0; }
-    to { transform: translateX(0); opacity: 1; }
-  }
-  @keyframes glowLine {
-    from { box-shadow: 0 0 6px #f8c471; }
-    to { box-shadow: 0 0 12px #4fd1c5; }
-  }
-
-  /* === Content === */
-  .content {
-    margin-left: 260px;
-    padding: 30px 60px;
-    background: rgba(0,0,0,0.65);
-    border-radius: 15px;
-    margin-top: 100px;
-    margin-right: 40px;
-    box-shadow: 0 0 25px rgba(248,196,113,0.3);
-    animation: fadeIn 1.2s ease;
-  }
-
-  h1, h2 {
-    background: linear-gradient(90deg, #f8c471, #4fd1c5);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-align: center;
-  }
-
-  p {
-    text-align: justify;
-    line-height: 1.7;
-    font-size: 18px;
-  }
-
-  /* === Figures === */
-  figure {
-    display: block;
-    margin: 30px auto 50px;
-    text-align: center;
-  }
-  img {
-    width: 40%;
-    border-radius: 12px;
-    border: 1px solid rgba(255,255,255,0.3);
-    box-shadow: 0 0 20px rgba(248,196,113,0.2);
-    transition: all 0.4s ease-in-out;
-    cursor: zoom-in;
-  }
-  img:hover {
-    transform: scale(1.8);
-    z-index: 10;
-    box-shadow: 0 0 40px rgba(79,209,197,0.7);
-    border-color: #4fd1c5;
-  }
-  figcaption {
-    font-size: 15px;
-    color: #ddd;
-    margin-top: 10px;
-  }
-
-  hr {
-    border: none;
-    height: 2px;
-    background: linear-gradient(90deg, #f8c471, #4fd1c5);
-    margin: 40px 0;
-    border-radius: 4px;
-  }
-
-  /* === Back to Top === */
-  #backToTop {
-    position: fixed;
-    bottom: 25px;
-    right: 25px;
-    background: linear-gradient(135deg, #f8c471, #4fd1c5);
-    color: black;
-    border: none;
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    font-size: 22px;
-    cursor: pointer;
-    box-shadow: 0 0 20px rgba(79,209,197,0.5);
-    transition: all 0.3s ease;
-    opacity: 0;
-    visibility: hidden;
-    z-index: 1000;
-  }
-  #backToTop:hover {
-    transform: scale(1.1);
-    box-shadow: 0 0 25px rgba(248,196,113,0.8);
-  }
-
-  /* === Footer === */
-  .footer {
-    text-align: center;
-    padding: 25px;
-    background: rgba(0,0,0,0.7);
-    font-size: 16px;
-    border-top: 1px solid rgba(255,255,255,0.2);
-    box-shadow: 0 -2px 20px rgba(0,0,0,0.5);
-  }
-  .footer a {
-    color: #4fd1c5;
-    text-decoration: none;
-  }
-  .footer a:hover {
-    color: #f8c471;
-    text-shadow: 0 0 10px #f8c471, 0 0 20px #4fd1c5;
-  }
-
-  /* === Animations === */
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  /* === Responsive === */
-  @media (max-width: 900px) {
-    .sidebar {
-      position: relative;
-      width: 100%;
-      height: auto;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-    .content {
-      margin-left: 0;
-      margin-right: 0;
-      padding: 25px;
-    }
-    img {
-      width: 80%;
-      transform: none;
-    }
-    img:hover {
-      transform: none;
-    }
-  }
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BFI – Baseflow Index | Mohammad Ali Farmani</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="assets/css/bfi.css" />
 </head>
 
 <body>
 
-<div class="video-container">
-  <video autoplay muted loop playsinline>
-    <source src="PUB_BG.mp4" type="video/mp4" />
-  </video>
-</div>
+  <!-- === Background Video === -->
+  <div class="video-container">
+    <video autoplay muted loop playsinline>
+      <source src="assets/videos/PUB_BG.mp4" type="video/mp4" />
+    </video>
+  </div>
 
-<div class="navbar">
-  <a href="index.html"><i class="fas fa-home"></i> Home</a>
-  <a href="cv.html"><i class="fas fa-id-card"></i> CV</a>
-  <a href="publications.html"><i class="fas fa-book"></i> Publications</a>
-  <div class="dropdown">
-    <a href="#" class="dropbtn"><i class="fas fa-briefcase"></i> Projects ▾</a>
-    <div class="dropdown-content">
-      <a href="smm.html">SMM</a>
-      <a href="bfi.html">BFI</a>
+  <!-- === Navbar === -->
+  <div class="navbar">
+    <a href="index.html"><i class="fas fa-home"></i> Home</a>
+    <a href="cv.html"><i class="fas fa-id-card"></i> CV</a>
+    <a href="publications.html"><i class="fas fa-book"></i> Publications</a>
+    <div class="dropdown">
+      <a href="#" class="dropbtn"><i class="fas fa-briefcase"></i> Projects ▾</a>
+      <div class="dropdown-content">
+        <a href="smm.html">SMM</a>
+        <a href="bfi.html">BFI</a>
+      </div>
     </div>
   </div>
-</div>
 
-<div class="sidebar">
-  <h2>Navigation</h2>
-  <a href="#introduction">Introduction</a>
-  <a href="#importance">Baseflow Generation</a>
-  <a href="#findings">Key Findings</a>
-  <a href="#implications">Implications</a>
-  <a href="#conclusion">Conclusion</a>
-  <a href="#reference">Reference</a>
-</div>
+  <!-- === Sidebar === -->
+  <div class="sidebar">
+    <h2>Navigation</h2>
+    <a href="#introduction">Introduction</a>
+    <a href="#importance">Baseflow Generation</a>
+    <a href="#findings">Key Findings</a>
+    <a href="#implications">Implications</a>
+    <a href="#conclusion">Conclusion</a>
+    <a href="#reference">Reference</a>
+  </div>
 
-<div class="content">
-  <h1 id="introduction">Introduction to Baseflow and Streamflow Prediction</h1>
-  <p>The accuracy of continental-scale hydrological models in predicting streamflow, particularly in dry regions, hinges on their ability to simulate various water balance components, including surface and subsurface runoff, soil moisture retention, as well as groundwater recharge and discharge. Runoff, which includes both surface and subsurface components, plays a critical role in the distribution of water between immediate streamflow and groundwater recharge, impacting baseflow generation. In dry regions, where precipitation is sparse, subsurface runoff becomes especially relevant, as it often contributes to baseflow—a key element in sustaining streamflow during dry periods. Therefore, examining both surface and subsurface runoff provides insight into how different physical process representations in models affect baseflow estimates.</p>
-  <figure>
-    <img src="BFI_MOdel.png" alt="Baseflow Example" />
-    <figcaption>Figure 1. Baseflow computed using Van Dijk (2010) method for GRDC 6731165 station data.</figcaption>
-  </figure>
+  <!-- === Content === -->
+  <div class="content">
+    <h1 id="introduction">Introduction to Baseflow and Streamflow Prediction</h1>
+    <p>The accuracy of continental-scale hydrological models in predicting streamflow, particularly in dry regions, hinges on their ability to simulate various water balance components, including surface and subsurface runoff, soil moisture retention, as well as groundwater recharge and discharge...</p>
+    <figure>
+      <img src="assets/images/BFI_Model.png" alt="Baseflow Example" />
+      <figcaption>Figure 1. Baseflow computed using Van Dijk (2010) method for GRDC 6731165 station data.</figcaption>
+    </figure>
 
-  <hr />
+    <hr />
 
-  <h2 id="importance">Importance of Understanding Baseflow Generation</h2>
-  <p>Baseflow plays a significant role in sustaining streamflow during dry periods, yet traditional Land Surface Models (LSMs) struggle to accurately represent groundwater recharge, soil moisture retention, and infiltration processes. Overestimation of the Baseflow Index (BFI) results in unrealistic low-flow simulations, highlighting the need for improved hydrological modeling approaches.<p>
-  <p>In dry regions where precipitation is intermittent and highly variable, baseflow sustains river flows during dry periods. However, traditional LSMs frequently overestimate baseflow, leading to inaccurate predictions of low-flow conditions and groundwater recharge rates. This study hypothesizes that improving the physical representation of baseflow processes in LSMs will lead to better streamflow predictions. By refining soil water retention schemes, macropore flow mechanisms, and surface ponding processes, we aim to enhance the ability of LSMs to capture baseflow dynamics accurately.</p>
-  <figure>
-    <img src="BFI_RESULTS.png" alt="BFI Results" />
-    <figcaption>Figure 2. BFI at 390 gauges across the southwestern region (a) derived from the USGS streamflow as well as those from the model experiments (b) NWM; (c) CH; (d) VGM; (e) DPM; and (f) VGM0.</figcaption>
-  </figure>
+    <h2 id="importance">Importance of Understanding Baseflow Generation</h2>
+    <p>Baseflow plays a significant role in sustaining streamflow during dry periods, yet traditional Land Surface Models (LSMs) struggle to accurately represent groundwater recharge...</p>
+    <figure>
+      <img src="assets/images/BFI_RESULTS.png" alt="BFI Results" />
+      <figcaption>Figure 2. BFI at 390 gauges across the southwestern region derived from observations and model experiments.</figcaption>
+    </figure>
 
-  <hr />
+    <hr />
 
-  <h2 id="findings">Key Findings</h2>
-  <p><b>1.</b> CH model overestimates baseflow; VG captures low-BFI regions better.<br>
-     <b>2.</b> Macropores and ponding thresholds improve recharge realism.<br>
-     <b>3.</b> ML-calibrated parameters improved streamflow KGE by 20%.<br>
-     <b>4.</b> IMERG forcing corrected overestimated BFI from NLDAS-2/AORC.</p>
+    <h2 id="findings">Key Findings</h2>
+    <p><b>1.</b> CH model overestimates baseflow; VG captures low-BFI regions better.<br>
+       <b>2.</b> Macropores and ponding thresholds improve recharge realism.<br>
+       <b>3.</b> ML-calibrated parameters improved streamflow KGE by 20%.<br>
+       <b>4.</b> IMERG forcing corrected overestimated BFI from NLDAS-2/AORC.</p>
+    <figure>
+      <img src="assets/images/KGE_RESULTS.png" alt="KGE Improvement" />
+      <figcaption>Figure 3. KGE improvement of ML against NWM.</figcaption>
+    </figure>
 
-  <figure>
-    <img src="KGE_RESULTS.png" alt="KGE Improvement" />
-    <figcaption>Figure 3 KGE Improvement of ML against NWM. ML was chosen since it outperformed other hydrological process and hydraulic parameter scenarios.</figcaption>
-  </figure>
+    <hr />
 
-  <hr />
+    <h2 id="implications">Implications for Climate Science and Water Management</h2>
+    <p><b>1. More Accurate Streamflow Forecasts for Water Management:</b> Improved baseflow modeling enables better drought predictions and water allocation strategies.</p>
+    <p><b>2. Enhanced Climate Models:</b> Refining baseflow improves seasonal water forecasts.</p>
+    <p><b>3. Flood and Drought Preparedness:</b> More reliable flood risk assessments and drought planning.</p>
+    <p><b>4. Optimized Hydrological Model Development:</b> ML-driven soil parameters improve operational hydrology.</p>
 
-  <h2 id="implications">Implications for Climate Science and Water Management</h2>
-  <p>These findings improve streamflow forecasting, hydrological modeling, and climate resilience strategies, particularly in arid regions.</p>
-        <p><b>1. More Accurate Streamflow Forecasts for Water Management</b>Improved baseflow modeling enables better drought predictions and water allocation strategies, particularly in water-scarce regions.</p>
-        <p><b>2. Enhanced Climate Models and Hydrological Forecasting</b> Refining baseflow and soil moisture dynamics enhances climate models, improving seasonal water availability forecasts.</p>
-        <p><b>3. Flood and Drought Preparedness</b> Better representation of surface infiltration, macropore flow, and groundwater recharge leads to more reliable flood risk assessments and drought response planning.</p>
-        <p><b>4. Optimized Hydrological Model Development</b> Implementing machine learning-driven soil parameters and refined precipitation datasets could significantly enhance streamflow predictions in operational hydrological models.</p>
+    <hr />
 
-  <hr />
+    <h2 id="conclusion">Conclusion & Future Directions</h2>
+    <p>This study emphasizes the critical role of baseflow generation processes in streamflow prediction accuracy, especially in arid regions of the southwestern US...</p>
 
-  <h2 id="conclusion">Conclusion & Future Directions</h2>
-  <p>This study emphasizes the critical role of baseflow generation processes in streamflow prediction accuracy, especially in arid regions of the southwestern US. Our modeling results suggest that the streamflow prediction skill are sensitive to how baseflow generation is represented in terms of model physics, associated hydraulic parameters, and precipitation forcing data. Using a Noah-MP with enhanced hydrology, we show that the choice of hydrological processes, hydraulic parameters, and precipitation datasets significantly affects streamflow prediction accuracy over dry southwestern US.</p>
-        <p>The Van-Genuchten hydraulic scheme is more effective than the Brooks-Corey in modeling baseflow and BFI, particularly in dry regions where the soil is naturally dry, and the BFI is low. This scheme reduced the BFI overestimation produced by the Brooks-Corey with the CH hydraulic parameters (by the Noah-MP look-up table) and NWM with calibrated hydraulic parameters by better capturing groundwater recharge and discharge processes. Additionally, with the machine learning-derived soil water retention curve parameters, VGM significantly improves the streamflow predictions, offering a better match with the observed streamflow compared to the look-up table and pedotransfer functions. In general, our finding implies improving the baseflow in large-scale models like Noah-MP leads to better prediction of streamflow as observed in VGM configuration.</p>
-        <p>The study also highlights the importance of incorporating soil macropores, DPM experiment, and ponding depth thresholds, VGM and VGM0 experiments, in modeling, as these factors greatly influence infiltration, percolation, recharge and baseflow generation. A ponding depth greater than zero increases BFI by allowing more water to infiltrate, especially in wet regions. Additionally, the presence of macropores enhances drainage from the surface to the root zone, increasing baseflow and BFI. However, the benefits of these features vary by region. While uncalibrated macropore fraction improve predictions in high-BFI areas, they may lead to overestimations of baseflow in low-BFI regions.</p>
-        <p>Furthermore, the choice of precipitation dataset was shown to be crucial, with the IMERG dataset offering more accurate baseflow predictions in regions where traditional datasets like NLDAS-2 tended to overestimate BFI. Indeed, heavy precipitation facilitates the infiltration into deeper soil and groundwater recharge. This finding suggests that high-resolution precipitation data is essential for improving the accuracy of streamflow predictions in areas with complex hydrological conditions.</p>
-        <p>Overall, the study demonstrates that careful selection of hydrological processes (soil hydraulic schemes), hydraulic parameters, and precipitation datasets can significantly enhance the performance of hydrologic models in predicting streamflow, particularly in arid regions. These findings provide valuable insights for future research and model development, emphasizing the need to optimize model configurations before calibration to achieve more reliable streamflow predictions.</p>
+    <hr />
 
-  <hr />
+    <h2 id="reference">Reference</h2>
+    <p><b>Farmani, M. A.</b>, Tavakoly, A., Behrangi, A., Qiu, Y., Gupta, A., Jawad, M., Yousefi Sohi, H., Zhang, X., Geheran, M., & Niu, G.-Y. (2025). Improving streamflow predictions in the arid Southwestern United States through understanding of baseflow generation mechanisms. <i>Water Resources Research</i>. <a href="https://doi.org/10.1029/2024WR039479" target="_blank">https://doi.org/10.1029/2024WR039479</a></p>
+  </div>
 
-  <h2 id="reference">Reference</h2>
-  <p><b>Farmani, M. A.</b>, Tavakoly, A., Behrangi, A., Qiu, Y., Gupta, A., Jawad, M., Yousefi Sohi, H., Zhang, X., Geheran, M., & Niu, G.-Y. (2025). Improving streamflow predictions in the arid Southwestern United States through understanding of baseflow generation mechanisms. <i>Water Resources Research</i>. <a href="https://doi.org/10.1029/2024WR039479" target="_blank">https://doi.org/10.1029/2024WR039479</a></p>
-</div>
+  <!-- Back to Top -->
+  <button id="backToTop" title="Go to top"><i class="fas fa-arrow-up"></i></button>
 
-<button id="backToTop" title="Go to top"><i class="fas fa-arrow-up"></i></button>
+  <!-- Footer -->
+  <div class="footer">
+    <p>Created by Mohammad Ali Farmani | Contact: <a href="mailto:farmani@arizona.edu">farmani@arizona.edu</a></p>
+  </div>
 
-<div class="footer">
-  <p>Created by Mohammad Ali Farmani | Contact: <a href="mailto:farmani@arizona.edu">farmani@arizona.edu</a></p>
-</div>
-
-<script>
-  // Sidebar highlight
-  const sections = document.querySelectorAll("h1, h2");
-  const navLinks = document.querySelectorAll(".sidebar a");
-  window.addEventListener("scroll", () => {
-    let current = "";
-    sections.forEach((section) => {
-      const top = section.offsetTop - 120;
-      if (scrollY >= top) current = section.getAttribute("id");
-    });
-    navLinks.forEach((link) => {
-      link.classList.remove("active");
-      if (link.getAttribute("href") === `#${current}`) link.classList.add("active");
-    });
-  });
-
-  // Back to top button
-  const backToTop = document.getElementById("backToTop");
-  window.addEventListener("scroll", () => {
-    if (window.scrollY > 300) {
-      backToTop.style.opacity = "1";
-      backToTop.style.visibility = "visible";
-    } else {
-      backToTop.style.opacity = "0";
-      backToTop.style.visibility = "hidden";
-    }
-  });
-  backToTop.addEventListener("click", () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  });
-</script>
+  <script src="assets/js/bfi.js"></script>
 </body>
 </html>
+
