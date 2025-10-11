@@ -9,98 +9,88 @@
 </head>
 <body>
 
-  <!-- Background -->
-  <div class="video-container">
-    <video autoplay muted loop playsinline>
-      <source src="assets/videos/PUB_BG.mp4" type="video/mp4" />
-    </video>
-  </div>
+<!-- Background video -->
+<div class="video-container">
+  <video autoplay muted loop playsinline>
+    <source src="PUB_BG.mp4" type="video/mp4" />
+  </video>
+</div>
 
-  <!-- Navbar -->
-  <div class="navbar">
-    <a href="index.html"><i class="fas fa-home"></i> Home</a>
-    <a href="cv.html"><i class="fas fa-id-card"></i> CV</a>
-    <a href="publications.html"><i class="fas fa-book"></i> Publications</a>
-    <div class="dropdown">
-      <a href="#" class="dropbtn"><i class="fas fa-briefcase"></i> Projects ▾</a>
-      <div class="dropdown-content">
-        <a href="smm.html">SMM</a>
-        <a href="bfi.html">BFI</a>
-      </div>
+<!-- Navbar -->
+<div class="navbar">
+  <a href="index.html"><i class="fas fa-home"></i> Home</a>
+  <a href="cv.html"><i class="fas fa-id-card"></i> CV</a>
+  <a href="publications.html"><i class="fas fa-book"></i> Publications</a>
+  <div class="dropdown">
+    <a href="#" class="dropbtn"><i class="fas fa-briefcase"></i> Projects ▾</a>
+    <div class="dropdown-content">
+      <a href="smm.html">SMM</a>
+      <a href="bfi.html">BFI</a>
     </div>
-    <a href="software.html"><i class="fas fa-code"></i> Software</a>
-  </nav>
-
-
-  <!-- Content -->
-  <div class="content">
-    <h1 id="packages">Open Source Software Packages</h1>
-    <p>
-      I develop and maintain open-source Python packages to support hydrologic research and modeling.
-      These tools are focused on understanding baseflow generation and soil moisture memory,
-      and will be expanded with new modules in the future.
-    </p>
-
-    <!-- === Package Cards === -->
-    <div class="package-grid">
-
-      <!-- SMM Toolkit -->
-      <div class="package-card">
-        <h2><i class="fas fa-water"></i> smm-toolkit</h2>
-        <p>
-          A Python package for quantifying short-term and long-term <b>Soil Moisture Memory (SMM)</b>
-          using observational and model datasets. Designed for climate–hydrology research.
-        </p>
-        <ul>
-          <li><b>Language:</b> Python</li>
-          <li><b>Version:</b> 0.1.0</li>
-          <li><b>License:</b> MIT</li>
-        </ul>
-        <div class="links">
-          <a href="https://pypi.org/project/smm-toolkit/" target="_blank"><i class="fas fa-cube"></i> PyPI</a>
-          <a href="https://github.com/mfarmani95/smm-toolkit" target="_blank"><i class="fab fa-github"></i> GitHub</a>
-        </div>
-      </div>
-
-      <!-- BFI Toolkit -->
-      <div class="package-card">
-        <h2><i class="fas fa-faucet"></i> bfi-toolkit</h2>
-        <p>
-          A Python package for computing <b>Baseflow Index (BFI)</b> from streamflow time series
-          using hydrologic separation methods. Optimized for large-scale basin analysis.
-        </p>
-        <ul>
-          <li><b>Language:</b> Python</li>
-          <li><b>Version:</b> 0.1.0</li>
-          <li><b>License:</b> MIT</li>
-        </ul>
-        <div class="links">
-          <a href="https://pypi.org/project/bfi-toolkit/" target="_blank"><i class="fas fa-cube"></i> PyPI</a>
-          <a href="https://github.com/mfarmani95/bfi-toolkit" target="_blank"><i class="fab fa-github"></i> GitHub</a>
-        </div>
-      </div>
-
-    </div>
-
-    <hr />
-
-    <h2 id="future">Future Updates</h2>
-    <p>
-      This page will be continuously updated as I release new tools.
-      Planned additions include surrogate modeling frameworks, ML-hydrology couplers,
-      and enhanced water balance diagnostic modules for research and operational use.
-    </p>
   </div>
+  <a href="software.html"><i class="fas fa-code"></i> Software</a>
+</div>
 
-  <!-- Back to Top -->
-  <button id="backToTop" title="Go to top"><i class="fas fa-arrow-up"></i></button>
+<!-- Main Content -->
+<div class="content">
+  <h1 id="packages">Open Source Software Packages</h1>
+  <p>Below are open-source Python packages developed as part of my hydrology research. These tools aim to make advanced hydrologic analysis more accessible to the community and are continuously evolving.</p>
 
-  <!-- Footer -->
-  <div class="footer">
-    <p>Created by Mohammad Ali Farmani | Contact: <a href="mailto:farmani@arizona.edu">farmani@arizona.edu</a></p>
-  </div>
+  <hr />
 
-  <script src="assets/js/software.js"></script>
+  <h2 id="smm-toolkit">1. smm-toolkit</h2>
+  <p><b>smm-toolkit</b> provides fast, flexible computation of long-term and short-term Soil Moisture Memory (SMM). It’s designed to support hydrologists and climate scientists in analyzing memory dynamics at scale.</p>
+  <ul>
+    <li>📦 <b>Language:</b> Python</li>
+    <li>📅 <b>Initial Release:</b> 2025</li>
+    <li>🌐 <b>Repository:</b> <a href="https://test.pypi.org/project/smm-toolkit/" target="_blank">smm-toolkit on PyPI</a></li>
+  </ul>
+  <pre><code>pip install smm-toolkit</code></pre>
+
+  <hr />
+
+  <h2 id="bfi-toolkit">2. bfi-toolkit</h2>
+  <p><b>bfi-toolkit</b> provides tools for Baseflow Index (BFI) analysis and hydrological decomposition of streamflow time series, supporting large-basin studies.</p>
+  <ul>
+    <li>📦 <b>Language:</b> Python</li>
+    <li>📅 <b>Initial Release:</b> 2025</li>
+    <li>🌐 <b>Repository:</b> <a href="#" target="_blank">Coming soon</a></li>
+  </ul>
+  <pre><code>pip install bfi-toolkit</code></pre>
+
+  <hr />
+
+  <h2 id="future">Future Tools</h2>
+  <p>More hydrological and land surface modeling packages are under development — including advanced process representations for infiltration, snowmelt, and runoff.</p>
+</div>
+
+<!-- Back to top -->
+<button id="backToTop" title="Back to top"><i class="fas fa-arrow-up"></i></button>
+
+<!-- Footer -->
+<div class="footer">
+  <p>Created by Mohammad Ali Farmani | Contact: 
+    <a href="mailto:farmani@arizona.edu">farmani@arizona.edu</a>
+  </p>
+</div>
+
+<script>
+  // Back to top button
+  const backToTop = document.getElementById("backToTop");
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 300) {
+      backToTop.style.opacity = "1";
+      backToTop.style.visibility = "visible";
+    } else {
+      backToTop.style.opacity = "0";
+      backToTop.style.visibility = "hidden";
+    }
+  });
+  backToTop.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+</script>
+
 </body>
 </html>
 
