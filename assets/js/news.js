@@ -3,13 +3,19 @@
 // Your items (edit anytime)
 const NEWS_ITEMS = [
   {
-    html: `<span class="badge">NEW</span> Check out the first public version of the SMM Toolkit. <a href="software.html#smm-toolkit">Docs</a>`
+    html: `<span class="badge">Release</span> Check out the first public version of the SMM Toolkit. <a href="software.html#smm-toolkit">Docs</a>`
   },
   {
     html: `<span class="badge">Update</span> Paper accepted in <b>WRR</b>: Baseflow generation mechanisms in the arid Southwest. <a href="publications.html">Read more</a>`
   },
   {
     html: `<span class="badge">Release</span> Python package <b>pyBFI</b> published. <a href="software.html#bfi-toolkit">Docs</a>`
+  },
+  {
+  html: `<span class="badge">🏆 News</span> I received the <strong>Arizona Hydrological Society Annual Academic Scholarship</strong>. <a href="https://azhydrosoc.org/for-students/academic-scholarships/" target="_blank">AHS Annual Academic Scholarship</a>`
+  },
+  {
+    html: `<span class="badge">🏆 News</span> I received the <strong>2nd Place Central Arizona Project Award for Water Research</strong>. <a href="https://www.cap-az.com/community/education/award-for-research/">CAP Award</a>`
   }
 ];
 
