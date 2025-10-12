@@ -3,7 +3,7 @@
 // Your items (edit anytime)
 const NEWS_ITEMS = [
   {
-    html: `<span class="badge">NEW</span> Our team released the first public version of the SMM Toolkit. <a href="https://github.com/your-org/smm-toolkit" target="_blank" rel="noopener">View on GitHub</a>`
+    html: `<span class="badge">NEW</span> Check out the first public version of the SMM Toolkit. <a href="https://github.com/your-org/smm-toolkit" target="_blank" rel="noopener">View on GitHub</a>`
   },
   {
     html: `<span class="badge">Update</span> Paper accepted in <b>WRR</b>: Baseflow generation mechanisms in the arid Southwest. <a href="publications.html">Read more</a>`
