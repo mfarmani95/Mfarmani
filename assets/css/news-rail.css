@@ -75,18 +75,29 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  width: 36px;
-  height: 36px;
+  background: none;               /* ✨ No box background */
   border: none;
-  border-radius: 10px;
-  background: #e9e9e9;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18);
+  color: var(--gold);             /* ✨ Match page theme */
   cursor: pointer;
-  font-size: 18px;
-  line-height: 36px;
+  font-size: 28px;                /* larger arrow size */
+  line-height: 1;
   display: grid;
   place-items: center;
-  transition: background 0.25s ease;
+  z-index: 5;                     /* ✨ Make sure arrows are in front */
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.news-nav:hover {
+  transform: translateY(-50%) scale(1.15);
+  color: var(--cyan);             /* optional: hover accent */
+}
+
+.news-nav.prev {
+  left: 12px;
+}
+
+.news-nav.next {
+  right: 12px;
 }
 .news-nav:hover {
   background: #dcdcdc;
