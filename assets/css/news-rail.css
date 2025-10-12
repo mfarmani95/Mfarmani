@@ -25,10 +25,11 @@
   border: 1px solid rgba(0, 0, 0, 0.06);
   box-shadow: 0 10px 28px rgba(0, 0, 0, 0.25);
   overflow: hidden;
-  min-height: 50px;           /* Ensures stable height */
+  min-height: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 1; /* ensures arrows can layer above */
 }
 
 /* Each slide */
@@ -53,6 +54,7 @@
   font-weight: 700;
   text-decoration: none;
 }
+
 .news-slide a:hover {
   text-decoration: underline;
 }
@@ -70,26 +72,31 @@
   letter-spacing: 0.2px;
 }
 
-/* Navigation buttons */
+/* ===========================
+   Navigation Arrows
+   =========================== */
 .news-nav {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: none;               /* ✨ No box background */
+  background: none;
   border: none;
-  color: var(--gold);             /* ✨ Match page theme */
-  cursor: pointer;
-  font-size: 28px;                /* larger arrow size */
+  color: var(--gold) !important; /* enforce gold */
+  font-size: 28px;
   line-height: 1;
+  cursor: pointer;
   display: grid;
   place-items: center;
-  z-index: 5;                     /* ✨ Make sure arrows are in front */
-  transition: transform 0.2s ease, color 0.2s ease;
+  z-index: 5; /* on top of everything */
+  transition: transform 0.2s ease, color 0.2s ease, opacity 0.2s ease;
+  pointer-events: auto;
+  opacity: 0.8; /* slightly transparent by default */
 }
 
 .news-nav:hover {
   transform: translateY(-50%) scale(1.15);
-  color: var(--cyan);             /* optional: hover accent */
+  color: var(--cyan) !important; /* hover accent */
+  opacity: 1;
 }
 
 .news-nav.prev {
@@ -99,31 +106,25 @@
 .news-nav.next {
   right: 12px;
 }
-.news-nav:hover {
-  background: #dcdcdc;
-}
-.news-nav.prev {
-  left: 6px;
-}
-.news-nav.next {
-  right: 6px;
-}
 
-/* Animation for smooth slide transitions */
+/* ===========================
+   Animations
+   =========================== */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(6px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* Responsive adjustments */
+/* ===========================
+   Responsive
+   =========================== */
 @media (max-width: 600px) {
   .news-slide {
     padding: 12px 40px;
     font-size: 14px;
   }
+
   .news-nav {
-    width: 30px;
-    height: 30px;
-    font-size: 16px;
+    font-size: 22px;
   }
 }
