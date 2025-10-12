@@ -3,13 +3,13 @@
 // Your items (edit anytime)
 const NEWS_ITEMS = [
   {
-    html: `<span class="badge">NEW</span> Check out the first public version of the SMM Toolkit. <a href="https://github.com/your-org/smm-toolkit" target="_blank" rel="noopener">View on GitHub</a>`
+    html: `<span class="badge">NEW</span> Check out the first public version of the SMM Toolkit. <a href="software.html#smm-toolkit">Docs</a>`
   },
   {
     html: `<span class="badge">Update</span> Paper accepted in <b>WRR</b>: Baseflow generation mechanisms in the arid Southwest. <a href="publications.html">Read more</a>`
   },
   {
-    html: `<span class="badge">Release</span> Python package <b>pyBFI</b> published. <a href="software.html#pybfi">Docs</a>`
+    html: `<span class="badge">Release</span> Python package <b>pyBFI</b> published. <a href="software.html#bfi-toolkit">Docs</a>`
   }
 ];
 
