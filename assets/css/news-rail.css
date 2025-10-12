@@ -82,7 +82,7 @@
   background: none;
   border: none;
   color: var(--gold) !important; /* enforce gold */
-  font-size: 28px;
+  font-size: 48px;
   line-height: 1;
   cursor: pointer;
   display: grid;
