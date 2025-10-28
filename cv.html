@@ -26,7 +26,7 @@
   <!-- Navbar -->
   <nav class="navbar">
     <a href="index.html"><i class="fas fa-home"></i> Home</a>
-    <a href="cv.html"><i class="fas fa-id-card"></i> CV</a>
+    <a href="cv.html" class="active"><i class="fas fa-id-card"></i> CV</a>
     <a href="publications.html"><i class="fas fa-book"></i> Publications</a>
     <div class="dropdown">
       <a href="#" class="dropbtn"><i class="fas fa-briefcase"></i> Projects ▾</a>
@@ -65,25 +65,86 @@
       </p>
     </div>
 
-    <!-- Skills Section -->
+    <!-- Education Section -->
+    <div class="section" id="education">
+      <h2><i class="fas fa-university"></i> Education</h2>
+      <ul>
+        <li><strong>Ph.D. in Hydrology</strong>, University of Arizona, Tucson, USA — <em>August 2022 – Present</em></li>
+        <li><strong>M.S. in Data Science</strong>, University of Arizona, Tucson, USA — <em>August 2024 – Present</em></li>
+        <li><strong>M.S. in Civil Engineering – Water Resources Management</strong>, Tarbiat Modares University, Tehran, Iran</li>
+        <li><strong>B.S. in Civil Engineering</strong>, Iran University of Science and Technology, Tehran, Iran</li>
+      </ul>
+    </div>
+
+    <!-- Data Science & ML Projects Section -->
+    <div class="section" id="projects">
+      <h2><i class="fas fa-robot"></i> Selected Data Science & ML Projects</h2>
+      <ol>
+        <li><strong>Bayesian Inference of 3D Line Parameters (Metropolis–Hastings MCMC)</strong><br>
+          Implemented custom MCMC sampler to infer 3D line endpoints from noisy 2D camera images.<br>
+          Used Gaussian priors and multi-view likelihood to achieve accurate MAP reconstruction.
+        </li>
+        <li><strong>Fairness in Insurance Pricing & Vaccine Misinformation Ethics (Data Ethics)</strong><br>
+          Analyzed independence, separation, and sufficiency criteria in ML fairness.<br>
+          Conducted ethical analysis on criminalization of vaccine misinformation using real-world scenarios.
+        </li>
+        <li><strong>Tucson Car Collision Dashboard (Data Visualization – Quarto, R)</strong><br>
+          Built interactive dashboard visualizing traffic accidents (2018–2023).<br>
+          Used heatmaps, time series, and violation-based statistics to support road safety planning.
+        </li>
+        <li><strong>Crash Severity Prediction (Data Mining – ML)</strong><br>
+          Trained and evaluated Random Forest, Decision Tree, KNN models on Massachusetts crash data.<br>
+          Achieved ~78% accuracy; identified environmental and demographic risk factors.
+        </li>
+        <li><strong>Global Temperature Trends (Time Series + ML)</strong><br>
+          Analyzed NASA GISS data (1880–2023) using Mann–Kendall, regression, STL decomposition.<br>
+          Applied ML classifiers (XGBoost, RF) to detect and forecast warming anomalies.
+        </li>
+        <li><strong>Neural Networks & Codabench NLP Competition (Deep Learning)</strong><br>
+          Built feedforward NN from scratch (NumPy); Developed Keras architectures (deep vs wide MLP, ReLU vs tanh).<br>
+          Implemented CNN and RNN models for MNIST and YouTube spam datasets; Built multi-label NLP classifier using BERT.
+        </li>
+        <li><strong>Smart Water Distribution and Optimization System (SWDOS) (SQL/DB)</strong><br>
+          Designed conceptual–logical–physical database models integrating IoT sensor data.<br>
+          Implemented advanced SQL queries: JOINs, subqueries, CASE, aggregation. Built schema for real-time water monitoring and decision support.
+        </li>
+      </ol>
+    </div>
+
+    <!-- Computer Skills Section -->
     <div class="section" id="skills">
-      <h2><i class="fas fa-laptop-code"></i> Skills</h2>
-      <div class="skill">
-        <p><i class="fab fa-python"></i> Python</p>
-        <div class="progress-bar"><span data-target="93"></span></div>
-      </div>
-      <div class="skill">
-        <p><i class="fas fa-database"></i> SQL & Data Management</p>
-        <div class="progress-bar"><span data-target="78"></span></div>
-      </div>
-      <div class="skill">
-        <p><i class="fas fa-map-marked-alt"></i> GIS & Hydrological Modeling</p>
-        <div class="progress-bar"><span data-target="87"></span></div>
-      </div>
-      <div class="skill">
-        <p><i class="fas fa-chart-line"></i> Machine Learning in Hydrology</p>
-        <div class="progress-bar"><span data-target="94"></span></div>
-      </div>
+      <h2><i class="fas fa-laptop-code"></i> Computer Skills</h2>
+      <ul>
+        <li><strong>Programming:</strong> Python (PyTorch, TensorFlow, JAX), RStudio, Fortran, HTML, SQL</li>
+        <li><strong>Hydrologic & Climate Modeling:</strong> Noah-MP, RAPID, WRF (exposure), SWMM, HEC-RAS, HEC-HMS</li>
+        <li><strong>Geospatial & ML Pipelines:</strong> xarray, GeoPandas, scikit-learn, rasterio, NumPy, Pandas, Dask</li>
+        <li><strong>HPC & Workflow:</strong> SLURM job arrays, Git/GitHub, Bash, parallel computing</li>
+        <li><strong>Cloud Exposure:</strong> GCP, AWS (basic)</li>
+        <li><strong>Visualization:</strong> Matplotlib, Cartopy, Seaborn, Plotly, Quarto, Tableau</li>
+      </ul>
+    </div>
+
+    <!-- Research Experience Section -->
+    <div class="section" id="research">
+      <h2><i class="fas fa-flask"></i> Research Experience</h2>
+
+      <h3>Graduate Research Assistant — University of Arizona, Tucson, USA <span class="date">Aug 2022 – Present</span></h3>
+      <ul>
+        <li><strong>AI + Physical Modeling:</strong> Developed differentiable hydrology modules integrating deep neural networks with Noah-MP.</li>
+        <li><strong>Data Science & ML:</strong> Built scalable ML pipelines on HPC using PyTorch, xarray, GeoPandas, and Dask.</li>
+        <li><strong>Geospatial & Hydro Modeling:</strong> Enhanced Noah-MP hydrologic scheme; implemented RAPID routing; evaluated IMERG & ERA5 precipitation datasets.</li>
+        <li><strong>Climate Analytics & HPC:</strong> Processed petabyte-scale datasets with SLURM job arrays and automated model training & uncertainty quantification workflows.</li>
+        <li><strong>Selected Projects:</strong> ET Estimation using Penman-Monteith + DL; Streamflow Prediction; Soil Moisture Memory; Extreme Precipitation & Recharge; Noah-MP Process Representation.</li>
+      </ul>
+
+      <h3>Graduate Research Assistant — Tarbiat Modares University, Tehran, Iran</h3>
+      <ul>
+        <li>Downscaled GCM precipitation using ML/DL approaches.</li>
+        <li>Temporal disaggregation of rainfall using KNN-based methods.</li>
+        <li>Hydrological and hydraulic modeling of extreme flood events (SWMM, HEC-RAS).</li>
+        <li>DEM-based subcatchment characterization with ArcGIS; IDF curve generation and MATLAB-based urban flooding simulation.</li>
+        <li>System dynamics modeling of water crisis management in Zayandeh-Rud basin.</li>
+      </ul>
     </div>
 
     <!-- Awards Section -->
@@ -126,4 +187,3 @@
   <script src="assets/js/cv.js"></script>
 </body>
 </html>
-
