@@ -305,4 +305,94 @@ hr {
   .timeline-item { padding-left: 32px; }
   .timeline-item::before { left: 12px; }
 }
+/* ===== Improved Readability for Text Sections ===== */
+
+/* Section container spacing */
+.section {
+  margin: 36px 0;
+  padding: 28px 24px;
+  line-height: 1.75;
+  letter-spacing: 0.25px;
+  font-size: 17px;
+}
+
+/* Headings inside sections */
+.section h2 {
+  margin-bottom: 18px;
+  font-size: 26px;
+  line-height: 1.3;
+}
+
+.section h3 {
+  margin-top: 22px;
+  margin-bottom: 10px;
+  font-size: 20px;
+  line-height: 1.4;
+}
+
+/* Paragraphs */
+.section p {
+  margin-bottom: 16px;
+  text-align: justify;
+}
+
+/* Lists for better spacing */
+.section ul,
+.section ol {
+  margin-top: 10px;
+  margin-left: 22px;
+  padding-left: 8px;
+}
+
+.section li {
+  margin-bottom: 14px;
+  line-height: 1.65;
+}
+
+.section ol li strong {
+  display: block;
+  font-size: 1.05em;
+  margin-bottom: 4px;
+  color: var(--gold);
+}
+
+/* Timeline spacing enhancement */
+.timeline .timeline-item {
+  margin-bottom: 16px;
+}
+
+/* Max-width and centering for better reading on big screens */
+.container {
+  max-width: 900px;
+  padding: 40px 30px;
+}
+
+/* Slight increase in base text size on larger screens */
+@media (min-width: 1000px) {
+  body {
+    font-size: 17px;
+  }
+  .section {
+    font-size: 17px;
+    line-height: 1.8;
+  }
+}
+
+/* Responsive adjustments for mobile readability */
+@media (max-width: 560px) {
+  .section {
+    padding: 22px 18px;
+    font-size: 16px;
+    line-height: 1.65;
+  }
+  .section h2 {
+    font-size: 22px;
+  }
+  .section h3 {
+    font-size: 18px;
+  }
+  .section li {
+    margin-bottom: 12px;
+  }
+}
 
