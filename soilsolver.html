@@ -38,9 +38,12 @@
     <a href="#overview">Overview</a>
     <a href="#motivation">Motivation</a>
     <a href="#framework">MCP Framework</a>
+    <a href="#process-hierarchy">Process Hierarchy</a>
+    <a href="#boundary-conditions">Boundary Conditions</a>
+    <a href="#evaluation">Evaluation Design</a>
     <a href="#hydroclimate">Hydroclimate Insights</a>
     <a href="#findings">Key Findings</a>
-    <a href="#figures">Figures Needed</a>
+    <a href="#implications">Implications</a>
   </div>
 
   <div class="content">
@@ -50,6 +53,9 @@
     </p>
     <p>
       The core idea is simple but powerful: instead of treating rainfall-runoff prediction as a pure black-box mapping, the model constrains internal storage and flux behavior using physically meaningful process relationships such as bounded storage, infiltration limits, surface ponding, vertical drainage, and nonlinear water-table dynamics.
+    </p>
+    <p>
+      The scientific question behind the page is not only whether performance improves, but how much hydrologic process structure should be embedded inside a mass-conserving AI model before added realism stops helping. That makes this study both a forecasting paper and a model-structure paper.
     </p>
 
     <hr />
@@ -61,6 +67,9 @@
     <p>
       By embedding process constraints into a mass-conserving architecture, the model preserves explicit storage-flux structure while still learning from data. That makes it possible to ask not only whether predictions improve, but also which physical assumptions matter most under different hydroclimatic regimes.
     </p>
+    <p>
+      This is the real strength of the MCP framework. Instead of imposing physics only through soft penalties or external regularization, conservation and storage-flux partitioning are built directly into the computational unit. That gives the hidden states a physical meaning and makes the architecture useful for hypothesis testing.
+    </p>
 
     <hr />
 
@@ -71,10 +80,57 @@
     <p>
       This staged design makes the model especially useful as a process-learning tool. Instead of comparing entirely different model families, the paper shows how predictive skill changes as specific process mechanisms are introduced one by one inside the same mass-conserving AI framework.
     </p>
-    <div style="margin:30px auto 50px; max-width:900px; padding:24px; border-radius:14px; border:1px dashed rgba(255,255,255,0.35); background:rgba(255,255,255,0.05); text-align:center;">
-      <strong style="display:block; margin-bottom:10px;">Figure Placeholder</strong>
-      Add the MCP or SoilSolver architecture / process hierarchy figure here.
-    </div>
+    <p>
+      In the MCP, the internal state acts as a storage variable and outgoing fluxes are explicitly partitioned into interpretable components such as discharge and evapotranspiration. Because conservation is embedded directly in the architecture, the model remains differentiable like a neural network while behaving structurally like a hydrologic storage-flux system.
+    </p>
+    <figure>
+      <img src="assets/images/soilsolver_mcp_unit.png" alt="Mass-Conserving Perceptron unit used in the SoilSolver framework" />
+      <figcaption>Conceptual schematic of the Mass-Conserving Perceptron, showing how storage and outgoing fluxes remain explicitly interpretable and mass-conserving.</figcaption>
+    </figure>
+
+    <hr />
+
+    <h2 id="process-hierarchy">Progressive Process Hierarchy</h2>
+    <p>
+      The paper develops a hierarchy of five progressively augmented models, labeled M1 through M5. Each step adds one new hydrological mechanism while preserving the processes already introduced in earlier versions. This makes it possible to identify which structural additions actually improve streamflow prediction and which ones mainly add complexity.
+    </p>
+    <p>
+      The progression begins with a bounded soil bucket representation, then introduces state-dependent conductivity, variable porosity, infiltration capacity with infiltration-excess runoff, and finally nonlinear water-table dynamics. Together, these models span a continuum from a simple conceptual bucket to a more physically structured soil-storage representation.
+    </p>
+    <p>
+      Because the internal architecture changes gradually rather than all at once, the study can attribute performance differences to specific process representations rather than vague differences between unrelated model classes.
+    </p>
+    <figure>
+      <img src="assets/images/soilsolver_process_hierarchy.png" alt="Progressive M1 to M5 process hierarchy in SoilSolver" />
+      <figcaption>Progressive augmentation of the MCP architecture from M1 to M5, illustrating how new hydrological mechanisms are embedded while preserving the same structural backbone.</figcaption>
+    </figure>
+
+    <hr />
+
+    <h2 id="boundary-conditions">Boundary Conditions: Ponding and Drainage</h2>
+    <p>
+      Beyond internal soil-process structure, the paper also explores how boundary conditions affect model behavior. Surface ponding introduces temporary storage above the soil column and delays infiltration, while vertical drainage adds a lower-boundary loss pathway that represents deep percolation below the modeled soil layer.
+    </p>
+    <p>
+      These boundary-condition scenarios are combined with the five internal soil-process models to create a structured experimental space. The paper considers no-ponding/no-drainage, ponding only, drainage only, and combined ponding-plus-drainage cases. This is an especially elegant part of the study because it separates internal process realism from boundary-condition realism.
+    </p>
+    <p>
+      In total, the framework evaluates 20 model configurations, which makes the page a useful place to explain not just one model but a family of process-aware MCP designs.
+    </p>
+    <figure>
+      <img src="assets/images/soilsolver_boundary_conditions.png" alt="Boundary-condition configurations for ponding and vertical drainage in SoilSolver" />
+      <figcaption>Boundary-condition scenarios used in the study, highlighting how surface ponding and vertical drainage expand the MCP process hierarchy into a broader experimental configuration space.</figcaption>
+    </figure>
+
+    <hr />
+
+    <h2 id="evaluation">Evaluation Design</h2>
+    <p>
+      The models are evaluated across 15 catchments spanning five major hydroclimatic regimes in the continental United States, including arid, snow-dominated, and rainfall-dominated systems. Daily streamflow prediction is the main target, and performance is compared against an LSTM benchmark trained on the same meteorological inputs.
+    </p>
+    <p>
+      This broad evaluation is important because the paper is not arguing that one process-rich architecture wins everywhere. Instead, it shows that the value of additional process realism depends on hydroclimate and that interpretable AI can help reveal where different mechanisms matter.
+    </p>
 
     <hr />
 
@@ -85,31 +141,37 @@
     <p>
       This result matters because it shows that physical realism is not a one-size-fits-all concept. Different basins respond to different structural assumptions, and process-aware AI can help reveal those differences in a transparent way.
     </p>
+    <p>
+      In other words, the paper argues for conditional realism rather than universal realism. The right structure depends on the dominant water-balance behavior of the basin, and a process-aware model can expose those dependencies more clearly than a pure black-box benchmark.
+    </p>
 
     <hr />
 
     <h2 id="findings">Key Findings</h2>
     <p><b>1.</b> Embedding hydrological process constraints improves interpretability while preserving strong predictive performance.</p>
-    <p><b>2.</b> Process-aware MCP variants can approach the skill of an LSTM benchmark.</p>
-    <p><b>3.</b> Vertical drainage is especially important in arid and snow-dominated basins.</p>
-    <p><b>4.</b> The framework provides an interpretable way to study storage-flux dynamics across hydroclimatic settings.</p>
-    <div style="margin:30px auto 50px; max-width:900px; padding:24px; border-radius:14px; border:1px dashed rgba(255,255,255,0.35); background:rgba(255,255,255,0.05); text-align:center;">
-      <strong style="display:block; margin-bottom:10px;">Figure Placeholder</strong>
-      Add the main performance comparison or process-interpretability result figure here.
-    </div>
+    <p><b>2.</b> Process-aware MCP variants can approach the predictive skill of an LSTM benchmark while retaining physically meaningful internal states and fluxes.</p>
+    <p><b>3.</b> Progressive augmentation of the MCP unit generally improves performance, showing that carefully chosen process realism can help rather than hinder learning.</p>
+    <p><b>4.</b> Vertical drainage is especially important in arid and snow-dominated basins, but can reduce skill in rainfall-dominated systems.</p>
+    <p><b>5.</b> Surface ponding has comparatively smaller overall effects than vertical drainage.</p>
+    <p><b>6.</b> The framework provides an interpretable way to study storage-flux dynamics and structural process hypotheses across hydroclimatic regimes.</p>
+    <figure>
+      <img src="assets/images/soilsolver_performance.png" alt="Cross-catchment performance comparison for SoilSolver configurations and LSTM" />
+      <figcaption>Performance comparison across catchments and regimes, showing how process-aware MCP variants compare against the LSTM benchmark and against one another.</figcaption>
+    </figure>
+
+    <figure>
+      <img src="assets/images/soilsolver_interpretability.png" alt="Interpretability results for SoilSolver showing storage-flux or vertical-drainage effects" />
+      <figcaption>Interpretability-focused result showing how storage-flux behavior and vertical-drainage effects vary across hydroclimatic settings.</figcaption>
+    </figure>
 
     <hr />
 
-    <h2 id="figures">Recommended Figures for This Page</h2>
+    <h2 id="implications">Implications</h2>
     <p>
-      The best figure set for this page would be:
+      The paper’s broader contribution is that it reframes interpretable AI in hydrology as a structural design problem. Rather than asking whether machine learning should or should not be physical, it asks how physical knowledge should be embedded and how much of it is useful.
     </p>
-    <p><b>1.</b> A conceptual MCP / SoilSolver framework schematic.</p>
-    <p><b>2.</b> A process hierarchy figure showing the progressive addition of constraints.</p>
-    <p><b>3.</b> A catchment or regional performance comparison across model variants.</p>
-    <p><b>4.</b> One interpretability figure showing storage-flux dynamics or the role of vertical drainage.</p>
     <p>
-      Once those images are exported to <code>assets/images</code>, I can replace the placeholders with the final visuals.
+      That makes the MCP framework promising for future hybrid hydrologic modeling, differentiable process development, and basin comparison studies. It also provides a path toward models that are scientifically informative, not just accurate.
     </p>
   </div>
 

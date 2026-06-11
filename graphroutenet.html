@@ -44,7 +44,6 @@
     <a href="#evaluation">Evaluation</a>
     <a href="#findings">Key Findings</a>
     <a href="#implications">Implications</a>
-    <a href="#figures">Figures Needed</a>
   </div>
 
   <div class="content">
@@ -81,10 +80,10 @@
     <p>
       This heterogeneity is exactly where routing assumptions matter. A framework that works only in smooth, homogeneous systems is much less informative than one that can adapt across headwaters, tributaries, and downstream integrating reaches within a semi-arid basin.
     </p>
-    <div style="margin:30px auto 50px; max-width:900px; padding:24px; border-radius:14px; border:1px dashed rgba(255,255,255,0.35); background:rgba(255,255,255,0.05); text-align:center;">
-      <strong style="display:block; margin-bottom:10px;">Figure Placeholder</strong>
-      Add the Salt-Verde watershed map or directed river-network figure here.
-    </div>
+    <figure>
+      <img src="assets/images/graphroutenet_watershed_map.png" alt="Salt-Verde watershed and directed river network for RiverGraphNet" />
+      <figcaption>Salt-Verde study domain and routing-network context used to evaluate RiverGraphNet across the observed gauge network.</figcaption>
+    </figure>
 
     <hr />
 
@@ -98,10 +97,10 @@
     <p>
       The workflow has four main pieces: transfer of Noah-MP runoff to river-network nodes, graph-based message passing over the NGen topology, learned temporal processing of runoff memory, and extraction of streamflow predictions at graph nodes mapped to USGS gauges. This gives the model a clear physical operating context rather than treating gauges as unrelated time series.
     </p>
-    <div style="margin:30px auto 50px; max-width:900px; padding:24px; border-radius:14px; border:1px dashed rgba(255,255,255,0.35); background:rgba(255,255,255,0.05); text-align:center;">
-      <strong style="display:block; margin-bottom:10px;">Figure Placeholder</strong>
-      Add the RiverGraphNet architecture or runoff-to-network workflow figure here.
-    </div>
+    <figure>
+      <img src="assets/images/graphroutenet_framework.png" alt="RiverGraphNet framework from Noah-MP runoff to graph-based routing and gauge prediction" />
+      <figcaption>RiverGraphNet workflow linking Noah-MP runoff, grid-to-graph transfer, directed graph message passing, and streamflow prediction at gauge locations.</figcaption>
+    </figure>
 
     <hr />
 
@@ -149,15 +148,15 @@
     <p><b>5.</b> Event-scale hydrographs and flow-duration behavior were better represented, including peak timing, event magnitude, and long-term discharge distributions.</p>
     <p><b>6.</b> Attention analysis suggested that channel width and dominant-pathway descriptors carried more routing value than travel-time proxies alone.</p>
     <p><b>7.</b> Temporal memory and loss design strongly shaped the balance between predictive skill, recession dynamics, and hydrologic realism.</p>
-    <div style="margin:30px auto 50px; max-width:900px; padding:24px; border-radius:14px; border:1px dashed rgba(255,255,255,0.35); background:rgba(255,255,255,0.05); text-align:center;">
-      <strong style="display:block; margin-bottom:10px;">Figure Placeholder</strong>
-      Add the main RAPID vs RiverGraphNet performance comparison here.
-    </div>
+    <figure>
+      <img src="assets/images/graphroutenet_performance.png" alt="Performance comparison between RiverGraphNet and RAPID across gauges" />
+      <figcaption>Gauge-level routing performance comparison showing consistent KGE skill improvements relative to RAPID across the Salt-Verde network.</figcaption>
+    </figure>
 
-    <div style="margin:30px auto 50px; max-width:900px; padding:24px; border-radius:14px; border:1px dashed rgba(255,255,255,0.35); background:rgba(255,255,255,0.05); text-align:center;">
-      <strong style="display:block; margin-bottom:10px;">Figure Placeholder</strong>
-      Add a representative hydrograph or flow-duration comparison here.
-    </div>
+    <figure>
+      <img src="assets/images/graphroutenet_hydrograph.png" alt="Hydrograph comparison between RiverGraphNet and RAPID" />
+      <figcaption>Representative routed hydrograph illustrating stronger timing and magnitude reconstruction with RiverGraphNet.</figcaption>
+    </figure>
 
     <hr />
 
@@ -168,21 +167,10 @@
     <p>
       For future work, this kind of framework could be extended toward larger river domains, differentiable land-routing coupling, and routing systems that explicitly represent transmission losses, reservoir effects, and human regulation. In that sense, RiverGraphNet is both a performance result and a modeling direction.
     </p>
-
-    <hr />
-
-    <h2 id="figures">Recommended Figures for This Page</h2>
-    <p>
-      The strongest figure set for this page would be:
-    </p>
-    <p><b>1.</b> A framework schematic showing Noah-MP runoff, graph construction, graph attention routing, and gauge extraction.</p>
-    <p><b>2.</b> A Salt-Verde watershed map or directed river-network figure.</p>
-    <p><b>3.</b> The gauge-level KGEss comparison against RAPID across configurations.</p>
-    <p><b>4.</b> One representative hydrograph or flow-duration comparison.</p>
-    <p><b>5.</b> If available, an attention-analysis figure showing which node or edge attributes mattered most.</p>
-    <p>
-      Once you place those images in <code>assets/images</code>, I can wire them into the page quickly.
-    </p>
+    <figure>
+      <img src="assets/images/graphroutenet_attention.png" alt="Attention-based interpretation of important routing attributes in RiverGraphNet" />
+      <figcaption>Attention analysis highlighting the physical graph descriptors that most strongly shaped learned routing behavior.</figcaption>
+    </figure>
   </div>
 
   <button id="backToTop" title="Go to top"><i class="fas fa-arrow-up"></i></button>
