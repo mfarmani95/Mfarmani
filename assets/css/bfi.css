@@ -213,6 +213,12 @@ figcaption {
   margin-top: 10px;
 }
 
+figure.light-figure img {
+  background: #fff;
+  padding: 14px;
+  box-shadow: 0 0 20px rgba(248,196,113,0.18);
+}
+
 hr {
   border: none;
   height: 2px;

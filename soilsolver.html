@@ -83,7 +83,7 @@
     <p>
       In the MCP, the internal state acts as a storage variable and outgoing fluxes are explicitly partitioned into interpretable components such as discharge and evapotranspiration. Because conservation is embedded directly in the architecture, the model remains differentiable like a neural network while behaving structurally like a hydrologic storage-flux system.
     </p>
-    <figure>
+    <figure class="light-figure">
       <img src="assets/images/soilsolver_mcp_unit.png" alt="Mass-Conserving Perceptron unit used in the SoilSolver framework" />
       <figcaption>Conceptual schematic of the Mass-Conserving Perceptron, showing how storage and outgoing fluxes remain explicitly interpretable and mass-conserving.</figcaption>
     </figure>
@@ -100,7 +100,7 @@
     <p>
       Because the internal architecture changes gradually rather than all at once, the study can attribute performance differences to specific process representations rather than vague differences between unrelated model classes.
     </p>
-    <figure>
+    <figure class="light-figure">
       <img src="assets/images/soilsolver_process_hierarchy.png" alt="Progressive M1 to M5 process hierarchy in SoilSolver" />
       <figcaption>Progressive augmentation of the MCP architecture from M1 to M5, illustrating how new hydrological mechanisms are embedded while preserving the same structural backbone.</figcaption>
     </figure>
@@ -117,7 +117,7 @@
     <p>
       In total, the framework evaluates 20 model configurations, which makes the page a useful place to explain not just one model but a family of process-aware MCP designs.
     </p>
-    <figure>
+    <figure class="light-figure">
       <img src="assets/images/soilsolver_boundary_conditions.png" alt="Boundary-condition configurations for ponding and vertical drainage in SoilSolver" />
       <figcaption>Boundary-condition scenarios used in the study, highlighting how surface ponding and vertical drainage expand the MCP process hierarchy into a broader experimental configuration space.</figcaption>
     </figure>
