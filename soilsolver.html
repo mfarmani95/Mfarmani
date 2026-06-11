@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SoilSolver | Mohammad Ali Farmani</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="assets/css/bfi.css" />
+</head>
+<body>
+
+  <div class="video-container">
+    <video autoplay muted loop playsinline>
+      <source src="assets/videos/PUB_BG.mp4" type="video/mp4" />
+    </video>
+  </div>
+
+  <nav class="navbar">
+    <a href="index.html"><i class="fas fa-home"></i> Home</a>
+    <a href="about.html"><i class="fas fa-user"></i> About</a>
+    <a href="cv.html"><i class="fas fa-id-card"></i> CV</a>
+    <a href="publications.html"><i class="fas fa-book"></i> Publications</a>
+    <div class="dropdown">
+      <a href="work.html" class="dropbtn active"><i class="fas fa-briefcase"></i> Projects ▾</a>
+      <div class="dropdown-content">
+        <a href="work.html">Projects Hub</a>
+        <a href="smm.html">SMM</a>
+        <a href="bfi.html">BFI</a>
+        <a href="graphroutenet.html">RiverGraphNet</a>
+        <a href="soilsolver.html">SoilSolver</a>
+      </div>
+    </div>
+    <a href="software.html"><i class="fa-solid fa-laptop-code"></i> Software</a>
+  </nav>
+
+  <div class="sidebar">
+    <h2>Navigation</h2>
+    <a href="#overview">Overview</a>
+    <a href="#motivation">Motivation</a>
+    <a href="#framework">MCP Framework</a>
+    <a href="#hydroclimate">Hydroclimate Insights</a>
+    <a href="#findings">Key Findings</a>
+    <a href="#figures">Figures Needed</a>
+  </div>
+
+  <div class="content">
+    <h1 id="overview">Process-Aware AI for Rainfall-Runoff Modeling</h1>
+    <p>
+      This page summarizes a new paper on a mass-conserving neural framework for rainfall-runoff modeling. The work progressively embeds hydrologically meaningful process representations within a Mass-Conserving Perceptron (MCP), with the goal of improving both predictive skill and physical interpretability.
+    </p>
+    <p>
+      The core idea is simple but powerful: instead of treating rainfall-runoff prediction as a pure black-box mapping, the model constrains internal storage and flux behavior using physically meaningful process relationships such as bounded storage, infiltration limits, surface ponding, vertical drainage, and nonlinear water-table dynamics.
+    </p>
+
+    <hr />
+
+    <h2 id="motivation">Motivation</h2>
+    <p>
+      Standard machine learning models can perform well in hydrology, but they often lack interpretability. Traditional physical models are easier to understand, but they can struggle to represent flexible nonlinear relationships across diverse catchments. This work aims to bridge that gap.
+    </p>
+    <p>
+      By embedding process constraints into a mass-conserving architecture, the model preserves explicit storage-flux structure while still learning from data. That makes it possible to ask not only whether predictions improve, but also which physical assumptions matter most under different hydroclimatic regimes.
+    </p>
+
+    <hr />
+
+    <h2 id="framework">MCP Framework</h2>
+    <p>
+      The study starts from a minimal MCP storage unit and progressively augments it with additional physical structure. The hierarchy includes bounded soil storage, state-dependent conductivity, variable porosity, infiltration capacity, surface ponding, vertical drainage, and nonlinear water-table dynamics.
+    </p>
+    <p>
+      This staged design makes the model especially useful as a process-learning tool. Instead of comparing entirely different model families, the paper shows how predictive skill changes as specific process mechanisms are introduced one by one inside the same mass-conserving AI framework.
+    </p>
+    <div style="margin:30px auto 50px; max-width:900px; padding:24px; border-radius:14px; border:1px dashed rgba(255,255,255,0.35); background:rgba(255,255,255,0.05); text-align:center;">
+      <strong style="display:block; margin-bottom:10px;">Figure Placeholder</strong>
+      Add the MCP or SoilSolver architecture / process hierarchy figure here.
+    </div>
+
+    <hr />
+
+    <h2 id="hydroclimate">Hydroclimate-Dependent Behavior</h2>
+    <p>
+      One of the most important findings is that the effect of process constraints depends strongly on hydroclimate. Vertical drainage substantially improves prediction skill in arid and snow-dominated basins, but can reduce skill in rainfall-dominated regions. Surface ponding appears to have a smaller overall effect by comparison.
+    </p>
+    <p>
+      This result matters because it shows that physical realism is not a one-size-fits-all concept. Different basins respond to different structural assumptions, and process-aware AI can help reveal those differences in a transparent way.
+    </p>
+
+    <hr />
+
+    <h2 id="findings">Key Findings</h2>
+    <p><b>1.</b> Embedding hydrological process constraints improves interpretability while preserving strong predictive performance.</p>
+    <p><b>2.</b> Process-aware MCP variants can approach the skill of an LSTM benchmark.</p>
+    <p><b>3.</b> Vertical drainage is especially important in arid and snow-dominated basins.</p>
+    <p><b>4.</b> The framework provides an interpretable way to study storage-flux dynamics across hydroclimatic settings.</p>
+    <div style="margin:30px auto 50px; max-width:900px; padding:24px; border-radius:14px; border:1px dashed rgba(255,255,255,0.35); background:rgba(255,255,255,0.05); text-align:center;">
+      <strong style="display:block; margin-bottom:10px;">Figure Placeholder</strong>
+      Add the main performance comparison or process-interpretability result figure here.
+    </div>
+
+    <hr />
+
+    <h2 id="figures">Recommended Figures for This Page</h2>
+    <p>
+      The best figure set for this page would be:
+    </p>
+    <p><b>1.</b> A conceptual MCP / SoilSolver framework schematic.</p>
+    <p><b>2.</b> A process hierarchy figure showing the progressive addition of constraints.</p>
+    <p><b>3.</b> A catchment or regional performance comparison across model variants.</p>
+    <p><b>4.</b> One interpretability figure showing storage-flux dynamics or the role of vertical drainage.</p>
+    <p>
+      Once those images are exported to <code>assets/images</code>, I can replace the placeholders with the final visuals.
+    </p>
+  </div>
+
+  <button id="backToTop" title="Go to top"><i class="fas fa-arrow-up"></i></button>
+
+  <div class="footer">
+    <p>Created by Mohammad Ali Farmani | Contact: <a href="mailto:farmani@arizona.edu">farmani@arizona.edu</a></p>
+  </div>
+
+  <script src="assets/js/bfi.js"></script>
+</body>
+</html>

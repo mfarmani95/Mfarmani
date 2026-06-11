@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RiverGraphNet | Mohammad Ali Farmani</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="assets/css/bfi.css" />
+</head>
+<body>
+
+  <div class="video-container">
+    <video autoplay muted loop playsinline>
+      <source src="assets/videos/Coding.mp4" type="video/mp4" />
+    </video>
+  </div>
+
+  <nav class="navbar">
+    <a href="index.html"><i class="fas fa-home"></i> Home</a>
+    <a href="about.html"><i class="fas fa-user"></i> About</a>
+    <a href="cv.html"><i class="fas fa-id-card"></i> CV</a>
+    <a href="publications.html"><i class="fas fa-book"></i> Publications</a>
+    <div class="dropdown">
+      <a href="work.html" class="dropbtn active"><i class="fas fa-briefcase"></i> Projects ▾</a>
+      <div class="dropdown-content">
+        <a href="work.html">Projects Hub</a>
+        <a href="smm.html">SMM</a>
+        <a href="bfi.html">BFI</a>
+        <a href="graphroutenet.html">RiverGraphNet</a>
+        <a href="soilsolver.html">SoilSolver</a>
+      </div>
+    </div>
+    <a href="software.html"><i class="fa-solid fa-laptop-code"></i> Software</a>
+  </nav>
+
+  <div class="sidebar">
+    <h2>Navigation</h2>
+    <a href="#overview">Overview</a>
+    <a href="#motivation">Why Routing Matters</a>
+    <a href="#framework">Framework</a>
+    <a href="#evaluation">Evaluation</a>
+    <a href="#findings">Key Findings</a>
+    <a href="#figures">Figures Needed</a>
+  </div>
+
+  <div class="content">
+    <h1 id="overview">RiverGraphNet: Physics-Aware Routing of Gridded Runoff Through Directed River Networks</h1>
+    <p>
+      RiverGraphNet is a physics-aware graph learning framework designed to route physically generated runoff through a directed river network while preserving the connectivity structure of the watershed. The study isolates the routing problem from runoff generation by coupling Noah-MP runoff with a graph derived from the NextGen hydrofabric for the Salt-Verde watershed in Arizona.
+    </p>
+    <p>
+      Instead of learning rainfall-runoff behavior end to end, RiverGraphNet focuses specifically on how runoff propagates from upstream tributaries to downstream gauges. This makes the framework especially useful for understanding where routing assumptions limit prediction skill in complex semi-arid river systems.
+    </p>
+
+    <hr />
+
+    <h2 id="motivation">Why Routing Matters</h2>
+    <p>
+      Streamflow prediction depends on two linked tasks: generating runoff and transporting that runoff through the river network. Even when runoff generation is physically based, routing errors can still degrade hydrograph timing, peak magnitude, recession behavior, and downstream flow distributions.
+    </p>
+    <p>
+      RiverGraphNet addresses this by learning routing behavior directly on the river graph, while still using physically meaningful node and edge attributes such as drainage structure, terrain, and hydraulic-routing proxies. This creates a middle ground between traditional fixed-parameter routing models and black-box machine learning.
+    </p>
+
+    <hr />
+
+    <h2 id="framework">Framework</h2>
+    <p>
+      The framework transfers Noah-MP gridded runoff to graph nodes representing hydrologic routing elements in the Salt-Verde watershed. A Graph Attention Network then learns how streamflow propagates across that directed network using both topology and physically interpretable descriptors of the river system.
+    </p>
+    <p>
+      The study also examines how temporal memory and training choices affect routing behavior. Experiments compare different runoff lag windows, temporal convolution settings, and loss functions including MSE, weighted MSE, and JKGE-based objectives.
+    </p>
+    <div style="margin:30px auto 50px; max-width:900px; padding:24px; border-radius:14px; border:1px dashed rgba(255,255,255,0.35); background:rgba(255,255,255,0.05); text-align:center;">
+      <strong style="display:block; margin-bottom:10px;">Figure Placeholder</strong>
+      Add the RiverGraphNet architecture or runoff-to-network workflow figure here.
+    </div>
+
+    <hr />
+
+    <h2 id="evaluation">Evaluation Setup</h2>
+    <p>
+      RiverGraphNet was evaluated using observed daily streamflow at 23 USGS gauges and compared directly against RAPID, using identical Noah-MP runoff inputs. This provides a clean benchmark of routing skill rather than conflating routing and runoff-generation errors.
+    </p>
+    <p>
+      The strongest reported experiment used a 14-day lag with weighted MSE and achieved a median KGEss of 0.72, substantially outperforming RAPID. Performance gains were especially visible in headwater and intermediate tributaries, where network complexity and heterogeneity matter most.
+    </p>
+
+    <hr />
+
+    <h2 id="findings">Key Findings</h2>
+    <p><b>1.</b> RiverGraphNet consistently improved routing performance relative to RAPID across nearly all gauges.</p>
+    <p><b>2.</b> Event-scale hydrographs and flow-duration behavior were better represented, including peak timing and event magnitude.</p>
+    <p><b>3.</b> Channel-width and dominant-pathway metrics appeared more informative than travel-time proxies alone.</p>
+    <p><b>4.</b> Temporal memory and loss design strongly shaped the balance between predictive skill, recession dynamics, and hydrologic realism.</p>
+    <div style="margin:30px auto 50px; max-width:900px; padding:24px; border-radius:14px; border:1px dashed rgba(255,255,255,0.35); background:rgba(255,255,255,0.05); text-align:center;">
+      <strong style="display:block; margin-bottom:10px;">Figure Placeholder</strong>
+      Add the main RAPID vs RiverGraphNet performance comparison or hydrograph figure here.
+    </div>
+
+    <hr />
+
+    <h2 id="figures">Recommended Figures for This Page</h2>
+    <p>
+      The strongest figure set for this page would be:
+    </p>
+    <p><b>1.</b> A framework schematic showing Noah-MP runoff, graph construction, and RiverGraphNet routing.</p>
+    <p><b>2.</b> A Salt-Verde watershed or directed river-network map.</p>
+    <p><b>3.</b> A main performance comparison against RAPID across gauges.</p>
+    <p><b>4.</b> One representative hydrograph or flow-duration plot.</p>
+    <p>
+      Once you place those images in <code>assets/images</code>, I can wire them into the page quickly.
+    </p>
+  </div>
+
+  <button id="backToTop" title="Go to top"><i class="fas fa-arrow-up"></i></button>
+
+  <div class="footer">
+    <p>Created by Mohammad Ali Farmani | Contact: <a href="mailto:farmani@arizona.edu">farmani@arizona.edu</a></p>
+  </div>
+
+  <script src="assets/js/bfi.js"></script>
+</body>
+</html>
