@@ -44,7 +44,8 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 40px;
+  gap: 18px 28px;
+  flex-wrap: wrap;
   z-index: 1000;
   box-shadow: 0 2px 20px rgba(0, 0, 0, 0.6);
 }
@@ -74,6 +75,14 @@ body {
   transition: width 0.3s ease;
 }
 .navbar a:hover::after, .navbar .dropbtn:hover::after {
+  width: 100%;
+}
+.navbar a.active, .navbar .dropbtn.active {
+  background: linear-gradient(90deg, var(--gold), var(--teal));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.navbar a.active::after, .navbar .dropbtn.active::after {
   width: 100%;
 }
 .dropdown { position: relative; }
@@ -224,7 +233,12 @@ body {
 
 /* === Responsive: stack cards only on mobile === */
 @media (max-width: 1024px) {
+  .navbar {
+    justify-content: flex-start;
+    padding: 12px;
+    gap: 10px 16px;
+  }
+  .navbar a, .navbar .dropbtn { font-size: 15px; }
   .card-row { flex-wrap: wrap; }
   .package-card { width: 90%; max-width: 400px; }
 }
-

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Projects – Mohammad Ali Farmani</title>
+  <title>About – Mohammad Ali Farmani</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
   <link rel="stylesheet" href="assets/css/site.css" />
 </head>
@@ -12,11 +12,11 @@
 
   <nav class="navbar">
     <a href="index.html"><i class="fas fa-home"></i> Home</a>
-    <a href="about.html"><i class="fas fa-user"></i> About</a>
+    <a href="about.html" class="active"><i class="fas fa-user"></i> About</a>
     <a href="cv.html"><i class="fas fa-id-card"></i> CV</a>
     <a href="publications.html"><i class="fas fa-book"></i> Publications</a>
     <div class="dropdown">
-      <a href="work.html" class="dropbtn active"><i class="fas fa-briefcase"></i> Projects ▾</a>
+      <a href="work.html" class="dropbtn"><i class="fas fa-briefcase"></i> Projects ▾</a>
       <div class="dropdown-content">
         <a href="work.html">Projects Hub</a>
         <a href="smm.html">SMM</a>
@@ -28,81 +28,95 @@
 
   <div class="snapper" id="snapper">
     <section class="block">
-      <div class="video-container" data-parallax data-speed="0.18">
-        <video autoplay muted loop playsinline>
-          <source src="assets/videos/Coding.mp4" type="video/mp4"/>
-        </video>
-      </div>
-      <div class="inner">
-        <span class="eyebrow">Projects Hub</span>
-        <h1>Organized around questions that matter for water systems</h1>
-        <div class="divider"></div>
-        <p class="lead">
-          My projects connect physical hydrology, climate analytics, and scientific computing. This page groups them into a clearer structure so visitors can quickly understand the themes behind the individual case studies.
-        </p>
-        <div class="card-grid">
-          <article class="link-card">
-            <h3>Streamflow and baseflow generation</h3>
-            <p>Understanding how recharge, infiltration, and runoff pathways shape low-flow realism in dry regions.</p>
-          </article>
-          <article class="link-card">
-            <h3>Soil moisture persistence</h3>
-            <p>Studying how land models represent memory, retention, and land-atmosphere interactions over time.</p>
-          </article>
-          <article class="link-card">
-            <h3>Hydrologic tools and reproducibility</h3>
-            <p>Packaging methods into software that supports repeatable analysis and broader research reuse.</p>
-          </article>
-          <article class="link-card">
-            <h3>Climate impacts on water resources</h3>
-            <p>Examining drought, precipitation intensity, and resilience across hydrologic systems.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="block">
-      <div class="video-container" data-parallax data-speed="0.12">
-        <video autoplay muted loop playsinline>
-          <source src="assets/videos/PUB_BG.mp4" type="video/mp4"/>
-        </video>
-      </div>
-      <div class="inner">
-        <span class="eyebrow">Featured Case Studies</span>
-        <h2>Start with these project pages</h2>
-        <div class="divider"></div>
-        <div class="card-grid">
-          <article class="link-card">
-            <h3><a href="smm.html">Soil Moisture Memory</a></h3>
-            <p>A deeper look at how soil hydraulic representation affects persistence, climate feedbacks, and model performance.</p>
-            <a class="card-link" href="smm.html">Open SMM case study →</a>
-          </article>
-          <article class="link-card">
-            <h3><a href="bfi.html">Baseflow Index</a></h3>
-            <p>An investigation of baseflow generation mechanisms and their consequences for streamflow prediction in the arid Southwest.</p>
-            <a class="card-link" href="bfi.html">Open BFI case study →</a>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="block">
-      <div class="video-container" data-parallax data-speed="0.08">
+      <div class="video-container" data-parallax data-speed="0.22">
         <video autoplay muted loop playsinline>
           <source src="assets/videos/WT_BG.mp4" type="video/mp4"/>
         </video>
       </div>
       <div class="inner">
-        <span class="eyebrow">What Comes Next</span>
-        <h2>Future additions to this section</h2>
+        <span class="eyebrow">About Me</span>
+        <h1>Researcher, modeler, and science communicator</h1>
         <div class="divider"></div>
         <p class="lead">
-          This projects hub is now ready to grow. Good next additions would be dedicated pages for precipitation intensity and recharge, differentiable hydrology, and hydrologic software workflows.
+          I am Mohammad Ali Farmani, a Ph.D. student in Hydrology and Atmospheric Sciences at the University of Arizona with a minor in Data Science. My work focuses on improving how we represent groundwater recharge, soil moisture persistence, and streamflow generation in large-scale hydrologic models.
+        </p>
+        <p>
+          I care deeply about making hydrologic science useful beyond academic spaces. That means not only building better models, but also explaining water challenges in a way that supports decision-making for communities, agriculture, and climate resilience.
         </p>
         <div class="hero-actions">
-          <a class="button-link primary" href="software.html"><i class="fas fa-code"></i> Explore software tools</a>
-          <a class="button-link" href="publications.html"><i class="fas fa-scroll"></i> View publication record</a>
+          <a class="button-link primary" href="cv.html"><i class="fas fa-file-lines"></i> View CV</a>
+          <a class="button-link" href="publications.html"><i class="fas fa-book-open"></i> Browse publications</a>
         </div>
+      </div>
+    </section>
+
+    <section class="block">
+      <div class="video-container" data-parallax data-speed="0.14">
+        <video autoplay muted loop playsinline>
+          <source src="assets/videos/Coding.mp4" type="video/mp4"/>
+        </video>
+      </div>
+      <div class="inner">
+        <span class="eyebrow">What I Work On</span>
+        <h2>Research themes</h2>
+        <div class="divider"></div>
+        <div class="card-grid">
+          <article class="link-card">
+            <h3>Hydrologic process representation</h3>
+            <p>I study how infiltration, baseflow, preferential flow, and soil water retention shape model skill, especially in dry regions.</p>
+          </article>
+          <article class="link-card">
+            <h3>Climate and water resilience</h3>
+            <p>I explore how precipitation intensity, drought, and land-atmosphere interactions affect water availability and risk.</p>
+          </article>
+          <article class="link-card">
+            <h3>Scientific computing</h3>
+            <p>I build scalable workflows in Python and HPC environments to process large geospatial and hydrologic datasets.</p>
+          </article>
+          <article class="link-card">
+            <h3>Open research tools</h3>
+            <p>I turn parts of my work into reusable software so other researchers can reproduce and extend hydrologic analyses.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="block">
+      <div class="video-container" data-parallax data-speed="0.1">
+        <video autoplay muted loop playsinline>
+          <source src="assets/videos/PUB_BG.mp4" type="video/mp4"/>
+        </video>
+      </div>
+      <div class="inner">
+        <span class="eyebrow">Collaboration</span>
+        <h2>How we can work together</h2>
+        <div class="divider"></div>
+        <p class="lead">
+          I’m especially interested in collaborations at the intersection of hydrology, climate science, environmental data analysis, and open-source scientific software.
+        </p>
+        <div class="card-grid">
+          <article class="link-card">
+            <h3>Research collaboration</h3>
+            <ul>
+              <li>Land surface modeling and streamflow prediction</li>
+              <li>Groundwater recharge and baseflow analysis</li>
+              <li>Soil moisture dynamics and land-atmosphere coupling</li>
+            </ul>
+          </article>
+          <article class="link-card">
+            <h3>Technical collaboration</h3>
+            <ul>
+              <li>Python-based hydrologic workflows</li>
+              <li>Reproducible geospatial pipelines</li>
+              <li>Scientific software and data products</li>
+            </ul>
+          </article>
+        </div>
+        <p>
+          Contact: <a href="mailto:farmani@arizona.edu" style="color:var(--cyan);text-decoration:none;">farmani@arizona.edu</a> |
+          <a href="https://www.linkedin.com/in/mohammad-a-farmani-841b2b180/" target="_blank" style="color:var(--gold);text-decoration:none;">LinkedIn</a> |
+          <a href="https://scholar.google.com/citations?user=CmjfHnIAAAAJ&hl=en" target="_blank" style="color:var(--gold);text-decoration:none;">Google Scholar</a>
+        </p>
       </div>
     </section>
 
