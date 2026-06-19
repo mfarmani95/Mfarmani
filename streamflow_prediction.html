@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Streamflow Prediction Dashboard | Mohammad Ali Farmani</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="assets/css/bfi.css" />
+</head>
+<body>
+
+  <div class="video-container">
+    <video autoplay muted loop playsinline>
+      <source src="assets/videos/Coding.mp4" type="video/mp4" />
+    </video>
+  </div>
+
+  <nav class="navbar">
+    <a href="index.html"><i class="fas fa-home"></i> Home</a>
+    <a href="about.html"><i class="fas fa-user"></i> About</a>
+    <a href="cv.html"><i class="fas fa-id-card"></i> CV</a>
+    <a href="publications.html"><i class="fas fa-book"></i> Publications</a>
+    <div class="dropdown">
+      <a href="work.html" class="dropbtn active"><i class="fas fa-briefcase"></i> Projects ▾</a>
+      <div class="dropdown-content">
+        <a href="work.html">Projects Hub</a>
+        <a href="smm.html">SMM</a>
+        <a href="bfi.html">BFI</a>
+        <a href="graphroutenet.html">RiverGraphNet</a>
+        <a href="soilsolver.html">SoilSolver</a>
+        <a href="streamflow_prediction.html">Streamflow Prediction</a>
+      </div>
+    </div>
+    <a href="software.html"><i class="fa-solid fa-laptop-code"></i> Software</a>
+  </nav>
+
+  <div class="sidebar">
+    <h2>Navigation</h2>
+    <a href="#overview">Overview</a>
+    <a href="#models">Models</a>
+    <a href="#workflow">Workflow</a>
+    <a href="#dashboard">Dashboard</a>
+    <a href="#engineering">Engineering</a>
+    <a href="#links">Links</a>
+  </div>
+
+  <div class="content">
+    <h1 id="overview">Streamflow Prediction with LSTM and Transformers</h1>
+    <p>
+      This project explores sequence models for streamflow prediction in CAMELS-style catchments, with a focus on comparing LSTM and Transformer-based approaches under a reproducible training and evaluation workflow.
+    </p>
+    <p>
+      The work goes beyond model fitting alone. It includes dataset preprocessing, configuration-driven experiments, sweep analysis, evaluation utilities, and a live dashboard for browsing results. That makes it a good example of how I combine hydrology, machine learning, and engineering into one deliverable.
+    </p>
+    <p>
+      Live dashboard:
+      <a href="https://streamflowprediction-irm8aele3vtve9ujyfys62.streamlit.app/" target="_blank">Streamlit App</a>
+    </p>
+
+    <hr />
+
+    <h2 id="models">Modeling Focus</h2>
+    <p>
+      The repository compares sequence-model architectures for rainfall-runoff and streamflow prediction, especially LSTMs and Transformers. The goal is not only to measure benchmark performance, but also to understand how architecture, sequence length, batch size, loss design, and training strategy affect predictive behavior across basins.
+    </p>
+    <p>
+      Because the project is organized around reusable configs and evaluation outputs, it also reflects the way I think about scientific ML: as a reproducible system for experimentation rather than a one-off notebook result.
+    </p>
+
+    <hr />
+
+    <h2 id="workflow">Workflow and Data Pipeline</h2>
+    <p>
+      The codebase is structured into data access, preprocessing, model definition, training, evaluation, visualization, and CLI orchestration. It includes reusable configuration files, sweep logic, checkpointing, comparison utilities, and report-generation steps for analyzing trained runs.
+    </p>
+    <p>
+      This project shows the full workflow around machine learning for hydrology: preparing sequence datasets, training multiple models, comparing architectures, summarizing metrics, and surfacing the results through a user-facing application.
+    </p>
+
+    <hr />
+
+    <h2 id="dashboard">Interactive Dashboard</h2>
+    <p>
+      I also deployed a Streamlit dashboard for this project so the results are easier to explore outside the codebase. The dashboard makes the work more accessible to collaborators, instructors, and non-developer users by turning model outputs into a navigable interface.
+    </p>
+    <p>
+      This matters because it demonstrates not only model development, but also product thinking: building a usable front end for a research workflow rather than stopping at offline metrics.
+    </p>
+    <figure class="light-figure">
+      <div style="background:#fff; color:#111; border-radius:12px; padding:20px; width:min(720px, 100%); margin:0 auto; border:1px solid rgba(0,0,0,0.08);">
+        <strong style="display:block; margin-bottom:10px;">Live App</strong>
+        <p style="color:#222; opacity:1; transform:none; animation:none; text-align:left; margin:0 0 14px 0;">
+          Open the deployed dashboard to explore interactive streamflow prediction results and model outputs.
+        </p>
+        <p style="margin:0;">
+          <a href="https://streamflowprediction-irm8aele3vtve9ujyfys62.streamlit.app/" target="_blank" style="color:#0b5fff; text-decoration:none; font-weight:700;">Launch Streamlit Dashboard →</a>
+        </p>
+      </div>
+      <figcaption>Deployed dashboard for interactive exploration of the Streamflow Prediction project.</figcaption>
+    </figure>
+
+    <hr />
+
+    <h2 id="engineering">Engineering Signals</h2>
+    <p>
+      This project represents several skills that matter beyond the hydrology domain itself: command-line tooling, modular repository design, configuration-based experiments, model sweeps, evaluation pipelines, interactive deployment, and reproducible ML workflows.
+    </p>
+    <p>
+      It also strengthens the engineering side of the website by showing a project that connects research code, user-facing visualization, and deployable tooling. That makes it a strong example of my work as both a data scientist and an ML engineer.
+    </p>
+
+    <hr />
+
+    <h2 id="links">Project Links</h2>
+    <p>
+      GitHub Repository:
+      <a href="https://github.com/mfarmani95/Streamflow_Prediction" target="_blank">mfarmani95/Streamflow_Prediction</a>
+    </p>
+    <p>
+      Live Dashboard:
+      <a href="https://streamflowprediction-irm8aele3vtve9ujyfys62.streamlit.app/" target="_blank">streamflowprediction-irm8aele3vtve9ujyfys62.streamlit.app</a>
+    </p>
+  </div>
+
+  <button id="backToTop" title="Go to top"><i class="fas fa-arrow-up"></i></button>
+
+  <div class="footer">
+    <p>Created by Mohammad Ali Farmani | Contact: <a href="mailto:farmani@arizona.edu">farmani@arizona.edu</a></p>
+  </div>
+
+  <script src="assets/js/bfi.js"></script>
+</body>
+</html>
