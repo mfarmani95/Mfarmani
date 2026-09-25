@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>CV – Mohammad Ali Farmani</title>
+  <title>CV | Mohammad Farmani — Scientific ML &amp; Climate</title>
+  <meta name="description" content="Experience, projects, and technical skills in scientific machine learning, hydrology, and geospatial data engineering. Expected Ph.D. graduation May 2027.">
 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
@@ -12,6 +13,8 @@
 
   <link rel="stylesheet" href="assets/css/portfolio.css">
   <script defer src="assets/js/portfolio.js"></script>
+  <link rel="stylesheet" href="assets/css/career-cv.css">
+  <script defer src="assets/js/career-cv.js"></script>
 </head>
 <body>
 <a class="skip-link" href="#main-content">Skip to content</a>
@@ -25,48 +28,36 @@
   <!-- Navbar -->
   <nav class="navbar" aria-label="Main navigation"><a class="brand" href="index.html">M<span>.</span> Farmani</a><div class="nav-links"><a href="index.html">Home</a><a href="work.html">Projects</a><a href="software.html">Software</a><a href="publications.html">Publications</a><a href="about.html">About</a><a href="cv.html" aria-current="page">CV</a></div><a class="nav-contact" href="mailto:farmani@arizona.edu">Get in touch ↗</a></nav>
 
-  <!-- Main Container -->
-  <div class="container" id="main-content" role="main">
-    <h1><i class="fas fa-id-card"></i> Curriculum Vitae</h1>
-
-    <!-- Contact Section -->
-    <div class="section" id="contact">
-      <h2><i class="fas fa-envelope"></i> Contact Information</h2>
-      <p><i class="fas fa-user"></i> Mohammad Ali Farmani</p>
-      <p><i class="fas fa-globe"></i>
-        <a href="https://mfarmani95.github.io/Mfarmani/index.html" target="_blank" rel="noopener noreferrer">Personal Website</a>
-      </p>
-      <p><i class="fas fa-envelope"></i>
-        <a href="mailto:farmani@arizona.edu">farmani@arizona.edu</a>
-      </p>
-      <p style="text-align:center">
-        <a href="https://www.linkedin.com/in/mohammad-a-farmani-841b2b180/" target="_blank" rel="noopener noreferrer" title="LinkedIn" style="margin-right:14px">
-          <i class="fab fa-linkedin fa-2x"></i>
-        </a>
-        <a href="https://scholar.google.com/citations?user=CmjfHnIAAAAJ&hl=en" target="_blank" rel="noopener noreferrer" title="Google Scholar" style="margin-right:14px">
-          <i class="fas fa-graduation-cap fa-2x"></i>
-        </a>
-        <a href="https://www.researchgate.net/profile/Mohammad-Farmani-6/research" target="_blank" rel="noopener noreferrer" title="ResearchGate">
-          <i class="fab fa-researchgate fa-2x"></i>
-        </a>
-      </p>
-    </div>
-
-    <!-- Education Section -->
-    <div class="section" id="education">
-      <h2><i class="fas fa-university"></i> Education</h2>
-      <ul>
-        <li><strong>Ph.D. in Hydrology</strong>, University of Arizona, Tucson, USA — <em>August 2022 – Present</em></li>
-        <li><strong>M.S. in Data Science</strong>, University of Arizona, Tucson, USA — <em>August 2024 – Present</em></li>
-        <li><strong>M.S. in Civil Engineering – Water Resources Management</strong>, Tarbiat Modares University, Tehran, Iran</li>
-        <li><strong>B.S. in Civil Engineering</strong>, Iran University of Science and Technology, Tehran, Iran</li>
-      </ul>
-    </div>
-
-    <!-- Data Science & ML Projects Section -->
-    <div class="section" id="projects">
-      <h2><i class="fas fa-robot"></i> Selected Data Science & ML Projects</h2>
-      <ol>
+<main class="container career-cv" id="main-content">
+<header class="cv-intro">
+<p class="eyebrow">SCIENTIFIC MACHINE LEARNING · WATER &amp; CLIMATE</p>
+<h1>Mohammad A. Farmani</h1>
+<p class="lead">Ph.D. researcher building differentiable physical models, graph neural networks, and geospatial data pipelines for environmental prediction.</p>
+<p><strong>Full-time opportunities across the United States · Expected Ph.D. graduation: May 2027</strong><br>Tucson, Arizona · <a href="mailto:farmani@arizona.edu">farmani@arizona.edu</a></p>
+<div class="hero-actions"><a class="button-link primary" href="mailto:farmani@arizona.edu">Contact me ↗</a><button class="button-link" id="print-cv" type="button">Print / Save as PDF</button><a class="button-link" href="https://github.com/mfarmani95">GitHub ↗</a><a class="button-link" href="https://www.linkedin.com/in/mohammad-a-farmani-841b2b180/">LinkedIn ↗</a></div>
+<p class="cv-targets">Interested in ML engineering, scientific ML research, geospatial data engineering, and physical climate risk modeling.</p>
+</header>
+<nav class="cv-jump" aria-label="CV sections"><a href="#research">Experience</a><a href="#projects">Projects</a><a href="#skills">Technical skills</a><a href="#education">Education</a><a href="#selected-publications">Publications</a><a href="#awards">Awards</a></nav>
+<section class="section" id="research"><p class="eyebrow">EXPERIENCE</p><h2>Research with an engineering foundation</h2>
+<article class="cv-role"><div class="cv-role-heading"><h3>Graduate Research Assistant</h3><span>August 2022–Present</span></div><p class="cv-organization">University of Arizona · Hydrology and Atmospheric Sciences</p>
+<ul>
+<li>Developed a memory-efficient differentiable Noah-MP framework combining <strong>PyTorch, native C++ forward kernels, and custom backward/adjoint operators</strong> for regional parameter learning without storing full long-window computation graphs.</li>
+<li>Reimplemented and validated major Noah-MP physics against the reference model at double precision, comparing <strong>116 model variables at hourly timesteps</strong>.</li>
+<li>Modularized vegetation, soil, and snow physics to support interchangeable physical and learned process representations, with training workflows for snow water equivalent, evapotranspiration, runoff, and streamflow.</li>
+<li>Developed <strong>RiverGraphNet</strong>, a graph-attention routing model connecting gridded runoff to directed river networks; evaluated learned routing against RAPID under common runoff forcing.</li>
+<li>Built pipelines for <strong>multi-terabyte climate and geospatial datasets</strong> using xarray, Dask, SQL, DuckDB, PostGIS, Zarr, Parquet, and GeoParquet.</li>
+<li>Implemented reproducible HPC experiments with SLURM, GitHub Actions, automated testing, and linting; studied the influence of meteorological forcing uncertainty on hydrologic behavior.</li>
+</ul><a class="card-link" href="graphroutenet.html">RiverGraphNet research ↗</a></article>
+<article class="cv-role"><div class="cv-role-heading"><h3>Researcher</h3><span>October 2018–January 2022</span></div><p class="cv-organization">Tarbiat Modares University · Climate and flood modeling</p><ul>
+<li>Developed machine-learning climate downscaling workflows for high-resolution precipitation and generated intensity-duration-frequency curves for future extreme-rainfall analysis.</li>
+<li>Modeled urban flood dynamics with SWMM and HEC-RAS, combining GIS/DEM-based watershed characterization, rainfall disaggregation, and flood-risk analysis.</li>
+</ul></article></section>
+<section class="section" id="projects"><p class="eyebrow">SELECTED TECHNICAL WORK</p><h2>Models, pipelines, and usable software</h2><div class="card-grid">
+<article class="link-card"><h3>Differentiable Noah-MP</h3><p>Built a differentiable interface around a land-surface simulator for gradient-based physical parameter learning. Combines process equations, native C++ computation, and PyTorch integration.</p><p><strong>Focus:</strong> Differentiable simulation · Scientific computing · HPC</p><a class="card-link" href="#research">Research experience ↑</a></article>
+<article class="link-card"><h3>RiverGraphNet</h3><p>Developed graph-attention routing using river topology, channel attributes, and temporal runoff history to study streamflow propagation.</p><p><strong>Focus:</strong> Graph neural networks · Geospatial modeling · Hydrology</p><a class="card-link" href="graphroutenet.html">Research overview ↗</a> · <a class="card-link" href="https://github.com/mfarmani95/RiverGraphNet">Code ↗</a></article>
+<article class="link-card"><h3>Streamflow prediction</h3><p>Built LSTM and Transformer workflows with held-out basin evaluation, a FastAPI service for completed runs, and a Streamlit dashboard. Includes automated tests and CI.</p><p><strong>Focus:</strong> PyTorch · Model evaluation · Research software</p><a class="card-link" href="streamflow_prediction.html">Project ↗</a> · <a class="card-link" href="https://github.com/mfarmani95/Streamflow_Prediction">Code ↗</a></article>
+<article class="link-card"><h3>Hydrologic analysis tools</h3><p>Developed Python tools for soil moisture memory and baseflow analysis, making research methods available as reusable software.</p><p><strong>Focus:</strong> Time series · Python packages · Environmental analysis</p><a class="card-link" href="software.html">Explore the tools ↗</a></article>
+</div><details class="cv-additional"><summary>Additional data science and coursework projects</summary><ol>
         <li><strong>Bayesian Inference of 3D Line Parameters (Metropolis–Hastings MCMC)</strong><br>
           Implemented custom MCMC sampler to infer 3D line endpoints from noisy 2D camera images.<br>
           Used Gaussian priors and multi-view likelihood to achieve accurate MAP reconstruction.
@@ -99,47 +90,26 @@
           Designed conceptual–logical–physical database models integrating IoT sensor data.<br>
           Implemented advanced SQL queries: JOINs, subqueries, CASE, aggregation. Built schema for real-time water monitoring and decision support.
         </li>
-      </ol>
-    </div>
-
-    <!-- Computer Skills Section -->
-    <div class="section" id="skills">
-      <h2><i class="fas fa-laptop-code"></i> Computer Skills</h2>
-      <ul>
-        <li><strong>Programming:</strong> Python (PyTorch, TensorFlow, JAX), RStudio, Fortran, HTML, SQL</li>
-        <li><strong>Hydrologic & Climate Modeling:</strong> Noah-MP, RAPID, WRF (exposure), SWMM, HEC-RAS, HEC-HMS</li>
-        <li><strong>Geospatial & ML Pipelines:</strong> xarray, GeoPandas, scikit-learn, rasterio, NumPy, Pandas, Dask</li>
-        <li><strong>Software & Deployment:</strong> Streamlit dashboards, REST/API workflow exposure, Docker, Git/GitHub, CLI-based experiment pipelines</li>
-        <li><strong>HPC & Workflow:</strong> SLURM job arrays, Bash, parallel computing, reproducible training/evaluation workflows</li>
-        <li><strong>Cloud Exposure:</strong> GCP, AWS (basic)</li>
-        <li><strong>Visualization:</strong> Matplotlib, Cartopy, Seaborn, Plotly, Quarto, Tableau</li>
-      </ul>
-    </div>
-
-    <!-- Research Experience Section -->
-    <div class="section" id="research">
-      <h2><i class="fas fa-flask"></i> Research Experience</h2>
-
-      <h3>Graduate Research Assistant — University of Arizona, Tucson, USA <span class="date">Aug 2022 – Present</span></h3>
-      <ul>
-        <li><strong>AI + Physical Modeling:</strong> Developed differentiable hydrology modules integrating deep neural networks with Noah-MP.</li>
-        <li><strong>Data Science & ML:</strong> Built scalable ML pipelines on HPC using PyTorch, xarray, GeoPandas, and Dask.</li>
-        <li><strong>Interactive Research Tools:</strong> Developed dashboards and deployable interfaces to communicate model behavior and prediction results.</li>
-        <li><strong>Geospatial & Hydro Modeling:</strong> Enhanced Noah-MP hydrologic scheme; implemented RAPID routing; evaluated IMERG & ERA5 precipitation datasets.</li>
-        <li><strong>Climate Analytics & HPC:</strong> Processed petabyte-scale datasets with SLURM job arrays and automated model training & uncertainty quantification workflows.</li>
-        <li><strong>Selected Projects:</strong> ET Estimation using Penman-Monteith + DL; Streamflow Prediction with LSTM/Transformers; Soil Moisture Memory; Extreme Precipitation & Recharge; Noah-MP Process Representation.</li>
-      </ul>
-
-      <h3>Graduate Research Assistant — Tarbiat Modares University, Tehran, Iran</h3>
-      <ul>
-        <li>Downscaled GCM precipitation using ML/DL approaches.</li>
-        <li>Temporal disaggregation of rainfall using KNN-based methods.</li>
-        <li>Hydrological and hydraulic modeling of extreme flood events (SWMM, HEC-RAS).</li>
-        <li>DEM-based subcatchment characterization with ArcGIS; IDF curve generation and MATLAB-based urban flooding simulation.</li>
-        <li>System dynamics modeling of water crisis management in Zayandeh-Rud basin.</li>
-      </ul>
-    </div>
-
+      </ol></details></section>
+<section class="section" id="skills"><p class="eyebrow">TECHNICAL SKILLS</p><h2>Tools behind the work</h2><dl class="cv-skills">
+<div><dt>Machine learning &amp; simulation</dt><dd>PyTorch, differentiable simulation, automatic differentiation, custom backward operators, graph neural networks, LSTMs, Transformers, scikit-learn, TensorFlow, XGBoost.</dd></div>
+<div><dt>Programming &amp; scientific computing</dt><dd>Python, C++, Fortran, SQL, NumPy, SciPy, pandas, Linux, Bash.</dd></div>
+<div><dt>Geospatial &amp; climate data</dt><dd>xarray, Dask, GeoPandas, rasterio, GDAL, PostgreSQL/PostGIS, DuckDB, NetCDF, GRIB2, Zarr, HDF5, Parquet, GeoParquet.</dd></div>
+<div><dt>Engineering &amp; delivery</dt><dd>SLURM, HPC workflows, Git/GitHub, GitHub Actions, automated testing, reproducible environments, FastAPI, Streamlit.</dd></div>
+<div><dt>Water &amp; climate modeling</dt><dd>Noah-MP, RAPID, NGen hydrofabric, SWMM, HEC-RAS, climate downscaling, river routing, land-surface processes, flood modeling.</dd></div>
+</dl></section>
+<section class="section" id="education"><p class="eyebrow">EDUCATION</p><h2>Hydrology meets data science</h2><ul>
+<li><strong>Ph.D., Hydrology and Atmospheric Sciences</strong><br>University of Arizona · August 2022–Present · Expected May 2027</li>
+<li><strong>M.S., Data Science</strong><br>University of Arizona · August 2024–Present</li>
+<li><strong>M.S., Civil Engineering — Water Resources Management</strong><br>Tarbiat Modares University</li>
+<li><strong>B.S., Civil Engineering</strong><br>Iran University of Science and Technology</li>
+</ul></section>
+<section class="section" id="selected-publications"><p class="eyebrow">SELECTED PUBLICATIONS</p><h2>Research outputs</h2><ul>
+<li><strong>RiverGraphNet: Physics-Aware Routing of Gridded Runoff Through Directed River Networks.</strong> EGUsphere, 2026. <em>Preprint.</em> <a href="https://doi.org/10.5194/egusphere-2026-4157">Read ↗</a></li>
+<li><strong>Process-Aware AI for Rainfall–Runoff Modeling: A Mass-Conserving Neural Framework with Hydrological Process Constraints.</strong> arXiv, 2026. <em>Preprint.</em> <a href="https://doi.org/10.48550/arXiv.2603.25093">Read ↗</a></li>
+<li><strong>Improving Streamflow Predictions in the Arid Southwestern United States Through Understanding of Baseflow Generation Mechanisms.</strong> Water Resources Research, 2025. <a href="https://doi.org/10.1029/2024WR039479">Read ↗</a></li>
+<li><strong>Do Land Models Miss Key Soil Hydrological Processes Controlling Soil Moisture Memory?</strong> Hydrology and Earth System Sciences, 2025. <a href="https://doi.org/10.5194/hess-29-547-2025">Read ↗</a></li>
+</ul><a class="card-link" href="publications.html">More publications ↗</a></section>
     <!-- Awards Section -->
     <div class="section" id="awards">
       <h2><i class="fas fa-trophy"></i> Awards & Honors</h2>
@@ -157,20 +127,8 @@
       </div>
     </div>
 
-    <hr/>
 
-    <!-- Closing Section -->
-    <div class="section" id="closing">
-      <h2><i class="fas fa-handshake"></i> Thank You</h2>
-      <p>I’m passionate about advancing hydrology, climate resilience, and data-driven decision making. Feel free to reach out for research collaborations, data projects, or community outreach on groundwater and water policy.</p>
-    </div>
-  </div>
-
-  <!-- Back to top -->
-  <button id="backToTop" title="Back to top">
-    <i class="fas fa-arrow-up"></i>
-  </button>
-
+</main>
   <!-- Footer -->
   <footer class="footer">
     <p>Created by Mohammad Ali Farmani | <a href="mailto:farmani@arizona.edu">Contact Me</a></p>
