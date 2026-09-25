@@ -5,36 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SMM – Soil Moisture Memory | Mohammad Ali Farmani</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-  <link rel="stylesheet" href="assets/css/smm.css" />
+
+  <link rel="stylesheet" href="assets/css/portfolio.css">
+  <script defer src="assets/js/portfolio.js"></script>
 </head>
 <body>
+<a class="skip-link" href="#main-content">Skip to content</a>
 
   <!-- Background -->
-  <div class="video-container">
-    <video autoplay muted loop playsinline>
-      <source src="assets/videos/PUB_BG.mp4" type="video/mp4" />
-    </video>
-  </div>
+
 
   <!-- Navbar -->
-  <nav class="navbar">
-    <a href="index.html"><i class="fas fa-home"></i> Home</a>
-    <a href="about.html"><i class="fas fa-user"></i> About</a>
-    <a href="cv.html"><i class="fas fa-id-card"></i> CV</a>
-    <a href="publications.html"><i class="fas fa-book"></i> Publications</a>
-    <div class="dropdown">
-      <a href="work.html" class="dropbtn active"><i class="fas fa-briefcase"></i> Projects ▾</a>
-      <div class="dropdown-content">
-        <a href="work.html">Projects Hub</a>
-        <a href="smm.html">SMM</a>
-        <a href="bfi.html">BFI</a>
-        <a href="graphroutenet.html">RiverGraphNet</a>
-        <a href="soilsolver.html">SoilSolver</a>
-        <a href="streamflow_prediction.html">Streamflow Prediction</a>
-      </div>
-    </div>
-    <a href="software.html"><i class="fa-solid fa-laptop-code"></i> Software</a>
-  </nav>
+  <nav class="navbar" aria-label="Main navigation"><a class="brand" href="index.html">M<span>.</span> Farmani</a><div class="nav-links"><a href="index.html">Home</a><a href="work.html">Projects</a><a href="software.html">Software</a><a href="publications.html">Publications</a><a href="about.html">About</a><a href="cv.html">CV</a></div><a class="nav-contact" href="mailto:farmani@arizona.edu">Get in touch ↗</a></nav>
 
   <!-- Sidebar -->
   <div class="sidebar">
@@ -48,13 +30,13 @@
   </div>
 
   <!-- Content -->
-  <div class="content">
+  <div class="content" id="main-content" role="main">
     <h1 id="introduction">Soil Moisture Memory (SMM) and Its Role in Land Surface Modeling</h1>
      <p>Soil Moisture Memory (SMM) refers to the duration over which soil retains the effects of a moisture perturbation, such as rainfall, before returning to its equilibrium state. This concept is essential for understanding land–atmosphere interactions, as it encapsulates the temporal variations of soil moisture and reflects the exchange of fluxes between land and the atmosphere.</p>
      <p>SMM serves as a crucial metric for evaluating Land Surface Models (LSMs), which are designed to simulate surface flux exchanges and provide boundary conditions for atmospheric models. By facilitating comparisons between observed and modeled soil moisture dynamics, SMM offers insights into the mechanisms within LSMs and their hydrometeorological responses. Furthermore, analyzing SMM can provide valuable information about the configurations and hydrological parameterizations of specific LSMs. This helps improve our understanding of how different model configurations impact performance, particularly in representing soil moisture dynamics.</p>
-   
+
     <figure>
-      <img src="assets/images/SMM_MODEL.png" alt="Soil Moisture Memory Concept" />
+      <img loading="lazy" src="assets/images/SMM_MODEL.png" alt="Soil Moisture Memory Concept" />
       <figcaption>Figure 1 Schematic diagrams of the (a) surface water loss process and (b) soil moisture memory in different soil moisture regimes (adapted from McColl et al., 2017b). Note that the x axis in panel (a) refers to soil moisture (m&sup3;/m&sup3;) and the y axis refers to the surface water loss rate L(θ) (m&sup3;/s). Emax is the maximum evaporation rate (m&sup3;/s). In panel (b), the x axis refers to time (e.g., days) and the y axis to SM content (m&sup3;/m&sup3;). Panel (c) shows the SM time series for the Tonzi Ranch station, with the green periods indicating energy-limited regimes and the dotted lines representing water-limited regimes. θ<sub>w</sub>, θ<sub>c</sub>, and θ<sub>fc</sub> refer to the wilting point, critical point, and field capacity, respectively.</figcaption>
     </figure>
 
@@ -63,9 +45,9 @@
     <h2 id="importance">Importance of Accurate Land Models</h2>
     <p>The efficacy of LSMs in simulating climate feedback mechanisms depends critically on accurately representing soil water retention capacity and soil moisture persistence. Soil moisture significantly influences seasonal-to-subseasonal (S2S) climate predictions, as it plays a key role in the exchange of energy and water fluxes between the land and the atmosphere. Water stored in soil and aquifers, which persists from seasons to years, also affects precipitation variability. This impact is particularly significant in regions transitioning from dry to wet conditions, where evapotranspiration (ET) is highly sensitive to soil moisture levels.<p>
     <p>Despite the well-recognized role of soil moisture in climate models, discrepancies in modeled soil moisture persist due to incomplete or oversimplified representations of key hydrological processes. For instance, variations in soil moisture–precipitation coupling across different models indicate that improvements in LSMs are necessary to enhance their predictive accuracy. Addressing these shortcomings will allow for more reliable weather and climate forecasts, improved hydrological predictions, and better-informed water management strategies.</p>
-   
+
     <figure>
-      <img src="assets/images/SMM_RESULTS.jpg" alt="Soil Moisture and Climate Interaction" />
+      <img loading="lazy" src="assets/images/SMM_RESULTS.jpg" alt="Soil Moisture and Climate Interaction" />
       <figcaption>Figure 2 Long-term SMM derived from various datasets from 2015 to 2019 for the soil surface layer: (a) SMAP, (b) MF_CH, (c) DMP_VGM, (d) MF_VGM, (e) MF_VGM0, and (f) MF_VGM200. SMM: soil moisture memory.</figcaption>
     </figure>
 
@@ -82,7 +64,7 @@
         <p>A higher ponding threshold allows water to remain on the surface before turning into runoff, providing more time for infiltration. This increases soil moisture retention, extending long-term SMM (&tau;<sub>L</sub>) and shortening short-term SMM (&tau;<sub>S</sub>).<p>
 
         <p>These findings highlight the necessity for LSMs to incorporate advanced soil hydrological processes, such as macropore effects, improved soil hydraulic parameterizations, and dynamic surface ponding thresholds. By doing so, we can improve the accuracy of soil moisture simulations and their interactions with the atmosphere.</p>
-    
+
     <hr />
 
     <h2 id="implications">Implications for Climate Science and Water Management</h2>
@@ -97,7 +79,7 @@
 
         <p><b>4. Advancements in Hydrological Modeling</b></p>
         <p>This study highlights missing processes in LSMs that influence SMM, including preferential flow, macropore infiltration, and variable surface ponding. Future LSM improvements based on these findings will enhance their applicability in hydrological studies, benefiting water resource planning and land-use management.</p>
-    
+
     <hr />
 
     <h2 id="conclusion">Conclusion & Future Directions</h2>
@@ -107,8 +89,8 @@
     <hr />
 
     <h2 id="reference">References</h2>
-    <p>Farmani, M. A., Behrangi, A., Gupta, A., Tavakoly, A., Geheran, M., & Niu, G.-Y. (2025). Do land models miss key soil hydrological processes controlling soil moisture memory? <i>Hydrology and Earth System Sciences</i>, 29, 547–566. <a href="https://doi.org/10.5194/hess-29-547-2025" target="_blank">https://doi.org/10.5194/hess-29-547-2025</a></p>
-    <p>McColl, K. A., He, Q., Lu, H., & Entekhabi, D. (2019). Short- and long-term surface soil moisture memory scales. <i>Journal of Hydrometeorology</i>, 20(6), 1165–1182. <a href="https://doi.org/10.1175/JHM-D-18-0141.1" target="_blank">https://doi.org/10.1175/JHM-D-18-0141.1</a></p>
+    <p>Farmani, M. A., Behrangi, A., Gupta, A., Tavakoly, A., Geheran, M., & Niu, G.-Y. (2025). Do land models miss key soil hydrological processes controlling soil moisture memory? <i>Hydrology and Earth System Sciences</i>, 29, 547–566. <a href="https://doi.org/10.5194/hess-29-547-2025" target="_blank" rel="noopener noreferrer">https://doi.org/10.5194/hess-29-547-2025</a></p>
+    <p>McColl, K. A., He, Q., Lu, H., & Entekhabi, D. (2019). Short- and long-term surface soil moisture memory scales. <i>Journal of Hydrometeorology</i>, 20(6), 1165–1182. <a href="https://doi.org/10.1175/JHM-D-18-0141.1" target="_blank" rel="noopener noreferrer">https://doi.org/10.1175/JHM-D-18-0141.1</a></p>
   </div>
 
   <!-- Back to Top -->
@@ -119,6 +101,6 @@
     <p>Created by Mohammad Ali Farmani | Contact: <a href="mailto:farmani@arizona.edu">farmani@arizona.edu</a></p>
   </div>
 
-  <script src="assets/js/smm.js"></script>
+
 </body>
 </html>

@@ -5,34 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SoilSolver | Mohammad Ali Farmani</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-  <link rel="stylesheet" href="assets/css/bfi.css" />
+
+  <link rel="stylesheet" href="assets/css/portfolio.css">
+  <script defer src="assets/js/portfolio.js"></script>
 </head>
 <body>
+<a class="skip-link" href="#main-content">Skip to content</a>
 
-  <div class="video-container">
-    <video autoplay muted loop playsinline>
-      <source src="assets/videos/PUB_BG.mp4" type="video/mp4" />
-    </video>
-  </div>
 
-  <nav class="navbar">
-    <a href="index.html"><i class="fas fa-home"></i> Home</a>
-    <a href="about.html"><i class="fas fa-user"></i> About</a>
-    <a href="cv.html"><i class="fas fa-id-card"></i> CV</a>
-    <a href="publications.html"><i class="fas fa-book"></i> Publications</a>
-    <div class="dropdown">
-      <a href="work.html" class="dropbtn active"><i class="fas fa-briefcase"></i> Projects ▾</a>
-      <div class="dropdown-content">
-        <a href="work.html">Projects Hub</a>
-        <a href="smm.html">SMM</a>
-        <a href="bfi.html">BFI</a>
-        <a href="graphroutenet.html">RiverGraphNet</a>
-        <a href="soilsolver.html">SoilSolver</a>
-        <a href="streamflow_prediction.html">Streamflow Prediction</a>
-      </div>
-    </div>
-    <a href="software.html"><i class="fa-solid fa-laptop-code"></i> Software</a>
-  </nav>
+
+  <nav class="navbar" aria-label="Main navigation"><a class="brand" href="index.html">M<span>.</span> Farmani</a><div class="nav-links"><a href="index.html">Home</a><a href="work.html">Projects</a><a href="software.html">Software</a><a href="publications.html">Publications</a><a href="about.html">About</a><a href="cv.html">CV</a></div><a class="nav-contact" href="mailto:farmani@arizona.edu">Get in touch ↗</a></nav>
 
   <div class="sidebar">
     <h2>Navigation</h2>
@@ -47,7 +29,7 @@
     <a href="#implications">Implications</a>
   </div>
 
-  <div class="content">
+  <div class="content" id="main-content" role="main">
     <h1 id="overview">Process-Aware AI for Rainfall-Runoff Modeling</h1>
     <p>
       This page summarizes a new paper on a mass-conserving neural framework for rainfall-runoff modeling. The work progressively embeds hydrologically meaningful process representations within a Mass-Conserving Perceptron (MCP), with the goal of improving both predictive skill and physical interpretability.
@@ -85,7 +67,7 @@
       In the MCP, the internal state acts as a storage variable and outgoing fluxes are explicitly partitioned into interpretable components such as discharge and evapotranspiration. Because conservation is embedded directly in the architecture, the model remains differentiable like a neural network while behaving structurally like a hydrologic storage-flux system.
     </p>
     <figure class="light-figure">
-      <img src="assets/images/soilsolver_mcp_unit.png" alt="Mass-Conserving Perceptron unit used in the SoilSolver framework" />
+      <img loading="lazy" src="assets/images/soilsolver_mcp_unit.png" alt="Mass-Conserving Perceptron unit used in the SoilSolver framework" />
       <figcaption>Conceptual schematic of the Mass-Conserving Perceptron, showing how storage and outgoing fluxes remain explicitly interpretable and mass-conserving.</figcaption>
     </figure>
 
@@ -102,7 +84,7 @@
       Because the internal architecture changes gradually rather than all at once, the study can attribute performance differences to specific process representations rather than vague differences between unrelated model classes.
     </p>
     <figure class="light-figure">
-      <img src="assets/images/soilsolver_process_hierarchy.png" alt="Progressive M1 to M5 process hierarchy in SoilSolver" />
+      <img loading="lazy" src="assets/images/soilsolver_process_hierarchy.png" alt="Progressive M1 to M5 process hierarchy in SoilSolver" />
       <figcaption>Progressive augmentation of the MCP architecture from M1 to M5, illustrating how new hydrological mechanisms are embedded while preserving the same structural backbone.</figcaption>
     </figure>
 
@@ -119,7 +101,7 @@
       In total, the framework evaluates 20 model configurations, which makes the page a useful place to explain not just one model but a family of process-aware MCP designs.
     </p>
     <figure class="light-figure">
-      <img src="assets/images/soilsolver_boundary_conditions.png" alt="Boundary-condition configurations for ponding and vertical drainage in SoilSolver" />
+      <img loading="lazy" src="assets/images/soilsolver_boundary_conditions.png" alt="Boundary-condition configurations for ponding and vertical drainage in SoilSolver" />
       <figcaption>Boundary-condition scenarios used in the study, highlighting how surface ponding and vertical drainage expand the MCP process hierarchy into a broader experimental configuration space.</figcaption>
     </figure>
 
@@ -156,12 +138,12 @@
     <p><b>5.</b> Surface ponding has comparatively smaller overall effects than vertical drainage.</p>
     <p><b>6.</b> The framework provides an interpretable way to study storage-flux dynamics and structural process hypotheses across hydroclimatic regimes.</p>
     <figure>
-      <img src="assets/images/soilsolver_performance.png" alt="Cross-catchment performance comparison for SoilSolver configurations and LSTM" />
+      <img loading="lazy" src="assets/images/soilsolver_performance.png" alt="Cross-catchment performance comparison for SoilSolver configurations and LSTM" />
       <figcaption>Performance comparison across catchments and regimes, showing how process-aware MCP variants compare against the LSTM benchmark and against one another.</figcaption>
     </figure>
 
     <figure>
-      <img src="assets/images/soilsolver_interpretability.png" alt="Interpretability results for SoilSolver showing storage-flux or vertical-drainage effects" />
+      <img loading="lazy" src="assets/images/soilsolver_interpretability.png" alt="Interpretability results for SoilSolver showing storage-flux or vertical-drainage effects" />
       <figcaption>Interpretability-focused result showing how storage-flux behavior and vertical-drainage effects vary across hydroclimatic settings.</figcaption>
     </figure>
 
@@ -182,6 +164,6 @@
     <p>Created by Mohammad Ali Farmani | Contact: <a href="mailto:farmani@arizona.edu">farmani@arizona.edu</a></p>
   </div>
 
-  <script src="assets/js/bfi.js"></script>
+
 </body>
 </html>

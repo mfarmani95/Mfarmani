@@ -5,37 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>BFI – Baseflow Index | Mohammad Ali Farmani</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-  <link rel="stylesheet" href="assets/css/bfi.css" />
+
+  <link rel="stylesheet" href="assets/css/portfolio.css">
+  <script defer src="assets/js/portfolio.js"></script>
 </head>
 
 <body>
+<a class="skip-link" href="#main-content">Skip to content</a>
 
   <!-- === Background Video === -->
-  <div class="video-container">
-    <video autoplay muted loop playsinline>
-      <source src="assets/videos/PUB_BG.mp4" type="video/mp4" />
-    </video>
-  </div>
+
 
   <!-- Navbar -->
-  <nav class="navbar">
-    <a href="index.html"><i class="fas fa-home"></i> Home</a>
-    <a href="about.html"><i class="fas fa-user"></i> About</a>
-    <a href="cv.html"><i class="fas fa-id-card"></i> CV</a>
-    <a href="publications.html"><i class="fas fa-book"></i> Publications</a>
-    <div class="dropdown">
-      <a href="work.html" class="dropbtn active"><i class="fas fa-briefcase"></i> Projects ▾</a>
-      <div class="dropdown-content">
-        <a href="work.html">Projects Hub</a>
-        <a href="smm.html">SMM</a>
-        <a href="bfi.html">BFI</a>
-        <a href="graphroutenet.html">RiverGraphNet</a>
-        <a href="soilsolver.html">SoilSolver</a>
-        <a href="streamflow_prediction.html">Streamflow Prediction</a>
-      </div>
-    </div>
-    <a href="software.html"><i class="fa-solid fa-laptop-code"></i> Software</a>
-  </nav>
+  <nav class="navbar" aria-label="Main navigation"><a class="brand" href="index.html">M<span>.</span> Farmani</a><div class="nav-links"><a href="index.html">Home</a><a href="work.html">Projects</a><a href="software.html">Software</a><a href="publications.html">Publications</a><a href="about.html">About</a><a href="cv.html">CV</a></div><a class="nav-contact" href="mailto:farmani@arizona.edu">Get in touch ↗</a></nav>
 
   <!-- === Sidebar === -->
   <div class="sidebar">
@@ -49,11 +31,11 @@
   </div>
 
   <!-- === Content === -->
-  <div class="content">
-     <h2 id="importance">Importance of Understanding Baseflow Generation</h2>
-	  <p>The accuracy of continental-scale hydrological models in predicting streamflow, particularly in dry regions, hinges on their ability to simulate various water balance components, including surface and subsurface runoff, soil moisture retention, as well as groundwater recharge and discharge. Runoff, which includes both surface and subsurface components, plays a critical role in the distribution of water between immediate streamflow and groundwater recharge, impacting baseflow generation. In dry regions, where precipitation is sparse, subsurface runoff becomes especially relevant, as it often contributes to baseflow—a key element in sustaining streamflow during dry periods. Therefore, examining both surface and subsurface runoff provides insight into how different physical process representations in models affect baseflow estimates.</p>    
+  <div class="content" id="main-content" role="main">
+     <h1 id="introduction">Understanding Baseflow Generation</h1>
+	  <p>The accuracy of continental-scale hydrological models in predicting streamflow, particularly in dry regions, hinges on their ability to simulate various water balance components, including surface and subsurface runoff, soil moisture retention, as well as groundwater recharge and discharge. Runoff, which includes both surface and subsurface components, plays a critical role in the distribution of water between immediate streamflow and groundwater recharge, impacting baseflow generation. In dry regions, where precipitation is sparse, subsurface runoff becomes especially relevant, as it often contributes to baseflow—a key element in sustaining streamflow during dry periods. Therefore, examining both surface and subsurface runoff provides insight into how different physical process representations in models affect baseflow estimates.</p>
     <figure>
-      <img src="assets/images/BFI_MOdel.png" alt="Baseflow Example" />
+      <img loading="lazy" src="assets/images/BFI_MOdel.png" alt="Baseflow Example" />
       <figcaption>Figure 1. Baseflow computed using Van Dijk (2010) method for GRDC 6731165 station data.</figcaption>
     </figure>
 
@@ -63,7 +45,7 @@
     <p>Baseflow plays a significant role in sustaining streamflow during dry periods, yet traditional Land Surface Models (LSMs) struggle to accurately represent groundwater recharge, soil moisture retention, and infiltration processes. Overestimation of the Baseflow Index (BFI) results in unrealistic low-flow simulations, highlighting the need for improved hydrological modeling approaches.<p>
     <p>In dry regions where precipitation is intermittent and highly variable, baseflow sustains river flows during dry periods. However, traditional LSMs frequently overestimate baseflow, leading to inaccurate predictions of low-flow conditions and groundwater recharge rates. This study hypothesizes that improving the physical representation of baseflow processes in LSMs will lead to better streamflow predictions. By refining soil water retention schemes, macropore flow mechanisms, and surface ponding processes, we aim to enhance the ability of LSMs to capture baseflow dynamics accurately.</p>
     <figure>
-      <img src="assets/images/BFI_RESULTS.png" alt="BFI Results" />
+      <img loading="lazy" src="assets/images/BFI_RESULTS.png" alt="BFI Results" />
       <figcaption>Figure 2. BFI at 390 gauges across the southwestern region derived from observations and model experiments.</figcaption>
     </figure>
 
@@ -75,7 +57,7 @@
        <b>3.</b> ML-calibrated parameters improved streamflow KGE by 20%.<br>
        <b>4.</b> IMERG forcing corrected overestimated BFI from NLDAS-2/AORC.</p>
     <figure>
-      <img src="assets/images/KGE_RESULTS.png" alt="KGE Improvement" />
+      <img loading="lazy" src="assets/images/KGE_RESULTS.png" alt="KGE Improvement" />
       <figcaption>Figure 3. KGE improvement of ML against NWM.</figcaption>
     </figure>
 
@@ -100,7 +82,7 @@
     <hr />
 
     <h2 id="reference">Reference</h2>
-    <p><b>Farmani, M. A.</b>, Tavakoly, A., Behrangi, A., Qiu, Y., Gupta, A., Jawad, M., Yousefi Sohi, H., Zhang, X., Geheran, M., & Niu, G.-Y. (2025). Improving streamflow predictions in the arid Southwestern United States through understanding of baseflow generation mechanisms. <i>Water Resources Research</i>. <a href="https://doi.org/10.1029/2024WR039479" target="_blank">https://doi.org/10.1029/2024WR039479</a></p>
+    <p><b>Farmani, M. A.</b>, Tavakoly, A., Behrangi, A., Qiu, Y., Gupta, A., Jawad, M., Yousefi Sohi, H., Zhang, X., Geheran, M., & Niu, G.-Y. (2025). Improving streamflow predictions in the arid Southwestern United States through understanding of baseflow generation mechanisms. <i>Water Resources Research</i>. <a href="https://doi.org/10.1029/2024WR039479" target="_blank" rel="noopener noreferrer">https://doi.org/10.1029/2024WR039479</a></p>
   </div>
 
   <!-- Back to Top -->
@@ -111,6 +93,6 @@
     <p>Created by Mohammad Ali Farmani | Contact: <a href="mailto:farmani@arizona.edu">farmani@arizona.edu</a></p>
   </div>
 
-  <script src="assets/js/bfi.js"></script>
+
 </body>
 </html>

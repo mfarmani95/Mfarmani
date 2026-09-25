@@ -5,34 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>RiverGraphNet | Mohammad Ali Farmani</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-  <link rel="stylesheet" href="assets/css/bfi.css" />
+
+  <link rel="stylesheet" href="assets/css/portfolio.css">
+  <script defer src="assets/js/portfolio.js"></script>
 </head>
 <body>
+<a class="skip-link" href="#main-content">Skip to content</a>
 
-  <div class="video-container">
-    <video autoplay muted loop playsinline>
-      <source src="assets/videos/Coding.mp4" type="video/mp4" />
-    </video>
-  </div>
 
-  <nav class="navbar">
-    <a href="index.html"><i class="fas fa-home"></i> Home</a>
-    <a href="about.html"><i class="fas fa-user"></i> About</a>
-    <a href="cv.html"><i class="fas fa-id-card"></i> CV</a>
-    <a href="publications.html"><i class="fas fa-book"></i> Publications</a>
-    <div class="dropdown">
-      <a href="work.html" class="dropbtn active"><i class="fas fa-briefcase"></i> Projects ▾</a>
-      <div class="dropdown-content">
-        <a href="work.html">Projects Hub</a>
-        <a href="smm.html">SMM</a>
-        <a href="bfi.html">BFI</a>
-        <a href="graphroutenet.html">RiverGraphNet</a>
-        <a href="soilsolver.html">SoilSolver</a>
-        <a href="streamflow_prediction.html">Streamflow Prediction</a>
-      </div>
-    </div>
-    <a href="software.html"><i class="fa-solid fa-laptop-code"></i> Software</a>
-  </nav>
+
+  <nav class="navbar" aria-label="Main navigation"><a class="brand" href="index.html">M<span>.</span> Farmani</a><div class="nav-links"><a href="index.html">Home</a><a href="work.html">Projects</a><a href="software.html">Software</a><a href="publications.html">Publications</a><a href="about.html">About</a><a href="cv.html">CV</a></div><a class="nav-contact" href="mailto:farmani@arizona.edu">Get in touch ↗</a></nav>
 
   <div class="sidebar">
     <h2>Navigation</h2>
@@ -47,7 +29,7 @@
     <a href="#implications">Implications</a>
   </div>
 
-  <div class="content">
+  <div class="content" id="main-content" role="main">
     <h1 id="overview">RiverGraphNet: Physics-Aware Routing of Gridded Runoff Through Directed River Networks</h1>
     <p>
       RiverGraphNet is a physics-aware graph learning framework designed to route physically generated runoff through a directed river network while preserving the connectivity structure of the watershed. The study isolates the routing problem from runoff generation by coupling Noah-MP runoff with a graph derived from the NextGen hydrofabric for the Salt-Verde watershed in Arizona.
@@ -82,7 +64,7 @@
       This heterogeneity is exactly where routing assumptions matter. A framework that works only in smooth, homogeneous systems is much less informative than one that can adapt across headwaters, tributaries, and downstream integrating reaches within a semi-arid basin.
     </p>
     <figure>
-      <img src="assets/images/graphroutenet_watershed_map.png" alt="Salt-Verde watershed and directed river network for RiverGraphNet" />
+      <img loading="lazy" src="assets/images/graphroutenet_watershed_map.png" alt="Salt-Verde watershed and directed river network for RiverGraphNet" />
       <figcaption>Salt-Verde study domain and routing-network context used to evaluate RiverGraphNet across the observed gauge network.</figcaption>
     </figure>
 
@@ -99,7 +81,7 @@
       The workflow has four main pieces: transfer of Noah-MP runoff to river-network nodes, graph-based message passing over the NGen topology, learned temporal processing of runoff memory, and extraction of streamflow predictions at graph nodes mapped to USGS gauges. This gives the model a clear physical operating context rather than treating gauges as unrelated time series.
     </p>
     <figure>
-      <img src="assets/images/graphroutenet_framework.png" alt="RiverGraphNet framework from Noah-MP runoff to graph-based routing and gauge prediction" />
+      <img loading="lazy" src="assets/images/graphroutenet_framework.png" alt="RiverGraphNet framework from Noah-MP runoff to graph-based routing and gauge prediction" />
       <figcaption>RiverGraphNet workflow linking Noah-MP runoff, grid-to-graph transfer, directed graph message passing, and streamflow prediction at gauge locations.</figcaption>
     </figure>
 
@@ -150,12 +132,12 @@
     <p><b>6.</b> Attention analysis suggested that channel width and dominant-pathway descriptors carried more routing value than travel-time proxies alone.</p>
     <p><b>7.</b> Temporal memory and loss design strongly shaped the balance between predictive skill, recession dynamics, and hydrologic realism.</p>
     <figure>
-      <img src="assets/images/graphroutenet_performance.png" alt="Performance comparison between RiverGraphNet and RAPID across gauges" />
+      <img loading="lazy" src="assets/images/graphroutenet_performance.png" alt="Performance comparison between RiverGraphNet and RAPID across gauges" />
       <figcaption>Gauge-level routing performance comparison showing consistent KGE skill improvements relative to RAPID across the Salt-Verde network.</figcaption>
     </figure>
 
     <figure>
-      <img src="assets/images/graphroutenet_hydrograph.png" alt="Hydrograph comparison between RiverGraphNet and RAPID" />
+      <img loading="lazy" src="assets/images/graphroutenet_hydrograph.png" alt="Hydrograph comparison between RiverGraphNet and RAPID" />
       <figcaption>Representative routed hydrograph illustrating stronger timing and magnitude reconstruction with RiverGraphNet.</figcaption>
     </figure>
 
@@ -169,7 +151,7 @@
       For future work, this kind of framework could be extended toward larger river domains, differentiable land-routing coupling, and routing systems that explicitly represent transmission losses, reservoir effects, and human regulation. In that sense, RiverGraphNet is both a performance result and a modeling direction.
     </p>
     <figure>
-      <img src="assets/images/graphroutenet_attention.png" alt="Attention-based interpretation of important routing attributes in RiverGraphNet" />
+      <img loading="lazy" src="assets/images/graphroutenet_attention.png" alt="Attention-based interpretation of important routing attributes in RiverGraphNet" />
       <figcaption>Attention analysis highlighting the physical graph descriptors that most strongly shaped learned routing behavior.</figcaption>
     </figure>
   </div>
@@ -180,6 +162,6 @@
     <p>Created by Mohammad Ali Farmani | Contact: <a href="mailto:farmani@arizona.edu">farmani@arizona.edu</a></p>
   </div>
 
-  <script src="assets/js/bfi.js"></script>
+
 </body>
 </html>

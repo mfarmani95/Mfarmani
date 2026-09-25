@@ -9,42 +9,24 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
 
   <!-- External CSS -->
-  <link rel="stylesheet" href="assets/css/cv.css" />
+
+  <link rel="stylesheet" href="assets/css/portfolio.css">
+  <script defer src="assets/js/portfolio.js"></script>
 </head>
 <body>
+<a class="skip-link" href="#main-content">Skip to content</a>
 
   <!-- Background Video -->
-  <div class="video-container">
-    <video autoplay muted loop playsinline>
-      <source src="assets/videos/CV_BG.mp4" type="video/mp4"/>
-    </video>
-  </div>
+
 
   <!-- Scroll Progress -->
   <div class="scroll-progress" id="scrollProgress"></div>
 
   <!-- Navbar -->
-  <nav class="navbar">
-    <a href="index.html"><i class="fas fa-home"></i> Home</a>
-    <a href="about.html"><i class="fas fa-user"></i> About</a>
-    <a href="cv.html" class="active"><i class="fas fa-id-card"></i> CV</a>
-    <a href="publications.html"><i class="fas fa-book"></i> Publications</a>
-    <div class="dropdown">
-      <a href="work.html" class="dropbtn"><i class="fas fa-briefcase"></i> Projects ▾</a>
-      <div class="dropdown-content">
-        <a href="work.html">Projects Hub</a>
-        <a href="smm.html">SMM</a>
-        <a href="bfi.html">BFI</a>
-        <a href="graphroutenet.html">RiverGraphNet</a>
-        <a href="soilsolver.html">SoilSolver</a>
-        <a href="streamflow_prediction.html">Streamflow Prediction</a>
-      </div>
-    </div>
-    <a href="software.html"><i class="fa-solid fa-laptop-code"></i> Software</a>
-  </nav>
+  <nav class="navbar" aria-label="Main navigation"><a class="brand" href="index.html">M<span>.</span> Farmani</a><div class="nav-links"><a href="index.html">Home</a><a href="work.html">Projects</a><a href="software.html">Software</a><a href="publications.html">Publications</a><a href="about.html">About</a><a href="cv.html" aria-current="page">CV</a></div><a class="nav-contact" href="mailto:farmani@arizona.edu">Get in touch ↗</a></nav>
 
   <!-- Main Container -->
-  <div class="container">
+  <div class="container" id="main-content" role="main">
     <h1><i class="fas fa-id-card"></i> Curriculum Vitae</h1>
 
     <!-- Contact Section -->
@@ -52,19 +34,19 @@
       <h2><i class="fas fa-envelope"></i> Contact Information</h2>
       <p><i class="fas fa-user"></i> Mohammad Ali Farmani</p>
       <p><i class="fas fa-globe"></i>
-        <a href="https://mfarmani95.github.io/Mfarmani/index.html" target="_blank">Personal Website</a>
+        <a href="https://mfarmani95.github.io/Mfarmani/index.html" target="_blank" rel="noopener noreferrer">Personal Website</a>
       </p>
       <p><i class="fas fa-envelope"></i>
         <a href="mailto:farmani@arizona.edu">farmani@arizona.edu</a>
       </p>
       <p style="text-align:center">
-        <a href="https://www.linkedin.com/in/mohammad-a-farmani-841b2b180/" target="_blank" title="LinkedIn" style="margin-right:14px">
+        <a href="https://www.linkedin.com/in/mohammad-a-farmani-841b2b180/" target="_blank" rel="noopener noreferrer" title="LinkedIn" style="margin-right:14px">
           <i class="fab fa-linkedin fa-2x"></i>
         </a>
-        <a href="https://scholar.google.com/citations?user=CmjfHnIAAAAJ&hl=en" target="_blank" title="Google Scholar" style="margin-right:14px">
+        <a href="https://scholar.google.com/citations?user=CmjfHnIAAAAJ&hl=en" target="_blank" rel="noopener noreferrer" title="Google Scholar" style="margin-right:14px">
           <i class="fas fa-graduation-cap fa-2x"></i>
         </a>
-        <a href="https://www.researchgate.net/profile/Mohammad-Farmani-6/research" target="_blank" title="ResearchGate">
+        <a href="https://www.researchgate.net/profile/Mohammad-Farmani-6/research" target="_blank" rel="noopener noreferrer" title="ResearchGate">
           <i class="fab fa-researchgate fa-2x"></i>
         </a>
       </p>
@@ -195,6 +177,6 @@
   </footer>
 
   <!-- External JS -->
-  <script src="assets/js/cv.js"></script>
+
 </body>
 </html>

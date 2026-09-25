@@ -5,39 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Software | Mohammad Ali Farmani</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-  <link rel="stylesheet" href="assets/css/software.css" />
+
+  <link rel="stylesheet" href="assets/css/portfolio.css">
+  <script defer src="assets/js/portfolio.js"></script>
 </head>
 <body>
+<a class="skip-link" href="#main-content">Skip to content</a>
 
   <!-- === Background Video === -->
-  <div class="video-container">
-    <video autoplay muted loop playsinline>
-      <source src="assets/videos/Coding.mp4" type="video/mp4" />
-    </video>
-  </div>
+
 
 <!-- Navbar -->
-<div class="navbar">
-  <a href="index.html"><i class="fa-solid fa-house"></i> Home</a>
-  <a href="about.html"><i class="fa-solid fa-user"></i> About</a>
-  <a href="cv.html"><i class="fa-solid fa-id-card"></i> CV</a>
-  <a href="publications.html"><i class="fa-solid fa-book"></i> Publications</a>
-  <div class="dropdown">
-    <a href="work.html" class="dropbtn"><i class="fa-solid fa-briefcase"></i> Projects ▾</a>
-    <div class="dropdown-content">
-      <a href="work.html">Projects Hub</a>
-      <a href="smm.html">SMM</a>
-      <a href="bfi.html">BFI</a>
-      <a href="graphroutenet.html">RiverGraphNet</a>
-      <a href="soilsolver.html">SoilSolver</a>
-      <a href="streamflow_prediction.html">Streamflow Prediction</a>
-    </div>
-  </div>
-  <a href="software.html" class="active"><i class="fa-solid fa-laptop-code"></i> Software</a>
-</div>
-
+<nav class="navbar" aria-label="Main navigation"><a class="brand" href="index.html">M<span>.</span> Farmani</a><div class="nav-links"><a href="index.html">Home</a><a href="work.html">Projects</a><a href="software.html" aria-current="page">Software</a><a href="publications.html">Publications</a><a href="about.html">About</a><a href="cv.html">CV</a></div><a class="nav-contact" href="mailto:farmani@arizona.edu">Get in touch ↗</a></nav>
 <!-- Content -->
-<div class="container">
+<div class="container" id="main-content" role="main">
   <h1><i class="fa-solid fa-code"></i> Open Source Software Packages</h1>
   <p class="intro">These tools are developed to support hydrologic, climate, and data-intensive research. Together they reflect how I work across environmental science, computational modeling, and scientific machine learning.</p>
 
@@ -51,8 +32,8 @@
         <li><b>Initial Release:</b> 2025</li>
       </ul>
       <div class="actions">
-        <a class="btn" href="https://pypi.org/project/smm-toolkit/" target="_blank"><i class="fas fa-download"></i> PyPI</a>
-        <a class="btn" href="https://github.com/mfarmani95/SMM-Project/" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+        <a class="btn" href="https://pypi.org/project/smm-toolkit/" target="_blank" rel="noopener noreferrer"><i class="fas fa-download"></i> PyPI</a>
+        <a class="btn" href="https://github.com/mfarmani95/SMM-Project/" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> GitHub</a>
       </div>
     </div>
 
@@ -65,8 +46,8 @@
         <li><b>Initial Release:</b> 2025</li>
       </ul>
       <div class="actions">
-        <a class="btn" href="https://pypi.org/project/bfi-toolkit/" target="_blank"><i class="fas fa-download"></i> PyPI</a>
-        <a class="btn" href="https://github.com/mfarmani95/BFI-Toolkit/" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+        <a class="btn" href="https://pypi.org/project/bfi-toolkit/" target="_blank" rel="noopener noreferrer"><i class="fas fa-download"></i> PyPI</a>
+        <a class="btn" href="https://github.com/mfarmani95/BFI-Toolkit/" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> GitHub</a>
       </div>
     </div>
 
@@ -78,7 +59,7 @@
         <li><b>Focus:</b> River routing, graph neural networks, hydrologic prediction</li>
       </ul>
       <div class="actions">
-        <a class="btn" href="https://github.com/mfarmani95/LSTM_GNN_routing-" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+        <a class="btn" href="https://github.com/mfarmani95/RiverGraphNet" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> GitHub</a>
         <a class="btn" href="graphroutenet.html"><i class="fas fa-diagram-project"></i> Project Page</a>
       </div>
     </div>
@@ -91,8 +72,8 @@
         <li><b>Focus:</b> Sequence models, experiment workflows, interactive dashboard</li>
       </ul>
       <div class="actions">
-        <a class="btn" href="https://github.com/mfarmani95/Streamflow_Prediction" target="_blank"><i class="fab fa-github"></i> GitHub</a>
-        <a class="btn" href="https://streamflowprediction-irm8aele3vtve9ujyfys62.streamlit.app/" target="_blank"><i class="fas fa-arrow-up-right-from-square"></i> Dashboard</a>
+        <a class="btn" href="https://github.com/mfarmani95/Streamflow_Prediction" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> GitHub</a>
+        <a class="btn" href="https://streamflowprediction-irm8aele3vtve9ujyfys62.streamlit.app/" target="_blank" rel="noopener noreferrer"><i class="fas fa-arrow-up-right-from-square"></i> Dashboard</a>
         <a class="btn" href="streamflow_prediction.html"><i class="fas fa-diagram-project"></i> Project Page</a>
       </div>
     </div>
@@ -109,21 +90,7 @@
   </p>
 </div>
 
-<script>
-  const backToTop = document.getElementById("backToTop");
-  window.addEventListener("scroll", () => {
-    if (window.scrollY > 300) {
-      backToTop.style.opacity = "1";
-      backToTop.style.visibility = "visible";
-    } else {
-      backToTop.style.opacity = "0";
-      backToTop.style.visibility = "hidden";
-    }
-  });
-  backToTop.addEventListener("click", () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  });
-</script>
+
 
 </body>
 </html>

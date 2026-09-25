@@ -5,43 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>About – Mohammad Ali Farmani</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
-  <link rel="stylesheet" href="assets/css/site.css" />
+
+  <link rel="stylesheet" href="assets/css/portfolio.css">
+  <script defer src="assets/js/portfolio.js"></script>
 </head>
 <body>
+<a class="skip-link" href="#main-content">Skip to content</a>
   <div class="progress-wrap"><div class="progress-bar" id="progressBar"></div></div>
 
-  <nav class="navbar">
-    <a href="index.html"><i class="fas fa-home"></i> Home</a>
-    <a href="about.html" class="active"><i class="fas fa-user"></i> About</a>
-    <a href="cv.html"><i class="fas fa-id-card"></i> CV</a>
-    <a href="publications.html"><i class="fas fa-book"></i> Publications</a>
-    <div class="dropdown">
-      <a href="work.html" class="dropbtn"><i class="fas fa-briefcase"></i> Projects ▾</a>
-      <div class="dropdown-content">
-        <a href="work.html">Projects Hub</a>
-        <a href="smm.html">SMM</a>
-        <a href="bfi.html">BFI</a>
-        <a href="graphroutenet.html">RiverGraphNet</a>
-        <a href="soilsolver.html">SoilSolver</a>
-        <a href="streamflow_prediction.html">Streamflow Prediction</a>
-      </div>
-    </div>
-    <a href="software.html"><i class="fa-solid fa-laptop-code"></i> Software</a>
-  </nav>
+  <nav class="navbar" aria-label="Main navigation"><a class="brand" href="index.html">M<span>.</span> Farmani</a><div class="nav-links"><a href="index.html">Home</a><a href="work.html">Projects</a><a href="software.html">Software</a><a href="publications.html">Publications</a><a href="about.html" aria-current="page">About</a><a href="cv.html">CV</a></div><a class="nav-contact" href="mailto:farmani@arizona.edu">Get in touch ↗</a></nav>
 
-  <div class="snapper" id="snapper">
+  <main class="snapper" id="main-content">
     <section class="block">
-      <div class="video-container" data-parallax data-speed="0.22">
-        <video autoplay muted loop playsinline>
-          <source src="assets/videos/WT_BG.mp4" type="video/mp4"/>
-        </video>
-      </div>
+
       <div class="inner">
         <span class="eyebrow">About Me</span>
         <h1>Researcher, modeler, and science communicator</h1>
         <div class="divider"></div>
         <p class="lead">
-          I am Mohammad Ali Farmani, a Ph.D. student in Hydrology and Atmospheric Sciences at the University of Arizona with a minor in Data Science. My work focuses on improving how we represent groundwater recharge, soil moisture persistence, and streamflow generation in large-scale hydrologic models.
+          I am Mohammad Ali Farmani, a Ph.D. researcher in Hydrology and Atmospheric Sciences at the University of Arizona also pursuing an M.S. in Data Science. My work focuses on improving how we represent groundwater recharge, soil moisture persistence, and streamflow generation in large-scale hydrologic models.
         </p>
         <p>
           I care deeply about making hydrologic science useful beyond academic spaces. That means not only building better models, but also building better computational workflows, clearer analyses, and more decision-relevant interpretations for communities, agriculture, and climate resilience.
@@ -54,11 +36,7 @@
     </section>
 
     <section class="block">
-      <div class="video-container" data-parallax data-speed="0.14">
-        <video autoplay muted loop playsinline>
-          <source src="assets/videos/Coding.mp4" type="video/mp4"/>
-        </video>
-      </div>
+
       <div class="inner">
         <span class="eyebrow">What I Work On</span>
         <h2>Research themes</h2>
@@ -85,11 +63,7 @@
     </section>
 
     <section class="block">
-      <div class="video-container" data-parallax data-speed="0.12">
-        <video autoplay muted loop playsinline>
-          <source src="assets/videos/CV_BG.mp4" type="video/mp4"/>
-        </video>
-      </div>
+
       <div class="inner">
         <span class="eyebrow">How I Contribute</span>
         <h2>Evidence across roles</h2>
@@ -132,11 +106,7 @@
     </section>
 
     <section class="block">
-      <div class="video-container" data-parallax data-speed="0.1">
-        <video autoplay muted loop playsinline>
-          <source src="assets/videos/PUB_BG.mp4" type="video/mp4"/>
-        </video>
-      </div>
+
       <div class="inner">
         <span class="eyebrow">Collaboration</span>
         <h2>How we can work together</h2>
@@ -164,8 +134,8 @@
         </div>
         <p>
           Contact: <a href="mailto:farmani@arizona.edu" style="color:var(--cyan);text-decoration:none;">farmani@arizona.edu</a> |
-          <a href="https://www.linkedin.com/in/mohammad-a-farmani-841b2b180/" target="_blank" style="color:var(--gold);text-decoration:none;">LinkedIn</a> |
-          <a href="https://scholar.google.com/citations?user=CmjfHnIAAAAJ&hl=en" target="_blank" style="color:var(--gold);text-decoration:none;">Google Scholar</a>
+          <a href="https://www.linkedin.com/in/mohammad-a-farmani-841b2b180/" target="_blank" rel="noopener noreferrer" style="color:var(--gold);text-decoration:none;">LinkedIn</a> |
+          <a href="https://scholar.google.com/citations?user=CmjfHnIAAAAJ&hl=en" target="_blank" rel="noopener noreferrer" style="color:var(--gold);text-decoration:none;">Google Scholar</a>
         </p>
       </div>
     </section>
@@ -175,83 +145,10 @@
         <a href="mailto:farmani@arizona.edu">farmani@arizona.edu</a>
       </p>
     </footer>
-  </div>
+  </main>
 
   <button id="backToTop" title="Back to top"><i class="fas fa-arrow-up"></i></button>
 
-  <script>
-    const progressBar = document.getElementById('progressBar');
-    const footer = document.getElementById('footer');
-    const backBtn = document.getElementById('backToTop');
-    const scrollHost = document.getElementById('snapper');
-    const parallaxEls = document.querySelectorAll('[data-parallax]');
-    const faders = document.querySelectorAll('p, .lead, .link-card, .hero-actions, .eyebrow');
-    let ticking = false;
 
-    function updateProgress() {
-      const scrollTop = scrollHost.scrollTop;
-      const docHeight = scrollHost.scrollHeight - scrollHost.clientHeight;
-      const pct = Math.max(0, Math.min(1, scrollTop / docHeight));
-      progressBar.style.width = (pct * 100) + '%';
-    }
-
-    function toggleBackBtn() {
-      if (scrollHost.scrollTop > 350) {
-        backBtn.style.opacity = '1';
-        backBtn.style.visibility = 'visible';
-      } else {
-        backBtn.style.opacity = '0';
-        backBtn.style.visibility = 'hidden';
-      }
-    }
-
-    function applyParallax() {
-      parallaxEls.forEach((el) => {
-        const speed = parseFloat(el.getAttribute('data-speed')) || 0.2;
-        const rect = el.parentElement.getBoundingClientRect();
-        const center = rect.top + rect.height / 2 - window.innerHeight / 2;
-        const translate = -center * speed;
-        const vid = el.querySelector('video');
-        if (vid) vid.style.transform = `translateY(${translate}px)`;
-      });
-    }
-
-    function onScroll() {
-      updateProgress();
-      toggleBackBtn();
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
-          applyParallax();
-          ticking = false;
-        });
-        ticking = true;
-      }
-    }
-
-    const footerObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        progressBar.style.opacity = entry.isIntersecting ? '0' : '1';
-      });
-    }, { root: scrollHost, threshold: 0.35 });
-    footerObserver.observe(footer);
-
-    const io = new IntersectionObserver((entries, obs) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.style.opacity = '1';
-          entry.target.style.transform = 'translateY(0)';
-          obs.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.15 });
-    faders.forEach((el) => io.observe(el));
-
-    backBtn.addEventListener('click', () => scrollHost.scrollTo({ top: 0, behavior: 'smooth' }));
-    updateProgress();
-    toggleBackBtn();
-    applyParallax();
-    scrollHost.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', () => { applyParallax(); updateProgress(); });
-  </script>
 </body>
 </html>
